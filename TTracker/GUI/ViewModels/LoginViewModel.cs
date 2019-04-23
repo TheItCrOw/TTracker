@@ -33,19 +33,20 @@ namespace TTracker.GUI.ViewModels
             get { return _newUserPassword; }
             set
             {
-                SetProperty(ref _newUserPassword , value);
+                SetProperty(ref _newUserPassword, value);
             }
         }
 
         private void CreateNewUser()
         {
             //Only for testing. Name works already, pw ist not tho
-            NewUserPassword = "testPW";
+            NewUserPassword = PasswordBoxAssistant.BoundPassword.ToString();
+
             //Here a new User will be created with a new instance of the User class
             var Id = Guid.NewGuid();
             var newUser = new User(NewUserName, NewUserPassword, Id, DateTime.Now);
             DataAccess.Instance.AddNewUser(newUser);
-           
+
         }
     }
 }

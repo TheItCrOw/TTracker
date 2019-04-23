@@ -72,6 +72,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Utility\DataAccess.cs" />
+    <Compile Include="Utility\PasswordBoxAssistant.cs" />
     <Page Include="GUI\Views\LoginView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

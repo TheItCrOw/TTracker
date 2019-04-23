@@ -20,10 +20,12 @@ namespace TTracker.GUI.Views
     /// </summary>
     public partial class LoginView : Window
     {
+
         public LoginView()
         {    
             this.DataContext = new LoginViewModel();
             InitializeComponent();
         }
+
     }
 }

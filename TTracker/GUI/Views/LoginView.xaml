@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ff="clr-namespace:TTracker.Utility"
         xmlns:local="clr-namespace:TTracker.GUI.Views"
         mc:Ignorable="d"
         Title="LoginView" Height="600" Width="1000">
@@ -40,7 +41,9 @@
                              VerticalContentAlignment="Center"
                              HorizontalContentAlignment="Center"
                              Margin="10" 
-                             Width="300"/>
+                             Width="300"
+                             ff:PasswordBoxAssistant.BindPassword="true"  ff:PasswordBoxAssistant.BoundPassword="{Binding Path=Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    />
                 </StackPanel>
             </Border>
 

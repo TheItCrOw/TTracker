@@ -50,3 +50,4 @@ E:\Git\TTrackerGit\TTracker\obj\Debug\TTracker.csproj.CoreCompileInputs.cache
 E:\Git\TTrackerGit\TTracker\obj\Debug\TTracker.csproj.CopyComplete
 E:\Git\TTrackerGit\TTracker\obj\Debug\TTracker.exe
 E:\Git\TTrackerGit\TTracker\obj\Debug\TTracker.pdb
+E:\Git\TTrackerGit\TTracker\obj\Debug\GeneratedInternalTypeHelper.g.cs
