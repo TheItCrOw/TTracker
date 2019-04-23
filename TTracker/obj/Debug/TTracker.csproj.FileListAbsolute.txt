@@ -1,0 +1,52 @@
+E:\WPF Projects\TTracker\TTracker\bin\Debug\TTracker.exe.config
+E:\WPF Projects\TTracker\TTracker\bin\Debug\TTracker.exe
+E:\WPF Projects\TTracker\TTracker\bin\Debug\TTracker.pdb
+E:\WPF Projects\TTracker\TTracker\obj\Debug\TTracker.csprojAssemblyReference.cache
+E:\WPF Projects\TTracker\TTracker\obj\Debug\App.g.cs
+E:\WPF Projects\TTracker\TTracker\obj\Debug\TTracker_MarkupCompile.cache
+E:\WPF Projects\TTracker\TTracker\obj\Debug\TTracker_MarkupCompile.lref
+E:\WPF Projects\TTracker\TTracker\obj\Debug\TTracker.g.resources
+E:\WPF Projects\TTracker\TTracker\obj\Debug\TTracker.Properties.Resources.resources
+E:\WPF Projects\TTracker\TTracker\obj\Debug\TTracker.csproj.GenerateResource.cache
+E:\WPF Projects\TTracker\TTracker\obj\Debug\TTracker.csproj.CoreCompileInputs.cache
+E:\WPF Projects\TTracker\TTracker\obj\Debug\TTracker.exe
+E:\WPF Projects\TTracker\TTracker\obj\Debug\TTracker.pdb
+E:\WPF Projects\TTracker\TTracker\obj\Debug\Home.g.cs
+E:\WPF Projects\TTracker\TTracker\obj\Debug\Home.baml
+E:\WPF Projects\TTracker\TTracker\bin\Debug\CommonServiceLocator.dll
+E:\WPF Projects\TTracker\TTracker\bin\Debug\Prism.dll
+E:\WPF Projects\TTracker\TTracker\bin\Debug\Prism.Wpf.dll
+E:\WPF Projects\TTracker\TTracker\bin\Debug\System.Windows.Interactivity.dll
+E:\WPF Projects\TTracker\TTracker\bin\Debug\Prism.pdb
+E:\WPF Projects\TTracker\TTracker\bin\Debug\Prism.xml
+E:\WPF Projects\TTracker\TTracker\bin\Debug\Prism.Wpf.pdb
+E:\WPF Projects\TTracker\TTracker\bin\Debug\Prism.Wpf.xml
+E:\WPF Projects\TTracker\TTracker\obj\Debug\TTracker.csproj.CopyComplete
+E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\LoginView.g.cs
+E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\LoginView.baml
+E:\Git\TTrackerGit\TTracker\bin\Debug\TTracker.exe.config
+E:\Git\TTrackerGit\TTracker\bin\Debug\TTracker.exe
+E:\Git\TTrackerGit\TTracker\bin\Debug\TTracker.pdb
+E:\Git\TTrackerGit\TTracker\bin\Debug\CommonServiceLocator.dll
+E:\Git\TTrackerGit\TTracker\bin\Debug\Prism.dll
+E:\Git\TTrackerGit\TTracker\bin\Debug\Prism.Wpf.dll
+E:\Git\TTrackerGit\TTracker\bin\Debug\System.Windows.Interactivity.dll
+E:\Git\TTrackerGit\TTracker\bin\Debug\Prism.pdb
+E:\Git\TTrackerGit\TTracker\bin\Debug\Prism.xml
+E:\Git\TTrackerGit\TTracker\bin\Debug\Prism.Wpf.pdb
+E:\Git\TTrackerGit\TTracker\bin\Debug\Prism.Wpf.xml
+E:\Git\TTrackerGit\TTracker\obj\Debug\TTracker.csprojAssemblyReference.cache
+E:\Git\TTrackerGit\TTracker\obj\Debug\GUI\Views\LoginView.g.cs
+E:\Git\TTrackerGit\TTracker\obj\Debug\Home.g.cs
+E:\Git\TTrackerGit\TTracker\obj\Debug\App.g.cs
+E:\Git\TTrackerGit\TTracker\obj\Debug\TTracker_MarkupCompile.cache
+E:\Git\TTrackerGit\TTracker\obj\Debug\TTracker_MarkupCompile.lref
+E:\Git\TTrackerGit\TTracker\obj\Debug\GUI\Views\LoginView.baml
+E:\Git\TTrackerGit\TTracker\obj\Debug\Home.baml
+E:\Git\TTrackerGit\TTracker\obj\Debug\TTracker.g.resources
+E:\Git\TTrackerGit\TTracker\obj\Debug\TTracker.Properties.Resources.resources
+E:\Git\TTrackerGit\TTracker\obj\Debug\TTracker.csproj.GenerateResource.cache
+E:\Git\TTrackerGit\TTracker\obj\Debug\TTracker.csproj.CoreCompileInputs.cache
+E:\Git\TTrackerGit\TTracker\obj\Debug\TTracker.csproj.CopyComplete
+E:\Git\TTrackerGit\TTracker\obj\Debug\TTracker.exe
+E:\Git\TTrackerGit\TTracker\obj\Debug\TTracker.pdb
