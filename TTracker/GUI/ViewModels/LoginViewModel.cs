@@ -39,8 +39,9 @@ namespace TTracker.GUI.ViewModels
 
         private void CreateNewUser()
         {
-            //Only for testing. Name works already, pw ist not tho
-            NewUserPassword = PasswordBoxAssistant.BoundPassword.ToString();
+            //Cause of the passwordBox this has to be done very complicated
+            NewUserPassword = PasswordBoxAssistant.PasswordContent;
+            PasswordBoxAssistant.PasswordContent = "";
 
             //Here a new User will be created with a new instance of the User class
             var Id = Guid.NewGuid();

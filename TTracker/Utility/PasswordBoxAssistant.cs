@@ -13,6 +13,8 @@ namespace TTracker.Utility
         public static readonly DependencyProperty BoundPassword =
             DependencyProperty.RegisterAttached("BoundPassword", typeof(string), typeof(PasswordBoxAssistant), new PropertyMetadata(string.Empty, OnBoundPasswordChanged));
 
+        public static string PasswordContent;
+
         public static readonly DependencyProperty BindPassword = DependencyProperty.RegisterAttached(
             "BindPassword", typeof(bool), typeof(PasswordBoxAssistant), new PropertyMetadata(false, OnBindPasswordChanged));
 
@@ -77,6 +79,7 @@ namespace TTracker.Utility
             SetUpdatingPassword(box, true);
             // push the new password into the BoundPassword property
             SetBoundPassword(box, box.Password);
+            PasswordContent = box.Password;
             SetUpdatingPassword(box, false);
         }
 
