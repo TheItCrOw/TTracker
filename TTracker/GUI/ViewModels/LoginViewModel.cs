@@ -46,7 +46,7 @@ namespace TTracker.GUI.ViewModels
             //Here a new User will be created with a new instance of the User class
             var Id = Guid.NewGuid();
             var newUser = new User(NewUserName, NewUserPassword, Id, DateTime.Now);
-            DataAccess.Instance.AddNewUser(newUser);
+            DataAccess.Instance.RegisterUser(newUser);
 
         }
     }

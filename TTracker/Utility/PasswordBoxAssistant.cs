@@ -48,8 +48,7 @@ namespace TTracker.Utility
         private static void OnBindPasswordChanged(DependencyObject dp, DependencyPropertyChangedEventArgs e)
         {
             // when the BindPassword attached property is set on a PasswordBox,
-            // start listening to its PasswordChanged event
-
+             // start listening to its PasswordChanged event
             PasswordBox box = dp as PasswordBox;
 
             if (box == null)
