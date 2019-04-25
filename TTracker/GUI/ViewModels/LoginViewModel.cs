@@ -14,45 +14,45 @@ namespace TTracker.GUI.ViewModels
 {
     class LoginViewModel : BindableBase
     {
-        private string _newUserName;
-        private string _newUserPassword;
+        private string _UserName;
+        private string _userPassowrd;
 
         public DelegateCommand CreateNewUserCommand => new DelegateCommand(CreateNewUser);
-        public DelegateCommand LoginUserCommand => new DelegateCommand(LoginUser);
+        public DelegateCommand CheckForLoginCommand => new DelegateCommand(CheckForLogin);
 
-        public string NewUserName
+        public string UserName
         {
-            get { return _newUserName; }
+            get { return _UserName; }
             set
             {
-                SetProperty(ref _newUserName, value);
+                SetProperty(ref _UserName, value);
             }
         }
 
-        public string NewUserPassword
+        public string UserPassword
         {
-            get { return _newUserPassword; }
+            get { return _userPassowrd; }
             set
             {
-                SetProperty(ref _newUserPassword, value);
+                SetProperty(ref _userPassowrd, value);
             }
         }
 
         private void CreateNewUser()
         {
             //Cause of the passwordBox this has to be done very complicated
-            NewUserPassword = PasswordBoxAssistant.PasswordContent;
-            PasswordBoxAssistant.PasswordContent = "";
+            UserPassword = PasswordBoxAssistant.PasswordContent;
+            PasswordBoxAssistant.PasswordContent.Remove(0, PasswordBoxAssistant.PasswordContent.Length);
 
             //Here a new User will be created with a new instance of the User class
             var Id = Guid.NewGuid();
-            var newUser = new User(NewUserName, NewUserPassword, Id, DateTime.Now);
+            var newUser = new User(UserName, UserPassword, Id, DateTime.Now);
             DataAccess.Instance.RegisterUser(newUser);
         }
 
-        private void LoginUser()
+        private void CheckForLogin()
         {
-
+            DataAccess.Instance.ReadFromXml("Users", UserName);
         }
     }
 }

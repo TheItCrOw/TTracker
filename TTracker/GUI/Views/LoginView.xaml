@@ -28,7 +28,7 @@
                 <StackPanel VerticalAlignment="Center">
                     <TextBlock Text="Name" FontSize="20" TextAlignment="Center" FontWeight="Bold"/>
                     <TextBox x:Name="loginNameBox"
-                             Text="{Binding NewUserName}"
+                             Text="{Binding UserName}"
                              FontSize="20" 
                              TextAlignment="Center" 
                              Margin="10" 
@@ -73,6 +73,7 @@
                         Content="Login"
                         FontSize="20"
                         FontWeight="Bold"
+                        Command="{Binding CheckForLoginCommand}"
                         >
                 </Button>
             </Grid>

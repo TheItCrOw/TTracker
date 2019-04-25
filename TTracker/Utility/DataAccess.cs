@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Xml.Linq;
 using TTracker.GUI.Models;
 
 namespace TTracker.Utility
@@ -43,17 +44,26 @@ namespace TTracker.Utility
             PasswordBoxAssistant.PasswordContent.Remove(0, PasswordBoxAssistant.PasswordContent.Length);
         }
 
+        public void ReadFromXml(string directoryName, string name)
+        {
+            //Testing here with hard coding
+            var doc = XDocument.Load(_saveDataPath + directoryName + "\\d4bffb8c-0f2d-4b75-8b42-78c062c90461.xml");
+
+            var data = doc.Root.Elements().Select(d => d.Element("Data"));
+
+        } 
+
         /// <summary>
         /// Writes the data that is given into the list into a xml file. 
         /// Split like this: Name/paul
         /// </summary>
         /// <param name="directoryName"></param>
         /// <param name="data"></param>
-        public void SaveToXml(string directoryName, Guid ID, List<string> data)
+        private void SaveToXml(string directoryName, Guid Id, List<string> data)
         {
             Directory.CreateDirectory(_saveDataPath + directoryName);
             string xmlPath = _saveDataPath + directoryName + "\\";
-            string xmlName = ID.ToString() + ".xml";
+            string xmlName = Id.ToString() + ".xml";
             string fullLocationPath = xmlPath + xmlName;
 
             using (XmlWriter writer = XmlWriter.Create(fullLocationPath))
