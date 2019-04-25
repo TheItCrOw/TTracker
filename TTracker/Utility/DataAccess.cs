@@ -37,14 +37,35 @@ namespace TTracker.Utility
             SaveToXml("Users", _newUser.Id, SaveableDataList);
         }
 
-        public string ReadFromXml(string directoryName, string desiredNode)
+        public void LoginUser(string name, string password)
         {
+            //Check if the user even exists
+            if(ReadFromXml("Users", "name") == name)
+            {
+                
+            }
+        }
 
+        //This should take in the ID and returns the the User.
+        private User GetUserById(Guid id)
+        {
+            return null;
+        }
+
+        /// <summary>
+        /// This takes in the directoryName in which it should search and the desiredNodeName, for the value you want
+        /// E.g. desiredNodeName = Name, returns Hans
+        /// </summary>
+        /// <param name="directoryName"></param>
+        /// <param name="desiredNodeName"></param>
+        /// <returns></returns>
+        private string ReadFromXml(string directoryName, string desiredNodeName)
+        {
             var directoryPathFolder = Directory.GetFiles(_saveDataPath + directoryName);
 
-            foreach(var userXml in directoryPathFolder)
+            foreach(var xmlFile in directoryPathFolder)
             {
-                var doc = XDocument.Load(userXml.ToString());
+                var doc = XDocument.Load(xmlFile.ToString());
                 var docAllData = doc.Root.Value;
                 var docElement = doc.Root.Elements();
 
@@ -53,16 +74,12 @@ namespace TTracker.Utility
                     //This contains the value of only one node and ONLY the value
                     var node = element.Name;
 
-                    //Not entering for loop
-                    if(node.Equals("{" + desiredNode + "}"))
+                    if(node.ToString().ToLower().Contains(desiredNodeName))
                     {
-                        var b = element.Value;
                         return element.Value;
                     }
                 }
-
             }
-
             return string.Empty;
         }
 

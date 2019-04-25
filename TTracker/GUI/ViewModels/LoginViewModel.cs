@@ -52,7 +52,8 @@ namespace TTracker.GUI.ViewModels
 
         private void CheckForLogin()
         {
-            DataAccess.Instance.ReadFromXml("Users", UserName);
+            UserPassword = PasswordBoxAssistant.PasswordContent;
+            DataAccess.Instance.LoginUser(UserName, UserPassword);
             ClearPassword();
         }
 
