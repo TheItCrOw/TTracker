@@ -18,6 +18,7 @@ namespace TTracker.GUI.ViewModels
         private string _newUserPassword;
 
         public DelegateCommand CreateNewUserCommand => new DelegateCommand(CreateNewUser);
+        public DelegateCommand LoginUserCommand => new DelegateCommand(LoginUser);
 
         public string NewUserName
         {
@@ -47,6 +48,10 @@ namespace TTracker.GUI.ViewModels
             var Id = Guid.NewGuid();
             var newUser = new User(NewUserName, NewUserPassword, Id, DateTime.Now);
             DataAccess.Instance.RegisterUser(newUser);
+        }
+
+        private void LoginUser()
+        {
 
         }
     }

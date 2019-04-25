@@ -48,17 +48,35 @@
             </Border>
 
             <!--Register Button-->
-            <Button x:Name="registerButton"
-                    Grid.Row="2"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center" 
-                    Height="50" 
-                    Width="250" 
-                    Content="Create a new User"
-                    FontSize="20"
-                    FontWeight="Bold"
-                    Command="{Binding CreateNewUserCommand}">
-            </Button>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="registerButton"
+                        Grid.Column="1"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center" 
+                        Height="50" 
+                        Width="250" 
+                        Content="Create a new User"
+                        FontSize="20"
+                        FontWeight="Bold"
+                        Command="{Binding CreateNewUserCommand}">
+                </Button>
+                <Button x:Name="loginButton"
+                        Grid.Column="0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center" 
+                        Height="50" 
+                        Width="250" 
+                        Content="Login"
+                        FontSize="20"
+                        FontWeight="Bold"
+                        >
+                </Button>
+            </Grid>
+
 
 
         </Grid>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,8 +19,10 @@ namespace TTracker.Utility
 
         public static DataAccess Instance { get { return lazy.Value; } }
 
+        private string _saveDataPath = System.AppDomain.CurrentDomain.BaseDirectory + "..\\..\\Data\\";
+
         //Keeps track of all the registeredUsers
-        private List<User> SaveableUsers = new List<User>();
+        private User SaveableUser;
 
         private DataAccess()
         {
@@ -29,31 +32,35 @@ namespace TTracker.Utility
         public void RegisterUser(Object newUser)
         {
             var _newUser = (User)newUser;
-            SaveableUsers.Clear();
-            SaveableUsers.Add(_newUser);
+            SaveableUser = _newUser;
             SaveUser();
             //Clear the password out of the memory
-            _newUser.Password = "";
+            _newUser.Password.Remove(0, PasswordBoxAssistant.PasswordContent.Length);
+            PasswordBoxAssistant.PasswordContent.Remove(0, PasswordBoxAssistant.PasswordContent.Length);
         }
 
-        //This write into a xml file well, but the location must be set right
+        //This writes an xml file of the user
         public void SaveUser()
         {
-            foreach (var user in SaveableUsers)
+            Directory.CreateDirectory(_saveDataPath + "Users");
+
+            string xmlPath = _saveDataPath + "Users\\";
+            string xmlName = SaveableUser.Id.ToString() + ".xml";
+            string fullLocationPath = xmlPath + xmlName;
+
+            using (XmlWriter writer = XmlWriter.Create(fullLocationPath))
             {
-                using (XmlWriter writer = XmlWriter.Create(user.Name.ToString() + ".xml"))
-                {
-                    writer.WriteStartDocument();
-                    writer.WriteStartElement("User");
+                writer.WriteStartDocument();
+                writer.WriteStartElement("User");
 
-                    writer.WriteElementString("ID", user.Id.ToString());
-                    writer.WriteElementString("Name", user.Name);
-                    writer.WriteElementString("Password", user.Password);
-                    writer.WriteElementString("Created", user.Created.ToString());
+                writer.WriteElementString("ID", SaveableUser.Id.ToString());
+                writer.WriteElementString("Name", SaveableUser.Name);
+                writer.WriteElementString("Password", SaveableUser.Password);
+                writer.WriteElementString("Created", SaveableUser.Created.ToString());
 
-                    writer.WriteEndElement();
-                    writer.WriteEndDocument();
-                }
+                writer.WriteEndElement();
+                writer.WriteEndDocument();
+
             }
 
         }
