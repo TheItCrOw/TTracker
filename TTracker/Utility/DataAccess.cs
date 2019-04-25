@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using TTracker.GUI.Models;
@@ -39,19 +35,36 @@ namespace TTracker.Utility
             SaveableDataList.Add("Password/" + _newUser.Password);
             SaveableDataList.Add("Created/" + _newUser.Created.ToString());
             SaveToXml("Users", _newUser.Id, SaveableDataList);
-            //Clear the password out of memory
-            _newUser.Password.Remove(0, PasswordBoxAssistant.PasswordContent.Length);
-            PasswordBoxAssistant.PasswordContent.Remove(0, PasswordBoxAssistant.PasswordContent.Length);
         }
 
-        public void ReadFromXml(string directoryName, string name)
+        public string ReadFromXml(string directoryName, string desiredNode)
         {
-            //Testing here with hard coding
-            var doc = XDocument.Load(_saveDataPath + directoryName + "\\d4bffb8c-0f2d-4b75-8b42-78c062c90461.xml");
 
-            var data = doc.Root.Elements().Select(d => d.Element("Data"));
+            var directoryPathFolder = Directory.GetFiles(_saveDataPath + directoryName);
 
-        } 
+            foreach(var userXml in directoryPathFolder)
+            {
+                var doc = XDocument.Load(userXml.ToString());
+                var docAllData = doc.Root.Value;
+                var docElement = doc.Root.Elements();
+
+                foreach (var element in docElement)
+                {
+                    //This contains the value of only one node and ONLY the value
+                    var node = element.Name;
+
+                    //Not entering for loop
+                    if(node.Equals("{" + desiredNode + "}"))
+                    {
+                        var b = element.Value;
+                        return element.Value;
+                    }
+                }
+
+            }
+
+            return string.Empty;
+        }
 
         /// <summary>
         /// Writes the data that is given into the list into a xml file. 

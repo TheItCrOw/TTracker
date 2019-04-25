@@ -42,7 +42,7 @@ namespace TTracker.GUI.ViewModels
         {
             //Cause of the passwordBox this has to be done very complicated
             UserPassword = PasswordBoxAssistant.PasswordContent;
-            PasswordBoxAssistant.PasswordContent.Remove(0, PasswordBoxAssistant.PasswordContent.Length);
+            ClearPassword();
 
             //Here a new User will be created with a new instance of the User class
             var Id = Guid.NewGuid();
@@ -53,6 +53,13 @@ namespace TTracker.GUI.ViewModels
         private void CheckForLogin()
         {
             DataAccess.Instance.ReadFromXml("Users", UserName);
+            ClearPassword();
+        }
+
+        private protected void ClearPassword()
+        {
+            if (PasswordBoxAssistant.PasswordContent != null)
+                PasswordBoxAssistant.PasswordContent.Remove(0, PasswordBoxAssistant.PasswordContent.Length);
         }
     }
 }
