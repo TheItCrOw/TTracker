@@ -4,6 +4,7 @@ using System.IO;
 using System.Xml;
 using System.Xml.Linq;
 using TTracker.GUI.Models;
+using TTracker.GUI.ViewModels;
 
 namespace TTracker.Utility
 {
@@ -20,8 +21,8 @@ namespace TTracker.Utility
 
         private string _saveDataPath = System.AppDomain.CurrentDomain.BaseDirectory + "..\\..\\Data\\";
 
-        //Keeps track of all the registeredUsers
-        private List<string> SaveableDataList = new List<string>();
+        //Writes the given data into an xml file. Saves it that way
+        private List<string> XmlWriteableDataList = new List<string>();
 
         private DataAccess()
         {
@@ -30,12 +31,12 @@ namespace TTracker.Utility
 
         public void RegisterAndSaveNewUser(User newUser)
         {
-            SaveableDataList.Clear();
-            SaveableDataList.Add("Id/" + newUser.Id);
-            SaveableDataList.Add("Name/" + newUser.Name);
-            SaveableDataList.Add("Password/" + newUser.Password);
-            SaveableDataList.Add("Created/" + newUser.Created.ToString());
-            SaveToXml("Users", newUser.Id, SaveableDataList);
+            XmlWriteableDataList.Clear();
+            XmlWriteableDataList.Add("Id/" + newUser.Id);
+            XmlWriteableDataList.Add("Name/" + newUser.Name);
+            XmlWriteableDataList.Add("Password/" + newUser.Password);
+            XmlWriteableDataList.Add("Created/" + newUser.Created.ToString());
+            SaveToXml("Users", newUser.Id, XmlWriteableDataList);
         }
 
         public bool IsValidUser(string name, string password)

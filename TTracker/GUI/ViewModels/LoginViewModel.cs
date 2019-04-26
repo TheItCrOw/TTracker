@@ -1,4 +1,5 @@
-﻿using Prism.Commands;
+﻿using GalaSoft.MvvmLight.Command;
+using Prism.Commands;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -7,19 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using TTracker.BaseDataModules;
 using TTracker.GUI.Models;
 using TTracker.GUI.Views;
 using TTracker.Utility;
 
 namespace TTracker.GUI.ViewModels
 {
-    class LoginViewModel : BindableBase
+    class LoginViewModel : BindableBase, IClosable
     {
         private string _UserName;
         private string _userPassowrd;
 
         public DelegateCommand CreateNewUserCommand => new DelegateCommand(CreateNewUser);
         public DelegateCommand CheckForLoginCommand => new DelegateCommand(CheckForLogin);
+        public RelayCommand<IClosable> CloseWindowCommand { get; private set; }
 
         public string UserName
         {
@@ -39,6 +42,18 @@ namespace TTracker.GUI.ViewModels
             }
         }
 
+        public void Close()
+        {
+            throw new NotImplementedException();
+        }
+
+        //trying to close the login window after loggin in
+        public void CloseWindow(IClosable window)
+        {
+            if (window != null)
+                window.Close();
+        }
+
         private void CreateNewUser()
         {
             //Cause of the passwordBox this has to be done very complicated
@@ -48,6 +63,8 @@ namespace TTracker.GUI.ViewModels
             var Id = Guid.NewGuid();
             var newUser = new User(UserName, UserPassword, Id, DateTime.Now);
             DataAccess.Instance.RegisterAndSaveNewUser(newUser);
+            MessageBox.Show("You have been registered and can now login.");
+
 
             ClearPassword();
         }
@@ -72,5 +89,7 @@ namespace TTracker.GUI.ViewModels
             if (PasswordBoxAssistant.PasswordContent != null)
                 PasswordBoxAssistant.PasswordContent.Remove(0, PasswordBoxAssistant.PasswordContent.Length);
         }
+
+
     }
 }

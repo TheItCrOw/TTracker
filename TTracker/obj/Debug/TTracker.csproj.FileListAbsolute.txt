@@ -51,3 +51,13 @@ E:\Git\TTrackerGit\TTracker\obj\Debug\TTracker.csproj.CopyComplete
 E:\Git\TTrackerGit\TTracker\obj\Debug\TTracker.exe
 E:\Git\TTrackerGit\TTracker\obj\Debug\TTracker.pdb
 E:\Git\TTrackerGit\TTracker\obj\Debug\GeneratedInternalTypeHelper.g.cs
+E:\Git\TTrackerGit\TTracker\bin\Debug\GalaSoft.MvvmLight.dll
+E:\Git\TTrackerGit\TTracker\bin\Debug\GalaSoft.MvvmLight.Extras.dll
+E:\Git\TTrackerGit\TTracker\bin\Debug\GalaSoft.MvvmLight.Platform.dll
+E:\Git\TTrackerGit\TTracker\bin\Debug\GalaSoft.MvvmLight.pdb
+E:\Git\TTrackerGit\TTracker\bin\Debug\GalaSoft.MvvmLight.xml
+E:\Git\TTrackerGit\TTracker\bin\Debug\GalaSoft.MvvmLight.Extras.pdb
+E:\Git\TTrackerGit\TTracker\bin\Debug\GalaSoft.MvvmLight.Extras.xml
+E:\Git\TTrackerGit\TTracker\bin\Debug\GalaSoft.MvvmLight.Platform.pdb
+E:\Git\TTrackerGit\TTracker\bin\Debug\GalaSoft.MvvmLight.Platform.xml
+E:\Git\TTrackerGit\TTracker\obj\Debug\App.baml

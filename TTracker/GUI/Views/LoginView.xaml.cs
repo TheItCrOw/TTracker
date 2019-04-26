@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TTracker.BaseDataModules;
 using TTracker.GUI.ViewModels;
 
 namespace TTracker.GUI.Views
@@ -18,7 +19,7 @@ namespace TTracker.GUI.Views
     /// <summary>
     /// Interaktionslogik für LoginView.xaml
     /// </summary>
-    public partial class LoginView : Window
+    public partial class LoginView : Window, IClosable
     {
 
         public LoginView()
