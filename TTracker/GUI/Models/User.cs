@@ -8,7 +8,7 @@ using TTracker.Utility;
 
 namespace TTracker.GUI.Models
 {
-    class User : IUser
+    public class User : IUser
     {
 
         private DateTime _created;

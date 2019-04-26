@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using TTracker.GUI.Models;
 using TTracker.GUI.Views;
@@ -42,18 +43,27 @@ namespace TTracker.GUI.ViewModels
         {
             //Cause of the passwordBox this has to be done very complicated
             UserPassword = PasswordBoxAssistant.PasswordContent;
-            ClearPassword();
 
             //Here a new User will be created with a new instance of the User class
             var Id = Guid.NewGuid();
             var newUser = new User(UserName, UserPassword, Id, DateTime.Now);
-            DataAccess.Instance.RegisterUser(newUser);
+            DataAccess.Instance.RegisterAndSaveNewUser(newUser);
+
+            ClearPassword();
         }
 
         private void CheckForLogin()
         {
             UserPassword = PasswordBoxAssistant.PasswordContent;
-            DataAccess.Instance.LoginUser(UserName, UserPassword);
+            if(DataAccess.Instance.IsValidUser(UserName, UserPassword) == true)
+            {
+                MessageBox.Show("You´ve logged in");
+            }
+            else
+            {
+                MessageBox.Show("Couldn´t find User under given name and password");
+            }
+            
             ClearPassword();
         }
 
