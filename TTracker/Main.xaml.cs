@@ -45,5 +45,10 @@ namespace TTracker
         {
             NavigationFrame.Content = new AccountView();
         }
+
+        private void TicketManagement_OnClick(object sender, RoutedEventArgs e)
+        {
+            NavigationFrame.Content = new TicketManagementView();
+        }
     }
 }

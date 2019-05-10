@@ -76,3 +76,5 @@ E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\HomeView.g.cs
 E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\HomeView.baml
 E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\AccountView.g.cs
 E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\AccountView.baml
+E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementView.g.cs
+E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementView.baml

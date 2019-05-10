@@ -83,18 +83,25 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BaseDataModules\IClosable.cs" />
+    <Compile Include="GUI\Models\TaskTicket.cs" />
     <Compile Include="GUI\ViewModels\AccountViewModel.cs" />
     <Compile Include="GUI\ViewModels\HomeViewModel.cs" />
+    <Compile Include="GUI\ViewModels\TaskTicketViewModel.cs" />
+    <Compile Include="GUI\ViewModels\TicketManagementViewModel.cs" />
     <Compile Include="GUI\Views\AccountView.xaml.cs">
       <DependentUpon>AccountView.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI\Views\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Views\TicketManagementView.xaml.cs">
+      <DependentUpon>TicketManagementView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utility\DataAccess.cs" />
     <Compile Include="Utility\PasswordBoxAssistant.cs" />
     <Compile Include="SetupViewModels\MainViewModel.cs" />
     <Compile Include="SetupViewModels\ViewModelLocator.cs" />
+    <Compile Include="Utility\XmlDataCache.cs" />
     <Page Include="GUI\Views\AccountView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -104,6 +111,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GUI\Views\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Views\TicketManagementView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -117,7 +128,7 @@
     </Compile>
     <Compile Include="BaseDataModules\IBaseData.cs" />
     <Compile Include="BaseDataModules\IUser.cs" />
-    <Compile Include="BaseDataModules\Ticket.cs" />
+    <Compile Include="BaseDataModules\ITicket.cs" />
     <Compile Include="GUI\Models\User.cs" />
     <Compile Include="GUI\ViewModels\LoginViewModel.cs" />
     <Compile Include="GUI\Views\LoginView.xaml.cs">

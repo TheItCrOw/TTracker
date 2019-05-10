@@ -18,6 +18,8 @@ namespace TTracker.Utility
 
         public static DataAccess Instance { get { return lazy.Value; } }
 
+        private XmlDataCache _xmlReaderWriter = new XmlDataCache();
+
         public static User CurrentLoggedUser { get; set; }
 
         private string _saveDataPath = System.AppDomain.CurrentDomain.BaseDirectory + "..\\..\\Data\\";
@@ -27,7 +29,7 @@ namespace TTracker.Utility
 
         private DataAccess()
         {
-
+            
         }
 
         public void RegisterAndSaveNewUser(User newUser)
@@ -37,7 +39,7 @@ namespace TTracker.Utility
             XmlWriteableDataList.Add("Name/" + newUser.Name);
             XmlWriteableDataList.Add("Password/" + newUser.Password);
             XmlWriteableDataList.Add("Created/" + newUser.Created.ToString());
-            SaveToXml("Users", newUser.Id, XmlWriteableDataList);
+            _xmlReaderWriter.SaveToXml("Users", newUser.Id, XmlWriteableDataList);
         }
 
         public bool IsValidUser(string name, string password)
@@ -68,7 +70,7 @@ namespace TTracker.Utility
                     var nodeValue = element.Value;
                     if (nodeValue.ToString() == name)
                     {
-                        var desiredUserData = GetXmlDataByXmlPath(xmlFile);
+                        var desiredUserData = _xmlReaderWriter.GetXmlDataByXmlPath(xmlFile);
 
                         if (desiredUserData[2] == "Password/" + password)
                         {
@@ -113,62 +115,6 @@ namespace TTracker.Utility
                 }
             }
             return new User(name, password, Id, created);
-        }
-
-        /// <summary>
-        /// This takes in a xmlFilePath and returns a List<string> that contains the data
-        /// formatted like Name/Value
-        /// </summary>
-        /// <param name="xmlFilePath"></param>
-        /// <returns></returns>
-        private List<string> GetXmlDataByXmlPath(string xmlFilePath)
-        {
-            var doc = XDocument.Load(xmlFilePath);
-            var docElements = doc.Root.Elements();
-
-            List<string> data = new List<string>();
-
-            foreach (var element in docElements)
-            {
-                data.Add(element.Name + "/" + element.Value);
-            }
-
-            return data;
-        }
-
-
-        /// <summary>
-        /// Writes the data that is given into the list into a xml file. 
-        /// Split like this: "Name/" + user.Name
-        /// </summary>
-        /// <param name="directoryName"></param>
-        /// <param name="data"></param>
-        private void SaveToXml(string directoryName, Guid Id, List<string> data)
-        {
-            Directory.CreateDirectory(_saveDataPath + directoryName);
-            string xmlPath = _saveDataPath + directoryName + "\\";
-            string xmlName = Id.ToString() + ".xml";
-            string fullLocationPath = xmlPath + xmlName;
-
-            using (XmlWriter writer = XmlWriter.Create(fullLocationPath))
-            {
-                writer.WriteStartDocument();
-                writer.WriteStartElement("Data");
-
-                foreach (var s in data)
-                {
-                    string[] splitedString = s.Split(new char[] { '/' });
-                    string dataName = splitedString[0];
-                    string dataValue = splitedString[1];
-
-                    writer.WriteElementString(dataName, dataValue);
-                }
-
-                writer.WriteEndElement();
-                writer.WriteEndDocument();
-
-            }
-
         }
 
     }
