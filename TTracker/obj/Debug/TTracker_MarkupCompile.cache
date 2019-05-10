@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-E:\Git\TTrackerGit\TTracker\obj\Debug\
+E:\WPF Projects\TTracker\TTracker\obj\Debug\
 TTracker
 none
 false
 DEBUG;TRACE
-E:\Git\TTrackerGit\TTracker\App.xaml
-2241705087
+E:\WPF Projects\TTracker\TTracker\App.xaml
+4-784025019
 
-1712260126
-12850013964
-GUI\Views\LoginView.xaml;Home.xaml;
+211130585096
+128-1948593598
+GUI\Views\AccountView.xaml;GUI\Views\HomeView.xaml;GUI\Views\LoginView.xaml;Main.xaml;
 
 False
 

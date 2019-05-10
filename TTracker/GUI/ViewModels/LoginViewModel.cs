@@ -65,7 +65,6 @@ namespace TTracker.GUI.ViewModels
             DataAccess.Instance.RegisterAndSaveNewUser(newUser);
             MessageBox.Show("You have been registered and can now login.");
 
-
             ClearPassword();
         }
 

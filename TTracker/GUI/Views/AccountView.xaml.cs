@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,25 +12,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TTracker.GUI.Views;
+using TTracker.GUI.ViewModels;
 
-namespace TTracker
+namespace TTracker.GUI.Views
 {
-
     /// <summary>
-    /// Interaktionslogik für MainWindow.xaml
+    /// Interaktionslogik für AccountView.xaml
     /// </summary>
-    public partial class Home : Window
+    public partial class AccountView : Page
     {
-
-        LoginView loginWindow = new LoginView();
-        public Home()
+        public AccountView()
         {
             InitializeComponent();
-            this.DataContext = new HomeViewModel();
-            loginWindow.Show();
-            loginWindow.Topmost = true;
+            this.DataContext = new AccountViewModel();
         }
-
     }
 }

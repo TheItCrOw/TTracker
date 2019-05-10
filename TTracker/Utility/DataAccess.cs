@@ -52,7 +52,6 @@ namespace TTracker.Utility
         }
 
 
-        //This should take in the ID and returns the the User.
         private User GetUserByNameAndPassword(string name, string password)
         {
             var directoryPathFolder = Directory.GetFiles(_saveDataPath + "Users");
