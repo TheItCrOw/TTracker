@@ -33,5 +33,6 @@ namespace TTracker.GUI.Views
             loginView.Show();
             loginView.Topmost = true;
         }
+
     }
 }

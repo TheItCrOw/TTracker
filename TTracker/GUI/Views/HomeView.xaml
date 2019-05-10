@@ -19,14 +19,14 @@
 
         <!--Navigation menu on the left-->
         <Border BorderThickness="0 0 1 0" BorderBrush="Black">
-            <StackPanel Background="LightGray">
+            <StackPanel Background="LightSteelBlue">
 
             </StackPanel>
         </Border>
 
         <!--Main Content-->
         <Border BorderThickness="1 1 0 0" BorderBrush="Black" Grid.Column="1" Grid.Row="1">
-            <StackPanel Background="AliceBlue">
+            <StackPanel Background="white">
                 <Border BorderBrush="Black" BorderThickness="0 0 0 1" Background="LightSteelBlue">
                     <TextBlock Text="{Binding Date}"
                                Margin="5 5 5 5"

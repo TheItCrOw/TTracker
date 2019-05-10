@@ -3,6 +3,7 @@ using Prism.Commands;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,9 +16,9 @@ using TTracker.Utility;
 
 namespace TTracker.GUI.ViewModels
 {
-    class LoginViewModel : BindableBase, IClosable
+    class LoginViewModel : BindableBase, IClosable, INotifyPropertyChanged
     {
-        private string _UserName;
+        private string _userName;
         private string _userPassowrd;
 
         public DelegateCommand CreateNewUserCommand => new DelegateCommand(CreateNewUser);
@@ -26,10 +27,10 @@ namespace TTracker.GUI.ViewModels
 
         public string UserName
         {
-            get { return _UserName; }
+            get { return _userName; }
             set
             {
-                SetProperty(ref _UserName, value);
+                SetProperty(ref _userName, value);
             }
         }
 
@@ -73,7 +74,8 @@ namespace TTracker.GUI.ViewModels
             UserPassword = PasswordBoxAssistant.PasswordContent;
             if(DataAccess.Instance.IsValidUser(UserName, UserPassword) == true)
             {
-                MessageBox.Show("You´ve logged in");
+                MessageBox.Show("You´ve logged in!");
+                Application.Current.MainWindow.Close();
             }
             else
             {
@@ -88,6 +90,7 @@ namespace TTracker.GUI.ViewModels
             if (PasswordBoxAssistant.PasswordContent != null)
                 PasswordBoxAssistant.PasswordContent.Remove(0, PasswordBoxAssistant.PasswordContent.Length);
         }
+
 
 
     }

@@ -19,42 +19,7 @@
                 <RowDefinition Height="50" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-
-
-            <!--This is a test ribbon-->
-            <!--<Border Grid.Row="0" Grid.Column="1" BorderBrush="Black" BorderThickness="1 0 0 2" >
-                <DockPanel>
-                    <ribbon:Ribbon DockPanel.Dock="Top" Margin="0 -3 0 0" Height="70" >
-                        <Ribbon.ApplicationMenu>
-                            <RibbonApplicationMenu SmallImageSource="E:\WPF Projects\TTracker\TTracker\Resources\home.png" >
-                                <RibbonApplicationMenuItem x:Name="Options" Header="Options" ImageSource="E:\WPF Projects\TTracker\TTracker\Resources\options.png"/>
-                                <RibbonApplicationMenuItem x:Name="Import" Header="Import" ImageSource="E:\WPF Projects\TTracker\TTracker\Resources\import.png"/>
-                                <RibbonApplicationMenuItem x:Name="Export" Header="Export" ImageSource="E:\WPF Projects\TTracker\TTracker\Resources\export.png"/>
-
-                                <RibbonApplicationMenu.AuxiliaryPaneContent>
-                                    <RibbonGallery ScrollViewer.VerticalScrollBarVisibility="Auto">
-                                        <RibbonGalleryCategory MaxColumnCount="1">
-                                            <RibbonGalleryItem Name="galleryItem1"
-                                                               Content="This is Version" 
-                                                               MouseOverBackground="Transparent" 
-                                                               MouseOverBorderBrush="Transparent"
-                                                               CheckedBackground="Transparent"
-                                                               CheckedBorderBrush="Transparent"/>
-                                        </RibbonGalleryCategory>
-                                    </RibbonGallery>
-                                </RibbonApplicationMenu.AuxiliaryPaneContent>
-                            </RibbonApplicationMenu>
-                        </Ribbon.ApplicationMenu>
-                        --><!--Das hier sind die Reiter--><!--
-                        <RibbonTab Name="ticketTab" Header="Tickets">
-                            <RibbonGroup Name="ribbonGroup" Header="Test">
-                                <RibbonButton Label="test"/>
-                            </RibbonGroup>
-                        </RibbonTab>
-                    </ribbon:Ribbon>
-                </DockPanel>
-            </Border>-->
-            
+           
             
             <!--Self ribbon here-->
             <Border x:Name="Ribbon" Grid.Column="1" BorderThickness="1 0 0 2" BorderBrush="Black">

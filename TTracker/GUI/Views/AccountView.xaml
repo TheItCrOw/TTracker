@@ -8,7 +8,6 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AccountView">
 
-
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
@@ -18,30 +17,42 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
+
+        <!--Main Content on the left-->
+        <StackPanel Grid.Column="1" Background="White">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+
+                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="0" Background="LightSteelBlue">
+                    <TextBlock Text="{Binding CurrentUserName}" 
+                               FontSize="20"
+                               TextAlignment="Center"
+                               VerticalAlignment="Center"/>
+                </Border>
+            </Grid>
+        </StackPanel>
+
+
         <!--Nvigation Menu on the left-->
         <Border Grid.Column="0" BorderThickness="0 0 1 0" BorderBrush="Black" >
-            <Grid Background="LightGray">
+            <Grid Background="LightSteelBlue">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50" />
                     <RowDefinition Height="50" />
                     <RowDefinition Height="50" />
                 </Grid.RowDefinitions>
 
-                <Button x:Name="AccountButton" Grid.Column="5" Background="AliceBlue" Margin="0 0 0 0" ToolTip="Login/Register" Click="AccountButton_Click">
+                <Button x:Name="AccountButton" Grid.Column="5" Background="White" Margin="0 0 0 0" ToolTip="Login/Register" Click="AccountButton_Click">
                     <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/login.png"/>
                 </Button>
 
             </Grid>
         </Border>
-        
-        
-        <!--Main Content Window-->
-        <Border BorderThickness="1" BorderBrush="Black" Grid.Column="1">
-            <StackPanel Background="AliceBlue">
-                
-            </StackPanel>
-        </Border>
-        
 
     </Grid>
 
