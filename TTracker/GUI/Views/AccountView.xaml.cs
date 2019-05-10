@@ -26,5 +26,12 @@ namespace TTracker.GUI.Views
             InitializeComponent();
             this.DataContext = new AccountViewModel();
         }
+
+        private void AccountButton_Click(object sender, RoutedEventArgs e)
+        {
+            var loginView = new LoginView();
+            loginView.Show();
+            loginView.Topmost = true;
+        }
     }
 }
