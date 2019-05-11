@@ -37,17 +37,20 @@ namespace TTracker
         //Navigates to Home
         private void HomeButton_OnClick(object sender, RoutedEventArgs e)
         {
+            NavigationFrame.Content = null;
             NavigationFrame.Content = new HomeView();
         }
 
         //Navigates to UserAccount
         private void AccountButton_OnClick(object sender, RoutedEventArgs e)
         {
+            NavigationFrame.Content = null;
             NavigationFrame.Content = new AccountView();
         }
 
         private void TicketManagement_OnClick(object sender, RoutedEventArgs e)
         {
+            NavigationFrame.Content = null;
             NavigationFrame.Content = new TicketManagementView();
         }
     }

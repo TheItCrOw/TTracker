@@ -91,11 +91,14 @@
     <Compile Include="GUI\Views\AccountView.xaml.cs">
       <DependentUpon>AccountView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Views\CreateTicketView.xaml.cs">
+    <Compile Include="GUI\Views\TicketManagementSubViews\CreateTicketView.xaml.cs">
       <DependentUpon>CreateTicketView.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI\Views\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Views\TicketManagementSubViews\AllTicketsFrameView.xaml.cs">
+      <DependentUpon>AllTicketsFrameView.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI\Views\TicketManagementView.xaml.cs">
       <DependentUpon>TicketManagementView.xaml</DependentUpon>
@@ -109,7 +112,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GUI\Views\CreateTicketView.xaml">
+    <Page Include="GUI\Views\TicketManagementSubViews\CreateTicketView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -118,6 +121,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GUI\Views\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Views\TicketManagementSubViews\AllTicketsFrameView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

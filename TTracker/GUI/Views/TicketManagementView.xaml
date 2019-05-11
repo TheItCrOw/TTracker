@@ -10,7 +10,7 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="100"/>
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -19,8 +19,8 @@
         </Grid.RowDefinitions>
 
         <!--Ticket Management Topic Intro-->
-        <Border Background="LightSteelBlue" BorderBrush="Black" BorderThickness="1" Grid.Row="0" Grid.Column="0">
-            <TextBlock Text="Ticket Management" TextAlignment="Center" VerticalAlignment="Center" FontSize="15" FontWeight="Bold"/>
+        <Border Background="White" BorderBrush="Black" BorderThickness="1" Grid.Row="0" Grid.Column="0">
+            <TextBlock Text="Ticket Management" TextAlignment="Center" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" TextWrapping="Wrap"/>
         </Border>
 
         <!--Buttons of the right big menu-->
@@ -33,55 +33,26 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <Button ToolTip="All Tickets" Background="LightSteelBlue" BorderBrush="Black" Grid.Column="0" BorderThickness="0.5">
+                <Button x:Name="AllTicketsButton" ToolTip="All Tickets" Background="LightSteelBlue" BorderBrush="Black" Grid.Column="0" BorderThickness="0 0 1 1" Click="AllTicketsButton_Click">
                     <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/tasks.png"/>
                 </Button>
-                <Button ToolTip="Task Tickets" Background="LightSteelBlue" BorderBrush="Black" Grid.Column="1" BorderThickness="0.5">
+                <Button ToolTip="Task Tickets" Background="LightSteelBlue" BorderBrush="Black" Grid.Column="1" BorderThickness="1 0 1 1">
                     <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/task-ticket.png"/>
                 </Button>
-                <Button ToolTip="Date Tickets" Background="LightSteelBlue" BorderBrush="Black" Grid.Column="2" BorderThickness="0.5">
+                <Button ToolTip="Date Tickets" Background="LightSteelBlue" BorderBrush="Black" Grid.Column="2" BorderThickness="1 0 1 1">
                     <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/date-ticket.png"/>
                 </Button>
-                <Button ToolTip="Projects" Background="LightSteelBlue" BorderBrush="Black" Grid.Column="3" BorderThickness="0.5">
+                <Button ToolTip="Projects" Background="LightSteelBlue" BorderBrush="Black" Grid.Column="3" BorderThickness="1 0 1 1">
                     <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/project.png"/>
                 </Button>
 
             </Grid>
         </Border>
 
-        <!--Items Control of TaskTickets-->
-        <ScrollViewer Grid.Row="1" Grid.Column="1" VerticalScrollBarVisibility="Visible">
-            <ItemsControl x:Name="taskTicketControl" Background="White" ItemsSource="{Binding TaskTickets}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Border BorderThickness="0.5" BorderBrush="Black">
-                            <DockPanel Margin="10 10 10 10" Height="Auto" VerticalAlignment="Center" LastChildFill="True">
-                                <Expander  Margin="0 -20 0 0" HorizontalAlignment="Left" ExpandDirection="Down" DockPanel.Dock="Bottom">
-                                    <StackPanel>
-                                        <TextBlock Text="this is a testText for the xpanderrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr" FontSize="15"/>
-                                        <TextBlock Text="this is a testText for the xpander" FontSize="15"/>
-                                        <TextBlock Text="this is a testText for the xpander" FontSize="15"/>
-                                    </StackPanel>
-                                </Expander>
-                                <TextBlock Text="{Binding Name}" FontSize="15" FontWeight="Bold" Width="175" Margin="50 0 0 0" VerticalAlignment="Center"/>
-                                <TextBlock Text="{Binding Text}" FontSize="15" Width="700" Margin="10 0 0 0" VerticalAlignment="Center"/>
-                                <TextBlock Text="{Binding ProjectName}" FontSize="15" Width="200" Margin="10 0 0 0" VerticalAlignment="Center"/>
-                                <Grid Width="300" Margin="10 0 0 0" VerticalAlignment="Center">
-                                    <Border BorderThickness="1" BorderBrush="Black">
-                                        <ProgressBar Minimum="0" Maximum="{Binding ExpectedTime}" Value="{Binding UsedTime}" />
-                                    </Border>
-                                    <TextBlock Text="{Binding Progress}" FontSize="15" TextAlignment="Center"/>
-                                </Grid>
-                            </DockPanel>
-                        </Border>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </ScrollViewer>
+        <!--Here the main content will be displayed. Its the biggest input field and changes upon clicking on the buttons-->
+        <Frame x:Name="NavigationFrame" Grid.Row="1" Grid.Column="1" Background="AliceBlue" NavigationUIVisibility="Hidden"/>
 
-
-
-        <!--Nvigation Menu on the left-->
+        <!--Navigation Menu on the left-->
         <Border Grid.Column="0" Grid.Row="1" BorderThickness="0 1 1 0" BorderBrush="Black" >
             <Grid Background="LightSteelBlue">
                 <Grid.RowDefinitions>
@@ -90,7 +61,7 @@
                     <RowDefinition Height="50" />
                 </Grid.RowDefinitions>
 
-                <Button x:Name="SaveButton" ToolTip="Save" Background="LightSteelBlue" BorderBrush="Black" Grid.Row="0" BorderThickness="1">
+                <Button x:Name="SaveButton" ToolTip="Save" Background="LightSteelBlue" BorderBrush="Black" Grid.Row="0" BorderThickness="1 0 1 1">
                     <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/save.png"/>
                 </Button>
 
