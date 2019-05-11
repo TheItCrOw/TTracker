@@ -6,13 +6,14 @@
         xmlns:local="clr-namespace:TTracker.GUI.Views"
         mc:Ignorable="d"
         Title="CreateTicketView" Height="600" Width="1000">
-    
+
     <Border BorderThickness="2" BorderBrush="Black" Margin="10">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
                 <RowDefinition Height="50" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
@@ -26,16 +27,69 @@
                            VerticalAlignment="Center"/>
             </Border>
 
-            <Grid Grid.Row="1">
+            <!--Decides, whether you want to create a task Ticket or date Ticket-->
+            <CheckBox x:Name="DateTicketCheckbox" Grid.Row="1" Width="100" Height="20" HorizontalAlignment="Right" Margin="0 0 300 0" Content="Date Ticket" FontSize="15">
+                <CheckBox.Style>
+                    <Style TargetType="CheckBox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsChecked, ElementName=TaskTicketCheckbox}" Value="False">
+                                <Setter Property="IsChecked" Value="True" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </CheckBox.Style>
+            </CheckBox>
+            <CheckBox x:Name="TaskTicketCheckbox" Grid.Row="1" Width="100" Height="20" HorizontalAlignment="Left" Margin="300 0 0 0" Content="Task Ticket" FontSize="15">
+                <CheckBox.Style>
+                    <Style TargetType="CheckBox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsChecked, ElementName=DateTicketCheckbox}" Value="False">
+                                <Setter Property="IsChecked" Value="True" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </CheckBox.Style>
+            </CheckBox>
+
+
+            <!--Here the information has to be filled in-->
+            <!--Things to be filled out for a ticket: type, Name, Id, UserId, ProjectId, ProjectName, Text, Created, ExpectedTime, UsedTime-->
+            <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="100" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
+
+                <!--Enter Ticket-Name-->
+                <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">
+                    <TextBlock Text="Ticket-Name" FontSize="15" Margin="10 0 0 0"/>
+                </StackPanel>
+                <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
+                    <TextBox Width="350" Height="25" Text="" FontSize="15" HorizontalAlignment="Right" Margin="0 0 20 0"/>
+                </StackPanel>
+
+                <!--Enter Ticket-Name-->
+                <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">
+                    <TextBlock Text="Ticket-Name" FontSize="15" Margin="10 0 0 0"/>
+                </StackPanel>
+                <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
+                    <TextBox Width="350" Height="25" Text="" FontSize="15" HorizontalAlignment="Right" Margin="0 0 20 0"/>
+                </StackPanel>
+
+
+
+
+
+
             </Grid>
-                       
+
 
 
         </Grid>
