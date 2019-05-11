@@ -15,7 +15,10 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="50" />
                 <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="30" />
                 <RowDefinition Height="*" />
+                <RowDefinition Height="50" />
             </Grid.RowDefinitions>
 
             <!--Topic-->
@@ -56,44 +59,61 @@
             <!--Things to be filled out for a ticket: type, Name, Id, UserId, ProjectId, ProjectName, Text, Created, ExpectedTime, UsedTime-->
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="100" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50" />
-                    <RowDefinition Height="50" />
                     <RowDefinition Height="*" />
+                    <RowDefinition Height="50" />
                 </Grid.RowDefinitions>
 
-                <!--Enter Ticket-Name-->
-                <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">
-                    <TextBlock Text="Ticket-Name" FontSize="15" Margin="10 0 0 0"/>
-                </StackPanel>
-                <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
-                    <TextBox Width="350" Height="25" Text="" FontSize="15" HorizontalAlignment="Right" Margin="0 0 20 0"/>
-                </StackPanel>
+                <!--Upper Part with Name and Project-->
+                <Grid Grid.Row="0" Grid.Column="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="50" />
+                    </Grid.RowDefinitions>
 
-                <!--Choose Project (Yet to be created, jsut raw UI)-->
-                <StackPanel Grid.Row="0" Grid.Column="2" VerticalAlignment="Center">
-                    <TextBlock Text="Project:" FontSize="15" Margin="10 0 0 0"/>
-                </StackPanel>
-                <StackPanel Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" Margin="0 0 10 0">
-                    <ComboBox VerticalAlignment="Center" FontSize="15">
-                        <ComboBoxItem Content="This is a test item" FontSize="15" HorizontalContentAlignment="Center"/>
-                        <ComboBoxItem Content="This is a test item" FontSize="15" HorizontalContentAlignment="Center"/>
-                        <ComboBoxItem Content="This is a test item" FontSize="15" HorizontalContentAlignment="Center"/>
-                    </ComboBox>
-                </StackPanel>
+                    <!--Enter Ticket-Name-->
+                    <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">
+                        <TextBlock Text="Ticket-Name" FontSize="15" Margin="10 0 0 0"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
+                        <TextBox Width="350" Height="25" Text="" FontSize="15" HorizontalAlignment="Right" Margin="0 0 20 0"/>
+                    </StackPanel>
 
-
-
-
+                    <!--Choose Project (Yet to be created, jsut raw UI)-->
+                    <StackPanel Grid.Row="0" Grid.Column="2" VerticalAlignment="Center">
+                        <TextBlock Text="Project:" FontSize="15" Margin="10 0 0 0"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" Margin="0 0 10 0">
+                        <ComboBox VerticalAlignment="Center" FontSize="15">
+                            <ComboBoxItem Content="This is a test item" FontSize="15" HorizontalContentAlignment="Center"/>
+                            <ComboBoxItem Content="This is a test item" FontSize="15" HorizontalContentAlignment="Center"/>
+                            <ComboBoxItem Content="This is a test item" FontSize="15" HorizontalContentAlignment="Center"/>
+                        </ComboBox>
+                    </StackPanel>
+                </Grid>
             </Grid>
-
-
-
+            <!--Enter Ticket Description-->
+            <Border Grid.Row="3" Grid.Column="0" BorderThickness="0 0.5 0 0.5" BorderBrush="Black">
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="Ticket Description" FontSize="15" Margin="10 0 0 0" TextAlignment="Center" FontWeight="DemiBold"/>
+                </StackPanel>
+            </Border>
+            <Border Grid.Row="4" Grid.Column="0">
+                <ScrollViewer>
+                    <TextBox Width="Auto" Height="Auto" FontSize="15"  Margin="10" TextWrapping="Wrap" AcceptsReturn="True"/>
+                </ScrollViewer>
+            </Border>
+                                    
         </Grid>
     </Border>
 
