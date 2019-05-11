@@ -91,6 +91,9 @@
     <Compile Include="GUI\Views\AccountView.xaml.cs">
       <DependentUpon>AccountView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Views\CreateTicketView.xaml.cs">
+      <DependentUpon>CreateTicketView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Views\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
     </Compile>
@@ -103,6 +106,10 @@
     <Compile Include="SetupViewModels\ViewModelLocator.cs" />
     <Compile Include="Utility\XmlDataCache.cs" />
     <Page Include="GUI\Views\AccountView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Views\CreateTicketView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -214,6 +221,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\task-ticket.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\new-ticket.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\save.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

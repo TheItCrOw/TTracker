@@ -93,6 +93,15 @@
                     <RowDefinition Height="50" />
                     <RowDefinition Height="50" />
                 </Grid.RowDefinitions>
+
+                <Button x:Name="SaveButton" ToolTip="Save" Background="LightSteelBlue" BorderBrush="Black" Grid.Row="0" BorderThickness="1">
+                    <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/save.png"/>
+                </Button>
+
+                <Button x:Name="NewTicketButton" ToolTip="New Ticket" Background="LightSteelBlue" BorderBrush="Black" Grid.Row="1" BorderThickness="1" Click="NewTicketButton_Click">
+                    <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/new-ticket.png"/>
+                </Button>
+
             </Grid>
         </Border>
 

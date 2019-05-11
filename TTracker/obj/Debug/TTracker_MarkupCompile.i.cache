@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 E:\WPF Projects\TTracker\TTracker\App.xaml
-5-1766249806
+6-996360796
 
-27181733175
+281124104348
 128-1948593598
-GUI\Views\AccountView.xaml;GUI\Views\HomeView.xaml;GUI\Views\LoginView.xaml;GUI\Views\TicketManagementView.xaml;Main.xaml;
+GUI\Views\AccountView.xaml;GUI\Views\CreateTicketView.xaml;GUI\Views\HomeView.xaml;GUI\Views\LoginView.xaml;GUI\Views\TicketManagementView.xaml;Main.xaml;
 
 True
 

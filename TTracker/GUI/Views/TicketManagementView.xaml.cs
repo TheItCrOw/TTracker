@@ -26,5 +26,12 @@ namespace TTracker.GUI.Views
             InitializeComponent();
             this.DataContext = new TicketManagementViewModel();
         }
+
+        private void NewTicketButton_Click(object sender, RoutedEventArgs e)
+        {
+            var createNewTicketView = new CreateTicketView();
+            createNewTicketView.Show();
+            createNewTicketView.Topmost = true;
+        }
     }
 }

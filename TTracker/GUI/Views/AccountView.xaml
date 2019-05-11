@@ -14,12 +14,26 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
+        <!--User Account Topic Intro-->
+        <Border Background="LightSteelBlue" BorderBrush="Black" BorderThickness="1" Grid.Row="0" Grid.Column="0">
+            <TextBlock Text="User Account" TextAlignment="Center" VerticalAlignment="Center" FontSize="15" FontWeight="Bold"/>
+        </Border>
 
-        <!--Main Content on the left-->
-        <StackPanel Grid.Column="1" Background="White">
+
+        <!--Navigation Menu on the right for main content-->
+        <Border BorderThickness="1" BorderBrush="Black" Grid.Row="0" Grid.Column="1" Background="LightSteelBlue">
+            <TextBlock Text="{Binding CurrentUserName}" 
+                               FontSize="20"
+                               TextAlignment="Center"
+                               VerticalAlignment="Center"/>
+        </Border>
+        
+        <!--Main Content on the right-->
+        <StackPanel Grid.Column="1" Grid.Row="1" Background="White">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -27,19 +41,12 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50" />
                 </Grid.RowDefinitions>
-
-                <Border BorderThickness="1" BorderBrush="Black" Grid.Row="0" Background="LightSteelBlue">
-                    <TextBlock Text="{Binding CurrentUserName}" 
-                               FontSize="20"
-                               TextAlignment="Center"
-                               VerticalAlignment="Center"/>
-                </Border>
             </Grid>
         </StackPanel>
 
 
-        <!--Nvigation Menu on the left-->
-        <Border Grid.Column="0" BorderThickness="0 0 1 0" BorderBrush="Black" >
+        <!--Navigation Menu on the left-->
+        <Border Grid.Column="0" Grid.Row="1" BorderThickness="0 0 1 0" BorderBrush="Black" >
             <Grid Background="LightSteelBlue">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50" />
@@ -47,7 +54,7 @@
                     <RowDefinition Height="50" />
                 </Grid.RowDefinitions>
 
-                <Button x:Name="AccountButton" Grid.Column="5" Background="White" Margin="0 0 0 0" ToolTip="Login/Register" Click="AccountButton_Click">
+                <Button x:Name="AccountButton" Grid.Column="5" Background="LightSteelBlue" BorderBrush="Black" ToolTip="Login/Register" Click="AccountButton_Click">
                     <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/login.png"/>
                 </Button>
 

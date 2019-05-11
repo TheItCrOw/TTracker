@@ -32,7 +32,7 @@ namespace TTracker.GUI.ViewModels
         public TaskTicketViewModel(TaskTicket taskTicket)
         {
             Name = taskTicket.Name;
-            Id = new Guid();
+            Id = Guid.NewGuid();
             ProjectName = taskTicket.ProjectName;
             Text = taskTicket.Text;
             Created = DateTime.Now;

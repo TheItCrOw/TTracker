@@ -15,7 +15,7 @@ namespace TTracker.GUI.Models
         private string _name;
         private float _expectedTime;
         private float _usedTime;
-        private float _progress;
+        //private float _progress;
         private Guid _projectId;
         private string _projectName;
 

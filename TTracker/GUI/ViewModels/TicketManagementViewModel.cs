@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Prism.Commands;
+using Prism.Mvvm;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -8,7 +10,7 @@ using TTracker.GUI.Models;
 
 namespace TTracker.GUI.ViewModels
 {
-    class TicketManagementViewModel
+    class TicketManagementViewModel : BindableBase
     {
 
         public ObservableCollection<TaskTicketViewModel> TaskTickets { get; set; } = new ObservableCollection<TaskTicketViewModel>();
@@ -17,6 +19,21 @@ namespace TTracker.GUI.ViewModels
         {
             testingOnly();
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         void testingOnly()
