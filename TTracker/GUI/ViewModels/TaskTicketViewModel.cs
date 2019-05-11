@@ -18,7 +18,7 @@ namespace TTracker.GUI.ViewModels
         private Guid _Id;
         private float _expectedTime;
         private float _usedTime;
-        private float _progress;
+        private string _progress;
 
         public string Name {get { return _name; } set { SetProperty(ref _name, value);}}     
         public Guid Id {get { return _Id; } set { SetProperty(ref _Id, value);}}     
@@ -27,7 +27,7 @@ namespace TTracker.GUI.ViewModels
         public DateTime Created { get { return _created; } set { SetProperty(ref _created, value);}}
         public float ExpectedTime { get { return _expectedTime; } set { SetProperty(ref _expectedTime, value); } }
         public float UsedTime { get { return _usedTime; } set { SetProperty(ref _usedTime, value); } }
-        public float Progress { get { return _progress; } set { SetProperty(ref _progress, value); } }
+        public string Progress { get { return _progress; } set { SetProperty(ref _progress, value); } }
 
         public TaskTicketViewModel(TaskTicket taskTicket)
         {
@@ -38,7 +38,7 @@ namespace TTracker.GUI.ViewModels
             Created = DateTime.Now;
             ExpectedTime = taskTicket.ExpectedTime;
             UsedTime = taskTicket.UsedTime;
-            Progress = taskTicket.Progress;
+            Progress = UsedTime + " / " + ExpectedTime + " Days";
         }
 
 

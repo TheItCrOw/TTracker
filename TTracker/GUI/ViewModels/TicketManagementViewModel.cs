@@ -21,11 +21,11 @@ namespace TTracker.GUI.ViewModels
 
         void testingOnly()
         {
-            var testTicket1 = new TaskTicket("test1", new Guid(), new Guid(), new Guid(), "testText1", DateTime.Now, "projectNameHere1", 5, 3, 1);
-            var testTicket2 = new TaskTicket("test2", new Guid(), new Guid(), new Guid(), "testText2", DateTime.Now, "projectNameHere2", 3, 1, 5);
-            var testTicket3 = new TaskTicket("test3", new Guid(), new Guid(), new Guid(), "testText3", DateTime.Now, "projectNameHere3", 2, 3, 45);
-            var testTicket4 = new TaskTicket("test4", new Guid(), new Guid(), new Guid(), "testText4", DateTime.Now, "projectNameHere4", 1, 5, 3);
-            var testTicket5 = new TaskTicket("test5", new Guid(), new Guid(), new Guid(), "testText5", DateTime.Now, "projectNameHere5", 6, 7, 4); 
+            var testTicket1 = new TaskTicket("test1", new Guid(), new Guid(), new Guid(), "testText1testText1testText1testext1", DateTime.Now, "projectNameHere1", 5, 3);
+            var testTicket2 = new TaskTicket("test2", new Guid(), new Guid(), new Guid(), "testText2", DateTime.Now, "projectNameHere2", 3, 1);
+            var testTicket3 = new TaskTicket("test3", new Guid(), new Guid(), new Guid(), "testText3", DateTime.Now, "projectNameHere3", 2, 3);
+            var testTicket4 = new TaskTicket("test4", new Guid(), new Guid(), new Guid(), "testText4", DateTime.Now, "projectNameHere4", 1, 5);
+            var testTicket5 = new TaskTicket("test5", new Guid(), new Guid(), new Guid(), "testText5", DateTime.Now, "projectNameHere5", 6, 7); 
 
 
 

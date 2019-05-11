@@ -200,5 +200,20 @@
   <ItemGroup>
     <Resource Include="Resources\reload.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\down-arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\project.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\date-ticket.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\task-ticket.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

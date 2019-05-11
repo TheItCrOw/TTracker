@@ -21,7 +21,7 @@ namespace TTracker.GUI.Models
 
         public float ExpectedTime { get { return _expectedTime; } set => _expectedTime = value; }
         public float UsedTime { get { return _usedTime; } set => _usedTime = value; }
-        public float Progress { get { return _progress; } set => _progress = value; }
+       // public float Progress { get { return _progress; } set => _progress = value; }
         public Guid UserId { get { return _userId; } set => _userId = value; }
         public string Text { get { return _text; } set => _text = value; }
         public DateTime Created { get { return _created; } set => _created = value; }
@@ -33,7 +33,7 @@ namespace TTracker.GUI.Models
 
 
         public TaskTicket(string name, Guid id, Guid userId, Guid projectId, string text, DateTime created,
-                          string projectName, float expectedTime, float usedTime, float progress)
+                          string projectName, float expectedTime, float usedTime)
         {
             Name = name;
             Id = id;
@@ -44,7 +44,7 @@ namespace TTracker.GUI.Models
             Created = created;
             ExpectedTime = expectedTime;
             UsedTime = usedTime;
-            Progress = progress;
+          //  Progress = progress;
         }
     }
 }

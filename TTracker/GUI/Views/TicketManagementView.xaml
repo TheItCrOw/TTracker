@@ -18,19 +18,35 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
+        <!--Ticket Management Topic Intro-->
+        <Border Background="LightSteelBlue" BorderBrush="Black" BorderThickness="1" Grid.Row="0" Grid.Column="0">
+            <TextBlock Text="Ticket Management" TextAlignment="Center" VerticalAlignment="Center" FontSize="15" FontWeight="Bold"/>
+        </Border>
 
-        <!--Topic of the right big menu-->
+        <!--Buttons of the right big menu-->
         <Border BorderThickness="1" BorderBrush="Black" Grid.Row="0"  Grid.Column="1">
-            <StackPanel Background="LightSteelBlue">
-                <TextBlock Text="Manage all your projects, tasks and tickets here." 
-                               FontSize="20"
-                               TextAlignment="Center"
-                               VerticalAlignment="Center"
-                               HorizontalAlignment="Center"
-                               FontWeight="Bold" 
-                               Margin="98,10,98,-10"
-                               />
-            </StackPanel>
+            <Grid Background="LightSteelBlue">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Button ToolTip="All Tickets" Background="LightSteelBlue" BorderBrush="Black" Grid.Column="0" BorderThickness="0.5">
+                    <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/tasks.png"/>
+                </Button>
+                <Button ToolTip="Task Tickets" Background="LightSteelBlue" BorderBrush="Black" Grid.Column="1" BorderThickness="0.5">
+                    <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/task-ticket.png"/>
+                </Button>
+                <Button ToolTip="Date Tickets" Background="LightSteelBlue" BorderBrush="Black" Grid.Column="2" BorderThickness="0.5">
+                    <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/date-ticket.png"/>
+                </Button>
+                <Button ToolTip="Projects" Background="LightSteelBlue" BorderBrush="Black" Grid.Column="3" BorderThickness="0.5">
+                    <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/project.png"/>
+                </Button>
+
+            </Grid>
         </Border>
 
         <!--Items Control of TaskTickets-->
@@ -41,19 +57,25 @@
                         <Border BorderThickness="0.5" BorderBrush="Black">
                             <Grid Margin="10 10 10 10">
                                 <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50" />
+                                    <ColumnDefinition Width="200" />
+                                    <ColumnDefinition Width="700" />
                                     <ColumnDefinition Width="150" />
-                                    <ColumnDefinition Width="500" />
-                                    <ColumnDefinition Width="150" />
-                                    <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Text="{Binding Name}" Grid.Column="0" FontSize="15" FontWeight="Bold"/>
-                                <TextBlock Text="{Binding Text}" Grid.Column="1" FontSize="15"/>
-                                <TextBlock Text="{Binding ProjectName}" Grid.Column="2" FontSize="15"/>
-                                <Border Grid.Column="5" BorderThickness="1" BorderBrush="Black">
-                                    <ProgressBar Minimum="0" Maximum="100" Value="50" />
-                                </Border>
+                                <Button ToolTip="Open" Height="25" Width="25" Background="White" BorderBrush="LightGray">
+                                    <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/down-arrow.png"/>
+                                </Button>
+                                <TextBlock Text="{Binding Name}" Grid.Column="1" FontSize="15" FontWeight="Bold"/>
+                                <TextBlock Text="{Binding Text}" Grid.Column="2" FontSize="15" Margin="0 0 20 0"/>
+                                <TextBlock Text="{Binding ProjectName}" Grid.Column="3" FontSize="15"/>
+                                <Grid  Grid.Column="5">
+                                    <Border BorderThickness="1" BorderBrush="Black">
+                                        <ProgressBar Minimum="0" Maximum="{Binding ExpectedTime}" Value="{Binding UsedTime}" />
+                                    </Border>
+                                    <TextBlock Text="{Binding Progress}" FontSize="15" TextAlignment="Center"/>
+                                </Grid>
                             </Grid>
                         </Border>
                     </DataTemplate>
