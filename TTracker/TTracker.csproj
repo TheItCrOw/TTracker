@@ -85,6 +85,7 @@
     <Compile Include="BaseDataModules\IClosable.cs" />
     <Compile Include="GUI\Models\TaskTicket.cs" />
     <Compile Include="GUI\ViewModels\AccountViewModel.cs" />
+    <Compile Include="GUI\ViewModels\CreateTicketViewModel.cs" />
     <Compile Include="GUI\ViewModels\HomeViewModel.cs" />
     <Compile Include="GUI\ViewModels\TaskTicketViewModel.cs" />
     <Compile Include="GUI\ViewModels\TicketManagementViewModel.cs" />

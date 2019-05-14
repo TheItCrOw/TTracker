@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TTracker.GUI.Views"
         mc:Ignorable="d"
-        Title="CreateTicketView" Height="600" Width="1000">
+        Title="CreateTicketView" Height="800" Width="1000">
 
     <Border BorderThickness="2" BorderBrush="Black" Margin="10">
         <Grid>
@@ -19,6 +19,7 @@
                 <RowDefinition Height="30" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
             </Grid.RowDefinitions>
 
             <!--Topic-->
@@ -31,7 +32,8 @@
             </Border>
 
             <!--Decides, whether you want to create a task Ticket or date Ticket-->
-            <CheckBox x:Name="DateTicketCheckbox" Grid.Row="1" Width="100" Height="20" HorizontalAlignment="Right" Margin="0 0 300 0" Content="Date Ticket" FontSize="15">
+            <CheckBox x:Name="DateTicketCheckbox" Grid.Row="1" Width="100" Height="20" HorizontalAlignment="Right" Margin="0 0 300 0" Content="Date Ticket" FontSize="15"
+                      IsChecked="{Binding isDateTicket}">
                 <CheckBox.Style>
                     <Style TargetType="CheckBox">
                         <Style.Triggers>
@@ -42,7 +44,8 @@
                     </Style>
                 </CheckBox.Style>
             </CheckBox>
-            <CheckBox x:Name="TaskTicketCheckbox" Grid.Row="1" Width="100" Height="20" HorizontalAlignment="Left" Margin="300 0 0 0" Content="Task Ticket" FontSize="15">
+            <CheckBox x:Name="TaskTicketCheckbox" Grid.Row="1" Width="100" Height="20" HorizontalAlignment="Left" Margin="300 0 0 0" Content="Task Ticket" FontSize="15"
+                      IsChecked="{Binding isTaskTicket}">
                 <CheckBox.Style>
                     <Style TargetType="CheckBox">
                         <Style.Triggers>
@@ -86,7 +89,8 @@
                         <TextBlock Text="Ticket-Name" FontSize="15" Margin="10 0 0 0"/>
                     </StackPanel>
                     <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
-                        <TextBox Width="350" Height="25" Text="" FontSize="15" HorizontalAlignment="Right" Margin="0 0 20 0"/>
+                        <TextBox Width="350" Height="25" FontSize="15" HorizontalAlignment="Right" Margin="0 0 20 0"
+                                 Text="{Binding TicketName}"/>
                     </StackPanel>
 
                     <!--Choose Project (Yet to be created, jsut raw UI)-->
@@ -110,9 +114,21 @@
             </Border>
             <Border Grid.Row="4" Grid.Column="0">
                 <ScrollViewer>
-                    <TextBox Width="Auto" Height="Auto" FontSize="15"  Margin="10" TextWrapping="Wrap" AcceptsReturn="True"/>
+                    <TextBox Width="Auto" Height="Auto" FontSize="15"  Margin="10" TextWrapping="Wrap" AcceptsReturn="True"
+                             Text="{Binding TicketText}"/>
                 </ScrollViewer>
             </Border>
+
+            <!--Enter Expected Time-->
+            <DockPanel Grid.Row="5" HorizontalAlignment="Center" LastChildFill="False">
+                <TextBlock Text="Expected Time (In Work days)" FontSize="15" TextAlignment="Center" VerticalAlignment="Center" DockPanel.Dock="Left" Margin="10" FontWeight="DemiBold"/>
+                <TextBox Text="{Binding ExpectedTicketTime, StringFormat=N2}" FontSize="15" TextAlignment="Center" VerticalAlignment="Center" DockPanel.Dock="Left" Width="50"/>
+            </DockPanel>
+
+            <!--Create new Ticket Button-->
+            <StackPanel x:Name="CreateNewTicketButton" Grid.Row="6" VerticalAlignment="Center">
+                <Button Content="Create new Ticket" Height="40" Width="350" Command="{Binding CreateNewTicketCommand}"/>
+            </StackPanel>
                                     
         </Grid>
     </Border>
