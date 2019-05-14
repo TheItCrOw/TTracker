@@ -42,6 +42,21 @@ namespace TTracker.Utility
             _xmlReaderWriter.SaveToXml("Users", newUser.Id, XmlWriteableDataList);
         }
 
+        public void RegisterAndSaveNewTaskTicket(TaskTicket newTaskTicket)
+        {
+            XmlWriteableDataList.Clear();
+            XmlWriteableDataList.Add("Id/" + newTaskTicket.Id);
+            XmlWriteableDataList.Add("Name/" + newTaskTicket.Name);
+            XmlWriteableDataList.Add("UserId/" + newTaskTicket.UserId);
+            XmlWriteableDataList.Add("ProjectId/" + newTaskTicket.ProjectId);
+            XmlWriteableDataList.Add("ProjectName/" + newTaskTicket.ProjectName);
+            XmlWriteableDataList.Add("Text/" + newTaskTicket.Text);
+            XmlWriteableDataList.Add("Created/" + newTaskTicket.Created);
+            XmlWriteableDataList.Add("ExpectedTime/" + newTaskTicket.ExpectedTime);
+            XmlWriteableDataList.Add("UsedTime/" + newTaskTicket.UsedTime);
+            _xmlReaderWriter.SaveToXml("TaskTickets", newTaskTicket.Id, XmlWriteableDataList);
+        }
+
         public bool IsValidUser(string name, string password)
         {
             var desiredUser = GetUserByNameAndPassword(name, password);

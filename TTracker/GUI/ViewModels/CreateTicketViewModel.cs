@@ -126,7 +126,8 @@ namespace TTracker.GUI.ViewModels
                 );
 
             //Save the ticket right here
-
+            DataAccess.Instance.RegisterAndSaveNewTaskTicket(taskTicket);
+            MessageBox.Show("The Ticket has been succesfully created!");
         }
 
         private void CreateNewDateTicket()

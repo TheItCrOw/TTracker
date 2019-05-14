@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TTracker.GUI.Models
 {
-    class TaskTicket : ITicket
+    public class TaskTicket : ITicket
     {
         private Guid _userId;
         private string _text;
