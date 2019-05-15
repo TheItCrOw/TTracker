@@ -7,6 +7,7 @@ using System.Xml.Linq;
 using TTracker.GUI.Models;
 using TTracker.GUI.ViewModels;
 using System.Collections.Generic;
+using TTracker.Interfaces;
 
 namespace TTracker.Utility
 {
@@ -21,6 +22,7 @@ namespace TTracker.Utility
 
         private XmlDataCache _xmlReaderWriter = new XmlDataCache();
 
+        private CreateTFromXmlData _createTFromXmlData = new CreateTFromXmlData();
         public static User CurrentLoggedUser { get; set; }
 
         private string _saveDataPath = System.AppDomain.CurrentDomain.BaseDirectory + "..\\..\\Data\\";
@@ -30,7 +32,7 @@ namespace TTracker.Utility
 
         private DataAccess()
         {
-            var blub = GetAll<TaskTicket>();
+
         }
 
         public void RegisterAndSaveNewUser(User newUser)
@@ -42,7 +44,6 @@ namespace TTracker.Utility
             XmlWriteableDataList.Add("Created/" + newUser.Created.ToString());
             _xmlReaderWriter.SaveToXml("Users", newUser.Id, XmlWriteableDataList);
         }
-
         public void RegisterAndSaveNewTaskTicket(TaskTicket newTaskTicket)
         {
             XmlWriteableDataList.Clear();
@@ -58,14 +59,31 @@ namespace TTracker.Utility
             _xmlReaderWriter.SaveToXml("TaskTickets", newTaskTicket.Id, XmlWriteableDataList);
         }
 
-        public IEnumerable<T> GetAll<T>()
+        /// <summary>
+        /// Takes in a type and returns a List of all found Types that is found in the xmlCache
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public IEnumerable<Object> GetAll<T>() where T : Object
         {
-            var allData = _xmlReaderWriter.GetAllFromDirectory<T>();
-            return allData;
+            var allData = _xmlReaderWriter.GetAllXmlFilesFromDirectory<T>();
+
+            //Keep adding Entites that can be saved here.
+            //Also add a CreateTFromXmlData Method foreach
+
+            switch (typeof(T).Name)
+            {
+                case "TaskTicket":
+                    return _createTFromXmlData.CreateTaskTicketFromXmlData(allData);
+                    break;
+                case "":
+                    ;
+                    break;
+            }
+
+            return null;
         }
-
-        
-
+    
         public bool IsValidUser(string name, string password)
         {
             var desiredUser = GetUserByNameAndPassword(name, password);
@@ -96,46 +114,13 @@ namespace TTracker.Utility
 
                         if (desiredUserData[2] == "Password/" + password)
                         {
-                            User desiredUser = CreateUserFromXmlData(desiredUserData);
+                            User desiredUser = _createTFromXmlData.CreateUserFromXmlData(desiredUserData);
                             return desiredUser;
                         }
                     }
                 }
             }
             return null;
-        }
-        //Takes in the userData as a list<string> and returns an instance of the user class out of it.
-        private User CreateUserFromXmlData(List<string> userData)
-        {
-            string name = string.Empty;
-            string password = string.Empty;
-            Guid Id = Guid.Empty;
-            DateTime created = DateTime.Now;
-
-            foreach (var data in userData)
-            {
-                if (data != null)
-                {
-                    string[] splitedData = data.Split(new char[] { '/' });
-
-                    switch (splitedData[0])
-                    {
-                        case "Name":
-                            name = splitedData[1];
-                            break;
-                        case "Password":
-                            password = splitedData[1];
-                            break;
-                        case "Id":
-                            Id = new Guid(splitedData[1]);
-                            break;
-                        case "Created":
-                            created = DateTime.Parse(splitedData[1]);
-                            break;
-                    }
-                }
-            }
-            return new User(name, password, Id, created);
         }
 
     }

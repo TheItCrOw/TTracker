@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TTracker.GUI.Models;
+using TTracker.Utility;
 
 namespace TTracker.GUI.ViewModels
 {
@@ -17,10 +18,21 @@ namespace TTracker.GUI.ViewModels
 
         public TicketManagementViewModel()
         {
-            testingOnly();
+            LoadTaskTickets();
         }
 
+        private void LoadTaskTickets()
+        {
+            var allTaskTickets = DataAccess.Instance.GetAll<TaskTicket>();
+            var allTaskTicketsVM = new List<TaskTicketViewModel>();
 
+            foreach(var ticket in allTaskTickets)
+            {
+                allTaskTicketsVM.Add(new TaskTicketViewModel((TaskTicket)ticket));
+            }
+
+            TaskTickets.AddRange(allTaskTicketsVM);
+        }
 
 
 

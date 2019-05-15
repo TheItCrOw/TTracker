@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
+using TTracker.Interfaces;
 
 namespace TTracker.Utility
 {
@@ -73,7 +74,7 @@ namespace TTracker.Utility
             return data;
         }
 
-        public List<T> GetAllFromDirectory<T>()
+        public List<XDocument> GetAllXmlFilesFromDirectory<T>()
         {
             //Gets the type of generic T
             var result = typeof(T);
@@ -85,6 +86,7 @@ namespace TTracker.Utility
             string[] files = Directory.GetFiles(directoryXmlPath);
             //Saves all docs in direcotry
             var allDoc = new List<XDocument>();
+           
 
             //Foreach file in files Directory
             foreach(var file in files)
@@ -94,8 +96,7 @@ namespace TTracker.Utility
                 allDoc.Add(doc);
             }
 
-            //Testing
-            return null;
+            return allDoc;
         }
 
     }

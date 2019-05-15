@@ -24,7 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <LangVersion>7.2</LangVersion>
+    <LangVersion>preview</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,7 +34,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <LangVersion>7.2</LangVersion>
+    <LangVersion>preview</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CommonServiceLocator, Version=2.0.4.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
@@ -104,6 +104,7 @@
     <Compile Include="GUI\Views\TicketManagementView.xaml.cs">
       <DependentUpon>TicketManagementView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utility\CreateTFromXmlData.cs" />
     <Compile Include="Utility\DataAccess.cs" />
     <Compile Include="Utility\PasswordBoxAssistant.cs" />
     <Compile Include="SetupViewModels\MainViewModel.cs" />

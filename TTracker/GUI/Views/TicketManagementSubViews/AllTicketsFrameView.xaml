@@ -10,7 +10,7 @@
 
     <Grid>
         <!--Items Control of TaskTickets-->
-        <ScrollViewer VerticalScrollBarVisibility="Visible">
+        <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
             <ItemsControl x:Name="taskTicketControl" Background="White" ItemsSource="{Binding TaskTickets}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
@@ -28,11 +28,11 @@
                                         <TextBlock Text="Used Time in days:" FontSize="17" DockPanel.Dock="Left" Margin="10" FontWeight="DemiBold"/>
                                         <TextBlock Text="{Binding UsedTime}" FontSize="17" DockPanel.Dock="Left" Margin="10"/>
                                         <TextBlock Text="Expected Time in days:" FontSize="17" DockPanel.Dock="Left" Margin="10" FontWeight="DemiBold"/>
-                                        <TextBox Text="{Binding ExpectedTime}" FontSize="17" DockPanel.Dock="Left" Margin="10" Width="30" TextAlignment="Center"/>
+                                        <TextBox Text="{Binding ExpectedTime}" FontSize="17" DockPanel.Dock="Left" Margin="10" Width="60" TextAlignment="Center"/>
                                     </DockPanel>
                                 </Expander>
                                 <TextBox Text="{Binding Name}" FontSize="17" FontWeight="Bold" Width="300" Margin="50 0 0 0" VerticalAlignment="Center" BorderThickness="0.5"/>
-                                <TextBlock Text="{Binding Text}" FontSize="17" FontWeight="Light" Width="600" Margin="10 0 0 0" VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding Text}" FontSize="17" FontWeight="Light" Width="600" Margin="10 0 0 0" VerticalAlignment="Center" MaxHeight="30"/>
                                 <TextBlock Text="{Binding ProjectName}" FontSize="17" FontWeight="Bold" Width="200" Margin="10 0 0 0" VerticalAlignment="Center"/>
                                 <Grid Width="300" Margin="10 0 0 0" VerticalAlignment="Center">
                                     <Border BorderThickness="1" BorderBrush="Black">
