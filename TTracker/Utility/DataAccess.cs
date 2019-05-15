@@ -6,6 +6,7 @@ using System.Xml;
 using System.Xml.Linq;
 using TTracker.GUI.Models;
 using TTracker.GUI.ViewModels;
+using System.Collections.Generic;
 
 namespace TTracker.Utility
 {
@@ -29,7 +30,7 @@ namespace TTracker.Utility
 
         private DataAccess()
         {
-            
+            var blub = GetAll<TaskTicket>();
         }
 
         public void RegisterAndSaveNewUser(User newUser)
@@ -57,6 +58,14 @@ namespace TTracker.Utility
             _xmlReaderWriter.SaveToXml("TaskTickets", newTaskTicket.Id, XmlWriteableDataList);
         }
 
+        public IEnumerable<T> GetAll<T>()
+        {
+            var allData = _xmlReaderWriter.GetAllFromDirectory<T>();
+            return allData;
+        }
+
+        
+
         public bool IsValidUser(string name, string password)
         {
             var desiredUser = GetUserByNameAndPassword(name, password);
@@ -68,8 +77,6 @@ namespace TTracker.Utility
             }
             return false;
         }
-
-
         private User GetUserByNameAndPassword(string name, string password)
         {
             var directoryPathFolder = Directory.GetFiles(_saveDataPath + "Users");
@@ -97,9 +104,8 @@ namespace TTracker.Utility
             }
             return null;
         }
-
         //Takes in the userData as a list<string> and returns an instance of the user class out of it.
-        public User CreateUserFromXmlData(List<string> userData)
+        private User CreateUserFromXmlData(List<string> userData)
         {
             string name = string.Empty;
             string password = string.Empty;

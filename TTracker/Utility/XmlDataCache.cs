@@ -9,7 +9,7 @@ using System.Xml.Linq;
 
 namespace TTracker.Utility
 {
-    public class XmlDataCache
+    internal class XmlDataCache
     {
 
         private string _saveDataPath = System.AppDomain.CurrentDomain.BaseDirectory + "..\\..\\Data\\";
@@ -70,10 +70,33 @@ namespace TTracker.Utility
             {
                 data.Add(element.Name + "/" + element.Value);
             }
-
             return data;
         }
 
+        public List<T> GetAllFromDirectory<T>()
+        {
+            //Gets the type of generic T
+            var result = typeof(T);
+            var directoryName = result.Name;
+            //Path of directory all xml files should be loaded from
+            string directoryXmlPath = _saveDataPath + directoryName + "s\\";
+
+            //Stores all the file Names in an array
+            string[] files = Directory.GetFiles(directoryXmlPath);
+            //Saves all docs in direcotry
+            var allDoc = new List<XDocument>();
+
+            //Foreach file in files Directory
+            foreach(var file in files)
+            {
+                //Read every file. File is the path
+                var doc = XDocument.Load(file);
+                allDoc.Add(doc);
+            }
+
+            //Testing
+            return null;
+        }
 
     }
 }

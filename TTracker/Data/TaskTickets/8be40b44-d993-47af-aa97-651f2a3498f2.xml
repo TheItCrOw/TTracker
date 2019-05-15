@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data>
+  <Id>8be40b44-d993-47af-aa97-651f2a3498f2</Id>
+  <Name>Ticket Name 2</Name>
+  <UserId>d601adbc-eee3-436f-b657-c9f4969a449a</UserId>
+  <ProjectId>00000000-0000-0000-0000-000000000000</ProjectId>
+  <ProjectName>IHaveNoProjectsYet</ProjectName>
+  <Text>Thius is the second ticket ever saved</Text>
+  <Created>14.05.2019 20:08:10</Created>
+  <ExpectedTime>5</ExpectedTime>
+  <UsedTime>0</UsedTime>
+</Data>
