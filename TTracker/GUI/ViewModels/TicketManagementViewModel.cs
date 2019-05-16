@@ -9,23 +9,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Data;
+using TTracker.BaseDataModules;
 using TTracker.GUI.Models;
+using TTracker.GUI.Views;
 using TTracker.Utility;
 
 namespace TTracker.GUI.ViewModels
 {
-    class TicketManagementViewModel : BindableBase, INotifyPropertyChanged
+    public class TicketManagementViewModel : ViewModelBase, INotifyPropertyChanged
     {
         private bool _hasUnsavedChanges;
 
         public ObservableCollection<TaskTicketViewModel> TaskTickets { get; set; } = new ObservableCollection<TaskTicketViewModel>();
         public DelegateCommand SaveAllTicketsCommand => new DelegateCommand(SaveAllTickets);
+        public DelegateCommand CreateNewTicketCommand => new DelegateCommand(CreateNewTicket);
 
 
         public TicketManagementViewModel()
         {
             LoadTaskTickets();
             TaskTickets.CollectionChanged += this.OnCollectionChanged;
+        }
+
+        void CreateNewTicket()
+        {
+            var createNewTicketView = new CreateTicketView(this);
+            createNewTicketView.Show();
+            createNewTicketView.Topmost = true;
         }
 
         private void SaveAllTickets()
@@ -41,10 +52,12 @@ namespace TTracker.GUI.ViewModels
         void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             HasUnsavedChanges = true;
+            RaisePropertyChanged(nameof(TaskTickets));
         }
 
         private void LoadTaskTickets()
         {
+            TaskTickets.Clear();
             var allTaskTickets = DataAccess.Instance.GetAll<TaskTicket>();
             var allTaskTicketsVM = new List<TaskTicketViewModel>();
 

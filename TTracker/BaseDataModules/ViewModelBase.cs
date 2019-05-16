@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 
 namespace TTracker.BaseDataModules
 {
-    class ViewModelBase : BindableBase, INotifyPropertyChanged
+    public class ViewModelBase : BindableBase
     {
+
         public bool isDirty;
 
         public void SetIsDirty()

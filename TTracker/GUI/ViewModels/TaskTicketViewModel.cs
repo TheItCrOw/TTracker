@@ -11,7 +11,7 @@ using TTracker.GUI.Models;
 
 namespace TTracker.GUI.ViewModels
 {
-    class TaskTicketViewModel : ViewModelBase
+    public class TaskTicketViewModel : ViewModelBase, INotifyPropertyChanged
     {
         private string _name;
         private string _text;

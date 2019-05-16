@@ -20,10 +20,10 @@ namespace TTracker.GUI.Views
     /// </summary>
     public partial class CreateTicketView : Window
     {
-        public CreateTicketView()
+        public CreateTicketView(TicketManagementViewModel ticketManagement)
         {
             InitializeComponent();
-            this.DataContext = new CreateTicketViewModel();
+            this.DataContext = new CreateTicketViewModel(ticketManagement);
         }
     }
 }

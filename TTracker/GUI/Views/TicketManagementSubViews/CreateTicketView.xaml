@@ -37,8 +37,8 @@
                 <CheckBox.Style>
                     <Style TargetType="CheckBox">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding IsChecked, ElementName=TaskTicketCheckbox}" Value="False">
-                                <Setter Property="IsChecked" Value="True" />
+                            <DataTrigger Binding="{Binding isTaskTicket}" Value="True">
+                                <Setter Property="IsChecked" Value="False" />
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
@@ -49,8 +49,8 @@
                 <CheckBox.Style>
                     <Style TargetType="CheckBox">
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding IsChecked, ElementName=DateTicketCheckbox}" Value="False">
-                                <Setter Property="IsChecked" Value="True" />
+                            <DataTrigger Binding="{Binding isDateTicket}" Value="True">
+                                <Setter Property="IsChecked" Value="False" />
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>

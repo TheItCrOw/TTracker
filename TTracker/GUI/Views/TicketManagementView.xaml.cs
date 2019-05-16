@@ -30,12 +30,6 @@ namespace TTracker.GUI.Views
             NavigationFrame.Content = new AllTicketsFrameView();
         }
 
-        private void NewTicketButton_Click(object sender, RoutedEventArgs e)
-        {
-            var createNewTicketView = new CreateTicketView();
-            createNewTicketView.Show();
-            createNewTicketView.Topmost = true;
-        }
 
         private void AllTicketsButton_Click(object sender, RoutedEventArgs e)
         {
