@@ -64,7 +64,7 @@ namespace TTracker.Utility
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public IEnumerable<Object> GetAll<T>() where T : Object
+        public IEnumerable<T> GetAll<T>() where T : Object
         {
             var allData = _xmlReaderWriter.GetAllXmlFilesFromDirectory<T>();
 
@@ -74,7 +74,7 @@ namespace TTracker.Utility
             switch (typeof(T).Name)
             {
                 case "TaskTicket":
-                    return _createTFromXmlData.CreateTaskTicketFromXmlData(allData);
+                    return (IEnumerable<T>)(_createTFromXmlData.CreateTaskTicketFromXmlData(allData));
                     break;
                 case "":
                     ;

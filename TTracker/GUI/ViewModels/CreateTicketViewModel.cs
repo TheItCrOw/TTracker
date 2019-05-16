@@ -25,7 +25,7 @@ namespace TTracker.GUI.ViewModels
 
         //Adding Projectslist with observable Collection
 
-        public CreateTicketViewModel()
+        public CreateTicketViewModel(TicketManagementViewModel ticketManagement)
         {
 
         }
@@ -110,7 +110,6 @@ namespace TTracker.GUI.ViewModels
             }
         }
 
-
         private void CreateNewTaskTicket()
         {
             var taskTicket = new TaskTicket(
@@ -127,6 +126,7 @@ namespace TTracker.GUI.ViewModels
 
             //Save the ticket right here
             DataAccess.Instance.RegisterAndSaveNewTaskTicket(taskTicket);
+
             MessageBox.Show("The Ticket has been succesfully created!");
         }
 

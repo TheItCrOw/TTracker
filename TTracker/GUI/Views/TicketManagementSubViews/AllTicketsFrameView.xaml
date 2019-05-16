@@ -17,9 +17,9 @@
                         <Border BorderThickness="0.5" BorderBrush="Black" Background="GhostWhite">
                             <DockPanel Margin="10 10 10 10" Height="Auto" VerticalAlignment="Center" LastChildFill="True">
                                 <!--Expander with full info here-->
-                                <Expander  Margin="0 -20 0 0" HorizontalAlignment="Left" ExpandDirection="Down" DockPanel.Dock="Bottom" >
+                                <Expander  Margin="0 -20 0 0" HorizontalAlignment="Left" ExpandDirection="Down" DockPanel.Dock="Bottom" VerticalAlignment="Top">
                                     <DockPanel Margin="50 20 0 0" LastChildFill="False">
-                                        <TextBox Text="{Binding Text}" TextWrapping="Wrap" FontSize="17" DockPanel.Dock="Bottom" Margin="10 0 0 0" BorderThickness="0.5"/>
+                                        <TextBox Text="{Binding Text}" TextWrapping="Wrap" FontSize="17" DockPanel.Dock="Bottom" Margin="10 0 0 0" BorderThickness="0.5" Width="1570" HorizontalAlignment="Left"/>
                                         <TextBlock Text="Full Description:" FontSize="17" FontWeight="DemiBold" DockPanel.Dock="Bottom" Margin="10 10 0 0"/>
                                         <TextBlock Text="Ticket Id:" FontSize="17" DockPanel.Dock="Left" Margin="10" FontWeight="DemiBold"/>
                                         <TextBlock Text="{Binding Id}" FontSize="17"  DockPanel.Dock="Left" Margin="10"/>
@@ -32,7 +32,7 @@
                                     </DockPanel>
                                 </Expander>
                                 <TextBox Text="{Binding Name}" FontSize="17" FontWeight="Bold" Width="300" Margin="50 0 0 0" VerticalAlignment="Center" BorderThickness="0.5"/>
-                                <TextBlock Text="{Binding Text}" FontSize="17" FontWeight="Light" Width="600" Margin="10 0 0 0" VerticalAlignment="Center" MaxHeight="30"/>
+                                <TextBlock Text="{Binding Text}" FontSize="17" FontWeight="Light" Width="600" Margin="10 0 0 0" VerticalAlignment="Center" MaxHeight="25"/>
                                 <TextBlock Text="{Binding ProjectName}" FontSize="17" FontWeight="Bold" Width="200" Margin="10 0 0 0" VerticalAlignment="Center"/>
                                 <Grid Width="300" Margin="10 0 0 0" VerticalAlignment="Center">
                                     <Border BorderThickness="1" BorderBrush="Black">
