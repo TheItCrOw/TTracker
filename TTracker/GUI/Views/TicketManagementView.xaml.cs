@@ -34,7 +34,11 @@ namespace TTracker.GUI.Views
         private void AllTicketsButton_Click(object sender, RoutedEventArgs e)
         {
             NavigationFrame.Content = null;
-            NavigationFrame.Content = new AllTicketsFrameView();
+            var view = new AllTicketsFrameView();
+            NavigationFrame.Content = view;
+            ((TicketManagementViewModel)DataContext).CurrentContent = (TicketManagementViewModel)view.DataContext;
         }
+
+
     }
 }

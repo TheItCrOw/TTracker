@@ -20,6 +20,7 @@ namespace TTracker.GUI.ViewModels
     public class TicketManagementViewModel : ViewModelBase, INotifyPropertyChanged
     {
         private bool _hasUnsavedChanges;
+        private BindableBase _currentContent;
 
         public ObservableCollection<TaskTicketViewModel> TaskTickets { get; set; } = new ObservableCollection<TaskTicketViewModel>();
         public DelegateCommand SaveAllTicketsCommand => new DelegateCommand(SaveAllTickets);
@@ -34,14 +35,15 @@ namespace TTracker.GUI.ViewModels
 
         void CreateNewTicket()
         {
-            var createNewTicketView = new CreateTicketView(this);
+            var createNewTicketView = new CreateTicketView();
+            createNewTicketView.DataContext = new CreateTicketViewModel((TicketManagementViewModel)CurrentContent);
             createNewTicketView.Show();
             createNewTicketView.Topmost = true;
         }
 
         private void SaveAllTickets()
         {
-            foreach(var ticket in TaskTickets)
+            foreach (var ticket in TaskTickets)
             {
                 ticket.Save();
             }
@@ -80,6 +82,18 @@ namespace TTracker.GUI.ViewModels
             set
             {
                 SetProperty(ref _hasUnsavedChanges, value);
+            }
+        }
+
+        public BindableBase CurrentContent
+        {
+            get
+            {
+                return _currentContent;
+            }
+            set
+            {
+                SetProperty(ref _currentContent, value);
             }
         }
 
