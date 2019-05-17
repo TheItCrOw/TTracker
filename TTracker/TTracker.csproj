@@ -89,6 +89,7 @@
     <Compile Include="GUI\ViewModels\CreateTicketViewModel.cs" />
     <Compile Include="GUI\ViewModels\HomeViewModel.cs" />
     <Compile Include="GUI\ViewModels\TaskTicketViewModel.cs" />
+    <Compile Include="GUI\ViewModels\TicketManagementSubVms\AllTicketsFrameViewModel.cs" />
     <Compile Include="GUI\ViewModels\TicketManagementViewModel.cs" />
     <Compile Include="GUI\Views\AccountView.xaml.cs">
       <DependentUpon>AccountView.xaml</DependentUpon>

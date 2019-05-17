@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using TTracker.GUI.Models;
+using TTracker.GUI.ViewModels.TicketManagementSubVms;
 using TTracker.Utility;
 
 namespace TTracker.GUI.ViewModels
@@ -20,16 +21,16 @@ namespace TTracker.GUI.ViewModels
         private string _ticketText;
         private float _expectedTicketTime;
 
-        private TicketManagementViewModel _ticketManagement;
+        private AllTicketsFrameViewModel _allTicketsVm;
 
         public DelegateCommand CreateNewTicketCommand => new DelegateCommand(CreateNewTicket);
 
 
         //Adding Projectslist with observable Collection
 
-        public CreateTicketViewModel(TicketManagementViewModel ticketManagement)
+        public CreateTicketViewModel(AllTicketsFrameViewModel allTicketsVm)
         {
-            _ticketManagement = ticketManagement;
+            _allTicketsVm = allTicketsVm;
         }
 
         public bool isTaskTicket
@@ -106,6 +107,10 @@ namespace TTracker.GUI.ViewModels
             {
                 CreateNewDateTicket();
             }
+            else if(isDateTicket && isTaskTicket)
+            {
+                MessageBox.Show("Only one checkboxes at the top may be checked.");
+            }
             else
             {
                 MessageBox.Show("Please make sure, that one and only one of the top Check Boxes is checked.");
@@ -128,9 +133,10 @@ namespace TTracker.GUI.ViewModels
 
             //Save the ticket right here
             DataAccess.Instance.RegisterAndSaveNewTaskTicket(taskTicket);
-            _ticketManagement.TaskTickets.Add(new TaskTicketViewModel(taskTicket));
+            _allTicketsVm.TaskTickets.Add(new TaskTicketViewModel(taskTicket));
 
             MessageBox.Show("The Ticket has been succesfully created!");
+            Application.Current.MainWindow.Close();
         }
 
         private void CreateNewDateTicket()

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data>
+  <Id>7026bb24-9133-428e-b92e-7e92515e5fd3</Id>
+  <Name>test</Name>
+  <UserId>d601adbc-eee3-436f-b657-c9f4969a449a</UserId>
+  <ProjectId>00000000-0000-0000-0000-000000000000</ProjectId>
+  <ProjectName>IHaveNoProjectsYet</ProjectName>
+  <Text>test</Text>
+  <Created>17.05.2019 20:32:47</Created>
+  <ExpectedTime>0,3</ExpectedTime>
+  <UsedTime>0</UsedTime>
+</Data>

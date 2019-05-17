@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TTracker.GUI.ViewModels;
+using TTracker.GUI.ViewModels.TicketManagementSubVms;
 
 namespace TTracker.GUI.Views.TicketManagementSubViews
 {
@@ -24,7 +25,9 @@ namespace TTracker.GUI.Views.TicketManagementSubViews
         public AllTicketsFrameView()
         {
             InitializeComponent();
-            this.DataContext = new TicketManagementViewModel();
+            this.DataContext = new AllTicketsFrameViewModel();
+
+            ((AllTicketsFrameViewModel)DataContext).CurrentContent = (AllTicketsFrameViewModel)this.DataContext;
         }
     }
 }

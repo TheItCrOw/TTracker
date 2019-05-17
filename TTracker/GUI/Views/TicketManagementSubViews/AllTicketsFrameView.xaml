@@ -8,8 +8,12 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AllTicketsFrameView">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
         <!--Items Control of TaskTickets-->
-        <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
+        <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" Grid.Column="1">
             <ItemsControl x:Name="taskTicketControl" Background="White" ItemsSource="{Binding TaskTickets, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
@@ -45,5 +49,27 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
+
+
+        <!--Navigation Menu on the left-->
+        <Border Grid.Column="0" BorderThickness="0 1 1 0" BorderBrush="Black" >
+            <Grid Background="LightSteelBlue">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+
+                <Button x:Name="SaveButton" ToolTip="Save" Background="LightSteelBlue" BorderBrush="Black" Grid.Row="0" BorderThickness="1 0 1 1" IsEnabled="{Binding HasUnsavedChanges}" Command="{Binding SaveAllTicketsCommand}">
+                    <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/save.png"/>
+                </Button>
+
+                <Button x:Name="NewTicketButton" ToolTip="New Ticket" Background="LightSteelBlue" BorderBrush="Black" Grid.Row="1" BorderThickness="1" Command="{Binding CreateNewTicketCommand}">
+                    <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/new-ticket.png"/>
+                </Button>
+            </Grid>
+        </Border>
+
+
     </Grid>
 </Page>
