@@ -26,17 +26,17 @@ namespace TTracker.GUI.Views
         public TicketManagementView()
         {
             InitializeComponent();
-            this.DataContext = new TicketManagementViewModel();
             NavigationFrame.Content = null;
             var view = new AllTicketsFrameView();
             NavigationFrame.Content = view;
+            this.DataContext = new TicketManagementViewModel();
         }
 
 
         private void AllTicketsButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationFrame.Content = null;
             var view = new AllTicketsFrameView();
+            NavigationFrame.Content = null;
             NavigationFrame.Content = view;
         }
 

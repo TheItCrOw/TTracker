@@ -16,10 +16,8 @@ using TTracker.GUI.Views;
 using TTracker.Utility;
 namespace TTracker.GUI.ViewModels.TicketManagementSubVms
 {
-    public class AllTicketsFrameViewModel : ViewModelBase, INotifyPropertyChanged
+    public class AllTicketsFrameViewModel : ViewModelManagementBase, INotifyPropertyChanged
     {
-        private bool _hasUnsavedChanges;
-        private BindableBase _currentContent;
 
         public ObservableCollection<TaskTicketViewModel> TaskTickets { get; set; } = new ObservableCollection<TaskTicketViewModel>();
         public DelegateCommand SaveAllTicketsCommand => new DelegateCommand(SaveAllTickets);
@@ -28,9 +26,9 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
 
         public AllTicketsFrameViewModel()
         {
+            CurrentContent = this;
             LoadTaskTickets();
             TaskTickets.CollectionChanged += this.OnCollectionChanged;
-            HasUnsavedChanges = true;
         }
 
         void CreateNewTicket()
@@ -66,36 +64,10 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
             foreach (var ticket in allTaskTickets)
             {
                 if (DataAccess.CurrentLoggedUser != null && ticket.UserId == DataAccess.CurrentLoggedUser.Id)
-                    allTaskTicketsVM.Add(new TaskTicketViewModel(ticket));
+                    allTaskTicketsVM.Add(new TaskTicketViewModel(ticket, (AllTicketsFrameViewModel)CurrentContent));
             }
 
             TaskTickets.AddRange(allTaskTicketsVM);
-        }
-
-
-        public bool HasUnsavedChanges
-        {
-            get
-            {
-                return _hasUnsavedChanges;
-            }
-            set
-            {
-                SetProperty(ref _hasUnsavedChanges, value);
-            }
-        }
-
-        //This always has the curretn View Content
-        public BindableBase CurrentContent
-        {
-            get
-            {
-                return _currentContent;
-            }
-            set
-            {
-                SetProperty(ref _currentContent, value);
-            }
         }
 
     }

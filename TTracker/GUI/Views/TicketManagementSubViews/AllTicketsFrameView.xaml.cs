@@ -23,11 +23,11 @@ namespace TTracker.GUI.Views.TicketManagementSubViews
     public partial class AllTicketsFrameView : Page
     {
         public AllTicketsFrameView()
-        {
+        {            
             InitializeComponent();
             this.DataContext = new AllTicketsFrameViewModel();
 
-            ((AllTicketsFrameViewModel)DataContext).CurrentContent = (AllTicketsFrameViewModel)this.DataContext;
+          //  ((AllTicketsFrameViewModel)DataContext).CurrentContent = (AllTicketsFrameViewModel)this.DataContext;
         }
     }
 }

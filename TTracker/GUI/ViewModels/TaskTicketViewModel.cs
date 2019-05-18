@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using TTracker.BaseDataModules;
 using TTracker.GUI.Models;
+using TTracker.GUI.ViewModels.TicketManagementSubVms;
 
 namespace TTracker.GUI.ViewModels
 {
@@ -37,7 +38,8 @@ namespace TTracker.GUI.ViewModels
             set
             {
                 SetProperty(ref _name, value);
-                SetIsDirty();                
+                SetIsDirty();
+                InformBaseViewModel();
             }
         }
 
@@ -51,6 +53,7 @@ namespace TTracker.GUI.ViewModels
             {
                 SetProperty(ref _text, value);
                 SetIsDirty();
+                InformBaseViewModel();
             }
         }
         public float ExpectedTime
@@ -63,11 +66,14 @@ namespace TTracker.GUI.ViewModels
             {
                 SetProperty(ref _expectedTime, value);
                 SetIsDirty();
+                InformBaseViewModel();
             }
         }
 
-        public TaskTicketViewModel(TaskTicket taskTicket)
+        public TaskTicketViewModel(TaskTicket taskTicket, ViewModelManagementBase currentBase)
         {
+            CurrentBase = currentBase;
+
             Name = taskTicket.Name;
             Id = Guid.NewGuid();
             ProjectName = taskTicket.ProjectName;
@@ -76,6 +82,8 @@ namespace TTracker.GUI.ViewModels
             ExpectedTime = taskTicket.ExpectedTime;
             UsedTime = taskTicket.UsedTime;
             Progress = UsedTime + " / " + ExpectedTime + " Days";
+
+            AfterSave();
         }
 
         public void Save()
@@ -84,7 +92,11 @@ namespace TTracker.GUI.ViewModels
                 return;
 
             MessageBox.Show(this.Name + " has been saved");
+
+            AfterSave();
         }
+
+
 
 
     }

@@ -13,9 +13,22 @@ namespace TTracker.BaseDataModules
 
         public bool isDirty;
 
-        public void SetIsDirty()
+        public ViewModelManagementBase CurrentBase;
+
+        protected void SetIsDirty()
         {
             isDirty = true;
+        }
+
+        protected void AfterSave()
+        {
+            isDirty = false;
+            CurrentBase.HasUnsavedChanges = false;
+        }
+
+        protected void InformBaseViewModel()
+        {
+            CurrentBase.HasUnsavedChanges = true;
         }
 
     }

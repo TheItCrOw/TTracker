@@ -22,7 +22,6 @@ namespace TTracker.GUI.ViewModels
         private float _expectedTicketTime;
 
         private AllTicketsFrameViewModel _allTicketsVm;
-
         public DelegateCommand CreateNewTicketCommand => new DelegateCommand(CreateNewTicket);
 
 
@@ -131,12 +130,9 @@ namespace TTracker.GUI.ViewModels
                 0
                 );
 
-            //Save the ticket right here
-            DataAccess.Instance.RegisterAndSaveNewTaskTicket(taskTicket);
-            _allTicketsVm.TaskTickets.Add(new TaskTicketViewModel(taskTicket));
-
+           // DataAccess.Instance.RegisterAndSaveNewTaskTicket(taskTicket);
+            _allTicketsVm.TaskTickets.Add(new TaskTicketViewModel(taskTicket, _allTicketsVm));
             MessageBox.Show("The Ticket has been succesfully created!");
-            Application.Current.MainWindow.Close();
         }
 
         private void CreateNewDateTicket()
