@@ -147,7 +147,7 @@
     </Compile>
     <Compile Include="BaseDataModules\IBaseData.cs" />
     <Compile Include="BaseDataModules\IUser.cs" />
-    <Compile Include="BaseDataModules\ITicket.cs" />
+    <Compile Include="BaseDataModules\Ticket.cs" />
     <Compile Include="GUI\Models\User.cs" />
     <Compile Include="GUI\ViewModels\LoginViewModel.cs" />
     <Compile Include="GUI\Views\LoginView.xaml.cs">

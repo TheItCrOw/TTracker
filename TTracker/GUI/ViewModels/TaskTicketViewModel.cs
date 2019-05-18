@@ -12,7 +12,7 @@ using TTracker.GUI.ViewModels.TicketManagementSubVms;
 
 namespace TTracker.GUI.ViewModels
 {
-    public class TaskTicketViewModel : ViewModelBase, INotifyPropertyChanged
+    public class TaskTicketViewModel : ViewModelBase
     {
         private string _name;
         private string _text;
@@ -22,6 +22,7 @@ namespace TTracker.GUI.ViewModels
         private float _expectedTime;
         private float _usedTime;
         private string _progress;
+        private TaskTicket _model;
 
         public Guid Id { get { return _Id; } set { SetProperty(ref _Id, value); } }
         public string ProjectName { get { return _projectName; } set { SetProperty(ref _projectName, value); } }
@@ -38,8 +39,7 @@ namespace TTracker.GUI.ViewModels
             set
             {
                 SetProperty(ref _name, value);
-                SetIsDirty();
-                InformBaseViewModel();
+                SetIsDirty(nameof(Name));
             }
         }
 
@@ -52,8 +52,7 @@ namespace TTracker.GUI.ViewModels
             set
             {
                 SetProperty(ref _text, value);
-                SetIsDirty();
-                InformBaseViewModel();
+                SetIsDirty(nameof(Text));
             }
         }
         public float ExpectedTime
@@ -65,8 +64,7 @@ namespace TTracker.GUI.ViewModels
             set
             {
                 SetProperty(ref _expectedTime, value);
-                SetIsDirty();
-                InformBaseViewModel();
+                SetIsDirty(nameof(ExpectedTime));
             }
         }
 
@@ -82,6 +80,7 @@ namespace TTracker.GUI.ViewModels
             ExpectedTime = taskTicket.ExpectedTime;
             UsedTime = taskTicket.UsedTime;
             Progress = UsedTime + " / " + ExpectedTime + " Days";
+            _model = taskTicket;
 
             AfterSave();
         }
@@ -91,7 +90,22 @@ namespace TTracker.GUI.ViewModels
             if (!isDirty)
                 return;
 
-            MessageBox.Show(this.Name + " has been saved");
+            foreach (var p in ChangedProperties)
+            {
+                switch (p)
+                {
+                    case "Name":
+                        _model.Name = this.Name;
+                        break;
+                    case "Text":
+                        _model.Text = this.Text;
+                        break;
+                    case "ExpectedTime":
+                        _model.ExpectedTime = this.ExpectedTime;
+                        break;
+                }
+            }
+
 
             AfterSave();
         }
