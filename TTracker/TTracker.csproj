@@ -83,6 +83,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BaseDataModules\IClosable.cs" />
+    <Compile Include="BaseDataModules\ModelBase.cs" />
     <Compile Include="BaseDataModules\ViewModelBase.cs" />
     <Compile Include="BaseDataModules\ViewModelManagementBase.cs" />
     <Compile Include="GUI\Models\TaskTicket.cs" />
@@ -145,7 +146,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseDataModules\IBaseData.cs" />
     <Compile Include="BaseDataModules\IUser.cs" />
     <Compile Include="BaseDataModules\Ticket.cs" />
     <Compile Include="GUI\Models\User.cs" />

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TTracker.Interfaces
 {
-    public interface IUser : IBaseData
+    public interface IUser
     {
         DateTime Created { get; set; }
         string Password { get; set; }

@@ -20,7 +20,10 @@ namespace TTracker.BaseDataModules
         protected void SetIsDirty(string PropertyName)
         {
             isDirty = true;
-            ChangedProperties.Add(PropertyName);
+
+            if (!ChangedProperties.Contains(PropertyName))
+                ChangedProperties.Add(PropertyName);
+
             InformBaseViewModel();
         }
 
@@ -28,6 +31,7 @@ namespace TTracker.BaseDataModules
         {
             isDirty = false;
             CurrentBase.HasUnsavedChanges = false;
+            ChangedProperties.Clear();
         }
 
         protected void InformBaseViewModel()

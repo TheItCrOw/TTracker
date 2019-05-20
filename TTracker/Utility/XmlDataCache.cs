@@ -21,7 +21,7 @@ namespace TTracker.Utility
         /// </summary>
         /// <param name="directoryName"></param>
         /// <param name="data"></param>
-        public void SaveToXml(string directoryName, Guid Id, List<string> data)
+        public void SaveNewToXml(string directoryName, Guid Id, List<string> data)
         {
             Directory.CreateDirectory(_saveDataPath + directoryName);
             string xmlPath = _saveDataPath + directoryName + "\\";
@@ -52,6 +52,48 @@ namespace TTracker.Utility
 
             }
 
+        }
+
+
+        /// <summary>
+        /// This takes in a XmlDocument and a list of changedProperties
+        /// It overwrites to the current doc the new propertyValues
+        /// </summary>
+        /// <param name="saveableXmlDoc"></param>
+        /// <param name="changedProperties"></param>
+        public void OverwriteSaveToXml<T>(XDocument saveableXmlDoc, List<string> changedProperties)
+        {
+            var changedPropertyName = new List<string>();
+            var changedPropertyValue = new List<string>();
+
+            string docId = string.Empty;
+
+            foreach(var data in changedProperties)
+            {
+                string[] splitedString = data.Split(new char[] { '/' });
+                changedPropertyName.Add((splitedString[0] + ">"));
+                changedPropertyValue.Add(splitedString[1]);
+            }
+
+            var docElements = saveableXmlDoc.Root.Elements();
+            foreach(var element in docElements)
+            {
+                string[] splitedString = element.ToString().Split(new char[] { '/' });
+                var elementName = splitedString[1];
+
+                if (elementName == "Id>")
+                {
+                    docId = element.Value;
+                }
+
+                if (changedPropertyName.Contains(elementName))
+                {
+                    var index = changedPropertyName.IndexOf(elementName);
+                    element.Value = changedPropertyValue.ElementAt(index);
+                }
+            }
+            var fullSavePath = _saveDataPath + typeof(T).Name + "s" + "\\" + docId + ".xml";
+            saveableXmlDoc.Save(fullSavePath);
         }
 
         /// <summary>

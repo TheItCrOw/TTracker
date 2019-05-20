@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
-using System.Xml;
 using System.Xml.Linq;
 using TTracker.GUI.Models;
-using TTracker.GUI.ViewModels;
-using System.Collections.Generic;
-using TTracker.Interfaces;
+using TTracker.BaseDataModules;
 
 namespace TTracker.Utility
 {
@@ -42,7 +38,7 @@ namespace TTracker.Utility
             XmlWriteableDataList.Add("Name/" + newUser.Name);
             XmlWriteableDataList.Add("Password/" + newUser.Password);
             XmlWriteableDataList.Add("Created/" + newUser.Created.ToString());
-            _xmlReaderWriter.SaveToXml("Users", newUser.Id, XmlWriteableDataList);
+            _xmlReaderWriter.SaveNewToXml("Users", newUser.Id, XmlWriteableDataList);
         }
         public void RegisterAndSaveNewTaskTicket(TaskTicket newTaskTicket)
         {
@@ -56,7 +52,7 @@ namespace TTracker.Utility
             XmlWriteableDataList.Add("Created/" + newTaskTicket.Created);
             XmlWriteableDataList.Add("ExpectedTime/" + newTaskTicket.ExpectedTime);
             XmlWriteableDataList.Add("UsedTime/" + newTaskTicket.UsedTime);
-            _xmlReaderWriter.SaveToXml("TaskTickets", newTaskTicket.Id, XmlWriteableDataList);
+            _xmlReaderWriter.SaveNewToXml("TaskTickets", newTaskTicket.Id, XmlWriteableDataList);
         }
 
         /// <summary>
@@ -75,13 +71,37 @@ namespace TTracker.Utility
             {
                 case "TaskTicket":
                     return (IEnumerable<T>)(_createTFromXmlData.CreateTaskTicketFromXmlData(allData));
-                    break;
                 case "":
                     ;
                     break;
             }
 
             return null;
+        }
+
+        /// <summary>
+        /// Takes in a ModelBase and a list of changedData
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="saveableObject"></param>
+        /// <param name="changedProperties"></param>
+        public void Save<T>(ModelBase saveableObject, List<string> changedProperties) where T : ModelBase
+        {
+            var currentObject = typeof(T);
+            var allXmlOfGivenType = _xmlReaderWriter.GetAllXmlFilesFromDirectory<T>();
+
+            foreach (var doc in allXmlOfGivenType)
+            {
+                var docAllData = doc.Root.Value;
+                var docElement = doc.Root.Elements();              
+
+                if(docAllData.ToString().Contains(saveableObject.Id.ToString()))
+                {
+                    _xmlReaderWriter.OverwriteSaveToXml<T>(doc, changedProperties);
+                }
+
+            }
+
         }
     
         public bool IsValidUser(string name, string password)
