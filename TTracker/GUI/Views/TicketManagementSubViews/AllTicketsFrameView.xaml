@@ -61,7 +61,7 @@
                 </Grid.RowDefinitions>
 
                 <Button x:Name="SaveButton" ToolTip="Save" Background="LightSteelBlue" BorderBrush="Black" Grid.Row="0" BorderThickness="1 0 1 1" IsEnabled="{Binding HasUnsavedChanges}" Command="{Binding SaveAllTicketsCommand}">
-                    <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/save.png"/>
+                    <Image Margin="7" Source="pack://application:,,,/Resources/save.png"/>
                 </Button>
 
                 <Button x:Name="NewTicketButton" ToolTip="New Ticket" Background="LightSteelBlue" BorderBrush="Black" Grid.Row="1" BorderThickness="1" Command="{Binding CreateNewTicketCommand}">

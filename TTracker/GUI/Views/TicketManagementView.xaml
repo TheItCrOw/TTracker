@@ -34,7 +34,7 @@
                 <Border Background="White" BorderBrush="Black" BorderThickness="1" Grid.Column="0">
                     <TextBlock Text="Ticket Management" TextAlignment="Center" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" TextWrapping="Wrap"/>
                 </Border>
-                <Button x:Name="AllTicketsButton" ToolTip="All Tickets" Background="LightSteelBlue" BorderBrush="Black" Grid.Column="1" BorderThickness="0 0 1 1" Click="AllTicketsButton_Click">
+                <Button x:Name="AllTicketsButton" ToolTip="All Tickets" Background="LightSteelBlue" BorderBrush="Black" Grid.Column="1" BorderThickness="1 0 1 1" Click="AllTicketsButton_Click">
                     <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/tasks.png"/>
                 </Button>
                 <Button ToolTip="Task Tickets" Background="LightSteelBlue" BorderBrush="Black" Grid.Column="2" BorderThickness="1 0 1 1">

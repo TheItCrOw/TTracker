@@ -19,6 +19,9 @@ namespace TTracker.BaseDataModules
 
         public List<string> ChangedProperties = new List<string>();
 
+        private Guid _Id;
+        public Guid Id { get { return _Id; } set { SetProperty(ref _Id, value); } }
+
         protected void SetIsDirty(string PropertyName)
         {
             isDirty = true;

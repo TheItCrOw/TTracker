@@ -28,7 +28,7 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
         {
             CurrentContent = this;
             LoadTaskTickets();
-            TaskTickets.CollectionChanged += this.OnCollectionChanged;
+            HandleCollectionChanges();
         }
 
         void CreateNewTicket()
@@ -48,6 +48,10 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
             HasUnsavedChanges = false;
         }
 
+        private void HandleCollectionChanges()
+        {
+            TaskTickets.CollectionChanged += this.OnCollectionChanged;
+        }
 
         void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
@@ -61,6 +65,9 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
             var allTaskTickets = DataAccess.Instance.GetAll<TaskTicket>();
             var allTaskTicketsVM = new List<TaskTicketViewModel>();
 
+            if (allTaskTickets == null)
+                return;
+
             foreach (var ticket in allTaskTickets)
             {
                 if (DataAccess.CurrentLoggedUser != null && ticket.UserId == DataAccess.CurrentLoggedUser.Id)
@@ -69,6 +76,5 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
 
             TaskTickets.AddRange(allTaskTicketsVM);
         }
-
     }
 }

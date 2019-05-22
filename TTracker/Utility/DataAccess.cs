@@ -28,7 +28,6 @@ namespace TTracker.Utility
 
         private DataAccess()
         {
-
         }
 
         public void RegisterAndSaveNewUser(User newUser)

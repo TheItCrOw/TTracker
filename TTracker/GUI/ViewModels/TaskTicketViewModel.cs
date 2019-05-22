@@ -19,25 +19,21 @@ namespace TTracker.GUI.ViewModels
         private string _text;
         private DateTime _created;
         private string _projectName;
-        private Guid _Id;
         private float _expectedTime;
         private float _usedTime;
         private string _progress;
-        private string _modelId;
+        private Guid _modelId;
         private TaskTicket _model;
 
-        public Guid Id { get { return _Id; } set { SetProperty(ref _Id, value); } }
         public string ProjectName { get { return _projectName; } set { SetProperty(ref _projectName, value); } }
         public DateTime Created { get { return _created; } set { SetProperty(ref _created, value); } }
         public float UsedTime { get { return _usedTime; } set { SetProperty(ref _usedTime, value); } }
         public string Progress { get { return _progress; } set { SetProperty(ref _progress, value); } }
+        public Guid ModelId { get { return _modelId; } set { SetProperty(ref _modelId, value); } }
 
         public string Name
         {
-            get
-            {
-                return _name;
-            }
+            get { return _name; }
             set
             {
                 SetProperty(ref _name, value);
@@ -47,10 +43,7 @@ namespace TTracker.GUI.ViewModels
 
         public string Text
         {
-            get
-            {
-                return _text;
-            }
+            get { return _text; }
             set
             {
                 SetProperty(ref _text, value);
@@ -59,10 +52,7 @@ namespace TTracker.GUI.ViewModels
         }
         public float ExpectedTime
         {
-            get
-            {
-                return _expectedTime;
-            }
+            get { return _expectedTime; }
             set
             {
                 SetProperty(ref _expectedTime, value);
@@ -70,34 +60,21 @@ namespace TTracker.GUI.ViewModels
             }
         }
 
-        //Show this in the UI so I can find the ID within the Data Cache
-        public string ModelId
-        {
-            get
-            {
-                return _modelId;
-            }
-            set
-            {
-                SetProperty(ref _modelId, value);
-            }
-        }
-
         public TaskTicketViewModel(TaskTicket taskTicket, ViewModelManagementBase currentBase, bool @new)
         {
             CurrentBase = currentBase;
+            _model = taskTicket;
+            isNew = @new;
 
             Name = taskTicket.Name;
             Id = Guid.NewGuid();
-            ModelId = taskTicket.Id.ToString();
+            ModelId = taskTicket.Id;
             ProjectName = taskTicket.ProjectName;
             Text = taskTicket.Text;
             Created = DateTime.Now;
             ExpectedTime = taskTicket.ExpectedTime;
             UsedTime = taskTicket.UsedTime;
             Progress = UsedTime + " / " + ExpectedTime + " Days";
-            _model = taskTicket;
-            isNew = @new;
 
             if(!isNew)
             {
@@ -114,6 +91,7 @@ namespace TTracker.GUI.ViewModels
             if(isNew)
             {
                 DataAccess.Instance.RegisterAndSaveNewTaskTicket(this._model);
+                AfterSave();
                 return;
             }
             

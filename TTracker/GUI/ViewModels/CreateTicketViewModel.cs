@@ -2,18 +2,20 @@
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using TTracker.BaseDataModules;
 using TTracker.GUI.Models;
 using TTracker.GUI.ViewModels.TicketManagementSubVms;
 using TTracker.Utility;
 
 namespace TTracker.GUI.ViewModels
 {
-    class CreateTicketViewModel : BindableBase, INotifyPropertyChanged
+    class CreateTicketViewModel : ViewModelManagementBase
     {
         private string _ticketName;
         private bool _isTaskTicket;
@@ -23,21 +25,34 @@ namespace TTracker.GUI.ViewModels
 
         private AllTicketsFrameViewModel _allTicketsVm;
         public DelegateCommand CreateNewTicketCommand => new DelegateCommand(CreateNewTicket);
-
-
-        //Adding Projectslist with observable Collection
+        public ObservableCollection<ProjectViewModel> Projects { get; set; } = new ObservableCollection<ProjectViewModel>();
 
         public CreateTicketViewModel(AllTicketsFrameViewModel allTicketsVm)
         {
             _allTicketsVm = allTicketsVm;
+            testing();
+          //  LoadProjects();
+        }
+
+        private void LoadProjects()
+        {
+            Projects.Clear();
+            var allProjects = DataAccess.Instance.GetAll<Project>();
+            var allProjectsVM = new List<ProjectViewModel>();
+
+            if (allProjects == null)
+                return;
+
+            foreach (var project in allProjects)
+            {
+                if (DataAccess.CurrentLoggedUser != null && project.UserId == DataAccess.CurrentLoggedUser.Id)
+                    allProjectsVM.Add(new ProjectViewModel(project, (AllTicketsFrameViewModel)CurrentContent, false));
+            }
         }
 
         public bool isTaskTicket
         {
-            get
-            {
-                return _isTaskTicket;
-            }
+            get { return _isTaskTicket; }
             set
             {
                 SetProperty(ref _isTaskTicket, value);
@@ -45,10 +60,7 @@ namespace TTracker.GUI.ViewModels
         }
         public bool isDateTicket
         {
-            get
-            {
-                return _isDateTicket;
-            }
+            get { return _isDateTicket; }
             set
             {
                 SetProperty(ref _isDateTicket, value);
@@ -56,10 +68,7 @@ namespace TTracker.GUI.ViewModels
         }
         public string TicketName
         {
-            get
-            {
-                return _ticketName;
-            }
+            get { return _ticketName; }
             set
             {
                 SetProperty(ref _ticketName, value);
@@ -67,10 +76,7 @@ namespace TTracker.GUI.ViewModels
         }
         public string TicketText
         {
-            get
-            {
-                return _ticketText;
-            }
+            get { return _ticketText; }
             set
             {
                 SetProperty(ref _ticketText, value);
@@ -78,10 +84,7 @@ namespace TTracker.GUI.ViewModels
         }
         public float ExpectedTicketTime
         {
-            get
-            {
-                return _expectedTicketTime;
-            }
+            get { return _expectedTicketTime; }
             set
             {
                 SetProperty(ref _expectedTicketTime, value);
@@ -92,21 +95,21 @@ namespace TTracker.GUI.ViewModels
 
         private void CreateNewTicket()
         {
-            if(DataAccess.CurrentLoggedUser == null)
+            if (DataAccess.CurrentLoggedUser == null)
             {
                 MessageBox.Show("Please login as a User first.");
                 return;
             }
 
-            if(isTaskTicket && !isDateTicket)
+            if (isTaskTicket && !isDateTicket)
             {
                 CreateNewTaskTicket();
             }
-            else if(isDateTicket && !isTaskTicket)
+            else if (isDateTicket && !isTaskTicket)
             {
                 CreateNewDateTicket();
             }
-            else if(isDateTicket && isTaskTicket)
+            else if (isDateTicket && isTaskTicket)
             {
                 MessageBox.Show("Only one checkboxes at the top may be checked.");
             }
@@ -136,6 +139,26 @@ namespace TTracker.GUI.ViewModels
 
         private void CreateNewDateTicket()
         {
+
+        }
+
+
+
+
+
+
+        void testing()
+        {
+            var projects = new List<Project>();
+
+
+            projects.Add(new Project("Projects1", Guid.NewGuid(), Guid.NewGuid(), "Text", DateTime.Now, 2));
+            projects.Add(new Project("Projects2", Guid.NewGuid(), Guid.NewGuid(), "Text", DateTime.Now, 2));
+            projects.Add(new Project("Projects3", Guid.NewGuid(), Guid.NewGuid(), "Text", DateTime.Now, 2));
+            projects.Add(new Project("Projects4", Guid.NewGuid(), Guid.NewGuid(), "Text", DateTime.Now, 2));
+            projects.Add(new Project("Projects5", Guid.NewGuid(), Guid.NewGuid(), "Text", DateTime.Now, 2));
+
+            Projects.AddRange(projects.Select(x => new ProjectViewModel(x, this, true)));
 
         }
 
