@@ -22,8 +22,10 @@ namespace TTracker.GUI.ViewModels
         private bool _isDateTicket;
         private string _ticketText;
         private float _expectedTicketTime;
+        private ProjectViewModel _selectedComboBoxItem;
 
         private AllTicketsFrameViewModel _allTicketsVm;
+
         public DelegateCommand CreateNewTicketCommand => new DelegateCommand(CreateNewTicket);
         public ObservableCollection<ProjectViewModel> Projects { get; set; } = new ObservableCollection<ProjectViewModel>();
 
@@ -31,7 +33,7 @@ namespace TTracker.GUI.ViewModels
         {
             _allTicketsVm = allTicketsVm;
             testing();
-          //  LoadProjects();
+            //  LoadProjects();
         }
 
         private void LoadProjects()
@@ -91,6 +93,15 @@ namespace TTracker.GUI.ViewModels
             }
         }
 
+        public ProjectViewModel SelectedComboBoxItem
+        {
+            get { return _selectedComboBoxItem; }
+            set
+            {
+                SetProperty(ref _selectedComboBoxItem, value);
+            }
+        }
+
         //Projects Property has to be added here
 
         private void CreateNewTicket()
@@ -98,6 +109,16 @@ namespace TTracker.GUI.ViewModels
             if (DataAccess.CurrentLoggedUser == null)
             {
                 MessageBox.Show("Please login as a User first.");
+                return;
+            }
+            else if (TicketName == string.Empty)
+            {
+                MessageBox.Show("Please name your ticket.");
+                return;
+            }
+            else if(SelectedComboBoxItem == null)
+            {
+                MessageBox.Show("Please choose a project.");
                 return;
             }
 
@@ -125,10 +146,10 @@ namespace TTracker.GUI.ViewModels
                 TicketName,
                 Guid.NewGuid(),
                 DataAccess.CurrentLoggedUser.Id,
-                Guid.Empty,
+                SelectedComboBoxItem.ModelId,
                 TicketText,
                 DateTime.Now,
-                "IHaveNoProjectsYet",
+                SelectedComboBoxItem.Name,
                 ExpectedTicketTime,
                 0
                 );
@@ -156,6 +177,8 @@ namespace TTracker.GUI.ViewModels
             projects.Add(new Project("Projects2", Guid.NewGuid(), Guid.NewGuid(), "Text", DateTime.Now, 2));
             projects.Add(new Project("Projects3", Guid.NewGuid(), Guid.NewGuid(), "Text", DateTime.Now, 2));
             projects.Add(new Project("Projects4", Guid.NewGuid(), Guid.NewGuid(), "Text", DateTime.Now, 2));
+            projects.Add(new Project("Projects5", Guid.NewGuid(), Guid.NewGuid(), "Text", DateTime.Now, 2));
+            projects.Add(new Project("Projects5", Guid.NewGuid(), Guid.NewGuid(), "Text", DateTime.Now, 2));
             projects.Add(new Project("Projects5", Guid.NewGuid(), Guid.NewGuid(), "Text", DateTime.Now, 2));
 
             Projects.AddRange(projects.Select(x => new ProjectViewModel(x, this, true)));

@@ -15,11 +15,6 @@ namespace TTracker.GUI.Models
         private string _name;
         private float _usedTime;
         private string _projectName;
-        private string v;
-        private Guid guid1;
-        private Guid guid2;
-        private DateTime now;
-        private float expectedTicketTime;
 
         public float UsedTime { get { return _usedTime; } set => _usedTime = value; }
         public Guid UserId { get { return _userId; } set => _userId = value; }
