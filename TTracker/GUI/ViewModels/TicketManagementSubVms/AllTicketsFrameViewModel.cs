@@ -64,7 +64,7 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
             foreach (var ticket in allTaskTickets)
             {
                 if (DataAccess.CurrentLoggedUser != null && ticket.UserId == DataAccess.CurrentLoggedUser.Id)
-                    allTaskTicketsVM.Add(new TaskTicketViewModel(ticket, (AllTicketsFrameViewModel)CurrentContent));
+                    allTaskTicketsVM.Add(new TaskTicketViewModel(ticket, (AllTicketsFrameViewModel)CurrentContent, false));
             }
 
             TaskTickets.AddRange(allTaskTicketsVM);

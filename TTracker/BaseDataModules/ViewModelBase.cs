@@ -13,6 +13,8 @@ namespace TTracker.BaseDataModules
 
         public bool isDirty;
 
+        public bool isNew;
+
         public ViewModelManagementBase CurrentBase;
 
         public List<string> ChangedProperties = new List<string>();
@@ -30,6 +32,7 @@ namespace TTracker.BaseDataModules
         protected void AfterSave()
         {
             isDirty = false;
+            isNew = false;
             CurrentBase.HasUnsavedChanges = false;
             ChangedProperties.Clear();
         }

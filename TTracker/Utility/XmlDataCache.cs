@@ -49,9 +49,7 @@ namespace TTracker.Utility
 
                 writer.WriteEndElement();
                 writer.WriteEndDocument();
-
             }
-
         }
 
 
@@ -63,11 +61,14 @@ namespace TTracker.Utility
         /// <param name="changedProperties"></param>
         public void OverwriteSaveToXml<T>(XDocument saveableXmlDoc, List<string> changedProperties)
         {
+            //split the Name/Hans string
             var changedPropertyName = new List<string>();
             var changedPropertyValue = new List<string>();
 
+            //Gets the ID/Name of the doc
             string docId = string.Empty;
 
+            //Split the changed Data
             foreach(var data in changedProperties)
             {
                 string[] splitedString = data.Split(new char[] { '/' });
@@ -75,6 +76,7 @@ namespace TTracker.Utility
                 changedPropertyValue.Add(splitedString[1]);
             }
 
+            //Go through all elements. Search for elementName. When matched with any propertyName, change Value of elemtn
             var docElements = saveableXmlDoc.Root.Elements();
             foreach(var element in docElements)
             {

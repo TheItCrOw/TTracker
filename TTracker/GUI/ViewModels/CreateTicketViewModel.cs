@@ -130,8 +130,7 @@ namespace TTracker.GUI.ViewModels
                 0
                 );
 
-           // DataAccess.Instance.RegisterAndSaveNewTaskTicket(taskTicket);
-            _allTicketsVm.TaskTickets.Add(new TaskTicketViewModel(taskTicket, _allTicketsVm));
+            _allTicketsVm.TaskTickets.Add(new TaskTicketViewModel(taskTicket, _allTicketsVm, true));
             MessageBox.Show("The Ticket has been succesfully created!");
         }
 

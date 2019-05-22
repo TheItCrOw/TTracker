@@ -66,7 +66,6 @@ namespace TTracker.Utility
 
             //Keep adding Entites that can be saved here.
             //Also add a CreateTFromXmlData Method foreach
-
             switch (typeof(T).Name)
             {
                 case "TaskTicket":
@@ -80,7 +79,7 @@ namespace TTracker.Utility
         }
 
         /// <summary>
-        /// Takes in a ModelBase and a list of changedData
+        /// Takes in a ModelBase and a list of changedData, overwrites the xml file
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="saveableObject"></param>
@@ -99,7 +98,6 @@ namespace TTracker.Utility
                 {
                     _xmlReaderWriter.OverwriteSaveToXml<T>(doc, changedProperties);
                 }
-
             }
 
         }

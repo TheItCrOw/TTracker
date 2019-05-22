@@ -83,7 +83,7 @@ namespace TTracker.GUI.ViewModels
             }
         }
 
-        public TaskTicketViewModel(TaskTicket taskTicket, ViewModelManagementBase currentBase)
+        public TaskTicketViewModel(TaskTicket taskTicket, ViewModelManagementBase currentBase, bool @new)
         {
             CurrentBase = currentBase;
 
@@ -97,14 +97,25 @@ namespace TTracker.GUI.ViewModels
             UsedTime = taskTicket.UsedTime;
             Progress = UsedTime + " / " + ExpectedTime + " Days";
             _model = taskTicket;
+            isNew = @new;
 
-            AfterSave();
+            if(!isNew)
+            {
+                AfterSave();
+            }          
+
         }
 
         public void Save()
         {
             if (!isDirty)
                 return;
+
+            if(isNew)
+            {
+                DataAccess.Instance.RegisterAndSaveNewTaskTicket(this._model);
+                return;
+            }
             
             //Contains the property name and the changed value like:
             // Name/Ttrackerr
@@ -132,8 +143,6 @@ namespace TTracker.GUI.ViewModels
             changedPropertiesFullData.Clear();
             AfterSave();
         }
-
-
 
 
     }
