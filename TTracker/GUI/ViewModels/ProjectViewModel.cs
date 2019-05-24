@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,10 +17,13 @@ namespace TTracker.GUI.ViewModels
         private string _text;
         private Project _model;
         private Guid _modelId;
+        private Guid _parentId;
 
         public DateTime Created { get { return _created; } set { SetProperty(ref _created, value); } }
         public float UsedTime { get { return _usedTime; } set { SetProperty(ref _usedTime, value); } }
         public Guid ModelId { get { return _modelId; } set { SetProperty(ref _modelId, value); } }
+        public Guid ParentId { get { return _parentId; } set { SetProperty(ref _parentId, value); } }
+        public ObservableCollection<ProjectViewModel> Children { get; set; } = new ObservableCollection<ProjectViewModel>();
 
         public string Name
         {
@@ -49,8 +53,9 @@ namespace TTracker.GUI.ViewModels
             isNew = @new;
 
             Id = Guid.NewGuid();
+            ParentId = project.ParentId;
             Name = project.Name;
-            Text = project.Name;
+            Text = project.Text;
             Created = project.Created;
             UsedTime = project.UsedTime;
             ModelId = project.Id;

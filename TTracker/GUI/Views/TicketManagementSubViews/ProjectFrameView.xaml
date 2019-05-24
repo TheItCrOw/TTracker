@@ -15,9 +15,9 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        
-        
-        
+
+
+
         <!--Menu on the left side-->
         <Grid Grid.Column="0" Background="LightSteelBlue">
             <Grid.RowDefinitions>
@@ -27,21 +27,25 @@
             </Grid.RowDefinitions>
 
         </Grid>
-        
-        
+
+
         <!--Items Control of Projects-->
         <ScrollViewer VerticalScrollBarVisibility="Visible" Grid.Column="1" Width="Auto">
-            <ItemsControl x:Name="taskTicketControl" ItemsSource="{Binding Projects, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" HorizontalAlignment="Left" Width="433">
+            <ItemsControl x:Name="projectControl" ItemsSource="{Binding Projects, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" Width="433" >
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Border BorderThickness="1 0 0 1" BorderBrush="Black">
-                            <DockPanel Background="LightGray">
+                            <DockPanel >
                                 <Expander ExpandDirection="Down" DockPanel.Dock="Bottom" HorizontalAlignment="Stretch" Width="432" BorderBrush="Gray" BorderThickness="0.5">
+                                    <!--Here the Childrne should be displayed, they are still empty-->
                                     <ItemsControl ItemsSource="{Binding Projects}">
-                                        <Button Content="{Binding Name}" FontSize="17" Margin="5" BorderThickness="0" Background="LightGray"/>
+                                        <Button Content="{Binding Name}" FontSize="17" Margin="5" BorderThickness="0.5" Background="White" BorderBrush="Gray" 
+                                                Command="{Binding Source=ProjectFrameViewModel, Path=SelectedItemCommand}"
+                                                />
                                     </ItemsControl>
                                 </Expander>
-                                <Button DockPanel.Dock="Left" Height="75" Content="{Binding Name}" FontSize="20" FontWeight="Bold" VerticalContentAlignment="Top" BorderThickness="1 1 1 0" Background="LightGray"/>
+                                <Button DockPanel.Dock="Left" Height="75" Content="{Binding Name}" FontSize="20" FontWeight="Bold" VerticalContentAlignment="Center" BorderThickness="1 1 1 0" Background="AliceBlue" Click="SelectedRootProjectButton_Click" 
+                                        />
                             </DockPanel>
                         </Border>
                     </DataTemplate>

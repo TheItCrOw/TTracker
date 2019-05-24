@@ -171,13 +171,13 @@ namespace TTracker.GUI.ViewModels
             var projects = new List<Project>();
 
 
-            projects.Add(new Project("Projects1", Guid.NewGuid(), Guid.NewGuid(), "Text", DateTime.Now, 2));
-            projects.Add(new Project("Projects2", Guid.NewGuid(), Guid.NewGuid(), "Text", DateTime.Now, 2));
-            projects.Add(new Project("Projects3", Guid.NewGuid(), Guid.NewGuid(), "Text", DateTime.Now, 2));
-            projects.Add(new Project("Projects4", Guid.NewGuid(), Guid.NewGuid(), "Text", DateTime.Now, 2));
-            projects.Add(new Project("Projects5", Guid.NewGuid(), Guid.NewGuid(), "Text", DateTime.Now, 2));
-            projects.Add(new Project("Projects5", Guid.NewGuid(), Guid.NewGuid(), "Text", DateTime.Now, 2));
-            projects.Add(new Project("Projects5", Guid.NewGuid(), Guid.NewGuid(), "Text", DateTime.Now, 2));
+            projects.Add(new Project("Projects1", Guid.NewGuid(), Guid.NewGuid(), Guid.Empty, "Text", DateTime.Now, 2));
+            projects.Add(new Project("Projects2", Guid.NewGuid(), Guid.NewGuid(), Guid.Empty, "Text", DateTime.Now, 2));
+            projects.Add(new Project("Projects3", Guid.NewGuid(), Guid.NewGuid(), Guid.Empty, "Text", DateTime.Now, 2));
+            projects.Add(new Project("Projects4", Guid.NewGuid(), Guid.NewGuid(), Guid.Empty, "Text", DateTime.Now, 2));
+            projects.Add(new Project("Projects5", Guid.NewGuid(), Guid.NewGuid(), Guid.Empty, "Text", DateTime.Now, 2));
+            projects.Add(new Project("Projects5", Guid.NewGuid(), Guid.NewGuid(), Guid.Empty, "Text", DateTime.Now, 2));
+            projects.Add(new Project("Projects5", Guid.NewGuid(), Guid.NewGuid(), Guid.Empty, "Text", DateTime.Now, 2));
 
             Projects.AddRange(projects.Select(x => new ProjectViewModel(x, this, true)));
 
