@@ -102,8 +102,6 @@ namespace TTracker.GUI.ViewModels
             }
         }
 
-        //Projects Property has to be added here
-
         private void CreateNewTicket()
         {
             if (DataAccess.CurrentLoggedUser == null)

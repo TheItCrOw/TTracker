@@ -40,6 +40,11 @@ namespace TTracker.GUI.Views
             NavigationFrame.Content = view;
         }
 
-
+        private void ProjectButton_Click(object sender, RoutedEventArgs e)
+        {
+            var view = new ProjectFrameView();
+            NavigationFrame.Content = null;
+            NavigationFrame.Content = view;
+        }
     }
 }

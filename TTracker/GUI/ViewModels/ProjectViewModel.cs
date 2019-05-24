@@ -53,6 +53,7 @@ namespace TTracker.GUI.ViewModels
             Text = project.Name;
             Created = project.Created;
             UsedTime = project.UsedTime;
+            ModelId = project.Id;
 
             if (!isNew)
                 AfterSave();

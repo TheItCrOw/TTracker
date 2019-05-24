@@ -43,7 +43,7 @@
                 <Button ToolTip="Date Tickets" Background="LightSteelBlue" BorderBrush="Black" Grid.Column="3" BorderThickness="1 0 1 1">
                     <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/date-ticket.png"/>
                 </Button>
-                <Button ToolTip="Projects" Background="LightSteelBlue" BorderBrush="Black" Grid.Column="4" BorderThickness="1 0 1 1">
+                <Button ToolTip="Projects" Background="LightSteelBlue" BorderBrush="Black" Grid.Column="4" BorderThickness="1 0 1 1" Click="ProjectButton_Click" >
                     <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/project.png"/>
                 </Button>
 
