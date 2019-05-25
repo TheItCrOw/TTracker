@@ -13,10 +13,13 @@ using TTracker.Utility;
 namespace TTracker.GUI.ViewModels.TicketManagementSubVms
 {
     public class ProjectFrameViewModel : ViewModelManagementBase, INotifyPropertyChanged
-    { 
+    {
         public ObservableCollection<ProjectViewModel> Projects { get; set; } = new ObservableCollection<ProjectViewModel>();
+        public DelegateCommand SaveAllProjectsCommand => new DelegateCommand(SaveAllProjects);
+        public DelegateCommand CreateNewProjectCommand => new DelegateCommand(CreateNewProject);
+        public float UsedProjectTime { get { return _usedProjectTime; } set { SetProperty(ref _usedProjectTime, value); } }
 
-        public ViewModelBase SelectedItem;
+        public ProjectViewModel SelectedItem;
         private string _projectName;
         private string _projectText;
         private float _usedProjectTime;
@@ -25,8 +28,9 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
         {
             CurrentContent = this;
             LoadProjects();
-            HandleCollectionChanges();
             testing();
+            HandleCollectionChanges();
+
         }
         private void HandleCollectionChanges()
         {
@@ -41,12 +45,37 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
             UsedProjectTime = selectedProject.UsedTime;
         }
 
+        private void HandlePropertyBase2Project(string property)
+        {
+            switch (property)
+            {
+                case "ProjectName":
+                    if (SelectedItem.Name != ProjectName)
+                        SelectedItem.Name = ProjectName;
+                    break;
+                case "ProjectText":
+                    if (SelectedItem.Text != ProjectText)
+                        SelectedItem.Text = ProjectText;
+                    break;
+            }
+        }
+
         void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             HasUnsavedChanges = true;
             RaisePropertyChanged(nameof(Projects));
         }
-        
+
+        void SaveAllProjects()
+        {
+            HasUnsavedChanges = false;
+        }
+
+        void CreateNewProject()
+        {
+
+        }
+
         private void LoadProjects()
         {
             Projects.Clear();
@@ -69,6 +98,7 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
             set
             {
                 SetProperty(ref _projectName, value);
+                HandlePropertyBase2Project(nameof(ProjectName));
             }
         }
         public string ProjectText
@@ -77,14 +107,7 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
             set
             {
                 SetProperty(ref _projectText, value);
-            }
-        }
-        public float UsedProjectTime
-        {
-            get { return _usedProjectTime; }
-            set
-            {
-                SetProperty(ref _usedProjectTime, value);
+                HandlePropertyBase2Project(nameof(ProjectText));
             }
         }
 
@@ -124,7 +147,7 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
             projects.Add(new Project("Projects5", Guid.NewGuid(), Guid.NewGuid(), Guid.Empty, "Text", DateTime.Now, 2));
             projects.Add(new Project("Projects5", Guid.NewGuid(), Guid.NewGuid(), Guid.Empty, "Text", DateTime.Now, 2));
 
-            Projects.AddRange(projects.Select(x => new ProjectViewModel(x, this, true)));
+            Projects.AddRange(projects.Select(x => new ProjectViewModel(x, this, false)));
 
         }
 
