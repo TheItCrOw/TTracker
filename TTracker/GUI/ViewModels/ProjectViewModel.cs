@@ -50,7 +50,7 @@ namespace TTracker.GUI.ViewModels
 
         void Selected()
         {
-            ((ProjectFrameViewModel)CurrentBase).SelectedItem = this;
+            ((ProjectFrameViewModel)CurrentBase).HandleSelectedProjects(this);
         }
 
         public ProjectViewModel(Project project, ViewModelManagementBase currentBase, bool @new)

@@ -51,6 +51,38 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
+        
+        <!--The Content of each ViewModel on the right-->
+        <ScrollViewer Grid.Column="2" VerticalScrollBarVisibility="Visible">
+            <Border BorderThickness="1" BorderBrush="Black" Margin="10">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="40"/>
+                    </Grid.RowDefinitions>
+
+                    <!--Name of the Project-->
+                    <Border Grid.Row="1" BorderBrush="Black" Margin="10 0 10 0">
+                        <TextBox FontSize="25" FontWeight="DemiBold" Text="{Binding ProjectName}" TextAlignment="Center"/>
+                    </Border>
+                    <!--Text of the project-->
+                    <Border Grid.Row="2" BorderBrush="Black" Margin="10">
+                        <TextBox FontSize="17" Text="{Binding ProjectText}" TextAlignment="Left" AcceptsReturn="True" TextWrapping="Wrap"/>
+                    </Border>
+                    <!--Time invested in the project-->
+                    <Border Grid.Row="3" BorderBrush="Black" Margin="10 0 10 10" BorderThickness="0.3">
+                        <DockPanel Margin="10 0 0 0" LastChildFill="False" HorizontalAlignment="Center">
+                            <TextBlock DockPanel.Dock="Left" FontSize="20" Text="Time invested into this Project:" TextAlignment="Left" FontWeight="light"/>
+                            <TextBlock DockPanel.Dock="Left" FontSize="20" Text="{Binding UsedProjectTime}" FontWeight="Bold" TextAlignment="Center" TextWrapping="Wrap" Margin="50 0 50 0"/>
+                            <TextBlock DockPanel.Dock="Left" FontSize="20" Text="work days" TextAlignment="Left" FontWeight="light"/>
+                        </DockPanel>
+                    </Border>
+
+                </Grid>
+            </Border>
+        </ScrollViewer>
 
 
     </Grid>
