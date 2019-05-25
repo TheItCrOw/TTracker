@@ -15,7 +15,8 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
     public class ProjectFrameViewModel : ViewModelManagementBase, INotifyPropertyChanged
     { 
         public ObservableCollection<ProjectViewModel> Projects { get; set; } = new ObservableCollection<ProjectViewModel>();
-        public DelegateCommand<object> SelectedItemCommand => new DelegateCommand<object>(SelectedItem);
+
+        public ViewModelBase SelectedItem;
 
         public ProjectFrameViewModel()
         {
@@ -35,16 +36,6 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
             RaisePropertyChanged(nameof(Projects));
         }
         
-        void SelectedItem(object selectedObject)
-        {
-            MessageBox.Show("Test2");
-           if(selectedObject is ProjectViewModel selectedProject)
-            {
-
-            }
-
-        }
-
         private void LoadProjects()
         {
             Projects.Clear();

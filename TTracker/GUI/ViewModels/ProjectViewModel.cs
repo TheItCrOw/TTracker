@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prism.Commands;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -6,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TTracker.BaseDataModules;
 using TTracker.GUI.Models;
+using TTracker.GUI.ViewModels.TicketManagementSubVms;
 
 namespace TTracker.GUI.ViewModels
 {
@@ -24,6 +26,7 @@ namespace TTracker.GUI.ViewModels
         public Guid ModelId { get { return _modelId; } set { SetProperty(ref _modelId, value); } }
         public Guid ParentId { get { return _parentId; } set { SetProperty(ref _parentId, value); } }
         public ObservableCollection<ProjectViewModel> Children { get; set; } = new ObservableCollection<ProjectViewModel>();
+        public DelegateCommand SelectedCommand => new DelegateCommand(Selected);
 
         public string Name
         {
@@ -45,6 +48,10 @@ namespace TTracker.GUI.ViewModels
             }
         }
 
+        void Selected()
+        {
+            ((ProjectFrameViewModel)CurrentBase).SelectedItem = this;
+        }
 
         public ProjectViewModel(Project project, ViewModelManagementBase currentBase, bool @new)
         {

@@ -15,10 +15,5 @@ namespace TTracker.GUI.Views.TicketManagementSubViews
             this.DataContext = new ProjectFrameViewModel();
         }
 
-        private void SelectedRootProjectButton_Click(object sender, RoutedEventArgs e)
-        {
-            var blub = sender.GetType();
-            ((ProjectFrameViewModel)DataContext).SelectedItemCommand.Execute(sender);
-        }
     }
 }

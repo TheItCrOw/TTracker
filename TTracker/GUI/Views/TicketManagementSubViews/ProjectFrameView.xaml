@@ -16,8 +16,6 @@
         </Grid.ColumnDefinitions>
 
 
-
-
         <!--Menu on the left side-->
         <Grid Grid.Column="0" Background="LightSteelBlue">
             <Grid.RowDefinitions>
@@ -40,11 +38,12 @@
                                     <!--Here the Childrne should be displayed, they are still empty-->
                                     <ItemsControl ItemsSource="{Binding Projects}">
                                         <Button Content="{Binding Name}" FontSize="17" Margin="5" BorderThickness="0.5" Background="White" BorderBrush="Gray" 
-                                                Command="{Binding Source=ProjectFrameViewModel, Path=SelectedItemCommand}"
+                                                Command="{Binding SelectedCommand}"
                                                 />
                                     </ItemsControl>
                                 </Expander>
-                                <Button DockPanel.Dock="Left" Height="75" Content="{Binding Name}" FontSize="20" FontWeight="Bold" VerticalContentAlignment="Center" BorderThickness="1 1 1 0" Background="AliceBlue" Click="SelectedRootProjectButton_Click" 
+                                <Button DockPanel.Dock="Left" Height="75" Content="{Binding Name}" FontSize="20" FontWeight="Bold" VerticalContentAlignment="Center" BorderThickness="1 1 1 0" Background="AliceBlue"
+                                        Command="{Binding SelectedCommand}"
                                         />
                             </DockPanel>
                         </Border>
