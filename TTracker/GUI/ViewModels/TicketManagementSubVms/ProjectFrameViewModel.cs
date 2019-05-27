@@ -68,12 +68,19 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
 
         void SaveAllProjects()
         {
+            foreach(var project in Projects)
+            {
+                project.Save();
+            }
             HasUnsavedChanges = false;
         }
 
         void CreateNewProject()
         {
-
+            var createNewProjectView = new CreateTicketView();
+            createNewProjectView.DataContext = new CreateTicketViewModel((AllTicketsFrameViewModel)CurrentContent);
+            createNewProjectView.Show();
+            createNewProjectView.Topmost = true;
         }
 
         private void LoadProjects()

@@ -5,6 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+/// <summary>
+/// Source of the code below: http://blog.functionalfun.net/2008/06/wpf-passwordbox-and-data-binding.html
+/// </summary>
+
 
 namespace TTracker.Utility
 {

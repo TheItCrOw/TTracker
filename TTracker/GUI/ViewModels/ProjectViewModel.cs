@@ -57,7 +57,7 @@ namespace TTracker.GUI.ViewModels
         {
             CurrentBase = currentBase;
             _model = project;
-            isNew = @new;
+            IsNew = @new;
 
             Id = Guid.NewGuid();
             ParentId = project.ParentId;
@@ -67,17 +67,17 @@ namespace TTracker.GUI.ViewModels
             UsedTime = project.UsedTime;
             ModelId = project.Id;
 
-            if (!isNew)
+            if (!IsNew)
                 AfterSave();
 
         }
 
         public void Save()
         {
-            if (!isDirty)
+            if (!IsDirty)
                 return;
 
-            if (isNew)
+            if (IsNew)
             {
 
             }

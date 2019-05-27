@@ -64,7 +64,7 @@ namespace TTracker.GUI.ViewModels
         {
             CurrentBase = currentBase;
             _model = taskTicket;
-            isNew = @new;
+            IsNew = @new;
 
             Name = taskTicket.Name;
             Id = Guid.NewGuid();
@@ -76,7 +76,7 @@ namespace TTracker.GUI.ViewModels
             UsedTime = taskTicket.UsedTime;
             Progress = UsedTime + " / " + ExpectedTime + " Days";
 
-            if(!isNew)
+            if(!IsNew)
             {
                 AfterSave();
             }          
@@ -85,10 +85,10 @@ namespace TTracker.GUI.ViewModels
 
         public void Save()
         {
-            if (!isDirty)
+            if (!IsDirty)
                 return;
 
-            if(isNew)
+            if(IsNew)
             {
                 DataAccess.Instance.RegisterAndSaveNewTaskTicket(this._model);
                 AfterSave();

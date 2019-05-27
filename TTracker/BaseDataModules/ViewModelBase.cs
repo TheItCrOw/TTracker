@@ -11,11 +11,9 @@ namespace TTracker.BaseDataModules
     public class ViewModelBase : BindableBase
     {
 
-        public bool isDirty;
-
-        public bool isNew;
-
-        public ViewModelManagementBase CurrentBase;
+        public bool IsDirty { get; set; }
+        public bool IsNew { get; set; }
+        public ViewModelManagementBase CurrentBase { get; set; }
 
         public List<string> ChangedProperties = new List<string>();
 
@@ -24,7 +22,7 @@ namespace TTracker.BaseDataModules
 
         protected void SetIsDirty(string PropertyName)
         {
-            isDirty = true;
+            IsDirty = true;
 
             if (!ChangedProperties.Contains(PropertyName))
                 ChangedProperties.Add(PropertyName);
@@ -34,8 +32,8 @@ namespace TTracker.BaseDataModules
 
         protected void AfterSave()
         {
-            isDirty = false;
-            isNew = false;
+            IsDirty = false;
+            IsNew = false;
             CurrentBase.HasUnsavedChanges = false;
             ChangedProperties.Clear();
         }
