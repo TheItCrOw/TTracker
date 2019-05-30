@@ -8,6 +8,7 @@ using System.Linq;
 using System.Windows;
 using TTracker.BaseDataModules;
 using TTracker.GUI.Models;
+using TTracker.GUI.Views.TicketManagementSubViews;
 using TTracker.Utility;
 
 namespace TTracker.GUI.ViewModels.TicketManagementSubVms
@@ -77,8 +78,8 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
 
         void CreateNewProject()
         {
-            var createNewProjectView = new CreateTicketView();
-            createNewProjectView.DataContext = new CreateTicketViewModel((AllTicketsFrameViewModel)CurrentContent);
+            var createNewProjectView = new CreateProjectView();
+            createNewProjectView.DataContext = new CreateProjectViewModel((ProjectFrameViewModel)CurrentContent);
             createNewProjectView.Show();
             createNewProjectView.Topmost = true;
         }

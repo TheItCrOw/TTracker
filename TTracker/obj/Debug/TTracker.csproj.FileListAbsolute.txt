@@ -84,3 +84,5 @@ E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\C
 E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\AllTicketsFrameView.baml
 E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\ProjectFrameView.g.cs
 E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\ProjectFrameView.baml
+E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\CreateProjectView.g.cs
+E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\CreateProjectView.baml

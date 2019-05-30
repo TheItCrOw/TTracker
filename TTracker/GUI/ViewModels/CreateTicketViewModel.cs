@@ -92,7 +92,6 @@ namespace TTracker.GUI.ViewModels
                 SetProperty(ref _expectedTicketTime, value);
             }
         }
-
         public ProjectViewModel SelectedComboBoxItem
         {
             get { return _selectedComboBoxItem; }

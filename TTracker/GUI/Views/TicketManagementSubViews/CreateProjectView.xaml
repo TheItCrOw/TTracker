@@ -1,0 +1,122 @@
+﻿<Window x:Class="TTracker.GUI.Views.TicketManagementSubViews.CreateProjectView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TTracker.GUI.Views.TicketManagementSubViews"
+        mc:Ignorable="d"
+        Title="CreateProjectView" Height="800" Width="1000">
+    <Border BorderThickness="2" BorderBrush="Black" Margin="10">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="60" />
+            </Grid.RowDefinitions>
+
+            <!--Topic-->
+            <Border Grid.Column="0" BorderThickness="0 0 0 2" BorderBrush="Black" Background="LightSteelBlue">
+                <TextBlock Text="Create a new Project"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           TextAlignment="Center"
+                           VerticalAlignment="Center"/>
+            </Border>
+
+            <!--Whether you want to create a child Project or Root Project-->
+            <Border Grid.Row="1" BorderBrush="Black" BorderThickness="0.3">
+                <StackPanel HorizontalAlignment="Right" Width="370" Margin="0 0 10 0" VerticalAlignment="Bottom">
+                    <TextBlock Text="Choose the Project which the new one should be sorted under. 
+                               If left empty, a new Root Project will be created."
+                               FontSize="12"
+                               TextWrapping="Wrap"
+                               TextAlignment="Center"
+                               />
+                </StackPanel>
+            </Border>
+
+
+            <!--Here the information has to be filled in-->
+            <!--Things to be filled out for a Project: Name, Root Project, Project Description-->
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+
+                <!--Upper Part with Name and Project-->
+                <Grid Grid.Row="0" Grid.Column="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="50" />
+                    </Grid.RowDefinitions>
+
+                    <!--Enter Project-Name-->
+                    <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">
+                        <TextBlock Text="Project-Name" FontSize="15" Margin="10 0 0 0"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
+                        <TextBox Width="350" Height="25" FontSize="15" HorizontalAlignment="Right" Margin="0 0 20 0"
+                                 Text="{Binding ProjectName}"/>
+                    </StackPanel>
+
+                    <!--Choose Project (Yet to be created, jsut raw UI)-->
+                    <StackPanel Grid.Row="0" Grid.Column="2" VerticalAlignment="Center">
+                        <TextBlock Text="Root Project:" FontSize="15" Margin="10 0 0 0"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" Margin="0 0 10 0">
+                        <ComboBox VerticalAlignment="Center" FontSize="15" Background="AliceBlue" ItemsSource="{Binding Projects}" SelectionChanged="ComboBox_SelectionChanged" >
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Name}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </StackPanel>
+
+                </Grid>
+            </Grid>
+            <!--Enter Project Description-->
+            <Border Grid.Row="3" Grid.Column="0" BorderThickness="0 0.5 0 0.5" BorderBrush="Black">
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="Project Description" FontSize="15" Margin="10 0 0 0" TextAlignment="Center" FontWeight="DemiBold"/>
+                </StackPanel>
+            </Border>
+            <Border Grid.Row="4" Grid.Column="0">
+                <ScrollViewer>
+                    <TextBox Width="Auto" Height="Auto" FontSize="15"  Margin="10" TextWrapping="Wrap" AcceptsReturn="True"
+                             Text="{Binding ProjectText}"/>
+                </ScrollViewer>
+            </Border>
+
+            <!--Enter Expected Time--><!--
+            <DockPanel Grid.Row="5" HorizontalAlignment="Center" LastChildFill="False">
+                <TextBlock Text="Expected Time (In Work days)" FontSize="15" TextAlignment="Center" VerticalAlignment="Center" DockPanel.Dock="Left" Margin="10" FontWeight="DemiBold"/>
+                <TextBox Text="{Binding ExpectedTicketTime, StringFormat=N2}" FontSize="15" TextAlignment="Center" VerticalAlignment="Center" DockPanel.Dock="Left" Width="50"/>
+            </DockPanel>-->
+
+            <!--Create new Project Button-->
+            <StackPanel x:Name="CreateNewTicketButton" Grid.Row="6" VerticalAlignment="Center">
+                <Button Content="Create new Project" Height="40" Width="350" Command="{Binding CreateNewProjectCommand}"/>
+            </StackPanel>
+
+        </Grid>
+    </Border>
+</Window>
