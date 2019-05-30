@@ -29,7 +29,6 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
         {
             CurrentContent = this;
             LoadProjects();
-            testing();
             HandleCollectionChanges();
 
         }
@@ -96,8 +95,10 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
             foreach (var project in allProjects)
             {
                 if (DataAccess.CurrentLoggedUser != null && project.UserId == DataAccess.CurrentLoggedUser.Id)
-                    allProjectsVM.Add(new ProjectViewModel(project, (AllTicketsFrameViewModel)CurrentContent, false));
+                    allProjectsVM.Add(new ProjectViewModel(project, (ProjectFrameViewModel)CurrentContent, false));
             }
+
+            Projects.AddRange(allProjectsVM);
         }
 
         public string ProjectName
@@ -118,48 +119,5 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
                 HandlePropertyBase2Project(nameof(ProjectText));
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        void testing()
-        {
-            var projects = new List<Project>();
-
-
-            projects.Add(new Project("Projects1", Guid.NewGuid(), Guid.NewGuid(), Guid.Empty, "Text", DateTime.Now, 2));
-            projects.Add(new Project("Projects2", Guid.NewGuid(), Guid.NewGuid(), Guid.Empty, "Text", DateTime.Now, 2));
-            projects.Add(new Project("Projects3", Guid.NewGuid(), Guid.NewGuid(), Guid.Empty, "Text", DateTime.Now, 2));
-            projects.Add(new Project("Projects4", Guid.NewGuid(), Guid.NewGuid(), Guid.Empty, "Text", DateTime.Now, 2));
-            projects.Add(new Project("Projects5", Guid.NewGuid(), Guid.NewGuid(), Guid.Empty, "Text", DateTime.Now, 2));
-            projects.Add(new Project("Projects5", Guid.NewGuid(), Guid.NewGuid(), Guid.Empty, "Text", DateTime.Now, 2));
-            projects.Add(new Project("Projects5", Guid.NewGuid(), Guid.NewGuid(), Guid.Empty, "Text", DateTime.Now, 2));
-            projects.Add(new Project("Projects5", Guid.NewGuid(), Guid.NewGuid(), Guid.Empty, "Text", DateTime.Now, 2));
-            projects.Add(new Project("Projects5", Guid.NewGuid(), Guid.NewGuid(), Guid.Empty, "Text", DateTime.Now, 2));
-            projects.Add(new Project("Projects5", Guid.NewGuid(), Guid.NewGuid(), Guid.Empty, "Text", DateTime.Now, 2));
-            projects.Add(new Project("Projects5", Guid.NewGuid(), Guid.NewGuid(), Guid.Empty, "Text", DateTime.Now, 2));
-            projects.Add(new Project("Projects5", Guid.NewGuid(), Guid.NewGuid(), Guid.Empty, "Text", DateTime.Now, 2));
-            projects.Add(new Project("Projects5", Guid.NewGuid(), Guid.NewGuid(), Guid.Empty, "Text", DateTime.Now, 2));
-
-            Projects.AddRange(projects.Select(x => new ProjectViewModel(x, this, false)));
-
-        }
-
-
-
     }
 }

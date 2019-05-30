@@ -43,6 +43,5 @@ namespace TTracker.BaseDataModules
             CurrentBase.HasUnsavedChanges = true;
         }
 
-
     }
 }

@@ -45,7 +45,7 @@
                             <DockPanel >
                                 <Expander ExpandDirection="Down" DockPanel.Dock="Bottom" HorizontalAlignment="Stretch" Width="432" BorderBrush="Gray" BorderThickness="0.5">
                                     <!--Here the Childrne should be displayed, they are still empty-->
-                                    <ItemsControl ItemsSource="{Binding Projects}">
+                                    <ItemsControl ItemsSource="{Binding Children}">
                                         <Button Content="{Binding Name}" FontSize="17" Margin="5" BorderThickness="0.5" Background="White" BorderBrush="Gray" 
                                                 Command="{Binding SelectedCommand}"
                                                 />

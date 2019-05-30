@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using TTracker.BaseDataModules;
 using TTracker.GUI.Models;
 using TTracker.GUI.ViewModels.TicketManagementSubVms;
+using TTracker.Utility;
 
 namespace TTracker.GUI.ViewModels
 {
@@ -51,6 +52,12 @@ namespace TTracker.GUI.ViewModels
         void Selected()
         {
             ((ProjectFrameViewModel)CurrentBase).HandleSelectedProjects(this);
+
+            Children.Add(new ProjectViewModel(_model, CurrentBase, false));
+            Children.Add(new ProjectViewModel(_model, CurrentBase, false));
+            Children.Add(new ProjectViewModel(_model, CurrentBase, false));
+            Children.Add(new ProjectViewModel(_model, CurrentBase, false));
+            Children.Add(new ProjectViewModel(_model, CurrentBase, false));
         }
 
         public ProjectViewModel(Project project, ViewModelManagementBase currentBase, bool @new)
@@ -70,6 +77,8 @@ namespace TTracker.GUI.ViewModels
             if (!IsNew)
                 AfterSave();
 
+
+
         }
 
         public void Save()
@@ -79,7 +88,9 @@ namespace TTracker.GUI.ViewModels
 
             if (IsNew)
             {
-
+                DataAccess.Instance.RegisterAndSaveNewProject(this._model);
+                AfterSave();
+                return;
             }
 
 

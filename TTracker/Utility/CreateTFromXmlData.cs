@@ -114,5 +114,62 @@ namespace TTracker.Utility
             }
             return allTaskTickets;
         }
+        public List<Project> CreateProjectFromXmlData(List<XDocument> projectData)
+        {
+            var name = string.Empty;
+            Guid Id = Guid.Empty;
+            Guid userId = Guid.Empty;
+            Guid parentId = Guid.Empty;
+            var text = string.Empty;
+            DateTime created = DateTime.Now;
+            float usedTime = 0;
+
+            var allProjects = new List<Project>();
+
+            //Foreach XDocument in projectData
+            foreach (var doc in projectData)
+            {
+                var docAllData = doc.Root.Value;
+                var docElement = doc.Root.Elements();
+
+                //Foreach element in XML FIle -> Id/432985094589 etc.
+                foreach (var element in docElement)
+                {
+                    var data = element.ToString();
+
+                    if (data != null)
+                    {
+                        string[] splitedData = data.Split(new char[] { '/' });
+
+                        switch (splitedData[1])
+                        {
+                            case "Name>":
+                                name = element.Value;
+                                break;
+                            case "Id>":
+                                Id = new Guid(element.Value);
+                                break;
+                            case "UserId>":
+                                userId = new Guid(element.Value);
+                                break;
+                            case "ParentId>":
+                                parentId = new Guid(element.Value);
+                                break;
+                            case "Text>":
+                                text = element.Value;
+                                break;
+                            case "Created>":
+                                created = DateTime.Parse(element.Value);
+                                break;
+                            case "UsedTime>":
+                                usedTime = float.Parse(element.Value);
+                                break;
+                        }
+                    }
+                }
+                allProjects.Add(new Project(name, Id, userId, parentId, text, created, usedTime));
+            }
+            return allProjects;
+        }
     }
 }

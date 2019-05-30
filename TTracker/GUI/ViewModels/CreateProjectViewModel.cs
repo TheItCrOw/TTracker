@@ -25,6 +25,7 @@ namespace TTracker.GUI.ViewModels
 
         public CreateProjectViewModel(ProjectFrameViewModel allProjectsVm)
         {
+            CurrentContent = this;
             _allProjectsVm = allProjectsVm;
             LoadRootProjects();
         }
@@ -71,9 +72,11 @@ namespace TTracker.GUI.ViewModels
                 if(DataAccess.CurrentLoggedUser != null && project.UserId == DataAccess.CurrentLoggedUser.Id &&
                     project.ParentId == Guid.Empty)
                 {
-                    allProjectsVm.Add(new ProjectViewModel(project, (ProjectFrameViewModel)CurrentContent, false));
+                    allProjectsVm.Add(new ProjectViewModel(project, this, false));
                 }
             }
+
+            Projects.AddRange(allProjectsVm);
         }
 
         private void CreateNewProject()

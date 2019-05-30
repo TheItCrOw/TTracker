@@ -53,6 +53,18 @@ namespace TTracker.Utility
             XmlWriteableDataList.Add("UsedTime/" + newTaskTicket.UsedTime);
             _xmlReaderWriter.SaveNewToXml("TaskTickets", newTaskTicket.Id, XmlWriteableDataList);
         }
+        public void RegisterAndSaveNewProject(Project newProject)
+        {
+            XmlWriteableDataList.Clear();
+            XmlWriteableDataList.Add("Id/" + newProject.Id);
+            XmlWriteableDataList.Add("Name/" + newProject.Name);
+            XmlWriteableDataList.Add("UserId/" + newProject.UserId);
+            XmlWriteableDataList.Add("ParentId/" + newProject.ParentId);
+            XmlWriteableDataList.Add("Text/" + newProject.Text);
+            XmlWriteableDataList.Add("Created/" + newProject.Created);
+            XmlWriteableDataList.Add("UsedTime/" + newProject.UsedTime);
+            _xmlReaderWriter.SaveNewToXml("Projects", newProject.Id, XmlWriteableDataList);
+        }
 
         /// <summary>
         /// Takes in a type and returns a List of all found Types that is found in the xmlCache
@@ -69,9 +81,8 @@ namespace TTracker.Utility
             {
                 case "TaskTicket":
                     return (IEnumerable<T>)(_createTFromXmlData.CreateTaskTicketFromXmlData(allData));
-                case "":
-                    ;
-                    break;
+                case "Project":
+                    return (IEnumerable<T>)(_createTFromXmlData.CreateProjectFromXmlData(allData));                     
             }
 
             return null;
