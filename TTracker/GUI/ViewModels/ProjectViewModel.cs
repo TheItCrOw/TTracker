@@ -21,6 +21,7 @@ namespace TTracker.GUI.ViewModels
         private Project _model;
         private Guid _modelId;
         private Guid _parentId;
+        private bool _isSelected;
 
         public DateTime Created { get { return _created; } set { SetProperty(ref _created, value); } }
         public float UsedTime { get { return _usedTime; } set { SetProperty(ref _usedTime, value); } }
@@ -46,6 +47,15 @@ namespace TTracker.GUI.ViewModels
             {
                 SetProperty(ref _text, value);
                 SetIsDirty(nameof(Text));
+            }
+        }
+
+        public bool isSelected
+        {
+            get { return _isSelected; }
+            set
+            {
+                SetProperty(ref _isSelected, value);
             }
         }
 
@@ -76,7 +86,6 @@ namespace TTracker.GUI.ViewModels
 
             if (!IsNew)
                 AfterSave();
-
 
 
         }

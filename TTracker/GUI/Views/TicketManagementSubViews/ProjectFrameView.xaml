@@ -46,14 +46,47 @@
                                 <Expander ExpandDirection="Down" DockPanel.Dock="Bottom" HorizontalAlignment="Stretch" Width="432" BorderBrush="Gray" BorderThickness="0.5">
                                     <!--Here the Childrne should be displayed, they are still empty-->
                                     <ItemsControl ItemsSource="{Binding Children}">
-                                        <Button Content="{Binding Name}" FontSize="17" Margin="5" BorderThickness="0.5" Background="White" BorderBrush="Gray" 
-                                                Command="{Binding SelectedCommand}"
-                                                />
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Button Content="{Binding Name}" FontSize="17" Margin="5" BorderThickness="0.5" Background="White" BorderBrush="Gray" Command="{Binding SelectedCommand}">
+                                                    <Button.Style>
+                                                        <!--Highlight the Item that is selected-->
+                                                        <Style TargetType="{x:Type Button}">
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding isSelected}" Value="true">
+                                                                    <Setter Property="Foreground" Value="Red"/>
+                                                                    <Setter Property="BorderBrush" Value="Red"/>
+                                                                </DataTrigger>
+                                                                <DataTrigger Binding="{Binding isSelected}" Value="false">
+                                                                    <Setter Property="Foreground" Value="Black"/>
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Button.Style>  
+                                                </Button>
+                                                
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
                                     </ItemsControl>
                                 </Expander>
-                                <Button DockPanel.Dock="Left" Height="75" Content="{Binding Name}" FontSize="20" FontWeight="Bold" VerticalContentAlignment="Center" BorderThickness="1 1 1 0" Background="AliceBlue"
-                                        Command="{Binding SelectedCommand}"
-                                        />
+                                <Button DockPanel.Dock="Left" Height="75" Content="{Binding Name}" 
+                                        FontSize="20" FontWeight="Bold" VerticalContentAlignment="Center" 
+                                        BorderThickness="1 1 1 0" Background="AliceBlue" Command="{Binding SelectedCommand}">
+                                    <Button.Style>
+                                        <!--Highlight the Item that is selected-->
+                                        <Style TargetType="{x:Type Button}">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding isSelected}" Value="true">
+                                                    <Setter Property="Foreground" Value="Red"/>
+                                                    <Setter Property="BorderBrush" Value="Red"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding isSelected}" Value="false">
+                                                    <Setter Property="Foreground" Value="Black"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
                             </DockPanel>
                         </Border>
                     </DataTemplate>

@@ -30,7 +30,6 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
             CurrentContent = this;
             LoadProjects();
             HandleCollectionChanges();
-
         }
         private void HandleCollectionChanges()
         {
@@ -39,7 +38,11 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
 
         public void HandleSelectedProjects(ProjectViewModel selectedProject)
         {
+            if (SelectedItem != null)
+                SelectedItem.isSelected = false;
+
             SelectedItem = selectedProject;
+            SelectedItem.isSelected = true;
             ProjectName = selectedProject.Name;
             ProjectText = selectedProject.Text;
             UsedProjectTime = selectedProject.UsedTime;
@@ -68,7 +71,7 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
 
         void SaveAllProjects()
         {
-            foreach(var project in Projects)
+            foreach (var project in Projects)
             {
                 project.Save();
             }
