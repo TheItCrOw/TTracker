@@ -74,6 +74,11 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
             foreach (var project in Projects)
             {
                 project.Save();
+
+                foreach(var child in project.Children)
+                {
+                    child.Save();
+                }
             }
             HasUnsavedChanges = false;
         }

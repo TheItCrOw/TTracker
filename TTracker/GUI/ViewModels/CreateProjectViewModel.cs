@@ -112,9 +112,22 @@ namespace TTracker.GUI.ViewModels
                 DateTime.Now,
                 0);
 
-            _allProjectsVm.Projects.Add(new ProjectViewModel(project, _allProjectsVm, true));
+            UpdateProjectCollection(new ProjectViewModel(project, _allProjectsVm, true));
             MessageBox.Show("The project has been succesfully created!");
 
+        }
+
+        void UpdateProjectCollection(ProjectViewModel projectVm)
+        {
+            if(projectVm.ParentId == Guid.Empty)
+            {
+                _allProjectsVm.Projects.Add(projectVm);
+            }
+            else
+            {
+                var rootProject = _allProjectsVm.Projects.FirstOrDefault(p => p.ModelId == projectVm.ParentId);
+                rootProject.Children.Add(projectVm);
+            }
         }
 
     }
