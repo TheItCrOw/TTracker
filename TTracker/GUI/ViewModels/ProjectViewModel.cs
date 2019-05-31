@@ -63,11 +63,11 @@ namespace TTracker.GUI.ViewModels
         {
             ((ProjectFrameViewModel)CurrentBase).HandleSelectedProjects(this);
 
-            Children.Add(new ProjectViewModel(_model, CurrentBase, false));
-            Children.Add(new ProjectViewModel(_model, CurrentBase, false));
-            Children.Add(new ProjectViewModel(_model, CurrentBase, false));
-            Children.Add(new ProjectViewModel(_model, CurrentBase, false));
-            Children.Add(new ProjectViewModel(_model, CurrentBase, false));
+            //Children.Add(new ProjectViewModel(_model, CurrentBase, false));
+            //Children.Add(new ProjectViewModel(_model, CurrentBase, false));
+            //Children.Add(new ProjectViewModel(_model, CurrentBase, false));
+            //Children.Add(new ProjectViewModel(_model, CurrentBase, false));
+            //Children.Add(new ProjectViewModel(_model, CurrentBase, false));
         }
 
         public ProjectViewModel(Project project, ViewModelManagementBase currentBase, bool @new)
@@ -87,7 +87,6 @@ namespace TTracker.GUI.ViewModels
             if (!IsNew)
                 AfterSave();
 
-
         }
 
         public void Save()
@@ -102,7 +101,27 @@ namespace TTracker.GUI.ViewModels
                 return;
             }
 
+            //Contains the property name and the changed value like:
+            // Name/Ttrackerr
+            var changedPropertiesFullData = new List<string>();
 
+            foreach (var p in ChangedProperties)
+            {
+                switch (p)
+                {
+                    case "Name":
+                        _model.Name = this.Name;
+                        changedPropertiesFullData.Add(("Name/" + _model.Name).ToString());
+                        break;
+                    case "Text":
+                        _model.Text = this.Text;
+                        changedPropertiesFullData.Add(("Text/" + _model.Text).ToString());
+                        break;
+                }
+            }
+            DataAccess.Instance.Save<Project>(this._model, changedPropertiesFullData);
+            changedPropertiesFullData.Clear();
+            AfterSave();
         }
 
     }

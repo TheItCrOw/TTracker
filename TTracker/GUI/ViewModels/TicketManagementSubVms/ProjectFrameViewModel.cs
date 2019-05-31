@@ -89,19 +89,36 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
         private void LoadProjects()
         {
             Projects.Clear();
+            //Get all project Models
             var allProjects = DataAccess.Instance.GetAll<Project>();
-            var allProjectsVM = new List<ProjectViewModel>();
 
-            if (allProjects == null)
+            //Check for nulls or not logged in user
+            if (allProjects == null || DataAccess.CurrentLoggedUser == null)
                 return;
 
-            foreach (var project in allProjects)
-            {
-                if (DataAccess.CurrentLoggedUser != null && project.UserId == DataAccess.CurrentLoggedUser.Id)
-                    allProjectsVM.Add(new ProjectViewModel(project, (ProjectFrameViewModel)CurrentContent, false));
-            }
+            //All projects that belong to the user, craete a VM out of it
+            var allProjectsVM = allProjects
+                .Where(p => p.UserId == DataAccess.CurrentLoggedUser.Id)
+                .Select(p => (new ProjectViewModel(p, this, false)))
+                .ToList();
 
-            Projects.AddRange(allProjectsVM);
+            //Create a lookup for the children 
+            var allProjectsDic = allProjectsVM.ToLookup(p => p.ParentId, p => p);
+
+            foreach (var project in allProjectsVM)
+            {
+                //Get the root projects
+                if(project.ParentId == Guid.Empty)
+                {
+                    //When parentId matches ModelId, add as children!
+                    var children = allProjectsDic[project.ModelId];
+
+                    project.Children.AddRange(children);
+
+                    Projects.Add(project);
+                }
+
+            }
         }
 
         public string ProjectName

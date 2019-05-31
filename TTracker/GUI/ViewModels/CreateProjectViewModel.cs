@@ -62,7 +62,7 @@ namespace TTracker.GUI.ViewModels
         {
             Projects.Clear();
             var allProjects = DataAccess.Instance.GetAll<Project>();
-            var allProjectsVm = new List<ProjectViewModel>();
+            var allProjectsVms = new List<ProjectViewModel>();
 
             if (allProjects == null)
                 return;
@@ -72,11 +72,11 @@ namespace TTracker.GUI.ViewModels
                 if(DataAccess.CurrentLoggedUser != null && project.UserId == DataAccess.CurrentLoggedUser.Id &&
                     project.ParentId == Guid.Empty)
                 {
-                    allProjectsVm.Add(new ProjectViewModel(project, this, false));
+                    allProjectsVms.Add(new ProjectViewModel(project, this, false));
                 }
             }
 
-            Projects.AddRange(allProjectsVm);
+            Projects.AddRange(allProjectsVms);
         }
 
         private void CreateNewProject()
