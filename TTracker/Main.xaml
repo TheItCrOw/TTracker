@@ -44,7 +44,7 @@
                             ToolTip="Ticket Management">
                         <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/tasks.png"/>
                     </Button>
-                    <Button x:Name="TimeButton" Grid.Column="3" Background="White" Margin="0 0 0 0"
+                    <Button x:Name="TimeButton" Grid.Column="3" Background="White" Margin="0 0 0 0" Click="TimeEngine_OnClick"
                             ToolTip="Time Engine">
                         <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/time.png"/>
                     </Button>

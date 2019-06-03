@@ -1,0 +1,84 @@
+﻿<Page x:Class="TTracker.GUI.Views.TimeEngineView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TTracker.GUI.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="TimeEngineView">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!--Time Engine Topic Intro-->
+        <Border Background="White" BorderBrush="Black" BorderThickness="1" Grid.Row="0" Grid.Column="0">
+            <TextBlock Text="Time Engine" TextAlignment="Center" VerticalAlignment="Center" FontSize="15" TextWrapping="Wrap" FontWeight="Bold"/>
+        </Border>
+
+
+        <!--Navigation Menu on the right for main content-->
+        <Border BorderThickness="1" BorderBrush="Black" Grid.Row="0" Grid.Column="1" Background="LightSteelBlue">
+            <TextBlock Text="{Binding CurrentUserName}" 
+                               FontSize="20"
+                               TextAlignment="Center"
+                               VerticalAlignment="Center"/>
+        </Border>
+
+        <!--Main Content on the right-->
+        <Grid Grid.Column="1" Grid.Row="1" Background="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!--Very simple interpretation of time engine for the early state, so I can start working with TTracker as intended-->
+            <Border Grid.Row="0" BorderThickness="1" BorderBrush="Black">
+                <DockPanel Margin="10" LastChildFill="False">
+                    <TextBlock DockPanel.Dock="Top" Text="Your time for today, the: " FontWeight="DemiBold" HorizontalAlignment="Center" FontSize="15"/>
+                    <TextBlock DockPanel.Dock="Top" Text="Add time to the ticket you have currently worked on:" HorizontalAlignment="Center" FontSize="15" Margin="0 10 0 0 "/>
+                    <!--Comboboxes and UI logik for adding time here-->
+                    <DockPanel DockPanel.Dock="Top" Margin="0 10 0 0" LastChildFill="False" HorizontalAlignment="Center">
+                        <TextBlock Text="Choose the project: "/>
+                        <ComboBox DockPanel.Dock="Left" Width="200" Margin="10 0 0 0"/>
+                        <TextBlock Text="Choose the ticket: " Margin="10 0 0 0"/>
+                        <ComboBox DockPanel.Dock="Left" Width="200" Margin="10 0 0 0"/>
+                    </DockPanel>
+                    <!--Adding the actual time-->
+                    <DockPanel DockPanel.Dock="Top" LastChildFill="False" Margin="0 20 0 0" HorizontalAlignment="Center">
+                        <TextBlock DockPanel.Dock="Left" Text="Time: " Margin="0 0 10 0"/>
+                        <TextBox DockPanel.Dock="Left" Text="{Binding s, StringFormat=N2}" HorizontalAlignment="Center" Width="100" />
+                    </DockPanel>
+                </DockPanel>
+            </Border>
+
+        </Grid>
+
+
+        <!--Navigation Menu on the left-->
+        <Border Grid.Column="0" Grid.Row="1" BorderThickness="0 0 1 0" BorderBrush="Black" >
+            <Grid Background="LightSteelBlue">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+
+                <Button x:Name="AccountButton" Grid.Column="5" Background="LightSteelBlue" BorderBrush="Black" ToolTip="Login/Register" >
+                    <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/login.png"/>
+                </Button>
+
+            </Grid>
+        </Border>
+
+    </Grid>
+</Page>

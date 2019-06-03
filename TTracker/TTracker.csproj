@@ -97,6 +97,7 @@
     <Compile Include="GUI\ViewModels\TicketManagementSubVms\AllTicketsFrameViewModel.cs" />
     <Compile Include="GUI\ViewModels\TicketManagementSubVms\ProjectFrameViewModel.cs" />
     <Compile Include="GUI\ViewModels\TicketManagementViewModel.cs" />
+    <Compile Include="GUI\ViewModels\TimeEngineViewModel.cs" />
     <Compile Include="GUI\Views\AccountView.xaml.cs">
       <DependentUpon>AccountView.xaml</DependentUpon>
     </Compile>
@@ -117,6 +118,9 @@
     </Compile>
     <Compile Include="GUI\Views\TicketManagementView.xaml.cs">
       <DependentUpon>TicketManagementView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Views\TimeEngineView.xaml.cs">
+      <DependentUpon>TimeEngineView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utility\CreateTFromXmlData.cs" />
     <Compile Include="Utility\DataAccess.cs" />
@@ -153,6 +157,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GUI\Views\TicketManagementView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Views\TimeEngineView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

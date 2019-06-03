@@ -48,10 +48,18 @@ namespace TTracker
             NavigationFrame.Content = new AccountView();
         }
 
+        //Navigates to TicketManagement
         private void TicketManagement_OnClick(object sender, RoutedEventArgs e)
         {
             NavigationFrame.Content = null;
             NavigationFrame.Content = new TicketManagementView();
+        }
+
+        //Navigates to TimeEngine
+        private void TimeEngine_OnClick(object sender, RoutedEventArgs e)
+        {
+            NavigationFrame.Content = null;
+            NavigationFrame.Content = new TimeEngineView();
         }
     }
 }

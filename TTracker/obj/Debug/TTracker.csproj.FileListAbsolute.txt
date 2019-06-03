@@ -86,3 +86,5 @@ E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\P
 E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\ProjectFrameView.baml
 E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\CreateProjectView.g.cs
 E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\CreateProjectView.baml
+E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TimeEngineView.g.cs
+E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TimeEngineView.baml
