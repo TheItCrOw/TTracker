@@ -22,7 +22,7 @@
                                 <!--Expander with full info here-->
                                 <Expander  Margin="0 -20 0 0" HorizontalAlignment="Left" ExpandDirection="Down" DockPanel.Dock="Bottom" VerticalAlignment="Top">
                                     <DockPanel Margin="50 20 0 0" LastChildFill="False">
-                                        <TextBox Text="{Binding Text}" TextWrapping="Wrap" FontSize="17" DockPanel.Dock="Bottom" Margin="10 0 0 0" BorderThickness="0.5" Width="1570" HorizontalAlignment="Left"/>
+                                        <TextBox Text="{Binding Text}" TextWrapping="Wrap" FontSize="17" DockPanel.Dock="Bottom" Margin="10 0 0 0" BorderThickness="0.5" Width="1570" HorizontalAlignment="Left" AcceptsReturn="True"/>
                                         <TextBlock Text="Full Description:" FontSize="17" FontWeight="DemiBold" DockPanel.Dock="Bottom" Margin="10 10 0 0"/>
                                         <TextBlock Text="Ticket Id:" FontSize="17" DockPanel.Dock="Left" Margin="10" FontWeight="DemiBold"/>
                                         <TextBlock Text="{Binding ModelId}" FontSize="17"  DockPanel.Dock="Left" Margin="10"/>

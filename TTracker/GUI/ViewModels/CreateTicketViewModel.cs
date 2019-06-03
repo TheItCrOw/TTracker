@@ -33,6 +33,7 @@ namespace TTracker.GUI.ViewModels
         {
             _allTicketsVm = allTicketsVm;
             LoadProjects();
+            isTaskTicket = true;
         }
 
         private void LoadProjects()
@@ -46,8 +47,12 @@ namespace TTracker.GUI.ViewModels
 
             foreach (var project in allProjects)
             {
-                if (DataAccess.CurrentLoggedUser != null && project.UserId == DataAccess.CurrentLoggedUser.Id)
+                if (DataAccess.CurrentLoggedUser != null 
+                    && project.UserId == DataAccess.CurrentLoggedUser.Id
+                    && project.ParentId != Guid.Empty)
+                {
                     allProjectsVM.Add(new ProjectViewModel(project, this, false));
+                }
             }
 
             Projects.AddRange(allProjectsVM);

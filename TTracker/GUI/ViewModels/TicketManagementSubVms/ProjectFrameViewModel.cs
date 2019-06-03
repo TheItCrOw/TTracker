@@ -53,11 +53,11 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
             switch (property)
             {
                 case "ProjectName":
-                    if (SelectedItem.Name != ProjectName)
+                    if (SelectedItem.Name != ProjectName && SelectedItem != null)
                         SelectedItem.Name = ProjectName;
                     break;
                 case "ProjectText":
-                    if (SelectedItem.Text != ProjectText)
+                    if (SelectedItem.Text != ProjectText && SelectedItem != null)
                         SelectedItem.Text = ProjectText;
                     break;
             }
@@ -75,7 +75,7 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
             {
                 project.Save();
 
-                foreach(var child in project.Children)
+                foreach (var child in project.Children)
                 {
                     child.Save();
                 }

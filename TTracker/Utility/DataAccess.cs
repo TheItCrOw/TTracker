@@ -102,9 +102,10 @@ namespace TTracker.Utility
             foreach (var doc in allXmlOfGivenType)
             {
                 var docAllData = doc.Root.Value;
-                var docElement = doc.Root.Elements();              
+                var docElement = doc.Root.Elements();
+                var docId = doc.Root.FirstNode;
 
-                if(docAllData.ToString().Contains(saveableObject.Id.ToString()))
+                if(docId.ToString().Contains(saveableObject.Id.ToString()))
                 {
                     _xmlReaderWriter.OverwriteSaveToXml<T>(doc, changedProperties);
                 }

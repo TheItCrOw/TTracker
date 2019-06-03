@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data>
+  <Id>218375de-f804-4407-bb09-22393af381bd</Id>
+  <Name>Generic Delete Logik implementieren</Name>
+  <UserId>d601adbc-eee3-436f-b657-c9f4969a449a</UserId>
+  <ProjectId>58f1500a-c8e2-4f52-a066-8ab5372e5c55</ProjectId>
+  <ProjectName>TTracker</ProjectName>
+  <Text>Eine generische Lösung, Dinge aus dem Data Cache sowie der UI zu löschen.
+
+- DataAccess Methode Delete(); 
+- Einhaltung der davor implementierten Logik Muster</Text>
+  <Created>03.06.2019 14:28:57</Created>
+  <ExpectedTime>1</ExpectedTime>
+  <UsedTime>0</UsedTime>
+</Data>

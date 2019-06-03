@@ -62,12 +62,6 @@ namespace TTracker.GUI.ViewModels
         void Selected()
         {
             ((ProjectFrameViewModel)CurrentBase).HandleSelectedProjects(this);
-
-            //Children.Add(new ProjectViewModel(_model, CurrentBase, false));
-            //Children.Add(new ProjectViewModel(_model, CurrentBase, false));
-            //Children.Add(new ProjectViewModel(_model, CurrentBase, false));
-            //Children.Add(new ProjectViewModel(_model, CurrentBase, false));
-            //Children.Add(new ProjectViewModel(_model, CurrentBase, false));
         }
 
         public ProjectViewModel(Project project, ViewModelManagementBase currentBase, bool @new)
@@ -102,7 +96,7 @@ namespace TTracker.GUI.ViewModels
             }
 
             //Contains the property name and the changed value like:
-            // Name/Ttrackerr
+            // Name/TTracker
             var changedPropertiesFullData = new List<string>();
 
             foreach (var p in ChangedProperties)
@@ -111,16 +105,16 @@ namespace TTracker.GUI.ViewModels
                 {
                     case "Name":
                         _model.Name = this.Name;
-                        changedPropertiesFullData.Add(("Name/" + _model.Name).ToString());
+                        changedPropertiesFullData.Add(("Name/" + _model.Name));
                         break;
                     case "Text":
                         _model.Text = this.Text;
-                        changedPropertiesFullData.Add(("Text/" + _model.Text).ToString());
+                        changedPropertiesFullData.Add(("Text/" + _model.Text));
                         break;
                 }
             }
+
             DataAccess.Instance.Save<Project>(this._model, changedPropertiesFullData);
-            changedPropertiesFullData.Clear();
             AfterSave();
         }
 
