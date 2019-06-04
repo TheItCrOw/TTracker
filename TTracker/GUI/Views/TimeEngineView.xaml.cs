@@ -26,5 +26,17 @@ namespace TTracker.GUI.Views
             InitializeComponent();
             this.DataContext = new TimeEngineViewModel();
         }
+
+        private void ProjectComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var item = ((ComboBox)sender).SelectedItem;
+            ((TimeEngineViewModel)DataContext).SelectedProjectComboBoxItem = (ProjectViewModel)item;
+        }
+
+        private void TaskTicketsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var item = ((ComboBox)sender).SelectedItem;
+            ((TimeEngineViewModel)DataContext).SelectedTaskTicketComboBoxItem = (TaskTicketViewModel)item;
+        }
     }
 }
