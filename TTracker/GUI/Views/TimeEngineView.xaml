@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TTracker.GUI.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="720" d:DesignWidth="1280"
       Title="TimeEngineView">
 
     <Grid>
@@ -24,9 +24,9 @@
         </Border>
 
 
-        <!--Navigation Menu on the right for main content-->
+        <!--Current User Name-->
         <Border BorderThickness="1" BorderBrush="Black" Grid.Row="0" Grid.Column="1" Background="LightSteelBlue">
-            <TextBlock Text="{Binding CurrentUserName}" 
+            <TextBlock Text="{Binding IntroText}" 
                                FontSize="20"
                                TextAlignment="Center"
                                VerticalAlignment="Center"/>
@@ -38,25 +38,26 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
+                <RowDefinition Height="120" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
             <!--Very simple interpretation of time engine for the early state, so I can start working with TTracker as intended-->
-            <Border Grid.Row="0" BorderThickness="1" BorderBrush="Black">
+            <Border Grid.Row="0" BorderThickness="0 1 0 1" BorderBrush="Black" Background="AliceBlue">
                 <DockPanel Margin="10" LastChildFill="False">
-                    <TextBlock DockPanel.Dock="Top" Text="Your time for today, the: " FontWeight="DemiBold" HorizontalAlignment="Center" FontSize="15"/>
+                    <TextBlock DockPanel.Dock="Top" Text="What have you worked on? " FontWeight="Bold" HorizontalAlignment="Center" FontSize="20"/>
                     <TextBlock DockPanel.Dock="Top" Text="Add time to the ticket you have currently worked on:" HorizontalAlignment="Center" FontSize="15" Margin="0 10 0 0 "/>
                     <!--Comboboxes and UI logik for adding time here-->
                     <DockPanel DockPanel.Dock="Top" Margin="0 10 0 0" LastChildFill="False" HorizontalAlignment="Center">
-                        <TextBlock Text="Choose the project: "/>
-                        <ComboBox DockPanel.Dock="Left" Width="200" Margin="10 0 0 0"/>
-                        <TextBlock Text="Choose the ticket: " Margin="10 0 0 0"/>
-                        <ComboBox DockPanel.Dock="Left" Width="200" Margin="10 0 0 0"/>
-                    </DockPanel>
-                    <!--Adding the actual time-->
-                    <DockPanel DockPanel.Dock="Top" LastChildFill="False" Margin="0 20 0 0" HorizontalAlignment="Center">
-                        <TextBlock DockPanel.Dock="Left" Text="Time: " Margin="0 0 10 0"/>
-                        <TextBox DockPanel.Dock="Left" Text="{Binding s, StringFormat=N2}" HorizontalAlignment="Center" Width="100" />
+                        <TextBlock Text="Choose the project: " FontSize="15"/>
+                        <ComboBox DockPanel.Dock="Left" Width="250" Height="25" Margin="10 0 0 0"/>
+                        <TextBlock Text="Choose the ticket: " FontSize="15" Margin="10 0 0 0" />
+                        <ComboBox DockPanel.Dock="Left" Width="250" Margin="10 0 0 0"/>
+                        <!--Adding the actual time-->
+                        <TextBlock DockPanel.Dock="Left" Text="Time spent from:" Margin="10 0 10 0" FontSize="15" />
+                        <TextBox DockPanel.Dock="Left" Text="{Binding s, StringFormat=N2}" HorizontalAlignment="Center" Width="100" FontSize="15" TextAlignment="Right"/>
+                        <TextBlock DockPanel.Dock="Left" Text="->" Margin="5 0 5 0" FontSize="15" />
+                        <TextBox DockPanel.Dock="Left" Text="{Binding s, StringFormat=N2}" HorizontalAlignment="Center" Width="100" FontSize="15"/>
                     </DockPanel>
                 </DockPanel>
             </Border>
