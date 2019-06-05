@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prism.Commands;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -16,10 +17,29 @@ namespace TTracker.GUI.ViewModels
         private string _introText;
         private ProjectViewModel _selectedProjectComboBoxItem;
         private TaskTicketViewModel _selectedTaskTicketComboBoxItem;
+        private float _timeFrom;
+        private float _timeTo;
 
         public ObservableCollection<ProjectViewModel> Projects { get; set; } = new ObservableCollection<ProjectViewModel>();
         public ObservableCollection<TaskTicketViewModel> TaskTickets { get; set; } = new ObservableCollection<TaskTicketViewModel>();
+        public DelegateCommand SaveTimeCommand => new DelegateCommand(SaveTime);
 
+        public float TimeFrom
+        {
+            get { return _timeFrom; }
+            set
+            {
+                SetProperty(ref _timeFrom, value);
+            }
+        }
+        public float TimeTo
+        {
+            get { return _timeTo; }
+            set
+            {
+                SetProperty(ref _timeTo, value);
+            }
+        }
         public string IntroText
         {
             get { return _introText; }
@@ -35,7 +55,7 @@ namespace TTracker.GUI.ViewModels
             set
             {
                 SetProperty(ref _selectedProjectComboBoxItem, value);
-                LoadTickets();
+                LoadTicketsForProject();
             }
         }
 
@@ -59,7 +79,7 @@ namespace TTracker.GUI.ViewModels
         {
             if(DataAccess.CurrentLoggedUser == null)
             {
-                MessageBox.Show("You are not logged in. Please do so in the account View");
+                MessageBox.Show("You are not logged in. Please do so via the account View");
                 return;
             }
 
@@ -83,7 +103,7 @@ namespace TTracker.GUI.ViewModels
             }
         }
 
-        void LoadTickets()
+        void LoadTicketsForProject()
         {
             TaskTickets.Clear();
 
@@ -97,6 +117,26 @@ namespace TTracker.GUI.ViewModels
                     TaskTickets.Add(taskTicketVm);
                 }
             }
+        }
+
+        void SaveTime()
+        {
+            if(TimeFrom > TimeTo)
+            {
+                MessageBox.Show("Your 'worked until time' must always be later than your 'started from time'");
+                return;
+            }
+
+            var currentTicket = SelectedTaskTicketComboBoxItem;
+            var totalTime= (TimeTo - TimeFrom) / 100;
+
+            var workDay = 8;
+            var usedTime = totalTime / workDay;
+
+            currentTicket.UsedTime = usedTime;
+            currentTicket.Save();
+
+            MessageBox.Show("Time has been saved.");
         }
     }
 }

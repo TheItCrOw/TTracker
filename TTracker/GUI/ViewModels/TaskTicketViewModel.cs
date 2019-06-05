@@ -27,8 +27,7 @@ namespace TTracker.GUI.ViewModels
 
         public string ProjectName { get { return _projectName; } set { SetProperty(ref _projectName, value); } }
         public DateTime Created { get { return _created; } set { SetProperty(ref _created, value); } }
-        public float UsedTime { get { return _usedTime; } set { SetProperty(ref _usedTime, value); } }
-        public string Progress { get { return _progress; } set { SetProperty(ref _progress, value); } }
+        public string Progress { get { return _progress; } set { SetProperty(ref _progress, value); }}
         public Guid ModelId { get { return _modelId; } set { SetProperty(ref _modelId, value); } }
 
         public string Name
@@ -57,6 +56,15 @@ namespace TTracker.GUI.ViewModels
             {
                 SetProperty(ref _expectedTime, value);
                 SetIsDirty(nameof(ExpectedTime));
+            }
+        }
+        public float UsedTime
+        {
+            get { return _usedTime; }
+            set
+            {
+                SetProperty(ref _usedTime, value);
+                SetIsDirty(nameof(UsedTime));
             }
         }
 
@@ -115,6 +123,11 @@ namespace TTracker.GUI.ViewModels
                         _model.ExpectedTime = this.ExpectedTime;
                         changedPropertiesFullData.Add(("ExpectedTime/" + _model.ExpectedTime).ToString());
                         break;
+                    case "UsedTime":
+                        _model.UsedTime = this.UsedTime;
+                        changedPropertiesFullData.Add(("UsedTime/" + _model.UsedTime).ToString());
+                        break;
+
                 }
             }
             DataAccess.Instance.Save<TaskTicket>(this._model, changedPropertiesFullData);

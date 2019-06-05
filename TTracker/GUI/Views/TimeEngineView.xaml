@@ -29,53 +29,71 @@
             <TextBlock Text="{Binding IntroText}" 
                                FontSize="20"
                                TextAlignment="Center"
-                               VerticalAlignment="Center"/>
+                               VerticalAlignment="Center"
+                               FontWeight="DemiBold"/>
         </Border>
 
         <!--Main Content on the right-->
-        <Grid Grid.Column="1" Grid.Row="1" Background="White">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="120" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
+        <ScrollViewer Grid.Column="1" Grid.Row="1" Background="White" HorizontalScrollBarVisibility="Visible">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="120" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
 
-            <!--Very simple interpretation of time engine for the early state, so I can start working with TTracker as intended-->
-            <Border Grid.Row="0" BorderThickness="0 1 0 1" BorderBrush="Black" Background="AliceBlue">
-                <DockPanel Margin="10" LastChildFill="False">
-                    <TextBlock DockPanel.Dock="Top" Text="What have you worked on? " FontWeight="Bold" HorizontalAlignment="Center" FontSize="20"/>
-                    <TextBlock DockPanel.Dock="Top" Text="Add time to the ticket you have currently worked on:" HorizontalAlignment="Center" FontSize="15" Margin="0 10 0 0 "/>
-                    <!--Comboboxes and UI logik for adding time here-->
-                    <DockPanel DockPanel.Dock="Top" Margin="0 10 0 0" LastChildFill="False" HorizontalAlignment="Center">
-                        <TextBlock Text="Choose the project: " FontSize="15"/>
-                        <ComboBox x:Name="ProjectComboBox" DockPanel.Dock="Left" Width="400" Height="25" Margin="10 0 0 0" ItemsSource="{Binding Projects}" SelectionChanged="ProjectComboBox_SelectionChanged">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Name}" FontSize="15"/>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
-                        <TextBlock Text="Choose the ticket: " FontSize="15" Margin="10 0 0 0" />
-                        <ComboBox x:Name="TaskTicketsComboBox" DockPanel.Dock="Left" Width="400" Margin="10 0 0 0" ItemsSource="{Binding TaskTickets}" SelectionChanged="TaskTicketsComboBox_SelectionChanged">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Name}" FontSize="15"/>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
-                        <!--Adding the actual time-->
-                        <TextBlock DockPanel.Dock="Left" Text="Time spent from:" Margin="10 0 10 0" FontSize="15" />
-                        <TextBox DockPanel.Dock="Left" Text="{Binding s, StringFormat=N2}" HorizontalAlignment="Center" Width="100" FontSize="15" TextAlignment="Right"/>
-                        <TextBlock DockPanel.Dock="Left" Text="->" Margin="5 0 5 0" FontSize="15" />
-                        <TextBox DockPanel.Dock="Left" Text="{Binding s, StringFormat=N2}" HorizontalAlignment="Center" Width="100" FontSize="15"/>
+                <!--Very simple interpretation of time engine for the early state, so I can start working with TTracker as intended-->
+                <Border Grid.Row="0" BorderThickness="0 1 0 1" BorderBrush="Black" Background="AliceBlue">
+                    <DockPanel Margin="10" LastChildFill="False">
+                        <TextBlock DockPanel.Dock="Top" Text="What have you worked on? " FontWeight="Bold" HorizontalAlignment="Center" FontSize="20"/>
+                        <TextBlock DockPanel.Dock="Top" Text="Add time to the ticket you have currently worked on:" HorizontalAlignment="Center" FontSize="15" Margin="0 10 0 0 "/>
+                        <!--Comboboxes and UI logik for adding time here-->
+                        <DockPanel DockPanel.Dock="Top" Margin="0 10 0 0" LastChildFill="False" HorizontalAlignment="Center">
+                            <TextBlock Text="Choose the project: " FontSize="15"/>
+                            <ComboBox x:Name="ProjectComboBox" DockPanel.Dock="Left" Width="400" Height="25" Background="LightSteelBlue" Margin="10 0 0 0" 
+                                      ItemsSource="{Binding Projects}" SelectionChanged="ProjectComboBox_SelectionChanged">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Name}" FontSize="15"/>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                            <TextBlock Text="Choose the ticket: " FontSize="15" Margin="10 0 0 0" />
+                            <ComboBox x:Name="TaskTicketsComboBox" DockPanel.Dock="Left" Width="400" Margin="10 0 0 0" Background="LightSteelBlue" Height="25" 
+                                      ItemsSource="{Binding TaskTickets}" SelectionChanged="TaskTicketsComboBox_SelectionChanged">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock FontSize="15">                                 
+                                            <Run Text="{Binding Name}" FontWeight="SemiBold"/>
+                                            <Run Text="                "/>
+                                            <Run Text="{Binding UsedTime}" FontWeight="Light"/>
+                                            <Run Text="/" />
+                                            <Run Text="{Binding ExpectedTime}" FontWeight="Light" />
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                            <!--Adding the actual time-->
+                            <TextBlock DockPanel.Dock="Left" Text="Time spent from:" Margin="10 0 10 0" FontSize="15" />
+                            <TextBox x:Name="FromTimeBox" DockPanel.Dock="Left" Text="{Binding TimeFrom, StringFormat=00:00}" HorizontalAlignment="Center" Width="100" FontSize="15" TextAlignment="Right" MaxHeight="25"
+                                 GotKeyboardFocus="FromTimeBox_GotKeyboardFocus"
+                                 GotMouseCapture="FromTimeBox_GotMouseCapture"/>
+                            <TextBlock DockPanel.Dock="Left" Text="to ->" Margin="5 0 5 0" FontSize="15" />
+                            <TextBox x:Name="ToTimeBox" DockPanel.Dock="Left" Text="{Binding TimeTo, StringFormat=00:00}" HorizontalAlignment="Center" Width="100" FontSize="15" MaxHeight="25"
+                                 GotKeyboardFocus="ToTimeBox_GotKeyboardFocus"
+                                 GotMouseCapture="ToTimeBox_GotMouseCapture"/>
+                            <Button x:Name="SaveTimeButton" Background="LightSteelBlue" BorderBrush="Black" ToolTip="Save Time" Margin="15 0 0 0" Height="30" Width="30"
+                                    Command="{Binding SaveTimeCommand}">
+                                <Image Margin="2" Source="pack://application:,,,/Resources/save.png"/>
+                            </Button>
+                        </DockPanel>
                     </DockPanel>
-                </DockPanel>
-            </Border>
-
-        </Grid>
-
+                </Border>
+            </Grid>
+        </ScrollViewer>
+       
 
         <!--Navigation Menu on the left-->
         <Border Grid.Column="0" Grid.Row="1" BorderThickness="0 0 1 0" BorderBrush="Black" >

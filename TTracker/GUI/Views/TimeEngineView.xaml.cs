@@ -38,5 +38,24 @@ namespace TTracker.GUI.Views
             var item = ((ComboBox)sender).SelectedItem;
             ((TimeEngineViewModel)DataContext).SelectedTaskTicketComboBoxItem = (TaskTicketViewModel)item;
         }
+
+
+        //When the time boxes are selected, select everything in that box
+        private void FromTimeBox_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            FromTimeBox.SelectAll();
+        }
+        private void FromTimeBox_GotMouseCapture(object sender, MouseEventArgs e)
+        {
+            FromTimeBox.SelectAll();
+        }
+        private void ToTimeBox_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            ToTimeBox.SelectAll();
+        }
+        private void ToTimeBox_GotMouseCapture(object sender, MouseEventArgs e)
+        {
+            ToTimeBox.SelectAll();
+        }
     }
 }
