@@ -75,7 +75,7 @@ namespace TTracker.Utility
             XmlWriteableDataList.Add("Text/" + newTimeEntry.Text);
             XmlWriteableDataList.Add("Created/" + newTimeEntry.Created);
             XmlWriteableDataList.Add("ProjectId/" + newTimeEntry.ProjectId);
-            XmlWriteableDataList.Add("StarTime/" + newTimeEntry.StartTime);
+            XmlWriteableDataList.Add("StartTime/" + newTimeEntry.StartTime);
             XmlWriteableDataList.Add("EndTime/" + newTimeEntry.EndTime);
             _xmlReaderWriter.SaveNewToXml("TimeEntrys", newTimeEntry.Id, XmlWriteableDataList);
         }
@@ -96,7 +96,9 @@ namespace TTracker.Utility
                 case "TaskTicket":
                     return (IEnumerable<T>)(_createTFromXmlData.CreateTaskTicketFromXmlData(allData));
                 case "Project":
-                    return (IEnumerable<T>)(_createTFromXmlData.CreateProjectFromXmlData(allData));                     
+                    return (IEnumerable<T>)(_createTFromXmlData.CreateProjectFromXmlData(allData));
+                case "TimeEntry":
+                    return (IEnumerable<T>)(_createTFromXmlData.CreateTimeEntryFromXmlData(allData));
             }
 
             return null;
@@ -119,14 +121,14 @@ namespace TTracker.Utility
                 var docElement = doc.Root.Elements();
                 var docId = doc.Root.FirstNode;
 
-                if(docId.ToString().Contains(saveableObject.Id.ToString()))
+                if (docId.ToString().Contains(saveableObject.Id.ToString()))
                 {
                     _xmlReaderWriter.OverwriteSaveToXml<T>(doc, changedProperties);
                 }
             }
 
         }
-    
+
         internal bool IsValidUser(string name, string password)
         {
             var desiredUser = GetUserByNameAndPassword(name, password);
@@ -165,7 +167,6 @@ namespace TTracker.Utility
             }
             return null;
         }
-
         public Project GetProjectById(Guid Id)
         {
             var directoryPathFolder = Directory.GetFiles(_saveDataPath + "Projects");
@@ -189,6 +190,35 @@ namespace TTracker.Utility
                         var projects = _createTFromXmlData.CreateProjectFromXmlData(xDocList);
                         Project project = projects.Find(p => p.ToString() != string.Empty);
                         return project;
+                    }
+                }
+            }
+
+            return null;
+        }
+        public TaskTicket GetTaskTicketById(Guid Id)
+        {
+            var directoryPathFolder = Directory.GetFiles(_saveDataPath + "TaskTickets");
+
+            foreach (var xmlFile in directoryPathFolder)
+            {
+                var doc = XDocument.Load(xmlFile);
+                var docAllData = doc.Root.Value;
+                var docElement = doc.Root.Elements();
+
+                foreach (var element in docElement)
+                {
+                    var nodeValue = element.Value;
+                    if (nodeValue.ToString() == Id.ToString())
+                    {
+                        var desiredUserData = _xmlReaderWriter.GetXmlDataByXmlPath(xmlFile);
+                        //Bit hacky here. The CreateProjectFromXmlData takes in a list of xDocument, not just one.
+                        //So Create a list, add only one project and return the one project of that list.
+                        var xDocList = new List<XDocument>();
+                        xDocList.Add(doc);
+                        var tickets = _createTFromXmlData.CreateTaskTicketFromXmlData(xDocList);
+                        TaskTicket taskTicket = tickets.Find(p => p.ToString() != string.Empty);
+                        return taskTicket;
                     }
                 }
             }

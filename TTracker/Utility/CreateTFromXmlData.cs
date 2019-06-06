@@ -92,7 +92,11 @@ namespace TTracker.Utility
                                 projectId = new Guid(element.Value);
                                 break;
                             case "Text>":
-                                text = element.Value;
+                                if (splitedData[1] == string.Empty)
+                                {
+                                    text = string.Empty;
+                                }
+                                else { text = element.Value; }
                                 break;
                             case "Created>":
                                 created = DateTime.Parse(element.Value);
@@ -155,7 +159,11 @@ namespace TTracker.Utility
                                 parentId = new Guid(element.Value);
                                 break;
                             case "Text>":
-                                text = element.Value;
+                                if (splitedData[1] == string.Empty)
+                                {
+                                    text = string.Empty;
+                                }
+                                else { text = element.Value; }
                                 break;
                             case "Created>":
                                 created = DateTime.Parse(element.Value);
@@ -169,6 +177,71 @@ namespace TTracker.Utility
                 allProjects.Add(new Project(name, Id, userId, parentId, text, created, usedTime));
             }
             return allProjects;
+        }
+        public List<TimeEntry> CreateTimeEntryFromXmlData(List<XDocument> timeEntryData)
+        {
+            Guid Id = Guid.Empty;
+            Guid userId = Guid.Empty;
+            Guid projectId = Guid.Empty;
+            Guid ticketId = Guid.Empty;
+            var text = string.Empty;
+            DateTime created = DateTime.Now;
+            float startTime = 0;
+            float endTime = 0;
+
+            var allTimeEntries = new List<TimeEntry>();
+
+            //Foreach XDocument in allTimeEntries
+            foreach (var doc in timeEntryData)
+            {
+                var docAllData = doc.Root.Value;
+                var docElement = doc.Root.Elements();
+
+                //Foreach element in XML FIle -> Id/432985094589 etc.
+                foreach (var element in docElement)
+                {
+                    var data = element.ToString();
+
+                    if (data != null)
+                    {
+                        string[] splitedData = data.Split(new char[] { '/' });
+
+                        switch (splitedData[1])
+                        {
+                            case "Id>":
+                                Id = new Guid(element.Value);
+                                break;
+                            case "UserId>":
+                                userId = new Guid(element.Value);
+                                break;
+                            case "ProjectId>":
+                                projectId = new Guid(element.Value);
+                                break;
+                            case "TicketId>":
+                                ticketId = new Guid(element.Value);
+                                break;
+                            case "Text>":
+                                if(splitedData[1] == string.Empty)
+                                {
+                                    text = string.Empty;
+                                }
+                                else { text = element.Value;}
+                                break;
+                            case "Created>":
+                                created = DateTime.Parse(element.Value);
+                                break;
+                            case "StartTime>":
+                                startTime = float.Parse(element.Value);
+                                break;
+                            case "EndTime>":
+                                endTime = float.Parse(element.Value);
+                                break;
+                        }
+                    }
+                }
+                allTimeEntries.Add(new TimeEntry(Id, userId, projectId, ticketId, text, startTime, endTime, created));
+            }
+            return allTimeEntries;
         }
     }
 }

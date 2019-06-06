@@ -34,96 +34,114 @@
         </Border>
 
         <!--Main Content on the right-->
-        <ScrollViewer Grid.Column="1" Grid.Row="1" Background="White" HorizontalScrollBarVisibility="Visible">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="175" />
-                    <RowDefinition Height="30" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
+        <Grid Grid.Column="1" Grid.Row="1" Background="White" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="175" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-                <!--Top of Time Engine, where you enter your activity-->
-                <Border Grid.Row="0" BorderThickness="0 1 1 1" BorderBrush="Black" Background="AliceBlue">
-                    <DockPanel Margin="10" LastChildFill="False">
-                        <TextBlock DockPanel.Dock="Top" Text="What have you worked on? " FontWeight="Bold" HorizontalAlignment="Center" FontSize="20"/>
-                        <TextBlock DockPanel.Dock="Top" Text="Add time to the ticket you have currently worked on:" HorizontalAlignment="Center" FontSize="17" Margin="0 10 0 0 "/>
-                        <!--Comboboxes and UI logik for adding time here-->
-                        <DockPanel DockPanel.Dock="Top" Margin="0 10 0 0" LastChildFill="False" HorizontalAlignment="Center">
-                            <TextBlock Text="Choose the project: " FontSize="17"/>
-                            <ComboBox x:Name="ProjectComboBox" DockPanel.Dock="Left" Width="400" Height="25" Background="LightSteelBlue" Margin="10 0 0 0" 
+            <!--Top of Time Engine, where you enter your activity-->
+            <Border Grid.Row="0" BorderThickness="0 1 1 1" BorderBrush="Black" Background="AliceBlue">
+                <DockPanel Margin="10" LastChildFill="False">
+                    <TextBlock DockPanel.Dock="Top" Text="What have you worked on? " FontWeight="Bold" HorizontalAlignment="Center" FontSize="20"/>
+                    <TextBlock DockPanel.Dock="Top" Text="Add time to the ticket you have currently worked on:" HorizontalAlignment="Center" FontSize="17" Margin="0 10 0 0 "/>
+                    <!--Comboboxes and UI logik for adding time here-->
+                    <DockPanel DockPanel.Dock="Top" Margin="0 10 0 0" LastChildFill="False" HorizontalAlignment="Center">
+                        <TextBlock Text="Choose the project: " FontSize="17"/>
+                        <ComboBox x:Name="ProjectComboBox" DockPanel.Dock="Left" Width="400" Height="25" Background="LightSteelBlue" Margin="10 0 0 0" 
                                       ItemsSource="{Binding Projects}" SelectionChanged="ProjectComboBox_SelectionChanged">
-                                <ComboBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding Name}" FontSize="15"/>
-                                    </DataTemplate>
-                                </ComboBox.ItemTemplate>
-                            </ComboBox>
-                            <TextBlock Text="Choose the ticket: " FontSize="17" Margin="10 0 0 0" />
-                            <ComboBox x:Name="TaskTicketsComboBox" DockPanel.Dock="Left" Width="400" Margin="10 0 0 0" Background="LightSteelBlue" Height="25" 
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Name}" FontSize="15"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <TextBlock Text="Choose the ticket: " FontSize="17" Margin="10 0 0 0" />
+                        <ComboBox x:Name="TaskTicketsComboBox" DockPanel.Dock="Left" Width="400" Margin="10 0 0 0" Background="LightSteelBlue" Height="25" 
                                       ItemsSource="{Binding TaskTickets}" SelectionChanged="TaskTicketsComboBox_SelectionChanged">
-                                <ComboBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <TextBlock FontSize="15">                                 
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock FontSize="15">                                 
                                             <Run Text="{Binding Name}" FontWeight="SemiBold"/>
                                             <Run Text=" - "/>
                                             <Run Text="{Binding UsedTime}" FontWeight="Light"/>
                                             <Run Text="/" />
                                             <Run Text="{Binding ExpectedTime}" FontWeight="Light" />
-                                        </TextBlock>
-                                    </DataTemplate>
-                                </ComboBox.ItemTemplate>
-                            </ComboBox>
-                            <!--Adding the actual time-->
-                            <TextBlock DockPanel.Dock="Left" Text="Time spent from:" Margin="10 0 10 0" FontSize="17" />
-                            <TextBox x:Name="FromTimeBox" DockPanel.Dock="Left" Text="{Binding TimeFrom, StringFormat=00:00}" HorizontalAlignment="Center" Width="100" FontSize="17" TextAlignment="Right" MaxHeight="25"
+                                    </TextBlock>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <!--Adding the actual time-->
+                        <TextBlock DockPanel.Dock="Left" Text="Time spent from:" Margin="10 0 10 0" FontSize="17" />
+                        <TextBox x:Name="FromTimeBox" DockPanel.Dock="Left" Text="{Binding TimeFrom, StringFormat=00:00}" HorizontalAlignment="Center" Width="100" FontSize="17" TextAlignment="Right" MaxHeight="25"
                                  GotKeyboardFocus="FromTimeBox_GotKeyboardFocus"
                                  GotMouseCapture="FromTimeBox_GotMouseCapture"/>
-                            <TextBlock DockPanel.Dock="Left" Text="->" Margin="5 0 5 0" FontSize="17" FontWeight="ExtraBold" />
-                            <TextBox x:Name="ToTimeBox" DockPanel.Dock="Left" Text="{Binding TimeTo, StringFormat=00:00}" HorizontalAlignment="Center" Width="100" FontSize="17" MaxHeight="25"
+                        <TextBlock DockPanel.Dock="Left" Text="->" Margin="5 0 5 0" FontSize="17" FontWeight="ExtraBold" />
+                        <TextBox x:Name="ToTimeBox" DockPanel.Dock="Left" Text="{Binding TimeTo, StringFormat=00:00}" HorizontalAlignment="Center" Width="100" FontSize="17" MaxHeight="25"
                                  GotKeyboardFocus="ToTimeBox_GotKeyboardFocus"
                                  GotMouseCapture="ToTimeBox_GotMouseCapture"/>
-                            <Button x:Name="SaveTimeButton" Background="LightSteelBlue" BorderBrush="Black" ToolTip="Save Time" Margin="15 0 0 0" Height="30" Width="30"
+                        <Button x:Name="SaveTimeButton" Background="LightSteelBlue" BorderBrush="Black" ToolTip="Save Time" Margin="15 0 0 0" Height="30" Width="30"
                                     Command="{Binding SaveTimeCommand}">
-                                <Image Margin="2" Source="pack://application:,,,/Resources/save.png"/>
-                            </Button>
-                        </DockPanel>
-                        <!--Enter description here-->
-                        <TextBox DockPanel.Dock="Bottom" FontSize="15" Margin="0 5 0 0" Text="{Binding CurrentDescriptionText}"/>
-                        <TextBlock DockPanel.Dock="Bottom" Text="Description of your recent activity:" FontSize="17" TextAlignment="Center" FontWeight="SemiBold" Margin="0 0 0 0"/>
+                            <Image Margin="2" Source="pack://application:,,,/Resources/save.png"/>
+                        </Button>
                     </DockPanel>
-                </Border>
+                    <!--Enter description here-->
+                    <TextBox DockPanel.Dock="Bottom" FontSize="15" Margin="0 5 0 0" Text="{Binding CurrentDescriptionText}"/>
+                    <TextBlock DockPanel.Dock="Bottom" Text="Description of your recent activity:" FontSize="17" TextAlignment="Center" FontWeight="SemiBold" Margin="0 0 0 0"/>
+                </DockPanel>
+            </Border>
 
-                <!--The menu for switching days-->
-                <Border Grid.Row="1" BorderThickness="0 1 1 1" BorderBrush="Black" Background="LightSteelBlue">
-                    <DockPanel LastChildFill="False" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <Button x:Name="OpenCalendarButton" Background="LightSteelBlue" ToolTip="Previous day" Height="30" Width="30" BorderBrush="LightSteelBlue"
+            <!--The menu for switching days-->
+            <Border Grid.Row="1" BorderThickness="0 1 1 1" BorderBrush="Black" Background="LightSteelBlue">
+                <DockPanel LastChildFill="False" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Button x:Name="OpenCalendarButton" Background="LightSteelBlue" ToolTip="Previous day" Height="30" Width="30" BorderBrush="LightSteelBlue"
                                 Click="OpenCalendarButton_Click">
-                            <Image Source="pack://application:,,,/Resources/calendar.png" Margin="2"/>
-                        </Button>
-                        <TextBlock Text="05.06.2019" FontSize="17" VerticalAlignment="Center" FontWeight="Bold" Margin="10 0 10 0"/>
+                        <Image Source="pack://application:,,,/Resources/calendar.png" Margin="2"/>
+                    </Button>
+                    <TextBlock Text="05.06.2019" FontSize="17" VerticalAlignment="Center" FontWeight="Bold" Margin="10 0 10 0"/>
 
-                    </DockPanel>
-                </Border>
+                </DockPanel>
+            </Border>
 
-                <!--Calendar for picking a day-->
-                <Viewbox x:Name="CalendarViewBox" Grid.Row="2" Width="300" Height="300" VerticalAlignment="Top" Margin="0 10 0 0" Visibility="Collapsed">
-                    <StackPanel>
-                        <Button x:Name="CalendarCloseButton" Height="25" Background="LightSteelBlue"
+            <!--Calendar for picking a day-->
+            <Viewbox x:Name="CalendarViewBox" Grid.Row="2" Width="300" Height="300" VerticalAlignment="Top" Margin="0 10 0 0" Visibility="Collapsed">
+                <StackPanel>
+                    <Button x:Name="CalendarCloseButton" Height="25" Background="LightSteelBlue"
                                 Click="CalendarCloseButton_Click">
-                            <Image Source="pack://application:,,,/Resources/arrow-up.png" />
-                        </Button>
-                        <Calendar x:Name="Calendar" Visibility="Visible" SelectedDate="{Binding SelectedCalendarDate}"/>
-                    </StackPanel>
+                        <Image Source="pack://application:,,,/Resources/arrow-up.png" />
+                    </Button>
+                    <Calendar x:Name="Calendar" Visibility="Visible" SelectedDate="{Binding SelectedCalendarDate}"/>
+                </StackPanel>
+            </Viewbox>
 
-                </Viewbox>
+            <!--TimeEntries Item Control on the right side-->
+            <ScrollViewer  Grid.Row="2" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+                <ItemsControl x:Name="timeEntriesControl" ItemsSource="{Binding TimeEntries, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" >
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderThickness="1 0 0 1" BorderBrush="Black">
+                                <DockPanel Height="40">
+                                    <TextBlock  FontSize="15" Text="{Binding StartTime, StringFormat=00:00}" FontWeight="DemiBold" Width="50" VerticalAlignment="Center" TextAlignment="Center"/>
+                                    <TextBlock FontSize="15" Text="-" VerticalAlignment="Center"/>
+                                    <TextBlock FontSize="15" Text="{Binding EndTime, StringFormat=00:00}" FontWeight="DemiBold" Width="50" VerticalAlignment="Center" TextAlignment="Center"/>
+                                    <TextBlock FontSize="15" Text="{Binding TicketName}" Margin="80 0 0 0" VerticalAlignment="Center" Width="200" ToolTip="{Binding TicketName}"/>
+                                    <TextBlock FontSize="15" Text="{Binding ProjectName}" VerticalAlignment="Center" Width="300" ToolTip="{Binding ProjectName}"/>
+                                    <TextBlock FontSize="15" Text="{Binding Text}"  VerticalAlignment="Center"/>
+                                </DockPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
 
-                
-            </Grid>
-        </ScrollViewer>
-       
+
+
+        </Grid>
+
 
         <!--Navigation Menu on the left-->
         <Border Grid.Column="0" Grid.Row="1" BorderThickness="0 0 1 0" BorderBrush="Black" >

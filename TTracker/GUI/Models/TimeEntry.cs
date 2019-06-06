@@ -25,9 +25,9 @@ namespace TTracker.GUI.Models
         public float StartTime { get { return _startTime; } set => _startTime = value; }
         public float EndTime { get { return _endTime; } set => _endTime = value; }
 
-        public TimeEntry(Guid userId, Guid projectId, Guid ticketId, string text, float startTime, float endTime, DateTime created)
+        public TimeEntry(Guid Id, Guid userId, Guid projectId, Guid ticketId, string text, float startTime, float endTime, DateTime created)
         {
-            Id = Guid.NewGuid();
+            this.Id = Id;
             UserId = userId;
             ProjectId = projectId;
             TicketId = ticketId;
