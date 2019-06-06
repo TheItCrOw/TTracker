@@ -90,7 +90,8 @@
                                 <Image Margin="2" Source="pack://application:,,,/Resources/save.png"/>
                             </Button>
                         </DockPanel>
-                        <TextBox DockPanel.Dock="Bottom" FontSize="15" Margin="0 5 0 0"/>
+                        <!--Enter description here-->
+                        <TextBox DockPanel.Dock="Bottom" FontSize="15" Margin="0 5 0 0" Text="{Binding CurrentDescriptionText}"/>
                         <TextBlock DockPanel.Dock="Bottom" Text="Description of your recent activity:" FontSize="17" TextAlignment="Center" FontWeight="SemiBold" Margin="0 0 0 0"/>
                     </DockPanel>
                 </Border>

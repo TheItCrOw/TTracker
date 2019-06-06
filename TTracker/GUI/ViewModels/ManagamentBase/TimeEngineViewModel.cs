@@ -21,6 +21,8 @@ namespace TTracker.GUI.ViewModels
         private float _timeFrom;
         private float _timeTo;
         private DateTime _selectedCalendarDate;
+        private User _currentUser;
+        private string _currentDescriptionText;
 
         public ObservableCollection<ProjectViewModel> Projects { get; set; } = new ObservableCollection<ProjectViewModel>();
         public ObservableCollection<TaskTicketViewModel> TaskTickets { get; set; } = new ObservableCollection<TaskTicketViewModel>();        
@@ -50,6 +52,14 @@ namespace TTracker.GUI.ViewModels
             set
             {
                 SetProperty(ref _introText, value);
+            }
+        }
+        public string CurrentDescriptionText
+        {
+            get { return _currentDescriptionText; }
+            set
+            {
+                SetProperty(ref _currentDescriptionText, value);
             }
         }
         public ProjectViewModel SelectedProjectComboBoxItem
@@ -94,7 +104,8 @@ namespace TTracker.GUI.ViewModels
                 return;
             }
 
-            IntroText = "Hello " + DataAccess.CurrentLoggedUser.Name + "! What are you gonna do today, on the " + DateTime.Now.ToShortDateString() + "?";
+            _currentUser = DataAccess.CurrentLoggedUser;
+            IntroText = "Hello " + _currentUser.Name + "! What are you gonna do today, on the " + DateTime.Now.ToShortDateString() + "?";
 
             LoadProjects();
         }
@@ -160,6 +171,19 @@ namespace TTracker.GUI.ViewModels
 
         void CreateTimeEntry()
         {
+            var timeEntry = new TimeEntry(
+                _currentUser.Id,
+                SelectedProjectComboBoxItem.ModelId,
+                SelectedTaskTicketComboBoxItem.ModelId,
+                CurrentDescriptionText,
+                TimeFrom,
+                TimeTo,
+                DateTime.Now);
+
+            DataAccess.Instance.RegisterAndSaveNewTimeEntry(timeEntry);
+            var timeEntryVm = new TimeEntryViewModel(timeEntry, this);
+
+            TimeEntries.Add(timeEntryVm);
 
         }
 

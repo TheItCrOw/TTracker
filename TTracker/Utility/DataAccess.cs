@@ -66,6 +66,19 @@ namespace TTracker.Utility
             XmlWriteableDataList.Add("UsedTime/" + newProject.UsedTime);
             _xmlReaderWriter.SaveNewToXml("Projects", newProject.Id, XmlWriteableDataList);
         }
+        public void RegisterAndSaveNewTimeEntry(TimeEntry newTimeEntry)
+        {
+            XmlWriteableDataList.Clear();
+            XmlWriteableDataList.Add("Id/" + newTimeEntry.Id);
+            XmlWriteableDataList.Add("UserId/" + newTimeEntry.UserId);
+            XmlWriteableDataList.Add("TicketId/" + newTimeEntry.TicketId);
+            XmlWriteableDataList.Add("Text/" + newTimeEntry.Text);
+            XmlWriteableDataList.Add("Created/" + newTimeEntry.Created);
+            XmlWriteableDataList.Add("ProjectId/" + newTimeEntry.ProjectId);
+            XmlWriteableDataList.Add("StarTime/" + newTimeEntry.StartTime);
+            XmlWriteableDataList.Add("EndTime/" + newTimeEntry.EndTime);
+            _xmlReaderWriter.SaveNewToXml("TimeEntrys", newTimeEntry.Id, XmlWriteableDataList);
+        }
 
         /// <summary>
         /// Takes in a type and returns a List of all found Types that is found in the xmlCache

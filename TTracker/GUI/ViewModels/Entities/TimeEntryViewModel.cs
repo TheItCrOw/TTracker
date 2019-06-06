@@ -12,8 +12,8 @@ namespace TTracker.GUI.ViewModels.Entities
     class TimeEntryViewModel : ViewModelBase
     {
         private string _text;
-        private DateTime _startTime;
-        private DateTime _endTime;
+        private float _startTime;
+        private float _endTime;
         private string _projectName;
         private TimeEntry _model;
 
@@ -38,8 +38,8 @@ namespace TTracker.GUI.ViewModels.Entities
 
 
         #region Properties
-        public DateTime StartTime { get { return _startTime; } set { SetProperty(ref _startTime, value); } }
-        public DateTime EndTime { get { return _endTime; } set { SetProperty(ref _endTime, value); } }
+        public float StartTime { get { return _startTime; } set { SetProperty(ref _startTime, value); } }
+        public float EndTime { get { return _endTime; } set { SetProperty(ref _endTime, value); } }
         public string ProjectName {  get { return _projectName; } set { SetProperty(ref _projectName, value); } }
 
         public string Text
