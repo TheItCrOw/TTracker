@@ -88,16 +88,18 @@
     <Compile Include="BaseDataModules\ViewModelManagementBase.cs" />
     <Compile Include="GUI\Models\Project.cs" />
     <Compile Include="GUI\Models\TaskTicket.cs" />
-    <Compile Include="GUI\ViewModels\AccountViewModel.cs" />
-    <Compile Include="GUI\ViewModels\CreateProjectViewModel.cs" />
-    <Compile Include="GUI\ViewModels\CreateTicketViewModel.cs" />
-    <Compile Include="GUI\ViewModels\HomeViewModel.cs" />
-    <Compile Include="GUI\ViewModels\ProjectViewModel.cs" />
-    <Compile Include="GUI\ViewModels\TaskTicketViewModel.cs" />
+    <Compile Include="GUI\Models\TimeEntry.cs" />
+    <Compile Include="GUI\ViewModels\Entities\TimeEntryViewModel.cs" />
+    <Compile Include="GUI\ViewModels\ManagamentBase\AccountViewModel.cs" />
+    <Compile Include="GUI\ViewModels\TicketManagementSubVms\CreateProjectViewModel.cs" />
+    <Compile Include="GUI\ViewModels\TicketManagementSubVms\CreateTicketViewModel.cs" />
+    <Compile Include="GUI\ViewModels\ManagamentBase\HomeViewModel.cs" />
+    <Compile Include="GUI\ViewModels\Entities\ProjectViewModel.cs" />
+    <Compile Include="GUI\ViewModels\Entities\TaskTicketViewModel.cs" />
     <Compile Include="GUI\ViewModels\TicketManagementSubVms\AllTicketsFrameViewModel.cs" />
     <Compile Include="GUI\ViewModels\TicketManagementSubVms\ProjectFrameViewModel.cs" />
-    <Compile Include="GUI\ViewModels\TicketManagementViewModel.cs" />
-    <Compile Include="GUI\ViewModels\TimeEngineViewModel.cs" />
+    <Compile Include="GUI\ViewModels\ManagamentBase\TicketManagementViewModel.cs" />
+    <Compile Include="GUI\ViewModels\ManagamentBase\TimeEngineViewModel.cs" />
     <Compile Include="GUI\Views\AccountView.xaml.cs">
       <DependentUpon>AccountView.xaml</DependentUpon>
     </Compile>
@@ -175,7 +177,7 @@
     <Compile Include="BaseDataModules\IUser.cs" />
     <Compile Include="BaseDataModules\Ticket.cs" />
     <Compile Include="GUI\Models\User.cs" />
-    <Compile Include="GUI\ViewModels\LoginViewModel.cs" />
+    <Compile Include="GUI\ViewModels\ManagamentBase\LoginViewModel.cs" />
     <Compile Include="GUI\Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
@@ -185,7 +187,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GUI\ViewModels\MainViewModel.cs" />
+    <Compile Include="GUI\ViewModels\ManagamentBase\MainViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -265,6 +267,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\arrow-left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\arrow-right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\arrow-up.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

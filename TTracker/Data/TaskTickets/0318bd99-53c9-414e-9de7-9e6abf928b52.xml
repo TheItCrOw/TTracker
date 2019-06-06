@@ -10,6 +10,7 @@
 - Id
 - Creation Time
 - Delete Button
+- Zeit Berechnung hinzufügen 
 
 müssen hier noch hinzugefügt werden. Bei Delete Button handelt es sich erstmal nur um die UI, denn das Löschen von Elementen habe ich noch garnich implementiert. Das ist ein extra Ticket.</Text>
   <Created>03.06.2019 14:24:49</Created>

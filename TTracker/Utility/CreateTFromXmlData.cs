@@ -48,7 +48,6 @@ namespace TTracker.Utility
             }
             return new User(name, password, Id, created);
         }
-
         public List<TaskTicket> CreateTaskTicketFromXmlData(List<XDocument> ticketData)
         {
             var name = string.Empty;

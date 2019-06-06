@@ -4,6 +4,7 @@ using System.IO;
 using System.Xml.Linq;
 using TTracker.GUI.Models;
 using TTracker.BaseDataModules;
+using TTracker.GUI.ViewModels.Entities;
 
 namespace TTracker.Utility
 {
@@ -113,7 +114,7 @@ namespace TTracker.Utility
 
         }
     
-        public bool IsValidUser(string name, string password)
+        internal bool IsValidUser(string name, string password)
         {
             var desiredUser = GetUserByNameAndPassword(name, password);
 
@@ -149,6 +150,36 @@ namespace TTracker.Utility
                     }
                 }
             }
+            return null;
+        }
+
+        public Project GetProjectById(Guid Id)
+        {
+            var directoryPathFolder = Directory.GetFiles(_saveDataPath + "Projects");
+
+            foreach (var xmlFile in directoryPathFolder)
+            {
+                var doc = XDocument.Load(xmlFile);
+                var docAllData = doc.Root.Value;
+                var docElement = doc.Root.Elements();
+
+                foreach (var element in docElement)
+                {
+                    var nodeValue = element.Value;
+                    if (nodeValue.ToString() == Id.ToString())
+                    {
+                        var desiredUserData = _xmlReaderWriter.GetXmlDataByXmlPath(xmlFile);
+                        //Bit hacky here. The CreateProjectFromXmlData takes in a list of xDocument, not just one.
+                        //So Create a list, add only one project and return the one project of that list.
+                        var xDocList = new List<XDocument>();
+                        xDocList.Add(doc);
+                        var projects = _createTFromXmlData.CreateProjectFromXmlData(xDocList);
+                        Project project = projects.Find(p => p.ToString() != string.Empty);
+                        return project;
+                    }
+                }
+            }
+
             return null;
         }
 

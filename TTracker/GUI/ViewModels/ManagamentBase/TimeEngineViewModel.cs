@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using TTracker.BaseDataModules;
 using TTracker.GUI.Models;
+using TTracker.GUI.ViewModels.Entities;
 using TTracker.Utility;
 
 namespace TTracker.GUI.ViewModels
@@ -19,11 +20,14 @@ namespace TTracker.GUI.ViewModels
         private TaskTicketViewModel _selectedTaskTicketComboBoxItem;
         private float _timeFrom;
         private float _timeTo;
+        private DateTime _selectedCalendarDate;
 
         public ObservableCollection<ProjectViewModel> Projects { get; set; } = new ObservableCollection<ProjectViewModel>();
-        public ObservableCollection<TaskTicketViewModel> TaskTickets { get; set; } = new ObservableCollection<TaskTicketViewModel>();
+        public ObservableCollection<TaskTicketViewModel> TaskTickets { get; set; } = new ObservableCollection<TaskTicketViewModel>();        
+        public ObservableCollection<TimeEntryViewModel> TimeEntries{ get; set; } = new ObservableCollection<TimeEntryViewModel>();        
         public DelegateCommand SaveTimeCommand => new DelegateCommand(SaveTime);
 
+        #region Properties
         public float TimeFrom
         {
             get { return _timeFrom; }
@@ -48,7 +52,6 @@ namespace TTracker.GUI.ViewModels
                 SetProperty(ref _introText, value);
             }
         }
-
         public ProjectViewModel SelectedProjectComboBoxItem
         {
             get { return _selectedProjectComboBoxItem; }
@@ -58,7 +61,6 @@ namespace TTracker.GUI.ViewModels
                 LoadTicketsForProject();
             }
         }
-
         public TaskTicketViewModel SelectedTaskTicketComboBoxItem
         {
             get { return _selectedTaskTicketComboBoxItem; }
@@ -67,15 +69,24 @@ namespace TTracker.GUI.ViewModels
                 SetProperty(ref _selectedTaskTicketComboBoxItem, value);
             }
         }
+        public DateTime SelectedCalendarDate
+        {
+            get { return _selectedCalendarDate; }
+            set
+            {
+                SetProperty(ref _selectedCalendarDate, value);
+                OnSelectedCalendarDateChanged();
+            }
+        }
+        #endregion
 
         public TimeEngineViewModel()
         {
             CurrentContent = this;
-            GetCurrentUser();
-            LoadProjects();
+            Setup();
         }
 
-        void GetCurrentUser()
+        void Setup()
         {
             if(DataAccess.CurrentLoggedUser == null)
             {
@@ -84,6 +95,8 @@ namespace TTracker.GUI.ViewModels
             }
 
             IntroText = "Hello " + DataAccess.CurrentLoggedUser.Name + "! What are you gonna do today, on the " + DateTime.Now.ToShortDateString() + "?";
+
+            LoadProjects();
         }
 
         void LoadProjects()
@@ -121,22 +134,38 @@ namespace TTracker.GUI.ViewModels
 
         void SaveTime()
         {
-            if(TimeFrom > TimeTo)
+            if (TimeFrom >= TimeTo )
             {
                 MessageBox.Show("Your 'worked until time' must always be later than your 'started from time'");
                 return;
             }
+            else if (SelectedProjectComboBoxItem == null || SelectedTaskTicketComboBoxItem == null)
+            {
+                return;
+            }
 
             var currentTicket = SelectedTaskTicketComboBoxItem;
-            var totalTime= (TimeTo - TimeFrom) / 100;
+            var currentUsedTime = currentTicket.UsedTime;
+            var workedTime= (TimeTo - TimeFrom) / 100;
 
             var workDay = 8;
-            var usedTime = totalTime / workDay;
+            var usedTime = currentUsedTime + (workedTime / workDay);
 
             currentTicket.UsedTime = usedTime;
             currentTicket.Save();
+            CreateTimeEntry();
 
             MessageBox.Show("Time has been saved.");
+        }
+
+        void CreateTimeEntry()
+        {
+
+        }
+
+        void OnSelectedCalendarDateChanged()
+        {
+
         }
     }
 }

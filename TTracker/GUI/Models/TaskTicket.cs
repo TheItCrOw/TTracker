@@ -20,7 +20,6 @@ namespace TTracker.GUI.Models
             Created = created;
             ExpectedTime = expectedTime;
             UsedTime = usedTime;
-            //  Progress = progress;
         }
     }
 }

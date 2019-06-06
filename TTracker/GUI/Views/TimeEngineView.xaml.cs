@@ -57,5 +57,15 @@ namespace TTracker.GUI.Views
         {
             ToTimeBox.SelectAll();
         }
+
+
+        private void OpenCalendarButton_Click(object sender, RoutedEventArgs e)
+        {
+            CalendarViewBox.Visibility = Visibility.Visible;
+        }
+        private void CalendarCloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            CalendarViewBox.Visibility = Visibility.Collapsed;
+        }
     }
 }
