@@ -95,22 +95,6 @@ namespace TTracker.GUI.ViewModels
             CurrentContent = this;
             Setup();
             SelectedCalendarDate = DateTime.Now;
-
-
-            //testing
-
-            //TimeEntries.Add(new TimeEntryViewModel(new TimeEntry(Guid.Empty, Guid.Empty, Guid.Empty, new Guid("4ea89286-f047-44fd-9ad4-c9693dcb5863"), "This is a test Text haha la lorum ipsum dormus idit adat", 1000, 1100, DateTime.Now),this));
-            //TimeEntries.Add(new TimeEntryViewModel(new TimeEntry(Guid.Empty, Guid.Empty, Guid.Empty, new Guid("4ea89286-f047-44fd-9ad4-c9693dcb5863"), "This is a test Text haha la lorum ipsum dormus idit adat", 1100, 1230, DateTime.Now),this));
-            //TimeEntries.Add(new TimeEntryViewModel(new TimeEntry(Guid.Empty, Guid.Empty, Guid.Empty, new Guid("4ea89286-f047-44fd-9ad4-c9693dcb5863"), "This is a test Text haha la lorum ipsum dormus idit adat his is a test Text haha la lorum ipsum dormus idit adat his is a test Text haha la lorum ipsum dormus idit adat his is a test Text haha la lorum ipsum dormus idit adat his is a test Text haha la lorum ipsum dormus idit adat", 1500, 1600, DateTime.Now),this));
-            //TimeEntries.Add(new TimeEntryViewModel(new TimeEntry(Guid.Empty, Guid.Empty, Guid.Empty, new Guid("4ea89286-f047-44fd-9ad4-c9693dcb5863"), "This is a test Text haha la lorum ipsum dormus idit adat", 1600, 1715, DateTime.Now),this));
-            //TimeEntries.Add(new TimeEntryViewModel(new TimeEntry(Guid.Empty, Guid.Empty, Guid.Empty, new Guid("4ea89286-f047-44fd-9ad4-c9693dcb5863"), "This is a test Text haha la lorum ipsum dormus idit adat", 1715, 1815, DateTime.Now),this));
-
-
-
-
-
-
-
         }
 
         void Setup()
@@ -208,6 +192,17 @@ namespace TTracker.GUI.ViewModels
         {
             //Load all Time Entries
             var allTimeEntries = DataAccess.Instance.GetAll<TimeEntry>();
+            TimeEntries.Clear();
+
+            //Show only those that were created on SelectedCalendarDate
+            var timeEntriesForSelectedDateVm = allTimeEntries
+                .Where(t => t.Created.ToShortDateString() == SelectedCalendarDate.ToShortDateString())
+                .Select(t => new TimeEntryViewModel(t, this))
+                .OrderBy(t => t.StartTime)
+                .ToList();
+
+            TimeEntries.AddRange(timeEntriesForSelectedDateVm);
+
         }
     }
 }

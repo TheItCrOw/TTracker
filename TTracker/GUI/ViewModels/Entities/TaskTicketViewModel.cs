@@ -82,7 +82,7 @@ namespace TTracker.GUI.ViewModels
             Created = DateTime.Now;
             ExpectedTime = taskTicket.ExpectedTime;
             UsedTime = taskTicket.UsedTime;
-            Progress = UsedTime + " / " + ExpectedTime + " Days";
+            Progress = (float)(Math.Truncate((double)UsedTime * 100.0) / 100.0) + " / " + ExpectedTime + " Days";
 
             if(!IsNew)
             {

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data>
+  <Id>f5946894-9a7a-4f22-af4d-c85712e77895</Id>
+  <UserId>d601adbc-eee3-436f-b657-c9f4969a449a</UserId>
+  <TicketId>c8841cac-ddb2-4ba9-b220-c64629b6d19c</TicketId>
+  <Text>Time Entries werden jetzt nach Datum angezeigt und gespeichert. Als nächstes dann nach Uhrzeit sortieren.</Text>
+  <Created>07.06.2019 13:18:00</Created>
+  <ProjectId>58f1500a-c8e2-4f52-a066-8ab5372e5c55</ProjectId>
+  <StartTime>1300</StartTime>
+  <EndTime>1315</EndTime>
+</Data>

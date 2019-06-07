@@ -92,11 +92,7 @@ namespace TTracker.Utility
                                 projectId = new Guid(element.Value);
                                 break;
                             case "Text>":
-                                if (splitedData[1] == string.Empty)
-                                {
-                                    text = string.Empty;
-                                }
-                                else { text = element.Value; }
+                                text = element.Value;
                                 break;
                             case "Created>":
                                 created = DateTime.Parse(element.Value);
@@ -159,11 +155,7 @@ namespace TTracker.Utility
                                 parentId = new Guid(element.Value);
                                 break;
                             case "Text>":
-                                if (splitedData[1] == string.Empty)
-                                {
-                                    text = string.Empty;
-                                }
-                                else { text = element.Value; }
+                                text = element.Value;
                                 break;
                             case "Created>":
                                 created = DateTime.Parse(element.Value);
@@ -221,11 +213,7 @@ namespace TTracker.Utility
                                 ticketId = new Guid(element.Value);
                                 break;
                             case "Text>":
-                                if(splitedData[1] == string.Empty)
-                                {
-                                    text = string.Empty;
-                                }
-                                else { text = element.Value;}
+                                text = element.Value;
                                 break;
                             case "Created>":
                                 created = DateTime.Parse(element.Value);
