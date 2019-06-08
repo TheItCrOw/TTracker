@@ -2,18 +2,52 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:p ="clr-namespace:TTracker.BaseDataModules"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TTracker.GUI.Views.TicketManagementSubViews"
+      xmlns:vm="clr-namespace:TTracker.GUI.ViewModels"
+      xmlns:codeg="clr-namespace:System.Collections;assembly=mscorlib"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AllTicketsFrameView">
+
+    <Page.Resources>
+        <ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type System:Enum}" x:Key="PriorityLevel">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="p:PriorityLevel"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Page.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!--Table Header for ItemsControl-->
+        <Border Grid.Column="1" Grid.Row="0" BorderThickness="2 0 0 1" BorderBrush="Black" Background="LightSteelBlue">
+            <DockPanel VerticalAlignment="Center">
+                <Button x:Name="SortForName" FontSize="20" FontWeight="Bold" Content="Ticketname" Margin="60 0 0 0" Foreground="DarkBlue" Width="300" HorizontalContentAlignment="Left" Background="LightSteelBlue" BorderThickness="0"
+                        Command="{Binding SortTaskTicketsCommand}" CommandParameter="{Binding ElementName=SortForName, Path=Name}"/>
+                <Button x:Name="SortForPriority" FontSize="20" FontWeight="Bold" Content="Priority" Margin="19 0 0 0" Foreground="DarkBlue" Width="150" HorizontalContentAlignment="Left" Background="LightSteelBlue" BorderThickness="0"
+                        Command="{Binding SortTaskTicketsCommand}" CommandParameter="{Binding ElementName=SortForPriority, Path=Name}"/>
+                <Button x:Name="SortForProjects" FontSize="20" FontWeight="Bold" Content="Project" Margin="10 0 0 0" Foreground="DarkBlue" Width="250" HorizontalContentAlignment="Left" Background="LightSteelBlue" BorderThickness="0" 
+                        Command="{Binding SortTaskTicketsCommand}" CommandParameter="{Binding ElementName=SortForProjects, Path=Name}"/>
+                <Button x:Name="SortForStatus" FontSize="20" FontWeight="Bold" Content="Status" Margin="10 0 0 0" Foreground="DarkBlue" Width="330" HorizontalContentAlignment="Left" Background="LightSteelBlue" BorderThickness="0"
+                        Command="{Binding SortTaskTicketsCommand}" CommandParameter="{Binding ElementName=SortForStatus, Path=Name}"/>
+                <Button x:Name="SortForProgress" FontSize="20" FontWeight="Bold" Content="Progress" Margin="10 0 0 0" Foreground="DarkBlue" HorizontalContentAlignment="Left" Background="LightSteelBlue" BorderThickness="0"
+                        Command="{Binding SortTaskTicketsCommand}" CommandParameter="{Binding ElementName=SortForProgress, Path=Name}"/>
+            </DockPanel>
+        </Border>
+
         <!--Items Control of TaskTickets-->
-        <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" Grid.Column="1">
+        <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" Grid.Column="1" Grid.Row="1">
             <ItemsControl x:Name="taskTicketControl" Background="White" ItemsSource="{Binding TaskTickets, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
@@ -35,11 +69,19 @@
                                     </DockPanel>
                                 </Expander>
                                 <TextBox Text="{Binding Name}" FontSize="17" FontWeight="Bold" Width="300" Margin="50 0 0 0" VerticalAlignment="Center" BorderThickness="0.5"/>
-                                <TextBlock Text="{Binding Priority}" FontSize="17" FontWeight="Light" Width="600" Margin="10 0 0 0" VerticalAlignment="Center" MaxHeight="25"/>
-                                <TextBlock Text="{Binding ProjectName}" FontSize="17" FontWeight="Bold" Width="200" Margin="10 0 0 0" VerticalAlignment="Center"/>
+                                <ComboBox BorderThickness="0.5" ItemsSource="{Binding  Source={StaticResource PriorityLevel}}" FontSize="17" Width="150" Margin="20 0 0 0" VerticalAlignment="Center" MaxHeight="25"/>
+                                <TextBlock Text="{Binding ProjectName}" FontSize="17" FontWeight="Bold" Width="250" Margin="10 0 0 0" VerticalAlignment="Center"/>
                                 <Grid Width="300" Margin="10 0 0 0" VerticalAlignment="Center">
                                     <Border BorderThickness="1" BorderBrush="Black">
-                                        <ProgressBar Minimum="0" Maximum="{Binding ExpectedTime}" Value="{Binding UsedTime}" />
+                                        <ProgressBar Minimum="0" Maximum="{Binding ExpectedTime}" Value="{Binding UsedTime}" Background="White">
+                                            <ProgressBar.Foreground>
+                                                <LinearGradientBrush EndPoint="1.3,1" StartPoint="0.1,1">
+                                                    <GradientStop Color="AliceBlue" Offset="0" />
+                                                    <GradientStop Color="LightSteelBlue" Offset="0.5" />
+                                                    <GradientStop Color="Black" Offset="1" />
+                                                </LinearGradientBrush>
+                                            </ProgressBar.Foreground>
+                                        </ProgressBar>
                                     </Border>
                                     <TextBlock Text="{Binding Progress}" FontSize="17" TextAlignment="Center"/>
                                 </Grid>
@@ -51,8 +93,17 @@
         </ScrollViewer>
 
 
+        <!--Filter Button on the left in row 1 column 1-->
+        <Button x:Name="FilterButton" ToolTip="Filter" Background="LightSteelBlue" BorderBrush="Black" BorderThickness="0" Command="{Binding FilterTickets}">
+            <Image Margin="7" Source="pack://application:,,,/Resources/sort.png"/>
+        </Button>
+        <!--List of possible filters, that the Filter Button opens up-->
+        <ListView Grid.Row="1" Panel.ZIndex="1" Height="300" VerticalAlignment="Top" Visibility="Collapsed">
+
+        </ListView>
+
         <!--Navigation Menu on the left-->
-        <Border Grid.Column="0" BorderThickness="0 1 1 0" BorderBrush="Black" >
+        <Border Grid.Column="0" Grid.Row="1" BorderThickness="0 1 1 0" BorderBrush="Black" >
             <Grid Background="LightSteelBlue">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50" />
@@ -60,11 +111,11 @@
                     <RowDefinition Height="50" />
                 </Grid.RowDefinitions>
 
-                <Button x:Name="SaveButton" ToolTip="Save" Background="LightSteelBlue" BorderBrush="Black" Grid.Row="0" BorderThickness="1 0 1 1" IsEnabled="{Binding HasUnsavedChanges}" Command="{Binding SaveAllTicketsCommand}">
+                <Button x:Name="SaveButton" ToolTip="Save" Background="LightSteelBlue" BorderBrush="Black" Grid.Row="0" BorderThickness="0" IsEnabled="{Binding HasUnsavedChanges}" Command="{Binding SaveAllTicketsCommand}">
                     <Image Margin="7" Source="pack://application:,,,/Resources/save.png"/>
                 </Button>
 
-                <Button x:Name="NewTicketButton" ToolTip="New Ticket" Background="LightSteelBlue" BorderBrush="Black" Grid.Row="1" BorderThickness="1" Command="{Binding CreateNewTicketCommand}">
+                <Button x:Name="NewTicketButton" ToolTip="New Ticket" Background="LightSteelBlue" BorderBrush="Black" Grid.Row="1" BorderThickness="0" Command="{Binding CreateNewTicketCommand}">
                     <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/new-ticket.png"/>
                 </Button>
             </Grid>

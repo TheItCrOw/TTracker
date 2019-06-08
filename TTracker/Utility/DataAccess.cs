@@ -97,9 +97,9 @@ namespace TTracker.Utility
                 case "TaskTicket":
                     return (IEnumerable<T>)(_createTFromXmlData.CreateTaskTicketListFromXmlData(allData));
                 case "Project":
-                    return (IEnumerable<T>)(_createTFromXmlData.CreateProjectFromXmlData(allData));
+                    return (IEnumerable<T>)(_createTFromXmlData.CreateProjectListFromXmlData(allData));
                 case "TimeEntry":
-                    return (IEnumerable<T>)(_createTFromXmlData.CreateTimeEntryFromXmlData(allData));
+                    return (IEnumerable<T>)(_createTFromXmlData.CreateTimeEntryListFromXmlData(allData));
             }
 
             return null;
@@ -188,7 +188,7 @@ namespace TTracker.Utility
                         //So Create a list, add only one project and return the one project of that list.
                         var xDocList = new List<XDocument>();
                         xDocList.Add(doc);
-                        var projects = _createTFromXmlData.CreateProjectFromXmlData(xDocList);
+                        var projects = _createTFromXmlData.CreateProjectListFromXmlData(xDocList);
                         Project project = projects.Find(p => p.ToString() != string.Empty);
                         return project;
                     }

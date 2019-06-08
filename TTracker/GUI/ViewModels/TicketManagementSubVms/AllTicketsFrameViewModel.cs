@@ -18,13 +18,21 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
 {
     public class AllTicketsFrameViewModel : ViewModelManagementBase, INotifyPropertyChanged
     {
+        private bool _saveDirtyStateOfBase;
 
         public ObservableCollection<TaskTicketViewModel> TaskTickets { get; set; } = new ObservableCollection<TaskTicketViewModel>();
         public DelegateCommand SaveAllTicketsCommand => new DelegateCommand(SaveAllTickets);
         public DelegateCommand CreateNewTicketCommand => new DelegateCommand(CreateNewTicket);
+        public DelegateCommand FilterTicketsCommand => new DelegateCommand(FilterTickets);
+        public DelegateCommand<string> SortTaskTicketsCommand => new DelegateCommand<string>(SortTaskTickets);
 
 
         public AllTicketsFrameViewModel()
+        {
+            Setup();
+        }
+
+        void Setup()
         {
             CurrentContent = this;
             LoadTaskTickets();
@@ -73,8 +81,40 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
                 if (DataAccess.CurrentLoggedUser != null && ticket.UserId == DataAccess.CurrentLoggedUser.Id)
                     allTaskTicketsVM.Add(new TaskTicketViewModel(ticket, (AllTicketsFrameViewModel)CurrentContent, false));
             }
-
+;
             TaskTickets.AddRange(allTaskTicketsVM);
+        }
+
+        private void FilterTickets()
+        {
+
+        }
+
+        private void SortTaskTickets(string buttonName)
+        {
+            //This makes the current base dirty, although it shouldnt. So I save the state of it before the method and set it afterwards again
+            _saveDirtyStateOfBase = HasUnsavedChanges;
+            var sortedTaskTickets = new List<TaskTicketViewModel>();
+
+            switch (buttonName)
+            {
+                case "SortForProjects":
+                    sortedTaskTickets = TaskTickets.OrderByDescending(t => t.ProjectName).ToList();
+                    break;
+                case "SortForName":
+                    sortedTaskTickets = TaskTickets.OrderByDescending(t => t.Name).ToList();
+                    break;
+                case "SortForPriority":
+                    sortedTaskTickets = TaskTickets.OrderByDescending(t => t.Priority).ToList();
+                    break;
+                case "SortForProgress":
+                    sortedTaskTickets = TaskTickets.OrderByDescending(t => t.Progress).ToList();
+                    break;
+            }
+
+            TaskTickets.Clear();
+            TaskTickets.AddRange(sortedTaskTickets);
+            HasUnsavedChanges = _saveDirtyStateOfBase;
         }
     }
 }

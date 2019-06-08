@@ -20,7 +20,7 @@
 
 
         <!--Buttons of the right big menu-->
-        <Border BorderThickness="1" BorderBrush="Black" Grid.Row="0"  Grid.Column="1">
+        <Border BorderThickness="1 0 0 1" BorderBrush="Black" Grid.Row="0"  Grid.Column="1">
             <Grid Background="LightSteelBlue">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100"/>
@@ -31,19 +31,19 @@
                 </Grid.ColumnDefinitions>
 
                 <!--Ticket Management Topic Intro-->
-                <Border Background="White" BorderBrush="Black" BorderThickness="1" Grid.Column="0">
+                <Border Background="White" BorderBrush="Black" BorderThickness="0" Grid.Column="0">
                     <TextBlock Text="Ticket Management" TextAlignment="Center" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" TextWrapping="Wrap"/>
                 </Border>
-                <Button x:Name="AllTicketsButton" ToolTip="All Tickets" Background="LightSteelBlue" BorderBrush="Black" Grid.Column="1" BorderThickness="1 0 1 1" Click="AllTicketsButton_Click">
+                <Button x:Name="AllTicketsButton" ToolTip="All Tickets" Background="LightSteelBlue" BorderBrush="Black" Grid.Column="1" BorderThickness="0.5" Click="AllTicketsButton_Click">
                     <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/tasks.png"/>
                 </Button>
-                <Button ToolTip="Task Tickets" Background="LightSteelBlue" BorderBrush="Black" Grid.Column="2" BorderThickness="1 0 1 1">
+                <Button ToolTip="Task Tickets" Background="LightSteelBlue" BorderBrush="Black" Grid.Column="2" BorderThickness="0.5">
                     <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/task-ticket.png"/>
                 </Button>
-                <Button ToolTip="Date Tickets" Background="LightSteelBlue" BorderBrush="Black" Grid.Column="3" BorderThickness="1 0 1 1">
+                <Button ToolTip="Date Tickets" Background="LightSteelBlue" BorderBrush="Black" Grid.Column="3" BorderThickness="0.5">
                     <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/date-ticket.png"/>
                 </Button>
-                <Button ToolTip="Projects" Background="LightSteelBlue" BorderBrush="Black" Grid.Column="4" BorderThickness="1 0 1 1" Click="ProjectButton_Click" >
+                <Button ToolTip="Projects" Background="LightSteelBlue" BorderBrush="Black" Grid.Column="4" BorderThickness="0.5" Click="ProjectButton_Click" >
                     <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/project.png"/>
                 </Button>
 

@@ -24,11 +24,11 @@
                 <RowDefinition Height="50" />
             </Grid.RowDefinitions>
 
-            <Button x:Name="SaveButton" ToolTip="Save" Background="LightSteelBlue" BorderBrush="Black" Grid.Row="0" BorderThickness="1 0 1 1" IsEnabled="{Binding HasUnsavedChanges}" Command="{Binding SaveAllProjectsCommand}">
+            <Button x:Name="SaveButton" ToolTip="Save" Background="LightSteelBlue" BorderBrush="Black" Grid.Row="0" BorderThickness="0" IsEnabled="{Binding HasUnsavedChanges}" Command="{Binding SaveAllProjectsCommand}">
                 <Image Margin="7" Source="/TTracker;component/Resources/save.png"/>
             </Button>
 
-            <Button x:Name="NewTicketButton" ToolTip="New Ticket" Background="LightSteelBlue" BorderBrush="Black" Grid.Row="1" BorderThickness="1" Command="{Binding CreateNewProjectCommand}">
+            <Button x:Name="NewTicketButton" ToolTip="New Ticket" Background="LightSteelBlue" BorderBrush="Black" Grid.Row="1" BorderThickness="0" Command="{Binding CreateNewProjectCommand}">
                 <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/new-ticket.png"/>
             </Button>
 

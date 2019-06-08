@@ -54,7 +54,7 @@
                     <RowDefinition Height="50" />
                 </Grid.RowDefinitions>
 
-                <Button x:Name="AccountButton" Grid.Column="5" Background="LightSteelBlue" BorderBrush="Black" ToolTip="Login/Register" Click="AccountButton_Click">
+                <Button x:Name="AccountButton" Grid.Column="5" Background="LightSteelBlue" BorderBrush="Black" ToolTip="Login/Register" Click="AccountButton_Click" BorderThickness="0">
                     <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/login.png"/>
                 </Button>
 

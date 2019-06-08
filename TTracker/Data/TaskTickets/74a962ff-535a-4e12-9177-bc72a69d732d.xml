@@ -8,5 +8,5 @@
   <Text>For some reason gibt es ein ganz komisches Verhalten, wenn ein leerer Text erzeugt und wieder geladen wird. Manchmal übernimmt es einfahc den Text von einem anderen Ticket oder was auch immer und man kann leere Texte nicht bearbeiten...</Text>
   <Created>07.06.2019 15:31:33</Created>
   <ExpectedTime>0,2</ExpectedTime>
-  <UsedTime>0,06875</UsedTime>
+  <UsedTime>0,08750001</UsedTime>
 </Data>
