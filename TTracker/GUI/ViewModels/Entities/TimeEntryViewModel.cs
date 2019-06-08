@@ -24,6 +24,7 @@ namespace TTracker.GUI.ViewModels.Entities
             CurrentBase = currentBase;
 
             CreateViewModel();
+            AfterSave();
         }
 
         private void CreateViewModel()
@@ -54,6 +55,29 @@ namespace TTracker.GUI.ViewModels.Entities
             }
         }
 
+        public void Save()
+        {
+            if (!IsDirty)
+                return;
+
+            //Contains the property name and the changed value like:
+            // Name/TTracker
+            var changedPropertiesFullData = new List<string>();
+
+            foreach (var p in ChangedProperties)
+            {
+                switch (p)
+                {
+                    case "Text":
+                        _model.Text = this.Text;
+                        changedPropertiesFullData.Add(("Text/" + _model.Text));
+                        break;
+                }
+            }
+
+            DataAccess.Instance.Save<TimeEntry>(this._model, changedPropertiesFullData);
+            AfterSave();
+        }
 
         #endregion
 

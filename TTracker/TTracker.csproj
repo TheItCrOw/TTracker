@@ -83,6 +83,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BaseDataModules\IClosable.cs" />
+    <Compile Include="BaseDataModules\IPrioritable.cs" />
     <Compile Include="BaseDataModules\ModelBase.cs" />
     <Compile Include="BaseDataModules\ViewModelBase.cs" />
     <Compile Include="BaseDataModules\ViewModelManagementBase.cs" />

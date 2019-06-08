@@ -28,6 +28,7 @@ namespace TTracker.GUI.ViewModels
         public ObservableCollection<TaskTicketViewModel> TaskTickets { get; set; } = new ObservableCollection<TaskTicketViewModel>();        
         public ObservableCollection<TimeEntryViewModel> TimeEntries{ get; set; } = new ObservableCollection<TimeEntryViewModel>();        
         public DelegateCommand SaveTimeCommand => new DelegateCommand(SaveTime);
+        public DelegateCommand SaveTimeEntriesCommand => new DelegateCommand(SaveAllTimeEntries);
 
         #region Properties
         public float TimeFrom
@@ -167,7 +168,7 @@ namespace TTracker.GUI.ViewModels
             currentTicket.Save();
             CreateTimeEntry();
 
-            MessageBox.Show("Time has been saved.");
+            //MessageBox.Show("Time has been saved.");
         }
 
         void CreateTimeEntry()
@@ -203,6 +204,15 @@ namespace TTracker.GUI.ViewModels
 
             TimeEntries.AddRange(timeEntriesForSelectedDateVm);
 
+        }
+
+        void SaveAllTimeEntries()
+        {
+            foreach(var timeEntry in TimeEntries)
+            {
+                timeEntry.Save();
+            }
+            HasUnsavedChanges = false;
         }
     }
 }

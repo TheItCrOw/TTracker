@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data>
+  <Id>74a962ff-535a-4e12-9177-bc72a69d732d</Id>
+  <Name>Xml Text Laden Bug</Name>
+  <UserId>d601adbc-eee3-436f-b657-c9f4969a449a</UserId>
+  <ProjectId>58f1500a-c8e2-4f52-a066-8ab5372e5c55</ProjectId>
+  <ProjectName>TTracker</ProjectName>
+  <Text>For some reason gibt es ein ganz komisches Verhalten, wenn ein leerer Text erzeugt und wieder geladen wird. Manchmal übernimmt es einfahc den Text von einem anderen Ticket oder was auch immer und man kann leere Texte nicht bearbeiten...</Text>
+  <Created>07.06.2019 15:31:33</Created>
+  <ExpectedTime>0,2</ExpectedTime>
+  <UsedTime>0,06875</UsedTime>
+</Data>

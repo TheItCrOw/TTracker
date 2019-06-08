@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data>
+  <Id>fd99fa26-33ba-4b99-978f-5d8f29cf172e</Id>
+  <UserId>d601adbc-eee3-436f-b657-c9f4969a449a</UserId>
+  <TicketId>a3034d7d-186d-4cb5-8f74-ed35ceb30038</TicketId>
+  <Text>Priorität Enum hinzugefügt zu TaskTicket plus speichern. Muss noch im ViewModel implementiert werden. Außerdem UI in CreateTicket gemacht. Muss noch gebindet werden.</Text>
+  <Created>08.06.2019 10:43:51</Created>
+  <ProjectId>58f1500a-c8e2-4f52-a066-8ab5372e5c55</ProjectId>
+  <StartTime>930</StartTime>
+  <EndTime>1045</EndTime>
+</Data>

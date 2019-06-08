@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data>
+  <Id>ce9082d4-7d49-47f4-90a5-2007d6e9e7db</Id>
+  <UserId>d601adbc-eee3-436f-b657-c9f4969a449a</UserId>
+  <TicketId>74a962ff-535a-4e12-9177-bc72a69d732d</TicketId>
+  <Text>Im CreateTFromXmlData Methoden muss man die Erschaffung der einzelnen Entität auslagern, damit die Properties immer resettet werden. Danach geht alles wie gewollt</Text>
+  <Created>08.06.2019 12:08:11</Created>
+  <ProjectId>58f1500a-c8e2-4f52-a066-8ab5372e5c55</ProjectId>
+  <StartTime>1145</StartTime>
+  <EndTime>1200</EndTime>
+</Data>

@@ -22,42 +22,21 @@ namespace TTracker.GUI.ViewModels
         private bool _isDateTicket;
         private string _ticketText;
         private float _expectedTicketTime;
-        private ProjectViewModel _selectedComboBoxItem;
-
+        private ProjectViewModel _selectedProjectComboBox;
         private AllTicketsFrameViewModel _allTicketsVm;
+        private PriorityLevel _selectedPriorityComboBox;
 
         public DelegateCommand CreateNewTicketCommand => new DelegateCommand(CreateNewTicket);
         public ObservableCollection<ProjectViewModel> Projects { get; set; } = new ObservableCollection<ProjectViewModel>();
+        public ObservableCollection<PriorityLevel> Priorities { get; set; } = new ObservableCollection<PriorityLevel>();
 
         public CreateTicketViewModel(AllTicketsFrameViewModel allTicketsVm)
         {
             _allTicketsVm = allTicketsVm;
-            LoadProjects();
-            isTaskTicket = true;
+            Setup();
         }
 
-        private void LoadProjects()
-        {
-            Projects.Clear();
-            var allProjects = DataAccess.Instance.GetAll<Project>();
-            var allProjectsVM = new List<ProjectViewModel>();
-
-            if (allProjects == null)
-                return;
-
-            foreach (var project in allProjects)
-            {
-                if (DataAccess.CurrentLoggedUser != null 
-                    && project.UserId == DataAccess.CurrentLoggedUser.Id
-                    && project.ParentId != Guid.Empty)
-                {
-                    allProjectsVM.Add(new ProjectViewModel(project, this, false));
-                }
-            }
-
-            Projects.AddRange(allProjectsVM);
-        }
-
+        #region Properties
         public bool isTaskTicket
         {
             get { return _isTaskTicket; }
@@ -98,13 +77,60 @@ namespace TTracker.GUI.ViewModels
                 SetProperty(ref _expectedTicketTime, value);
             }
         }
-        public ProjectViewModel SelectedComboBoxItem
+        public ProjectViewModel SelectedProjectComboBox
         {
-            get { return _selectedComboBoxItem; }
+            get { return _selectedProjectComboBox; }
             set
             {
-                SetProperty(ref _selectedComboBoxItem, value);
+                SetProperty(ref _selectedProjectComboBox, value);
             }
+        }
+        public PriorityLevel SelectedPriorityComboBox
+        {
+            get { return _selectedPriorityComboBox; }
+            set
+            {
+                SetProperty(ref _selectedPriorityComboBox, value);
+            }
+        }
+        #endregion
+
+        void Setup()
+        {
+            LoadProjects();
+            LoadPriorities();
+            isTaskTicket = true;
+        }
+
+        private void LoadProjects()
+        {
+            Projects.Clear();
+            var allProjects = DataAccess.Instance.GetAll<Project>();
+            var allProjectsVM = new List<ProjectViewModel>();
+
+            if (allProjects == null)
+                return;
+
+            foreach (var project in allProjects)
+            {
+                if (DataAccess.CurrentLoggedUser != null 
+                    && project.UserId == DataAccess.CurrentLoggedUser.Id
+                    && project.ParentId != Guid.Empty)
+                {
+                    allProjectsVM.Add(new ProjectViewModel(project, this, false));
+                }
+            }
+
+            Projects.AddRange(allProjectsVM);
+        }
+
+        void LoadPriorities()
+        {
+            Priorities.Add(PriorityLevel.VeryLow);
+            Priorities.Add(PriorityLevel.Low);
+            Priorities.Add(PriorityLevel.Normal);
+            Priorities.Add(PriorityLevel.High);
+            Priorities.Add(PriorityLevel.VeryHigh);
         }
 
         private void CreateNewTicket()
@@ -119,7 +145,7 @@ namespace TTracker.GUI.ViewModels
                 MessageBox.Show("Please name your ticket.");
                 return;
             }
-            else if(SelectedComboBoxItem == null)
+            else if(SelectedProjectComboBox == null)
             {
                 MessageBox.Show("Please choose a project.");
                 return;
@@ -149,12 +175,13 @@ namespace TTracker.GUI.ViewModels
                 TicketName,
                 Guid.NewGuid(),
                 DataAccess.CurrentLoggedUser.Id,
-                SelectedComboBoxItem.ModelId,
+                SelectedProjectComboBox.ModelId,
                 TicketText,
                 DateTime.Now,
-                SelectedComboBoxItem.Name,
+                SelectedProjectComboBox.Name,
                 ExpectedTicketTime,
-                0
+                0,
+                SelectedPriorityComboBox.ToString()
                 );
 
             _allTicketsVm.TaskTickets.Add(new TaskTicketViewModel(taskTicket, _allTicketsVm, true));

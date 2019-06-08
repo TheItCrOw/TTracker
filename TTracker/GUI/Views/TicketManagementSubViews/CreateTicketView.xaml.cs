@@ -24,11 +24,5 @@ namespace TTracker.GUI.Views
         {
             InitializeComponent();
         }
-
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var item = ((ComboBox)sender).SelectedItem;
-            ((CreateTicketViewModel)DataContext).SelectedComboBoxItem = (ProjectViewModel)item;
-        }
     }
 }

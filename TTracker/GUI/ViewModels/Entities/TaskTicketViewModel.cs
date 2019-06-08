@@ -24,6 +24,9 @@ namespace TTracker.GUI.ViewModels
         private string _progress;
         private Guid _modelId;
         private TaskTicket _model;
+        private PriorityLevel _priority;
+
+        #region Properties
 
         public string ProjectName { get { return _projectName; } set { SetProperty(ref _projectName, value); } }
         public DateTime Created { get { return _created; } set { SetProperty(ref _created, value); } }
@@ -68,6 +71,17 @@ namespace TTracker.GUI.ViewModels
             }
         }
 
+        public PriorityLevel Priority
+        {
+            get { return _priority; }
+            set
+            {
+                SetProperty(ref _priority, value);
+                SetIsDirty(nameof(Priority));
+            }
+        }
+        #endregion
+
         public TaskTicketViewModel(TaskTicket taskTicket, ViewModelManagementBase currentBase, bool @new)
         {
             CurrentBase = currentBase;
@@ -82,13 +96,13 @@ namespace TTracker.GUI.ViewModels
             Created = DateTime.Now;
             ExpectedTime = taskTicket.ExpectedTime;
             UsedTime = taskTicket.UsedTime;
+            Priority = taskTicket.Priority;
             Progress = (float)(Math.Truncate((double)UsedTime * 100.0) / 100.0) + " / " + ExpectedTime + " Days";
 
             if(!IsNew)
             {
                 AfterSave();
             }          
-
         }
 
         public void Save()
@@ -126,6 +140,10 @@ namespace TTracker.GUI.ViewModels
                     case "UsedTime":
                         _model.UsedTime = this.UsedTime;
                         changedPropertiesFullData.Add(("UsedTime/" + _model.UsedTime).ToString());
+                        break;
+                    case "Priority":
+                        _model.Priority = this.Priority;
+                        changedPropertiesFullData.Add(("Priority/" + _model.Priority).ToString());
                         break;
 
                 }

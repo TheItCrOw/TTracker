@@ -131,7 +131,7 @@
                                     <TextBlock FontSize="15" Text="{Binding EndTime, StringFormat=00:00}" FontWeight="DemiBold" Width="50" VerticalAlignment="Center" TextAlignment="Center"/>
                                     <TextBlock FontSize="15" Margin="80 0 0 0" Text="{Binding ProjectName}" VerticalAlignment="Center" Width="250" ToolTip="{Binding ProjectName}"/>
                                     <TextBlock FontSize="15" Text="{Binding TicketName}" Margin="40 0 60 0" VerticalAlignment="Center" Width="200" ToolTip="{Binding TicketName}"/>
-                                    <TextBlock FontSize="15" Text="{Binding Text}"  VerticalAlignment="Center"/>
+                                    <TextBox FontSize="15" Text="{Binding Text}"  VerticalAlignment="Center" BorderThickness="0.5"/>
                                 </DockPanel>
                             </Border>
                         </DataTemplate>
@@ -153,8 +153,8 @@
                     <RowDefinition Height="50" />
                 </Grid.RowDefinitions>
 
-                <Button x:Name="AccountButton" Grid.Column="5" Background="LightSteelBlue" BorderBrush="Black" ToolTip="Login/Register" >
-                    <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/login.png"/>
+                <Button x:Name="SaveButton" ToolTip="Save" Background="LightSteelBlue" BorderBrush="Black" Grid.Row="0" BorderThickness="1 1 1 1" IsEnabled="{Binding HasUnsavedChanges}" Command="{Binding SaveTimeEntriesCommand}">
+                    <Image Margin="7" Source="/TTracker;component/Resources/save.png"/>
                 </Button>
 
             </Grid>

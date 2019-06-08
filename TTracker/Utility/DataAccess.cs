@@ -52,6 +52,7 @@ namespace TTracker.Utility
             XmlWriteableDataList.Add("Created/" + newTaskTicket.Created);
             XmlWriteableDataList.Add("ExpectedTime/" + newTaskTicket.ExpectedTime);
             XmlWriteableDataList.Add("UsedTime/" + newTaskTicket.UsedTime);
+            XmlWriteableDataList.Add("Priority/" + newTaskTicket.Priority);
             _xmlReaderWriter.SaveNewToXml("TaskTickets", newTaskTicket.Id, XmlWriteableDataList);
         }
         public void RegisterAndSaveNewProject(Project newProject)
@@ -94,7 +95,7 @@ namespace TTracker.Utility
             switch (typeof(T).Name)
             {
                 case "TaskTicket":
-                    return (IEnumerable<T>)(_createTFromXmlData.CreateTaskTicketFromXmlData(allData));
+                    return (IEnumerable<T>)(_createTFromXmlData.CreateTaskTicketListFromXmlData(allData));
                 case "Project":
                     return (IEnumerable<T>)(_createTFromXmlData.CreateProjectFromXmlData(allData));
                 case "TimeEntry":
@@ -216,7 +217,7 @@ namespace TTracker.Utility
                         //So Create a list, add only one project and return the one project of that list.
                         var xDocList = new List<XDocument>();
                         xDocList.Add(doc);
-                        var tickets = _createTFromXmlData.CreateTaskTicketFromXmlData(xDocList);
+                        var tickets = _createTFromXmlData.CreateTaskTicketListFromXmlData(xDocList);
                         TaskTicket taskTicket = tickets.Find(p => p.ToString() != string.Empty);
                         return taskTicket;
                     }

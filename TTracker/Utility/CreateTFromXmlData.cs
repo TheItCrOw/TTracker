@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using TTracker.BaseDataModules;
 using TTracker.GUI.Models;
 
 namespace TTracker.Utility
@@ -48,7 +49,19 @@ namespace TTracker.Utility
             }
             return new User(name, password, Id, created);
         }
-        public List<TaskTicket> CreateTaskTicketFromXmlData(List<XDocument> ticketData)
+        public List<TaskTicket> CreateTaskTicketListFromXmlData(List<XDocument> ticketData)
+        {
+            var allTaskTickets = new List<TaskTicket>();
+
+            //Foreach XDocument in ticketData
+            foreach (var doc in ticketData)
+            {
+                allTaskTickets.Add(CreateTaskTicketFromXmlData(doc));
+            }
+
+            return allTaskTickets;
+        }
+        private TaskTicket CreateTaskTicketFromXmlData(XDocument doc)
         {
             var name = string.Empty;
             Guid Id = Guid.Empty;
@@ -59,59 +72,57 @@ namespace TTracker.Utility
             var projectName = string.Empty;
             float expectedTime = 0;
             float usedTime = 0;
+            string priority = string.Empty;
 
-            var allTaskTickets = new List<TaskTicket>();
 
-            //Foreach XDocument in ticketData
-            foreach (var doc in ticketData)
+            var docAllData = doc.Root.Value;
+            var docElement = doc.Root.Elements();
+
+            //Foreach element in XML FIle -> Id/432985094589 etc.
+            foreach (var element in docElement)
             {
-                var docAllData = doc.Root.Value;
-                var docElement = doc.Root.Elements();
+                var data = element.ToString();
 
-                //Foreach element in XML FIle -> Id/432985094589 etc.
-                foreach (var element in docElement)
+                if (data != null)
                 {
-                    var data = element.ToString();
+                    string[] splitedData = data.Split(new char[] { '/' });
 
-                    if (data != null)
+                    switch (splitedData[1])
                     {
-                        string[] splitedData = data.Split(new char[] { '/' });
-
-                        switch (splitedData[1])
-                        {
-                            case "Name>":
-                                name = element.Value;
-                                break;
-                            case "Id>":
-                                Id = new Guid(element.Value);
-                                break;
-                            case "UserId>":
-                                userId = new Guid(element.Value);
-                                break;
-                            case "ProjectId>":
-                                projectId = new Guid(element.Value);
-                                break;
-                            case "Text>":
-                                text = element.Value;
-                                break;
-                            case "Created>":
-                                created = DateTime.Parse(element.Value);
-                                break;
-                            case "ProjectName>":
-                                projectName = (element.Value);
-                                break;
-                            case "ExpectedTime>":
-                                expectedTime = float.Parse(element.Value);
-                                break;
-                            case "UsedTime>":
-                                usedTime = float.Parse(element.Value);
-                                break;
-                        }
+                        case "Name>":
+                            name = element.Value;
+                            break;
+                        case "Id>":
+                            Id = new Guid(element.Value);
+                            break;
+                        case "UserId>":
+                            userId = new Guid(element.Value);
+                            break;
+                        case "ProjectId>":
+                            projectId = new Guid(element.Value);
+                            break;
+                        case "Text>":
+                            text = element.Value;
+                            break;
+                        case "Created>":
+                            created = DateTime.Parse(element.Value);
+                            break;
+                        case "ProjectName>":
+                            projectName = (element.Value);
+                            break;
+                        case "ExpectedTime>":
+                            expectedTime = float.Parse(element.Value);
+                            break;
+                        case "UsedTime>":
+                            usedTime = float.Parse(element.Value);
+                            break;
+                        case "Priority>":
+                            priority = element.Value;
+                            break;
                     }
                 }
-                allTaskTickets.Add(new TaskTicket(name, Id, userId, projectId, text, created, projectName, expectedTime, usedTime));
             }
-            return allTaskTickets;
+            return (new TaskTicket(name, Id, userId, projectId, text, created, projectName, expectedTime, usedTime, priority));
         }
         public List<Project> CreateProjectFromXmlData(List<XDocument> projectData)
         {
