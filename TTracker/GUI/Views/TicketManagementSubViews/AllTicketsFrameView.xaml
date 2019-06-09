@@ -5,7 +5,7 @@
       xmlns:p ="clr-namespace:TTracker.BaseDataModules"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TTracker.GUI.Views.TicketManagementSubViews"
-      xmlns:vm="clr-namespace:TTracker.GUI.ViewModels"
+      xmlns:c ="clr-namespace:TTracker.GUI.Converters"
       xmlns:codeg="clr-namespace:System.Collections;assembly=mscorlib"
       xmlns:System="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
@@ -31,18 +31,45 @@
         </Grid.RowDefinitions>
 
         <!--Table Header for ItemsControl-->
-        <Border Grid.Column="1" Grid.Row="0" BorderThickness="2 0 0 1" BorderBrush="Black" Background="LightSteelBlue">
+        <Border Grid.Column="1" Grid.Row="0" BorderThickness="2 0 0 1" BorderBrush="Black">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="1.3,1" StartPoint="0.1,1">
+                    <GradientStop Color="AliceBlue" Offset="0" />
+                    <GradientStop Color="LightSteelBlue" Offset="0.5" />
+                    <GradientStop Color="Black" Offset="1" />
+                </LinearGradientBrush>
+            </Border.Background>
             <DockPanel VerticalAlignment="Center">
-                <Button x:Name="SortForName" FontSize="20" FontWeight="Bold" Content="Ticketname" Margin="60 0 0 0" Foreground="DarkBlue" Width="300" HorizontalContentAlignment="Left" Background="LightSteelBlue" BorderThickness="0"
-                        Command="{Binding SortTaskTicketsCommand}" CommandParameter="{Binding ElementName=SortForName, Path=Name}"/>
-                <Button x:Name="SortForPriority" FontSize="20" FontWeight="Bold" Content="Priority" Margin="19 0 0 0" Foreground="DarkBlue" Width="150" HorizontalContentAlignment="Left" Background="LightSteelBlue" BorderThickness="0"
-                        Command="{Binding SortTaskTicketsCommand}" CommandParameter="{Binding ElementName=SortForPriority, Path=Name}"/>
-                <Button x:Name="SortForProjects" FontSize="20" FontWeight="Bold" Content="Project" Margin="10 0 0 0" Foreground="DarkBlue" Width="250" HorizontalContentAlignment="Left" Background="LightSteelBlue" BorderThickness="0" 
-                        Command="{Binding SortTaskTicketsCommand}" CommandParameter="{Binding ElementName=SortForProjects, Path=Name}"/>
-                <Button x:Name="SortForStatus" FontSize="20" FontWeight="Bold" Content="Status" Margin="10 0 0 0" Foreground="DarkBlue" Width="330" HorizontalContentAlignment="Left" Background="LightSteelBlue" BorderThickness="0"
-                        Command="{Binding SortTaskTicketsCommand}" CommandParameter="{Binding ElementName=SortForStatus, Path=Name}"/>
-                <Button x:Name="SortForProgress" FontSize="20" FontWeight="Bold" Content="Progress" Margin="10 0 0 0" Foreground="DarkBlue" HorizontalContentAlignment="Left" Background="LightSteelBlue" BorderThickness="0"
-                        Command="{Binding SortTaskTicketsCommand}" CommandParameter="{Binding ElementName=SortForProgress, Path=Name}"/>
+                <Button x:Name="SortForName" FontSize="20" FontWeight="Bold" Content="Ticketname" Margin="60 0 0 0" Foreground="DarkBlue" Width="300" HorizontalContentAlignment="Left" BorderThickness="0"
+                        Command="{Binding SortTaskTicketsCommand}" CommandParameter="{Binding ElementName=SortForName, Path=Name}">
+                    <Button.Background>
+                        <SolidColorBrush Opacity="0"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="SortForPriority" FontSize="20" FontWeight="Bold" Content="Priority" Margin="19 0 0 0" Foreground="DarkBlue" Width="150" HorizontalContentAlignment="Left" BorderThickness="0"
+                        Command="{Binding SortTaskTicketsCommand}" CommandParameter="{Binding ElementName=SortForPriority, Path=Name}">
+                    <Button.Background>
+                        <SolidColorBrush Opacity="0"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="SortForProjects" FontSize="20" FontWeight="Bold" Content="Project" Margin="10 0 0 0" Foreground="DarkBlue" Width="250" HorizontalContentAlignment="Left" BorderThickness="0" 
+                        Command="{Binding SortTaskTicketsCommand}" CommandParameter="{Binding ElementName=SortForProjects, Path=Name}">
+                    <Button.Background>
+                        <SolidColorBrush Opacity="0"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="SortForStatus" FontSize="20" FontWeight="Bold" Content="Status" Margin="10 0 0 0" Foreground="DarkBlue" Width="330" HorizontalContentAlignment="Left" BorderThickness="0"
+                        Command="{Binding SortTaskTicketsCommand}" CommandParameter="{Binding ElementName=SortForStatus, Path=Name}">
+                    <Button.Background>
+                        <SolidColorBrush Opacity="0"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="SortForProgress" FontSize="20" FontWeight="Bold" Content="Progress" Margin="10 0 0 0" Foreground="DarkBlue" HorizontalContentAlignment="Left" BorderThickness="0"
+                        Command="{Binding SortTaskTicketsCommand}" CommandParameter="{Binding ElementName=SortForProgress, Path=Name}">
+                    <Button.Background>
+                        <SolidColorBrush Opacity="0"/>
+                    </Button.Background>
+                </Button>
             </DockPanel>
         </Border>
 
@@ -69,11 +96,11 @@
                                     </DockPanel>
                                 </Expander>
                                 <TextBox Text="{Binding Name}" FontSize="17" FontWeight="Bold" Width="300" Margin="50 0 0 0" VerticalAlignment="Center" BorderThickness="0.5"/>
-                                <ComboBox BorderThickness="0.5" ItemsSource="{Binding  Source={StaticResource PriorityLevel}}" FontSize="17" Width="150" Margin="20 0 0 0" VerticalAlignment="Center" MaxHeight="25"/>
+                                <ComboBox BorderThickness="0.5" ItemsSource="{Binding  Source={StaticResource PriorityLevel}}" FontSize="15" Width="150" Margin="20 0 0 0" VerticalAlignment="Center" MaxHeight="25" SelectedItem="{Binding Priority}"/>
                                 <TextBlock Text="{Binding ProjectName}" FontSize="17" FontWeight="Bold" Width="250" Margin="10 0 0 0" VerticalAlignment="Center"/>
                                 <Grid Width="300" Margin="10 0 0 0" VerticalAlignment="Center">
-                                    <Border BorderThickness="1" BorderBrush="Black">
-                                        <ProgressBar Minimum="0" Maximum="{Binding ExpectedTime}" Value="{Binding UsedTime}" Background="White">
+                                    <Border BorderThickness="1" BorderBrush="Black">  
+                                        <ProgressBar x:Name="ProgressBar" Minimum="0" Maximum="{Binding ExpectedTime}" Value="{Binding UsedTime}" Background="White">
                                             <ProgressBar.Foreground>
                                                 <LinearGradientBrush EndPoint="1.3,1" StartPoint="0.1,1">
                                                     <GradientStop Color="AliceBlue" Offset="0" />
@@ -81,7 +108,27 @@
                                                     <GradientStop Color="Black" Offset="1" />
                                                 </LinearGradientBrush>
                                             </ProgressBar.Foreground>
+                                            <ProgressBar.Style>
+                                                <Style TargetType="ProgressBar">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Value="False">
+                                                            <DataTrigger.Binding>
+                                                                <MultiBinding>
+                                                                    <MultiBinding.Converter>
+                                                                        <c:IsEqualOrGreaterThanConverter />
+                                                                    </MultiBinding.Converter>
+                                                                    <Binding Path="ExpectedTime" />
+                                                                    <Binding Path ="UsedTime"/>
+                                                                </MultiBinding>
+                                                            </DataTrigger.Binding>
+                                                            <Setter Property="BorderThickness" Value="10"/>
+                                                            <Setter Property="BorderBrush" Value="Red"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </ProgressBar.Style>
                                         </ProgressBar>
+                                       
                                     </Border>
                                     <TextBlock Text="{Binding Progress}" FontSize="17" TextAlignment="Center"/>
                                 </Grid>

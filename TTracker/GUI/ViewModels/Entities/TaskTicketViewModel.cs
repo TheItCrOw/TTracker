@@ -80,6 +80,7 @@ namespace TTracker.GUI.ViewModels
                 SetIsDirty(nameof(Priority));
             }
         }
+
         #endregion
 
         public TaskTicketViewModel(TaskTicket taskTicket, ViewModelManagementBase currentBase, bool @new)

@@ -87,6 +87,7 @@
     <Compile Include="BaseDataModules\ModelBase.cs" />
     <Compile Include="BaseDataModules\ViewModelBase.cs" />
     <Compile Include="BaseDataModules\ViewModelManagementBase.cs" />
+    <Compile Include="GUI\Converters\IsEqualOrGreaterConverter.cs" />
     <Compile Include="GUI\Models\Project.cs" />
     <Compile Include="GUI\Models\TaskTicket.cs" />
     <Compile Include="GUI\Models\TimeEntry.cs" />

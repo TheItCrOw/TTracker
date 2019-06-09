@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data>
+  <Id>deff6e93-072b-478a-b477-77e267bd4d16</Id>
+  <Name>Methode AddToEntity</Name>
+  <UserId>d601adbc-eee3-436f-b657-c9f4969a449a</UserId>
+  <ProjectId>58f1500a-c8e2-4f52-a066-8ab5372e5c55</ProjectId>
+  <ProjectName>TTracker</ProjectName>
+  <Text>Ich brauche eine generische Methode, die in bestehenden Xml Dateien von Entities neue Properites automatisch hinzufügt.</Text>
+  <Created>09.06.2019 12:48:33</Created>
+  <ExpectedTime>0,5</ExpectedTime>
+  <UsedTime>0</UsedTime>
+  <Priority>High</Priority>
+</Data>

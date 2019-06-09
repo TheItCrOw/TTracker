@@ -7,7 +7,8 @@
   <ProjectName>TTracker</ProjectName>
   <Text>Die Tickets sollen nach den Projekten geordneten angezeigt werden können.
 
-Dabei funktioniert ein Button als Filter. Wo, weiß ich noch nicht.
+Topic dient als Sortierer (DONE)
+Dabei funktioniert ein Button als Filter. Wo, weiß ich noch nicht. 
 Eine Suche könnte bei einer hohen Anzahl von Tickets irgendwann auch nützlich werden.</Text>
   <Created>03.06.2019 14:30:26</Created>
   <ExpectedTime>0,5</ExpectedTime>
