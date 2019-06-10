@@ -25,6 +25,7 @@ namespace TTracker.GUI.ViewModels
         private Guid _modelId;
         private TaskTicket _model;
         private PriorityLevel _priority;
+        private Status _status;
 
         #region Properties
 
@@ -78,6 +79,16 @@ namespace TTracker.GUI.ViewModels
             {
                 SetProperty(ref _priority, value);
                 SetIsDirty(nameof(Priority));
+            }
+        }
+
+        public Status Status
+        {
+            get { return _status; }
+            set
+            {
+                SetProperty(ref _status, value);
+                SetIsDirty(nameof(Status));
             }
         }
 
@@ -145,6 +156,10 @@ namespace TTracker.GUI.ViewModels
                     case "Priority":
                         _model.Priority = this.Priority;
                         changedPropertiesFullData.Add(("Priority/" + _model.Priority).ToString());
+                        break;
+                    case "Status":
+                        _model.Status = this.Status;
+                        changedPropertiesFullData.Add(("Status/" + _model.Status).ToString());
                         break;
 
                 }

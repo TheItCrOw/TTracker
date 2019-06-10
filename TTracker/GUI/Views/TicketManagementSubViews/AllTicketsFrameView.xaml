@@ -99,17 +99,10 @@
                                 <ComboBox BorderThickness="0.5" ItemsSource="{Binding  Source={StaticResource PriorityLevel}}" FontSize="15" Width="150" Margin="20 0 0 0" VerticalAlignment="Center" MaxHeight="25" SelectedItem="{Binding Priority}"/>
                                 <TextBlock Text="{Binding ProjectName}" FontSize="17" FontWeight="Bold" Width="250" Margin="10 0 0 0" VerticalAlignment="Center"/>
                                 <Grid Width="300" Margin="10 0 0 0" VerticalAlignment="Center">
-                                    <Border BorderThickness="1" BorderBrush="Black">  
-                                        <ProgressBar x:Name="ProgressBar" Minimum="0" Maximum="{Binding ExpectedTime}" Value="{Binding UsedTime}" Background="White">
-                                            <ProgressBar.Foreground>
-                                                <LinearGradientBrush EndPoint="1.3,1" StartPoint="0.1,1">
-                                                    <GradientStop Color="AliceBlue" Offset="0" />
-                                                    <GradientStop Color="LightSteelBlue" Offset="0.5" />
-                                                    <GradientStop Color="Black" Offset="1" />
-                                                </LinearGradientBrush>
-                                            </ProgressBar.Foreground>
+                                    <Border BorderThickness="1" BorderBrush="Black">
+                                        <ProgressBar x:Name="ProgressBar" Minimum="0" Maximum="{Binding ExpectedTime}" Value="{Binding UsedTime}" Background="White" >
                                             <ProgressBar.Style>
-                                                <Style TargetType="ProgressBar">
+                                                <Style TargetType="ProgressBar" BasedOn="{StaticResource ProgressBarStyle}">
                                                     <Style.Triggers>
                                                         <DataTrigger Value="False">
                                                             <DataTrigger.Binding>
@@ -121,14 +114,21 @@
                                                                     <Binding Path ="UsedTime"/>
                                                                 </MultiBinding>
                                                             </DataTrigger.Binding>
-                                                            <Setter Property="BorderThickness" Value="10"/>
-                                                            <Setter Property="BorderBrush" Value="Red"/>
+                                                            <Setter Property="Foreground">
+                                                                <Setter.Value>
+                                                                    <LinearGradientBrush EndPoint="1.3,1" StartPoint="0.1,1">
+                                                                        <GradientStop Color="LightGray" Offset="0" />
+                                                                        <GradientStop Color="DarkGray" Offset="0.5" />
+                                                                        <GradientStop Color="Black" Offset="1" />
+                                                                    </LinearGradientBrush>
+                                                                </Setter.Value>
+                                                            </Setter>
                                                         </DataTrigger>
                                                     </Style.Triggers>
                                                 </Style>
                                             </ProgressBar.Style>
                                         </ProgressBar>
-                                       
+
                                     </Border>
                                     <TextBlock Text="{Binding Progress}" FontSize="17" TextAlignment="Center"/>
                                 </Grid>

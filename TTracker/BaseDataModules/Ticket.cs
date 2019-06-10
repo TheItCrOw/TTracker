@@ -9,7 +9,7 @@ using TTracker.Interfaces;
 
 namespace TTracker.GUI.Models
 {
-    public class Ticket : ModelBase, IPrioritable
+    public class Ticket : ModelBase, IPrioritable, IStatusable
     {
 
         private Guid _userId;
@@ -21,6 +21,7 @@ namespace TTracker.GUI.Models
         private Guid _projectId;
         private string _projectName;
         private PriorityLevel _priority;
+        private Status _status;
 
         public float ExpectedTime { get { return _expectedTime; } set => _expectedTime = value; }
         public float UsedTime { get { return _usedTime; } set => _usedTime = value; }
@@ -30,7 +31,9 @@ namespace TTracker.GUI.Models
         public Guid ProjectId { get { return _projectId; } set => _projectId = value; }
         public string Name { get { return _name; } set => _name = value; }
         public string ProjectName { get { return _projectName; } set => _projectName = value; }
-        public PriorityLevel Priority { get { return _priority; } set => _priority = value;
-        }
+        public PriorityLevel Priority { get { return _priority; } set => _priority = value; }
+        public Status Status{ get { return _status; } set => _status = value; }
+
+
     }
 }

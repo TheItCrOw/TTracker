@@ -68,7 +68,7 @@ namespace TTracker.Utility
 
             return allTaskTickets;
         }
-        protected TaskTicket CreateTaskTicketFromXmlData(XDocument doc)
+        internal protected TaskTicket CreateTaskTicketFromXmlData(XDocument doc)
         {
             var name = string.Empty;
             Guid Id = Guid.Empty;
@@ -80,6 +80,7 @@ namespace TTracker.Utility
             float expectedTime = 0;
             float usedTime = 0;
             string priority = string.Empty;
+            string status = string.Empty;
 
 
             var docAllData = doc.Root.Value;
@@ -126,10 +127,13 @@ namespace TTracker.Utility
                         case "Priority>":
                             priority = element.Value;
                             break;
+                        case "Status>":
+                            status = element.Value;
+                            break;
                     }
                 }
             }
-            return (new TaskTicket(name, Id, userId, projectId, text, created, projectName, expectedTime, usedTime, priority));
+            return (new TaskTicket(name, Id, userId, projectId, text, created, projectName, expectedTime, usedTime, priority, status));
         }
         public List<Project> CreateProjectListFromXmlData(List<XDocument> projectData)
         {
@@ -141,7 +145,7 @@ namespace TTracker.Utility
             }
             return allProjects;
         }
-        protected Project CreateProjectFromXmlData(XDocument doc)
+        internal protected Project CreateProjectFromXmlData(XDocument doc)
         {
             var name = string.Empty;
             Guid Id = Guid.Empty;
@@ -202,7 +206,7 @@ namespace TTracker.Utility
             }
             return allTimeEntries;
         }
-        protected TimeEntry CreateTimeEntryFromXmlData(XDocument doc)
+        internal protected TimeEntry CreateTimeEntryFromXmlData(XDocument doc)
         {
             Guid Id = Guid.Empty;
             Guid userId = Guid.Empty;

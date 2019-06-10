@@ -25,6 +25,7 @@ namespace TTracker.GUI.ViewModels
         private ProjectViewModel _selectedProjectComboBox;
         private AllTicketsFrameViewModel _allTicketsVm;
         private PriorityLevel _selectedPriorityComboBox;
+        private Status _selectedStatusComboBox;
 
         public DelegateCommand CreateNewTicketCommand => new DelegateCommand(CreateNewTicket);
         public ObservableCollection<ProjectViewModel> Projects { get; set; } = new ObservableCollection<ProjectViewModel>();
@@ -93,12 +94,19 @@ namespace TTracker.GUI.ViewModels
                 SetProperty(ref _selectedPriorityComboBox, value);
             }
         }
+        public Status SelectedStatusComboBox
+        {
+            get { return _selectedStatusComboBox; }
+            set
+            {
+                SetProperty(ref _selectedStatusComboBox, value);
+            }
+        }
         #endregion
 
         void Setup()
         {
             LoadProjects();
-            LoadPriorities();
             isTaskTicket = true;
         }
 
@@ -122,15 +130,6 @@ namespace TTracker.GUI.ViewModels
             }
 
             Projects.AddRange(allProjectsVM);
-        }
-
-        void LoadPriorities()
-        {
-            Priorities.Add(PriorityLevel.VeryLow);
-            Priorities.Add(PriorityLevel.Low);
-            Priorities.Add(PriorityLevel.Normal);
-            Priorities.Add(PriorityLevel.High);
-            Priorities.Add(PriorityLevel.VeryHigh);
         }
 
         private void CreateNewTicket()
@@ -181,7 +180,8 @@ namespace TTracker.GUI.ViewModels
                 SelectedProjectComboBox.Name,
                 ExpectedTicketTime,
                 0,
-                SelectedPriorityComboBox.ToString()
+                SelectedPriorityComboBox.ToString(),
+                SelectedStatusComboBox.ToString()
                 );
 
             _allTicketsVm.TaskTickets.Add(new TaskTicketViewModel(taskTicket, _allTicketsVm, true));

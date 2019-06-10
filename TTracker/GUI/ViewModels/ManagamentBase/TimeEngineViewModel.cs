@@ -181,7 +181,7 @@ namespace TTracker.GUI.ViewModels
                 CurrentDescriptionText,
                 TimeFrom,
                 TimeTo,
-                DateTime.Now);
+                SelectedCalendarDate);
 
             DataAccess.Instance.RegisterAndSaveNewTimeEntry(timeEntry);
             var timeEntryVm = new TimeEntryViewModel(timeEntry, this);

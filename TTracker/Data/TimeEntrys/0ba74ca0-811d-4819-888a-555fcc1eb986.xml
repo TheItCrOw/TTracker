@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data>
+  <Id>0ba74ca0-811d-4819-888a-555fcc1eb986</Id>
+  <UserId>d601adbc-eee3-436f-b657-c9f4969a449a</UserId>
+  <TicketId>22d64960-9549-495c-90a9-d36d52984131</TicketId>
+  <Text>Status in der Logik implementiert und der UI. Static Resource für das Binden der Enums gemacht. Muss jetzt noch im AllTicketsView angezeigt werden.</Text>
+  <Created>10.06.2019 17:32:35</Created>
+  <ProjectId>58f1500a-c8e2-4f52-a066-8ab5372e5c55</ProjectId>
+  <StartTime>1700</StartTime>
+  <EndTime>1730</EndTime>
+</Data>

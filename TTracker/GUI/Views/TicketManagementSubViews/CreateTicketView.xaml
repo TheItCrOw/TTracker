@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="CreateTicketView" Height="800" Width="1000">
 
+    <Window.Resources>
+
+    </Window.Resources>
+
     <Border BorderThickness="2" BorderBrush="Black" Margin="10">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -115,7 +119,8 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Priority:" FontSize="15" Margin="10 0 0 0" />
-                    <ComboBox VerticalAlignment="Center" FontSize="15" Background="AliceBlue" ItemsSource="{Binding Priorities}" Grid.Column="1" SelectedItem="{Binding SelectedPriorityComboBox}">
+                    <!--Priority-->
+                    <ComboBox VerticalAlignment="Center" FontSize="15" Background="AliceBlue" ItemsSource="{Binding Source={StaticResource PriorityLevelSource}}" Grid.Column="1" SelectedItem="{Binding SelectedPriorityComboBox}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding}"/>
@@ -123,10 +128,11 @@
                         </ComboBox.ItemTemplate>
                     </ComboBox>
                     <TextBlock Text="Status:" FontSize="15" Grid.Column="2" Margin="10 0 0 0"/>
-                    <ComboBox VerticalAlignment="Center" FontSize="15" Background="AliceBlue" ItemsSource="{Binding}" Grid.Column="3" Margin="0 0 10 0">
+                    <!--Status-->
+                    <ComboBox VerticalAlignment="Center" FontSize="15" Background="AliceBlue" ItemsSource="{Binding Source={StaticResource StatusSource}}" Grid.Column="3" Margin="0 0 10 0" SelectedItem="{Binding SelectedStatusComboBox}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Name}"/>
+                                <TextBlock Text="{Binding }"/>
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
