@@ -197,7 +197,7 @@ namespace TTracker.GUI.ViewModels
 
             //Show only those that were created on SelectedCalendarDate
             var timeEntriesForSelectedDateVm = allTimeEntries
-                .Where(t => t.Created.ToShortDateString() == SelectedCalendarDate.ToShortDateString())
+                .Where(t => t.Created.ToShortDateString() == SelectedCalendarDate.ToShortDateString() && t.UserId == DataAccess.CurrentLoggedUser.Id)
                 .Select(t => new TimeEntryViewModel(t, this))
                 .OrderBy(t => t.StartTime)
                 .ToList();

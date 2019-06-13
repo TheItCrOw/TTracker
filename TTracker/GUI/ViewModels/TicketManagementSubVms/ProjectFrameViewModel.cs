@@ -39,10 +39,10 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
         public void HandleSelectedProjects(ProjectViewModel selectedProject)
         {
             if (SelectedItem != null)
-                SelectedItem.isSelected = false;
+                SelectedItem.IsSelected = false;
 
             SelectedItem = selectedProject;
-            SelectedItem.isSelected = true;
+            SelectedItem.IsSelected = true;
             ProjectName = selectedProject.Name;
             ProjectText = selectedProject.Text;
             UsedProjectTime = selectedProject.UsedTime;

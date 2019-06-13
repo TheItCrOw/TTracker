@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data>
+  <Id>a5bdb00b-3469-45d5-9072-06a3effcaaa2</Id>
+  <UserId>d601adbc-eee3-436f-b657-c9f4969a449a</UserId>
+  <TicketId>218375de-f804-4407-bb09-22393af381bd</TicketId>
+  <Text>DeleteEntity logik hinzugefügt. Konnte es noch nicht testen, da HoverOver Ticket nicht ganz funzt...Muss ich morgen machen</Text>
+  <Created>12.06.2019 21:36:46</Created>
+  <ProjectId>58f1500a-c8e2-4f52-a066-8ab5372e5c55</ProjectId>
+  <StartTime>2030</StartTime>
+  <EndTime>2130</EndTime>
+</Data>

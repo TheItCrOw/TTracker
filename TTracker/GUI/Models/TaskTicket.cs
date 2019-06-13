@@ -45,7 +45,7 @@ namespace TTracker.GUI.Models
                     break;
             }
 
-            switch (priority)
+            switch (status)
             {
                 case "Static":
                     Status = Status.Static;

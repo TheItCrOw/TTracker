@@ -27,7 +27,12 @@ namespace TTracker.GUI.Views.TicketManagementSubViews
             InitializeComponent();
             this.DataContext = new AllTicketsFrameViewModel();
 
-          //  ((AllTicketsFrameViewModel)DataContext).CurrentContent = (AllTicketsFrameViewModel)this.DataContext;
+        }
+
+        //Determines the hoveredTicekt
+        private void TaskTicketBorder_MouseEnter(object sender, MouseEventArgs e)
+        {
+           // ((AllTicketsFrameViewModel)DataContext).HandleHoveredTicket((TaskTicketViewModel)sender);
         }
     }
 }

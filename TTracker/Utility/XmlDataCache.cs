@@ -69,7 +69,7 @@ namespace TTracker.Utility
             string docId = string.Empty;
 
             //Split the changed Data
-            foreach(var data in changedProperties)
+            foreach (var data in changedProperties)
             {
                 string[] splitedString = data.Split(new char[] { '/' });
                 changedPropertyName.Add((splitedString[0] + ">"));
@@ -78,7 +78,7 @@ namespace TTracker.Utility
 
             //Go through all elements. Search for elementName. When matched with any propertyName, change Value of elemtn
             var docElements = saveableXmlDoc.Root.Elements();
-            foreach(var element in docElements)
+            foreach (var element in docElements)
             {
                 string[] splitedString = element.ToString().Split(new char[] { '/' });
                 var elementName = splitedString[1];
@@ -94,8 +94,32 @@ namespace TTracker.Utility
                     element.Value = changedPropertyValue.ElementAt(index);
                 }
             }
-            var fullSavePath = _saveDataPath + typeof(T).Name + "s" + "\\" + docId + ".xml";
+            var fullSavePath = _saveDataPath + typeof(T).Name + "s\\" + docId + ".xml";
             saveableXmlDoc.Save(fullSavePath);
+        }
+
+        /// <summary>
+        /// This takes in a xmlFile and deletes it from the XmlDataCache
+        /// </summary>
+        public void DeleteTFromXmlCache<T>(XDocument deletableXmlDoc)
+        {
+            var upperFolderName = typeof(T).Name;
+            var docId = string.Empty;
+
+            var docElements = deletableXmlDoc.Root.Elements();
+            foreach (var element in docElements)
+            {
+                string[] splitedString = element.ToString().Split(new char[] { '/' });
+                var elementName = splitedString[1];
+
+                if (elementName == "Id>")
+                {
+                    docId = element.Value;
+                }
+            }
+
+            var fullDeletePath = _saveDataPath + upperFolderName + "s\\" + docId + ".xml";
+            File.Delete(fullDeletePath);
         }
 
         /// <summary>
@@ -130,10 +154,10 @@ namespace TTracker.Utility
             string[] files = Directory.GetFiles(directoryXmlPath);
             //Saves all docs in direcotry
             var allDoc = new List<XDocument>();
-           
+
 
             //Foreach file in files Directory
-            foreach(var file in files)
+            foreach (var file in files)
             {
                 //Read every file. File is the path
                 var doc = XDocument.Load(file);

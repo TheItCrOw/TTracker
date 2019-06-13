@@ -53,6 +53,7 @@ namespace TTracker.Utility
             XmlWriteableDataList.Add("ExpectedTime/" + newTaskTicket.ExpectedTime);
             XmlWriteableDataList.Add("UsedTime/" + newTaskTicket.UsedTime);
             XmlWriteableDataList.Add("Priority/" + newTaskTicket.Priority);
+            XmlWriteableDataList.Add("Status/" + newTaskTicket.Status);
             _xmlReaderWriter.SaveNewToXml("TaskTickets", newTaskTicket.Id, XmlWriteableDataList);
         }
         public void RegisterAndSaveNewProject(Project newProject)
@@ -127,7 +128,31 @@ namespace TTracker.Utility
                     _xmlReaderWriter.OverwriteSaveToXml<T>(doc, changedProperties);
                 }
             }
+        }
 
+        /// <summary>
+        /// Deletes an Entity
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>        
+        public void DeleteEntity<T>(ModelBase deletableObject) where T : ModelBase
+        {
+            var currentObject = typeof(T);
+            var allXmlOfGivenType = _xmlReaderWriter.GetAllXmlFilesFromDirectory<T>();
+
+            foreach (var doc in allXmlOfGivenType)
+            {
+                var docAllData = doc.Root.Value;
+                var docElement = doc.Root.Elements();
+                var docId = doc.Root.FirstNode;
+
+                if (docId.ToString().Contains(deletableObject.Id.ToString()))
+                {
+                    _xmlReaderWriter.DeleteTFromXmlCache<T>(doc);
+                }
+
+            }
         }
 
         internal bool IsValidUser(string name, string password)

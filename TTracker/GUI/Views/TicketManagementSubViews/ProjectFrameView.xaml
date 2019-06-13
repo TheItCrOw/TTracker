@@ -53,11 +53,11 @@
                                                         <!--Highlight the Item that is selected-->
                                                         <Style TargetType="{x:Type Button}">
                                                             <Style.Triggers>
-                                                                <DataTrigger Binding="{Binding isSelected}" Value="true">
+                                                                <DataTrigger Binding="{Binding IsSelected}" Value="true">
                                                                     <Setter Property="Foreground" Value="Red"/>
                                                                     <Setter Property="BorderBrush" Value="Red"/>
                                                                 </DataTrigger>
-                                                                <DataTrigger Binding="{Binding isSelected}" Value="false">
+                                                                <DataTrigger Binding="{Binding IsSelected}" Value="false">
                                                                     <Setter Property="Foreground" Value="Black"/>
                                                                 </DataTrigger>
                                                             </Style.Triggers>

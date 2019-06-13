@@ -19,6 +19,7 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
     public class AllTicketsFrameViewModel : ViewModelManagementBase, INotifyPropertyChanged
     {
         private bool _saveDirtyStateOfBase;
+        private TaskTicketViewModel _hoveredTicket;
 
         public ObservableCollection<TaskTicketViewModel> TaskTickets { get; set; } = new ObservableCollection<TaskTicketViewModel>();
         public DelegateCommand SaveAllTicketsCommand => new DelegateCommand(SaveAllTickets);
@@ -26,6 +27,14 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
         public DelegateCommand FilterTicketsCommand => new DelegateCommand(FilterTickets);
         public DelegateCommand<string> SortTaskTicketsCommand => new DelegateCommand<string>(SortTaskTickets);
 
+        public TaskTicketViewModel HoveredTicket
+        {
+            get { return _hoveredTicket; }
+            set
+            {
+                SetProperty(ref _hoveredTicket, value);
+            }
+        }
 
         public AllTicketsFrameViewModel()
         {
@@ -54,6 +63,11 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
                 ticket.Save();
             }
             HasUnsavedChanges = false;
+        }
+
+        public void HandleHoveredTicket(TaskTicketViewModel hoveredTicket)
+        {
+            HoveredTicket = hoveredTicket;
         }
 
         private void HandleCollectionChanges()

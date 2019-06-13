@@ -34,6 +34,7 @@ namespace TTracker.GUI.ViewModels
         public string Progress { get { return _progress; } set { SetProperty(ref _progress, value); }}
         public Guid ModelId { get { return _modelId; } set { SetProperty(ref _modelId, value); } }
 
+
         public string Name
         {
             get { return _name; }
@@ -92,6 +93,7 @@ namespace TTracker.GUI.ViewModels
             }
         }
 
+
         #endregion
 
         public TaskTicketViewModel(TaskTicket taskTicket, ViewModelManagementBase currentBase, bool @new)
@@ -109,6 +111,7 @@ namespace TTracker.GUI.ViewModels
             ExpectedTime = taskTicket.ExpectedTime;
             UsedTime = taskTicket.UsedTime;
             Priority = taskTicket.Priority;
+            Status = taskTicket.Status;
             Progress = (float)(Math.Truncate((double)UsedTime * 100.0) / 100.0) + " / " + ExpectedTime + " Days";
 
             if(!IsNew)
@@ -116,6 +119,7 @@ namespace TTracker.GUI.ViewModels
                 AfterSave();
             }          
         }
+
 
         public void Save()
         {

@@ -50,7 +50,7 @@ namespace TTracker.GUI.ViewModels
             }
         }
 
-        public bool isSelected
+        public bool IsSelected
         {
             get { return _isSelected; }
             set

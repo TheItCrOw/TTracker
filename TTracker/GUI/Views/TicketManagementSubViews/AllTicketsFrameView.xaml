@@ -39,15 +39,9 @@
                     <GradientStop Color="Black" Offset="1" />
                 </LinearGradientBrush>
             </Border.Background>
-            <DockPanel VerticalAlignment="Center">
+            <DockPanel VerticalAlignment="Center" LastChildFill="True">
                 <Button x:Name="SortForName" FontSize="20" FontWeight="Bold" Content="Ticketname" Margin="60 0 0 0" Foreground="DarkBlue" Width="300" HorizontalContentAlignment="Left" BorderThickness="0"
                         Command="{Binding SortTaskTicketsCommand}" CommandParameter="{Binding ElementName=SortForName, Path=Name}">
-                    <Button.Background>
-                        <SolidColorBrush Opacity="0"/>
-                    </Button.Background>
-                </Button>
-                <Button x:Name="SortForPriority" FontSize="20" FontWeight="Bold" Content="Priority" Margin="19 0 0 0" Foreground="DarkBlue" Width="150" HorizontalContentAlignment="Left" BorderThickness="0"
-                        Command="{Binding SortTaskTicketsCommand}" CommandParameter="{Binding ElementName=SortForPriority, Path=Name}">
                     <Button.Background>
                         <SolidColorBrush Opacity="0"/>
                     </Button.Background>
@@ -58,7 +52,13 @@
                         <SolidColorBrush Opacity="0"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="SortForStatus" FontSize="20" FontWeight="Bold" Content="Status" Margin="10 0 0 0" Foreground="DarkBlue" Width="330" HorizontalContentAlignment="Left" BorderThickness="0"
+                <Button x:Name="SortForPriority" FontSize="20" FontWeight="Bold" Content="Priority" Margin="19 0 0 0" Foreground="DarkBlue" Width="160" HorizontalContentAlignment="Left" BorderThickness="0"
+                        Command="{Binding SortTaskTicketsCommand}" CommandParameter="{Binding ElementName=SortForPriority, Path=Name}">
+                    <Button.Background>
+                        <SolidColorBrush Opacity="0"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="SortForStatus" FontSize="20" FontWeight="Bold" Content="Status" Margin="10 0 0 0" Foreground="DarkBlue" Width="400" HorizontalContentAlignment="Left" BorderThickness="0"
                         Command="{Binding SortTaskTicketsCommand}" CommandParameter="{Binding ElementName=SortForStatus, Path=Name}">
                     <Button.Background>
                         <SolidColorBrush Opacity="0"/>
@@ -75,10 +75,10 @@
 
         <!--Items Control of TaskTickets-->
         <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" Grid.Column="1" Grid.Row="1">
-            <ItemsControl x:Name="taskTicketControl" Background="White" ItemsSource="{Binding TaskTickets, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}">
+            <ItemsControl x:Name="taskTicketControl" Background="White" ItemsSource="{Binding TaskTickets, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" >
                 <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Border BorderThickness="0.5" BorderBrush="Black" Background="GhostWhite">
+                    <DataTemplate >
+                        <Border BorderThickness="0.5" BorderBrush="Black" MouseEnter="TaskTicketBorder_MouseEnter">
                             <DockPanel Margin="10 10 10 10" Height="Auto" VerticalAlignment="Center" LastChildFill="True">
                                 <!--Expander with full info here-->
                                 <Expander  Margin="0 -20 0 0" HorizontalAlignment="Left" ExpandDirection="Down" DockPanel.Dock="Bottom" VerticalAlignment="Top">
@@ -96,15 +96,18 @@
                                     </DockPanel>
                                 </Expander>
                                 <TextBox Text="{Binding Name}" FontSize="17" FontWeight="Bold" Width="300" Margin="50 0 0 0" VerticalAlignment="Center" BorderThickness="0.5"/>
-                                <ComboBox BorderThickness="0.5" ItemsSource="{Binding  Source={StaticResource PriorityLevel}}" FontSize="15" Width="150" Margin="20 0 0 0" VerticalAlignment="Center" MaxHeight="25" SelectedItem="{Binding Priority}"/>
                                 <TextBlock Text="{Binding ProjectName}" FontSize="17" FontWeight="Bold" Width="250" Margin="10 0 0 0" VerticalAlignment="Center"/>
-                                <Grid Width="300" Margin="10 0 0 0" VerticalAlignment="Center">
-                                    <Border BorderThickness="1" BorderBrush="Black">
+                                <ComboBox BorderThickness="0.5" ItemsSource="{Binding  Source={StaticResource PriorityLevel}}" FontSize="15" Width="150" Margin="20 0 0 0" VerticalAlignment="Center" MaxHeight="25" SelectedItem="{Binding Priority}"/>
+                                <ComboBox BorderThickness="0.5" ItemsSource="{Binding  Source={StaticResource StatusSource}}" FontSize="15" Width="150" Margin="20 0 0 0" VerticalAlignment="Center" MaxHeight="25" SelectedItem="{Binding Status}"/>
+                                <Grid Width="300" Margin="0 0 0 0" VerticalAlignment="Center" MouseEnter="TaskTicketBorder_MouseEnter">
+                                    <Border BorderThickness="1" BorderBrush="Black" >
                                         <ProgressBar x:Name="ProgressBar" Minimum="0" Maximum="{Binding ExpectedTime}" Value="{Binding UsedTime}" Background="White" >
                                             <ProgressBar.Style>
+                                                <!--Progress Bar-->
                                                 <Style TargetType="ProgressBar" BasedOn="{StaticResource ProgressBarStyle}">
                                                     <Style.Triggers>
                                                         <DataTrigger Value="False">
+                                                            <!--Change colour when ticket is full-->
                                                             <DataTrigger.Binding>
                                                                 <MultiBinding>
                                                                     <MultiBinding.Converter>
@@ -128,11 +131,20 @@
                                                 </Style>
                                             </ProgressBar.Style>
                                         </ProgressBar>
-
                                     </Border>
                                     <TextBlock Text="{Binding Progress}" FontSize="17" TextAlignment="Center"/>
                                 </Grid>
                             </DockPanel>
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Background" Value="GhostWhite"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True" >
+                                            <Setter Property="Background" Value="LightSteelBlue"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
                         </Border>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
