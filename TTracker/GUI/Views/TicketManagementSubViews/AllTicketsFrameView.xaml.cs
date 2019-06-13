@@ -29,10 +29,5 @@ namespace TTracker.GUI.Views.TicketManagementSubViews
 
         }
 
-        //Determines the hoveredTicekt
-        private void TaskTicketBorder_MouseEnter(object sender, MouseEventArgs e)
-        {
-           // ((AllTicketsFrameViewModel)DataContext).HandleHoveredTicket((TaskTicketViewModel)sender);
-        }
     }
 }

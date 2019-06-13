@@ -8,6 +8,7 @@
   <Text>Couch, 9Gag, 5 min Schach sowas halt.</Text>
   <Created>08.06.2019 15:57:05</Created>
   <ExpectedTime>0</ExpectedTime>
-  <UsedTime>0,90625</UsedTime>
-  <Priority>VeryLow</Priority>
+  <UsedTime>1,11875</UsedTime>
+  <Priority>Normal</Priority>
+  <Status>Static</Status>
 </Data>

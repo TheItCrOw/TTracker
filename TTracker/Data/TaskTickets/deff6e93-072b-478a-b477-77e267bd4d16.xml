@@ -8,6 +8,7 @@
   <Text>Ich brauche eine generische Methode, die in bestehenden Xml Dateien von Entities neue Properites automatisch hinzufügt.</Text>
   <Created>09.06.2019 12:48:33</Created>
   <ExpectedTime>0,5</ExpectedTime>
-  <UsedTime>0</UsedTime>
+  <UsedTime>0,10625</UsedTime>
   <Priority>High</Priority>
+  <Status>Finished</Status>
 </Data>

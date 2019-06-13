@@ -9,5 +9,6 @@
   <Created>11.06.2019 18:54:34</Created>
   <ExpectedTime>0</ExpectedTime>
   <UsedTime>1,3175</UsedTime>
-  <Priority>VeryLow</Priority>
+  <Priority>Normal</Priority>
+  <Status>Static</Status>
 </Data>

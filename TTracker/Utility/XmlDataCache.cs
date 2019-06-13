@@ -92,8 +92,24 @@ namespace TTracker.Utility
                 {
                     var index = changedPropertyName.IndexOf(elementName);
                     element.Value = changedPropertyValue.ElementAt(index);
+                    changedPropertyName.RemoveAt(index);
+                    changedPropertyValue.RemoveAt(index);
                 }
             }
+
+            //When a property hasent been added to the xml yet, then add it.
+            if(changedPropertyName.Count > 0 && changedPropertyValue.Count > 0)
+            {
+                foreach(var addablePropertyName in changedPropertyName)
+                {
+                    var index = changedPropertyName.IndexOf(addablePropertyName);
+                    var name = addablePropertyName.Remove(addablePropertyName.Length - 1);
+                    var value = changedPropertyValue.ElementAt(index);
+                    XElement root = saveableXmlDoc.Root;
+                    root.Add(new XElement(name, value));
+                }
+            }
+
             var fullSavePath = _saveDataPath + typeof(T).Name + "s\\" + docId + ".xml";
             saveableXmlDoc.Save(fullSavePath);
         }

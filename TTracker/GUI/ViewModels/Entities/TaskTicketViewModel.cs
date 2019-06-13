@@ -1,4 +1,5 @@
-﻿using Prism.Mvvm;
+﻿using Prism.Commands;
+using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,9 +24,9 @@ namespace TTracker.GUI.ViewModels
         private float _usedTime;
         private string _progress;
         private Guid _modelId;
-        private TaskTicket _model;
         private PriorityLevel _priority;
         private Status _status;
+        public DelegateCommand DeleteCommand => new DelegateCommand(Delete);
 
         #region Properties
 
@@ -34,6 +35,7 @@ namespace TTracker.GUI.ViewModels
         public string Progress { get { return _progress; } set { SetProperty(ref _progress, value); }}
         public Guid ModelId { get { return _modelId; } set { SetProperty(ref _modelId, value); } }
 
+        public TaskTicket Model { get; set; }
 
         public string Name
         {
@@ -99,7 +101,7 @@ namespace TTracker.GUI.ViewModels
         public TaskTicketViewModel(TaskTicket taskTicket, ViewModelManagementBase currentBase, bool @new)
         {
             CurrentBase = currentBase;
-            _model = taskTicket;
+            Model = taskTicket;
             IsNew = @new;
 
             Name = taskTicket.Name;
@@ -123,16 +125,19 @@ namespace TTracker.GUI.ViewModels
 
         public void Save()
         {
+                        //return
             if (!IsDirty)
-                return;
-
-            if(IsNew)
             {
-                DataAccess.Instance.RegisterAndSaveNewTaskTicket(this._model);
+                return;
+            }
+            //Create first when new
+            else if (IsNew)
+            {
+                DataAccess.Instance.RegisterAndSaveNewTaskTicket(this.Model);
                 AfterSave();
                 return;
             }
-            
+          
             //Contains the property name and the changed value like:
             // Name/Ttrackerr
             var changedPropertiesFullData = new List<string>();
@@ -142,37 +147,41 @@ namespace TTracker.GUI.ViewModels
                 switch (p)
                 {
                     case "Name":
-                        _model.Name = this.Name;
-                        changedPropertiesFullData.Add(("Name/" + _model.Name).ToString());
+                        Model.Name = this.Name;
+                        changedPropertiesFullData.Add(("Name/" + Model.Name).ToString());
                         break;
                     case "Text":
-                        _model.Text = this.Text;
-                        changedPropertiesFullData.Add(("Text/" + _model.Text).ToString());
+                        Model.Text = this.Text;
+                        changedPropertiesFullData.Add(("Text/" + Model.Text).ToString());
                         break;
                     case "ExpectedTime":
-                        _model.ExpectedTime = this.ExpectedTime;
-                        changedPropertiesFullData.Add(("ExpectedTime/" + _model.ExpectedTime).ToString());
+                        Model.ExpectedTime = this.ExpectedTime;
+                        changedPropertiesFullData.Add(("ExpectedTime/" + Model.ExpectedTime).ToString());
                         break;
                     case "UsedTime":
-                        _model.UsedTime = this.UsedTime;
-                        changedPropertiesFullData.Add(("UsedTime/" + _model.UsedTime).ToString());
+                        Model.UsedTime = this.UsedTime;
+                        changedPropertiesFullData.Add(("UsedTime/" + Model.UsedTime).ToString());
                         break;
                     case "Priority":
-                        _model.Priority = this.Priority;
-                        changedPropertiesFullData.Add(("Priority/" + _model.Priority).ToString());
+                        Model.Priority = this.Priority;
+                        changedPropertiesFullData.Add(("Priority/" + Model.Priority).ToString());
                         break;
                     case "Status":
-                        _model.Status = this.Status;
-                        changedPropertiesFullData.Add(("Status/" + _model.Status).ToString());
+                        Model.Status = this.Status;
+                        changedPropertiesFullData.Add(("Status/" + Model.Status).ToString());
                         break;
-
                 }
             }
-            DataAccess.Instance.Save<TaskTicket>(this._model, changedPropertiesFullData);
+            DataAccess.Instance.Save<TaskTicket>(this.Model, changedPropertiesFullData);
             changedPropertiesFullData.Clear();
             AfterSave();
         }
 
+        void Delete()
+        {
+            MarkAsDeletable();
+            ((AllTicketsFrameViewModel)CurrentBase).TaskTickets.Remove(this);
+        }
 
     }
 }

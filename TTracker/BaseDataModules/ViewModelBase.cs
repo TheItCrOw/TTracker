@@ -1,4 +1,5 @@
-﻿using Prism.Mvvm;
+﻿using Prism.Commands;
+using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,6 +13,7 @@ namespace TTracker.BaseDataModules
     {
 
         public bool IsDirty { get; set; }
+        public bool IsDeletable { get; set; }
         public bool IsNew { get; set; }
         public ViewModelManagementBase CurrentBase { get; set; }
 
@@ -30,9 +32,19 @@ namespace TTracker.BaseDataModules
             InformBaseViewModel();
         }
 
+        protected void MarkAsDeletable()
+        {
+            IsDirty = true;
+            IsDeletable = true;
+            InformBaseViewModel();
+
+            CurrentBase.DeletableList.Add(this);
+        }
+
         protected void AfterSave()
         {
             IsDirty = false;
+            IsDeletable = false;
             IsNew = false;
             CurrentBase.HasUnsavedChanges = false;
             ChangedProperties.Clear();

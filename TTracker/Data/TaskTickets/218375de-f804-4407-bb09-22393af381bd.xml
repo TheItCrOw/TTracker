@@ -7,9 +7,12 @@
   <ProjectName>TTracker</ProjectName>
   <Text>Eine generische Lösung, Dinge aus dem Data Cache sowie der UI zu löschen.
 
-- DataAccess Methode Delete(); 
-- Einhaltung der davor implementierten Logik Muster</Text>
+- DataAccess Methode Delete(); (DONE)
+- Einhaltung der davor implementierten Logik Muster (DONE)
+- Implementierung im Ticket VIew (DONE)
+- Implementierung im ProjectsView</Text>
   <Created>03.06.2019 14:28:57</Created>
   <ExpectedTime>1</ExpectedTime>
-  <UsedTime>0,125</UsedTime>
+  <UsedTime>0,3</UsedTime>
+  <Status>Finished</Status>
 </Data>

@@ -19,22 +19,12 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
     public class AllTicketsFrameViewModel : ViewModelManagementBase, INotifyPropertyChanged
     {
         private bool _saveDirtyStateOfBase;
-        private TaskTicketViewModel _hoveredTicket;
 
         public ObservableCollection<TaskTicketViewModel> TaskTickets { get; set; } = new ObservableCollection<TaskTicketViewModel>();
         public DelegateCommand SaveAllTicketsCommand => new DelegateCommand(SaveAllTickets);
         public DelegateCommand CreateNewTicketCommand => new DelegateCommand(CreateNewTicket);
         public DelegateCommand FilterTicketsCommand => new DelegateCommand(FilterTickets);
         public DelegateCommand<string> SortTaskTicketsCommand => new DelegateCommand<string>(SortTaskTickets);
-
-        public TaskTicketViewModel HoveredTicket
-        {
-            get { return _hoveredTicket; }
-            set
-            {
-                SetProperty(ref _hoveredTicket, value);
-            }
-        }
 
         public AllTicketsFrameViewModel()
         {
@@ -58,6 +48,9 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
 
         private void SaveAllTickets()
         {
+            //Delete first, then save the remaining
+            DeleteTickets();
+
             foreach (var ticket in TaskTickets)
             {
                 ticket.Save();
@@ -65,9 +58,13 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
             HasUnsavedChanges = false;
         }
 
-        public void HandleHoveredTicket(TaskTicketViewModel hoveredTicket)
+        private void DeleteTickets()
         {
-            HoveredTicket = hoveredTicket;
+            foreach(var ticket in DeletableList)
+            {
+                var ticketVm = (TaskTicketViewModel)ticket;
+                DataAccess.Instance.DeleteEntity<TaskTicket>(ticketVm.Model); 
+            }
         }
 
         private void HandleCollectionChanges()

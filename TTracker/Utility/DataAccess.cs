@@ -155,6 +155,16 @@ namespace TTracker.Utility
             }
         }
 
+        /// <summary>
+        /// When a Model is changed, this function updates the DataBase of the given type.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="updateableObject"></param>
+        public void UpdateXmlCache<T>()
+        {
+
+        }
+
         internal bool IsValidUser(string name, string password)
         {
             var desiredUser = GetUserByNameAndPassword(name, password);

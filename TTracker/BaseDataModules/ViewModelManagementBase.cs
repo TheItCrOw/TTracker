@@ -14,6 +14,8 @@ namespace TTracker.BaseDataModules
         private bool _hasUnsavedChanges;
         private object _currentContent;
 
+        public List<ViewModelBase> DeletableList = new List<ViewModelBase>();
+
         public bool HasUnsavedChanges
         {
             get
