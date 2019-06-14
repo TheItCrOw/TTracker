@@ -15,12 +15,13 @@ namespace TTracker.GUI.ViewModels.Entities
         private float _startTime;
         private float _endTime;
         private string _projectName;
-        private TimeEntry _model;
         private string _ticketName;
+
+        public TimeEntry Model { get; set; }
 
         public TimeEntryViewModel(TimeEntry timeEntry, ViewModelManagementBase currentBase)
         {
-            _model = timeEntry;
+            Model = timeEntry;
             CurrentBase = currentBase;
 
             CreateViewModel();
@@ -30,12 +31,12 @@ namespace TTracker.GUI.ViewModels.Entities
         private void CreateViewModel()
         {
             Id = Guid.NewGuid();
-            StartTime = _model.StartTime;
-            EndTime = _model.EndTime;
-            Text = _model.Text;
+            StartTime = Model.StartTime;
+            EndTime = Model.EndTime;
+            Text = Model.Text;
 
-            ProjectName = DataAccess.Instance.GetProjectById(_model.ProjectId).Name;
-            TicketName = DataAccess.Instance.GetTaskTicketById(_model.TicketId).Name;
+            ProjectName = DataAccess.Instance.GetProjectById(Model.ProjectId).Name;
+            TicketName = DataAccess.Instance.GetTaskTicketById(Model.TicketId).Name;
         }
 
 
@@ -69,13 +70,13 @@ namespace TTracker.GUI.ViewModels.Entities
                 switch (p)
                 {
                     case "Text":
-                        _model.Text = this.Text;
-                        changedPropertiesFullData.Add(("Text/" + _model.Text));
+                        Model.Text = this.Text;
+                        changedPropertiesFullData.Add(("Text/" + Model.Text));
                         break;
                 }
             }
 
-            DataAccess.Instance.Save<TimeEntry>(this._model, changedPropertiesFullData);
+            DataAccess.Instance.Save<TimeEntry>(this.Model, changedPropertiesFullData);
             AfterSave();
         }
 

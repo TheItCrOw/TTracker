@@ -9,8 +9,9 @@
 
 Topic dient als Sortierer (DONE)
 Dabei funktioniert ein Button als Filter. Wo, weiß ich noch nicht. 
-Eine Suche könnte bei einer hohen Anzahl von Tickets irgendwann auch nützlich werden.</Text>
+</Text>
   <Created>03.06.2019 14:30:26</Created>
-  <ExpectedTime>0,5</ExpectedTime>
-  <UsedTime>0,1625</UsedTime>
+  <ExpectedTime>0,4</ExpectedTime>
+  <UsedTime>0,18125</UsedTime>
+  <Status>Working</Status>
 </Data>

@@ -75,7 +75,7 @@
 
         <!--Items Control of TaskTickets-->
         <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" Grid.Column="1" Grid.Row="1">
-            <ItemsControl x:Name="taskTicketControl" Background="White" ItemsSource="{Binding TaskTickets, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" >
+            <ItemsControl x:Name="taskTicketControl" Background="GhostWhite" ItemsSource="{Binding TaskTickets, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" >
                 <ItemsControl.ItemTemplate>
                     <DataTemplate >
                         <Border BorderThickness="0.5" BorderBrush="Black">
@@ -84,8 +84,21 @@
                                 <Style TargetType="Border">
                                     <Setter Property="Background" Value="GhostWhite"/>
                                     <Style.Triggers>
+                                        <!--Background foreach Status-->
+                                        <DataTrigger Binding="{Binding Status}" Value="Working">
+                                            <Setter Property="Background" Value="LightGreen"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Status}" Value="Finished">
+                                            <Setter Property="Background" Value="LightGray"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Status}" Value="Blocked">
+                                            <Setter Property="Background" Value="MediumPurple"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Status}" Value="Todo">
+                                            <Setter Property="Background" Value="LightBlue"/>
+                                        </DataTrigger>
                                         <Trigger Property="IsMouseOver" Value="True" >
-                                            <Setter Property="Background" Value="LightSteelBlue"/>
+                                            <Setter Property="Background" Value="GhostWhite"/>
                                         </Trigger>
                                     </Style.Triggers>
                                 </Style>
@@ -147,6 +160,7 @@
                                     <!--Progress Text-->
                                     <TextBlock Text="{Binding Progress}" FontSize="17" TextAlignment="Center"/>
                                 </Grid>
+                                <!--Delete Button-->
                                 <Button Margin="20 0 0 0" Width="30" Background="LightGray" Command="{Binding DeleteCommand}">
                                     <Image Margin="5" Source="pack://application:,,,/Resources/delete.png"/>
                                 </Button>

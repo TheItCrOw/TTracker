@@ -10,9 +10,10 @@
 - DataAccess Methode Delete(); (DONE)
 - Einhaltung der davor implementierten Logik Muster (DONE)
 - Implementierung im Ticket VIew (DONE)
-- Implementierung im ProjectsView</Text>
+- Implementierung im ProjectsView (DONE)
+- Implementieren im TimeEngine View</Text>
   <Created>03.06.2019 14:28:57</Created>
   <ExpectedTime>1</ExpectedTime>
-  <UsedTime>0,3</UsedTime>
-  <Status>Finished</Status>
+  <UsedTime>0,425</UsedTime>
+  <Status>Working</Status>
 </Data>

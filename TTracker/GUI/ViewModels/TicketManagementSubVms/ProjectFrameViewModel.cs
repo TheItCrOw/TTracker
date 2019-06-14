@@ -71,6 +71,10 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
 
         void SaveAllProjects()
         {
+            //Delete all deletable Objects
+            DeleteProjects();
+
+            //Save the rest
             foreach (var project in Projects)
             {
                 project.Save();
@@ -81,6 +85,21 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
                 }
             }
             HasUnsavedChanges = false;
+        }
+
+        private void DeleteProjects()
+        {
+            foreach (var project in DeletableList)
+            {
+                var projectVm = (ProjectViewModel)project;
+
+                foreach (var child in projectVm.Children)
+                {
+                    DataAccess.Instance.DeleteEntity<Project>(child.Model);
+                }
+
+                DataAccess.Instance.DeleteEntity<Project>(projectVm.Model);
+            }
         }
 
         void CreateNewProject()
@@ -113,7 +132,7 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
             foreach (var project in allProjectsVM)
             {
                 //Get the root projects
-                if(project.ParentId == Guid.Empty)
+                if (project.ParentId == Guid.Empty)
                 {
                     //When parentId matches ModelId, add as children!
                     var children = allProjectsDic[project.ModelId];

@@ -38,38 +38,48 @@
 
         <!--Items Control of Projects-->
         <ScrollViewer VerticalScrollBarVisibility="Visible" Grid.Column="1" Width="Auto">
-            <ItemsControl x:Name="projectControl" ItemsSource="{Binding Projects, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" Width="433" >
+            <ItemsControl x:Name="projectControl" ItemsSource="{Binding Projects, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Border BorderThickness="1 0 0 1" BorderBrush="Black">
-                            <DockPanel >
-                                <Expander ExpandDirection="Down" DockPanel.Dock="Bottom" HorizontalAlignment="Stretch" Width="432" BorderBrush="Gray" BorderThickness="0.5">
+                            <DockPanel LastChildFill="True">
+                                <Expander ExpandDirection="Down" DockPanel.Dock="Bottom" HorizontalAlignment="Stretch" BorderBrush="Gray" BorderThickness="0.5">
                                     <!--Here the Childrne should be displayed, they are still empty-->
                                     <ItemsControl ItemsSource="{Binding Children}">
                                         <ItemsControl.ItemTemplate>
+                                            <!--Sub projects Binding--> 
                                             <DataTemplate>
-                                                <Button Content="{Binding Name}" FontSize="17" Margin="5" BorderThickness="0.5" Background="White" BorderBrush="Gray" Command="{Binding SelectedCommand}">
-                                                    <Button.Style>
-                                                        <!--Highlight the Item that is selected-->
-                                                        <Style TargetType="{x:Type Button}">
-                                                            <Style.Triggers>
-                                                                <DataTrigger Binding="{Binding IsSelected}" Value="true">
-                                                                    <Setter Property="Foreground" Value="Red"/>
-                                                                    <Setter Property="BorderBrush" Value="Red"/>
-                                                                </DataTrigger>
-                                                                <DataTrigger Binding="{Binding IsSelected}" Value="false">
-                                                                    <Setter Property="Foreground" Value="Black"/>
-                                                                </DataTrigger>
-                                                            </Style.Triggers>
-                                                        </Style>
-                                                    </Button.Style>  
-                                                </Button>
-                                                
+                                                <DockPanel>
+                                                    <!--Delete Button-->
+                                                    <Button Width="25" Background="SteelBlue" ToolTip="Delete" BorderThickness="1" Height="25" Margin="5 0 0 0" Command="{Binding DeleteCommand}">
+                                                        <Image Margin="3" Source="pack://application:,,,/Resources/delete.png"/>
+                                                    </Button>
+                                                    <Button Content="{Binding Name}" FontSize="17" Margin="5" BorderThickness="0.5" Background="White" BorderBrush="Black" Command="{Binding SelectedCommand}" Width="385">
+                                                        <Button.Style>
+                                                            <!--Highlight the Item that is selected-->
+                                                            <Style TargetType="{x:Type Button}">
+                                                                <Style.Triggers>
+                                                                    <DataTrigger Binding="{Binding IsSelected}" Value="true">
+                                                                        <Setter Property="Foreground" Value="Red"/>
+                                                                    </DataTrigger>
+                                                                    <DataTrigger Binding="{Binding IsSelected}" Value="false">
+                                                                        <Setter Property="Foreground" Value="Black"/>
+                                                                    </DataTrigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </Button.Style>
+                                                    </Button>
+                                                </DockPanel>
                                             </DataTemplate>
                                         </ItemsControl.ItemTemplate>
                                     </ItemsControl>
                                 </Expander>
-                                <Button DockPanel.Dock="Left" Height="75" Content="{Binding Name}" 
+                                <!--Delete Button-->
+                                <Button Width="30" Background="SteelBlue" ToolTip="Delete" BorderThickness="1" Command="{Binding DeleteCommand}">
+                                    <Image Margin="6" Source="pack://application:,,,/Resources/delete.png"/>
+                                </Button>
+                                <!--Root project Button-->
+                                <Button DockPanel.Dock="Left" Height="75" Content="{Binding Name}"
                                         FontSize="20" FontWeight="Bold" VerticalContentAlignment="Center" 
                                         BorderThickness="1 1 1 0" Background="AliceBlue" Command="{Binding SelectedCommand}">
                                     <Button.Style>
@@ -78,7 +88,6 @@
                                             <Style.Triggers>
                                                 <DataTrigger Binding="{Binding isSelected}" Value="true">
                                                     <Setter Property="Foreground" Value="Red"/>
-                                                    <Setter Property="BorderBrush" Value="Red"/>
                                                 </DataTrigger>
                                                 <DataTrigger Binding="{Binding isSelected}" Value="false">
                                                     <Setter Property="Foreground" Value="Black"/>

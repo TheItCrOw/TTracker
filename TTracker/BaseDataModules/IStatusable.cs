@@ -17,13 +17,14 @@ namespace TTracker.BaseDataModules
     {
         [Description("Static")]
         Static,
-        [Description("Todo")]
-        Todo,
         [Description("Working")]
         Working,
-        [Description("Finished")]
-        Finished,
+        [Description("Todo")]
+        Todo,
         [Description("Blocked")]
         Blocked,
+        [Description("Finished")]
+        Finished,
+
     }
 }

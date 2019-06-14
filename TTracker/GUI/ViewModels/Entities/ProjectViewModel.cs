@@ -18,17 +18,21 @@ namespace TTracker.GUI.ViewModels
         private float _usedTime;
         private string _name;
         private string _text;
-        private Project _model;
         private Guid _modelId;
         private Guid _parentId;
         private bool _isSelected;
+
+        public ObservableCollection<ProjectViewModel> Children { get; set; } = new ObservableCollection<ProjectViewModel>();
+        public DelegateCommand SelectedCommand => new DelegateCommand(Selected);
+        public DelegateCommand DeleteCommand => new DelegateCommand(Delete);
+
+        #region Properties
 
         public DateTime Created { get { return _created; } set { SetProperty(ref _created, value); } }
         public float UsedTime { get { return _usedTime; } set { SetProperty(ref _usedTime, value); } }
         public Guid ModelId { get { return _modelId; } set { SetProperty(ref _modelId, value); } }
         public Guid ParentId { get { return _parentId; } set { SetProperty(ref _parentId, value); } }
-        public ObservableCollection<ProjectViewModel> Children { get; set; } = new ObservableCollection<ProjectViewModel>();
-        public DelegateCommand SelectedCommand => new DelegateCommand(Selected);
+
 
         public string Name
         {
@@ -59,6 +63,9 @@ namespace TTracker.GUI.ViewModels
             }
         }
 
+        public Project Model { get; set; }
+        #endregion
+
         void Selected()
         {
             ((ProjectFrameViewModel)CurrentBase).HandleSelectedProjects(this);
@@ -67,7 +74,7 @@ namespace TTracker.GUI.ViewModels
         public ProjectViewModel(Project project, ViewModelManagementBase currentBase, bool @new)
         {
             CurrentBase = currentBase;
-            _model = project;
+            Model = project;
             IsNew = @new;
 
             Id = Guid.NewGuid();
@@ -90,7 +97,7 @@ namespace TTracker.GUI.ViewModels
 
             if (IsNew)
             {
-                DataAccess.Instance.RegisterAndSaveNewProject(this._model);
+                DataAccess.Instance.RegisterAndSaveNewProject(this.Model);
                 AfterSave();
                 return;
             }
@@ -104,18 +111,41 @@ namespace TTracker.GUI.ViewModels
                 switch (p)
                 {
                     case "Name":
-                        _model.Name = this.Name;
-                        changedPropertiesFullData.Add(("Name/" + _model.Name));
+                        Model.Name = this.Name;
+                        changedPropertiesFullData.Add(("Name/" + Model.Name));
                         break;
                     case "Text":
-                        _model.Text = this.Text;
-                        changedPropertiesFullData.Add(("Text/" + _model.Text));
+                        Model.Text = this.Text;
+                        changedPropertiesFullData.Add(("Text/" + Model.Text));
                         break;
                 }
             }
 
-            DataAccess.Instance.Save<Project>(this._model, changedPropertiesFullData);
+            DataAccess.Instance.Save<Project>(this.Model, changedPropertiesFullData);
             AfterSave();
+        }
+        void Delete()
+        {
+            MarkAsDeletable();
+            var projectFrameBase = (ProjectFrameViewModel)CurrentBase;
+
+            //When its a root project, add it as deletable
+            if(this.ParentId == Guid.Empty)
+            {
+                projectFrameBase.Projects.Remove(this);
+            }
+            //when its a children, delete it from the children lsit of the root project
+            else
+            {
+                foreach(var project in projectFrameBase.Projects)
+                {
+                    if (project.ModelId == this.ParentId)
+                    {
+                        project.Children.Remove(this);
+                    }
+                }
+
+            }
         }
 
     }
