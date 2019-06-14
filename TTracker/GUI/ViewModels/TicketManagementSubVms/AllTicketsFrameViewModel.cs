@@ -19,11 +19,12 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
     public class AllTicketsFrameViewModel : ViewModelManagementBase, INotifyPropertyChanged
     {
         private bool _saveDirtyStateOfBase;
+        private bool _showingAllTickets;
 
         public ObservableCollection<TaskTicketViewModel> TaskTickets { get; set; } = new ObservableCollection<TaskTicketViewModel>();
         public DelegateCommand SaveAllTicketsCommand => new DelegateCommand(SaveAllTickets);
         public DelegateCommand CreateNewTicketCommand => new DelegateCommand(CreateNewTicket);
-        public DelegateCommand FilterTicketsCommand => new DelegateCommand(FilterTickets);
+        public DelegateCommand HideShowStaticTicketsCommand => new DelegateCommand(HideShowStaticTickets);
         public DelegateCommand<string> SortTaskTicketsCommand => new DelegateCommand<string>(SortTaskTickets);
 
         public AllTicketsFrameViewModel()
@@ -60,10 +61,10 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
 
         private void DeleteTickets()
         {
-            foreach(var ticket in DeletableList)
+            foreach (var ticket in DeletableList)
             {
                 var ticketVm = (TaskTicketViewModel)ticket;
-                DataAccess.Instance.DeleteEntity<TaskTicket>(ticketVm.Model); 
+                DataAccess.Instance.DeleteEntity<TaskTicket>(ticketVm.Model);
             }
         }
 
@@ -94,11 +95,41 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
             }
 ;
             TaskTickets.AddRange(allTaskTicketsVM);
+            HasUnsavedChanges = false;
+            _showingAllTickets = true;
         }
 
-        private void FilterTickets()
+        private void HideShowStaticTickets()
         {
+            //If there are unsaved changes, handle them first...There are prolly better ways, but for now this works
+            if(HasUnsavedChanges)
+            {
+                MessageBox.Show("There are currently unsaved changes. Please save or reload them first");
+                return;
+            }
 
+            _saveDirtyStateOfBase = HasUnsavedChanges;
+
+            if (!_showingAllTickets)
+            {
+                LoadTaskTickets();
+                return;
+            }
+
+            var currentListedTickets = new List<TaskTicketViewModel>();
+            currentListedTickets.AddRange(TaskTickets);
+            TaskTickets.Clear();
+
+            foreach (var ticket in currentListedTickets)
+            {
+                if (!(ticket.Status == Status.Static))
+                {
+                    TaskTickets.Add(ticket);
+                }
+            }
+
+            HasUnsavedChanges = _saveDirtyStateOfBase;
+            _showingAllTickets = false;
         }
 
         private void SortTaskTickets(string buttonName)
@@ -117,6 +148,9 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
                     break;
                 case "SortForPriority":
                     sortedTaskTickets = TaskTickets.OrderByDescending(t => t.Priority).ToList();
+                    break;
+                case "SortForStatus":
+                    sortedTaskTickets = TaskTickets.OrderBy(t => t.Status).ToList();
                     break;
                 case "SortForProgress":
                     sortedTaskTickets = TaskTickets.OrderByDescending(t => t.Progress).ToList();

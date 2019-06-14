@@ -9,9 +9,11 @@
 
 - Progress rot wenn überbucht
 - Background der Tickets je nach Priorität anders? Oder nach Status?
+- Nahc Status Farbe ändern
 </Text>
   <Created>08.06.2019 14:17:51</Created>
-  <ExpectedTime>0,3</ExpectedTime>
+  <ExpectedTime>0,5</ExpectedTime>
   <UsedTime>0,3625</UsedTime>
   <Priority>High</Priority>
+  <Status>Working</Status>
 </Data>

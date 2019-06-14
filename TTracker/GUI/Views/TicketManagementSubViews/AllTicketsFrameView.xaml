@@ -159,13 +159,9 @@
 
 
         <!--Filter Button on the left in row 1 column 1-->
-        <Button x:Name="FilterButton" ToolTip="Filter" Background="LightSteelBlue" BorderBrush="Black" BorderThickness="0" Command="{Binding FilterTickets}">
-            <Image Margin="7" Source="pack://application:,,,/Resources/sort.png"/>
+        <Button x:Name="FilterButton"  ToolTip="Show/Hide Static Tickets" Background="LightSteelBlue" BorderBrush="Black" BorderThickness="0" Command="{Binding HideShowStaticTicketsCommand}">
+            <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/hide.png"/>
         </Button>
-        <!--List of possible filters, that the Filter Button opens up-->
-        <ListView Grid.Row="1" Panel.ZIndex="1" Height="300" VerticalAlignment="Top" Visibility="Collapsed">
-
-        </ListView>
 
         <!--Navigation Menu on the left-->
         <Border Grid.Column="0" Grid.Row="1" BorderThickness="0 1 1 0" BorderBrush="Black" >
