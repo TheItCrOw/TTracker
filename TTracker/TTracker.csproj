@@ -94,6 +94,7 @@
     <Compile Include="GUI\Models\TimeEntry.cs" />
     <Compile Include="GUI\ViewModels\Entities\TimeEntryViewModel.cs" />
     <Compile Include="GUI\ViewModels\ManagamentBase\AccountViewModel.cs" />
+    <Compile Include="GUI\ViewModels\TicketManagementSubVms\AskForProjectDeletionViewModel.cs" />
     <Compile Include="GUI\ViewModels\TicketManagementSubVms\CreateProjectViewModel.cs" />
     <Compile Include="GUI\ViewModels\TicketManagementSubVms\CreateTicketViewModel.cs" />
     <Compile Include="GUI\ViewModels\ManagamentBase\HomeViewModel.cs" />
@@ -105,6 +106,9 @@
     <Compile Include="GUI\ViewModels\ManagamentBase\TimeEngineViewModel.cs" />
     <Compile Include="GUI\Views\AccountView.xaml.cs">
       <DependentUpon>AccountView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Views\TicketManagementSubViews\AskForProjectDeletionView.xaml.cs">
+      <DependentUpon>AskForProjectDeletionView.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI\Views\TicketManagementSubViews\CreateProjectView.xaml.cs">
       <DependentUpon>CreateProjectView.xaml</DependentUpon>
@@ -134,6 +138,10 @@
     <Compile Include="SetupViewModels\ViewModelLocator.cs" />
     <Compile Include="Utility\XmlDataCache.cs" />
     <Page Include="GUI\Views\AccountView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Views\TicketManagementSubViews\AskForProjectDeletionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

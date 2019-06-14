@@ -88,3 +88,5 @@ E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\C
 E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\CreateProjectView.baml
 E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TimeEngineView.g.cs
 E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TimeEngineView.baml
+E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\AskForProjectDeletionView.g.cs
+E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\AskForProjectDeletionView.baml

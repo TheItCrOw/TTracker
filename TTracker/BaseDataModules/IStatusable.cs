@@ -15,8 +15,6 @@ namespace TTracker.BaseDataModules
 
     public enum Status
     {
-        [Description("Static")]
-        Static,
         [Description("Working")]
         Working,
         [Description("Todo")]
@@ -25,6 +23,7 @@ namespace TTracker.BaseDataModules
         Blocked,
         [Description("Finished")]
         Finished,
-
+        [Description("Static")]
+        Static,
     }
 }

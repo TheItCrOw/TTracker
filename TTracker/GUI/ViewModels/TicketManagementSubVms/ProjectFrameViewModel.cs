@@ -16,7 +16,7 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
     public class ProjectFrameViewModel : ViewModelManagementBase, INotifyPropertyChanged
     {
         public ObservableCollection<ProjectViewModel> Projects { get; set; } = new ObservableCollection<ProjectViewModel>();
-        public DelegateCommand SaveAllProjectsCommand => new DelegateCommand(SaveAllProjects);
+        public DelegateCommand SaveAllProjectsCommand => new DelegateCommand(OnSaveButtonExecute);
         public DelegateCommand CreateNewProjectCommand => new DelegateCommand(CreateNewProject);
         public float UsedProjectTime { get { return _usedProjectTime; } set { SetProperty(ref _usedProjectTime, value); } }
 
@@ -69,11 +69,54 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
             RaisePropertyChanged(nameof(Projects));
         }
 
-        void SaveAllProjects()
+        void OnSaveButtonExecute()
         {
-            //Delete all deletable Objects
-            DeleteProjects();
+            //The order is as follows:
+            // - AskForProjectsDeletion opens new dialog. In there, the projects and tickets are loaded that are in the DeletableList
+            // - When agreed to deletion, DeleteProjects is called from AskForDeletionViewModel, deleting every project and tickets
+            // - DeleteProjects then calls SaveProjects and that saves all left projects.
+            if(DeletableList.Count > 0)
+            {
+                AskForProjectsDeletion();
+            }
+            else
+            {
+                SaveProjects();
+            }
+        }
 
+        void AskForProjectsDeletion()
+
+        {
+            var askForProjectDeletionView = new AskForProjectDeletionView();
+            askForProjectDeletionView.DataContext = new AskForProjectDeletionViewModel((ProjectFrameViewModel)CurrentContent, DeletableList);
+            askForProjectDeletionView.Show();
+            askForProjectDeletionView.Topmost = true;
+        }
+
+        public void DeleteProjects(List<ProjectViewModel> deleteProjectsList, List<TaskTicketViewModel> deleteTaskTicketsList)
+        {
+            foreach (var project in deleteProjectsList)
+            {
+                DataAccess.Instance.DeleteEntity<Project>(project.Model);
+            }
+
+            foreach (var ticket in deleteTaskTicketsList)
+            {
+                DataAccess.Instance.DeleteEntity<TaskTicket>(ticket.Model);
+            }
+
+            DeletableList.Clear();
+
+            SaveProjects();
+
+            MessageBox.Show("Deletion And saving succesfull");
+            Application.Current.MainWindow.Close();
+
+        }
+
+        private void SaveProjects()
+        {
             //Save the rest
             foreach (var project in Projects)
             {
@@ -85,21 +128,6 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
                 }
             }
             HasUnsavedChanges = false;
-        }
-
-        private void DeleteProjects()
-        {
-            foreach (var project in DeletableList)
-            {
-                var projectVm = (ProjectViewModel)project;
-
-                foreach (var child in projectVm.Children)
-                {
-                    DataAccess.Instance.DeleteEntity<Project>(child.Model);
-                }
-
-                DataAccess.Instance.DeleteEntity<Project>(projectVm.Model);
-            }
         }
 
         void CreateNewProject()
@@ -143,9 +171,9 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
                 }
             }
             //Calculate the time of projects here, cause the Childrens list has to be filled first.
-            foreach(var project in Projects)
+            foreach (var project in Projects)
             {
-                foreach(var child in project.Children)
+                foreach (var child in project.Children)
                 {
                     child.CalculateUsedTime();
                 }
