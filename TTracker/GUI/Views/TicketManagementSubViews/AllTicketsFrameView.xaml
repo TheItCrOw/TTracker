@@ -75,14 +75,14 @@
 
         <!--Items Control of TaskTickets-->
         <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" Grid.Column="1" Grid.Row="1">
-            <ItemsControl x:Name="taskTicketControl" Background="GhostWhite" ItemsSource="{Binding TaskTickets, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" >
+            <ItemsControl x:Name="taskTicketControl" Background="White" ItemsSource="{Binding TaskTickets, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" >
                 <ItemsControl.ItemTemplate>
                     <DataTemplate >
                         <Border BorderThickness="0.5" BorderBrush="Black">
                             <!--Highlight the item when hovered over-->
                             <Border.Style>
                                 <Style TargetType="Border">
-                                    <Setter Property="Background" Value="GhostWhite"/>
+                                    <Setter Property="Background" Value="AliceBlue"/>
                                     <Style.Triggers>
                                         <!--Background foreach Status-->
                                         <DataTrigger Binding="{Binding Status}" Value="Working">

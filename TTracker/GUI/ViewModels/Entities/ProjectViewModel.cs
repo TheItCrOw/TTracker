@@ -82,12 +82,35 @@ namespace TTracker.GUI.ViewModels
             Name = project.Name;
             Text = project.Text;
             Created = project.Created;
-            UsedTime = project.UsedTime;
             ModelId = project.Id;
 
             if (!IsNew)
                 AfterSave();
 
+        }
+
+        public void CalculateUsedTime()
+        {
+            var allTaskTickets = DataAccess.Instance.GetAll<TaskTicket>();
+
+            if (ParentId == Guid.Empty)
+            {
+                foreach (var child in Children)
+                {
+                    UsedTime += child.UsedTime;
+                    UsedTime = (float)(Math.Truncate((double)UsedTime * 100.0) / 100.0);
+                }
+                return;
+            }
+
+            foreach (var ticket in allTaskTickets)
+            {
+                if (ticket.ProjectId == this.ModelId)
+                {
+                    UsedTime += ticket.UsedTime;
+                    UsedTime = (float)(Math.Truncate((double)UsedTime * 100.0) / 100.0);
+                }
+            }
         }
 
         public void Save()
@@ -117,6 +140,10 @@ namespace TTracker.GUI.ViewModels
                     case "Text":
                         Model.Text = this.Text;
                         changedPropertiesFullData.Add(("Text/" + Model.Text));
+                        break;
+                    case "UsedTime":
+                        Model.UsedTime = this.UsedTime;
+                        changedPropertiesFullData.Add(("UsedTime/" + Model.UsedTime));
                         break;
                 }
             }

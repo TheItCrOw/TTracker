@@ -168,7 +168,6 @@ namespace TTracker.GUI.ViewModels
             currentTicket.Save();
             CreateTimeEntry();
 
-            //MessageBox.Show("Time has been saved.");
         }
 
         void CreateTimeEntry()
@@ -208,11 +207,35 @@ namespace TTracker.GUI.ViewModels
 
         void SaveAllTimeEntries()
         {
-            foreach(var timeEntry in TimeEntries)
+            DeleteTimeEntries();
+
+            foreach (var timeEntry in TimeEntries)
             {
                 timeEntry.Save();
             }
             HasUnsavedChanges = false;
         }
+
+        private void DeleteTimeEntries()
+        {
+            foreach (var timeEntry in DeletableList)
+            {
+                //Substract the amount of time put into the timeEntry from the ticket.
+                var timeEntryVm = (TimeEntryViewModel)timeEntry;
+                var currentTicket = DataAccess.Instance.GetTaskTicketById(timeEntryVm.Model.TicketId);
+                var currentTicketVm = new TaskTicketViewModel(currentTicket, this, false);
+                var currentUsedTime = currentTicketVm.UsedTime;
+                var workedTime = (timeEntryVm.EndTime - timeEntryVm.StartTime) / 100;
+
+                var workDay = 8;
+                var usedTime = currentUsedTime - (workedTime / workDay);
+                //Save the ticket
+                currentTicketVm.UsedTime = usedTime;
+                currentTicketVm.Save();
+                //Save the TimeEntry
+                DataAccess.Instance.DeleteEntity<TimeEntry>(timeEntryVm.Model);
+            }
+        }
+
     }
 }

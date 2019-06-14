@@ -112,7 +112,7 @@
             <!--Table Topic for Items Control-->
             <Border Grid.Row="2" BorderThickness="1" BorderBrush="Black" Background="AliceBlue">
                 <DockPanel VerticalAlignment="Center">
-                    <TextBlock FontSize="17" Text="Timespan" Margin="5 0 0 0" FontWeight="Bold" Width="175"/>
+                    <TextBlock FontSize="17" Text="Timespan" Margin="45 0 0 0" FontWeight="Bold" Width="175"/>
                     <TextBlock FontSize="17" Text="Project" Margin="5 0 0 0" FontWeight="Bold" Width="285"/>
                     <TextBlock FontSize="17" Text="Ticket" Margin="5 0 0 0" FontWeight="Bold" Width="255"/>
                     <TextBlock FontSize="17" Text="Description" Margin="5 0 0 0" FontWeight="Bold"/>
@@ -126,12 +126,16 @@
                         <DataTemplate>
                             <Border BorderThickness="1 0 0 1" BorderBrush="Black">
                                 <DockPanel Height="40">
+                                    <!--Delete Button-->
+                                    <Button Width="40" BorderThickness="0 0 1 0" Command="{Binding DeleteCommand}">
+                                        <Image Margin="10" Source="/TTracker;component/Resources/delete.png"/>
+                                    </Button>
                                     <TextBlock  FontSize="15" Text="{Binding StartTime, StringFormat=00:00}" FontWeight="DemiBold" Width="50" VerticalAlignment="Center" TextAlignment="Center"/>
                                     <TextBlock FontSize="15" Text="-" VerticalAlignment="Center"/>
                                     <TextBlock FontSize="15" Text="{Binding EndTime, StringFormat=00:00}" FontWeight="DemiBold" Width="50" VerticalAlignment="Center" TextAlignment="Center"/>
                                     <TextBlock FontSize="15" Margin="80 0 0 0" Text="{Binding ProjectName}" VerticalAlignment="Center" Width="250" ToolTip="{Binding ProjectName}"/>
                                     <TextBlock FontSize="15" Text="{Binding TicketName}" Margin="40 0 60 0" VerticalAlignment="Center" Width="200" ToolTip="{Binding TicketName}"/>
-                                    <TextBox FontSize="15" Text="{Binding Text}"  VerticalAlignment="Center" BorderThickness="0.5"/>
+                                    <TextBox FontSize="15" Text="{Binding Text}"  VerticalAlignment="Center" BorderThickness="0.5" MinWidth="1000"/>
                                 </DockPanel>
                             </Border>
                         </DataTemplate>

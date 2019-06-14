@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prism.Commands;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,7 @@ namespace TTracker.GUI.ViewModels.Entities
         private float _endTime;
         private string _projectName;
         private string _ticketName;
-
+        public DelegateCommand DeleteCommand => new DelegateCommand(Delete);
         public TimeEntry Model { get; set; }
 
         public TimeEntryViewModel(TimeEntry timeEntry, ViewModelManagementBase currentBase)
@@ -55,6 +56,7 @@ namespace TTracker.GUI.ViewModels.Entities
                 SetIsDirty(nameof(Text));
             }
         }
+        #endregion
 
         public void Save()
         {
@@ -80,7 +82,10 @@ namespace TTracker.GUI.ViewModels.Entities
             AfterSave();
         }
 
-        #endregion
-
+        void Delete()
+        {
+            MarkAsDeletable();
+            ((TimeEngineViewModel)CurrentBase).TimeEntries.Remove(this);
+        }
     }
 }

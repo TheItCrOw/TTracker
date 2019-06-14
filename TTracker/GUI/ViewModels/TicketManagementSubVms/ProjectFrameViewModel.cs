@@ -141,8 +141,17 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
 
                     Projects.Add(project);
                 }
-
             }
+            //Calculate the time of projects here, cause the Childrens list has to be filled first.
+            foreach(var project in Projects)
+            {
+                foreach(var child in project.Children)
+                {
+                    child.CalculateUsedTime();
+                }
+                project.CalculateUsedTime();
+            }
+
         }
 
         public string ProjectName
