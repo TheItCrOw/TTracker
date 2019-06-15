@@ -23,5 +23,14 @@ namespace TTracker.GUI.Views.TimeEngineSubViews
         {
             InitializeComponent();
         }
+
+        private void PrintButton_Click(object sender, RoutedEventArgs e)
+        {
+            PrintDialog printDialog = new PrintDialog();
+            if (printDialog.ShowDialog() == true)
+            {
+                printDialog.PrintVisual(MainGrid, "Day Statistic");
+            }
+        }
     }
 }

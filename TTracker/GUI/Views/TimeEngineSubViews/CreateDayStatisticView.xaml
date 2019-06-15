@@ -3,10 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:DV="clr-namespace:System.Windows.Controls.DataVisualization;assembly=System.Windows.Controls.DataVisualization.Toolkit"  
+        xmlns:DVC="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit" 
         xmlns:local="clr-namespace:TTracker.GUI.Views.TimeEngineSubViews"
         mc:Ignorable="d"
         Title="CreateDayStatisticView" Height="28cm" Width="20.5cm">
-    <Grid Margin="10">
+    
+    <Grid Margin="10" x:Name="MainGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="30"/>
@@ -14,14 +17,14 @@
             <RowDefinition Height="350"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        
+
+
         <!--Topic Text Intro-->
-        <Border Grid.Row="0" BorderThickness="1" BorderBrush="Black" Background="SteelBlue">
+        <Border Grid.Row="0" BorderThickness="1" BorderBrush="Black" Background="AliceBlue">
             <TextBlock Text="{Binding SelectedCalendarDate}" FontSize="20" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center"/>
         </Border>
-
         <!--Table Topic-->
-        <Border Grid.Row="1" BorderThickness="1 0 1 0" BorderBrush="Black" Background="LightSteelBlue">
+        <Border Grid.Row="1" BorderThickness="1 0 1 0" BorderBrush="Black" Background="AliceBlue">
             <DockPanel VerticalAlignment="Center">
                 <TextBlock Text="Timespan" FontSize="15" FontWeight="DemiBold" Margin="5 0 0 0" Foreground="DimGray" Width="95"/>
                 <TextBlock Text="Project" FontSize="15" FontWeight="DemiBold" Foreground="DimGray" Width="170"/>
@@ -31,7 +34,7 @@
         </Border>
 
         <!--ItemsControl of the TimeEntries-->
-        <Border Grid.Row="2" BorderThickness="1" BorderBrush="Black" Background="AliceBlue">
+        <Border Grid.Row="2" BorderThickness="1" BorderBrush="Black">
             <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" >
                 <ItemsControl x:Name="TimeEntryItemControl" ItemsSource="{Binding TimeEntries}">
                     <ItemsControl.ItemTemplate>
@@ -54,10 +57,21 @@
 
 
         <!--Pie Charts or whatever comes here-->
-        <Border Grid.Row="3" BorderThickness="1 0 1 1" BorderBrush="Black"> 
-            
+        <Border  Grid.Row="3" BorderThickness="1 0 1 1" BorderBrush="Black" HorizontalAlignment="Stretch" Background="AliceBlue">
+            <DVC:Chart Canvas.Top="30" Canvas.Left="10" Name="mcChart" Width="700" Height="380" BorderThickness="0" VerticalAlignment="Center" >
+                <DVC:Chart.Series>
+                    <DVC:ColumnSeries Title="Hours" 
+                                      IndependentValueBinding="{Binding Name}" 
+                                      DependentValueBinding="{Binding Share}" 
+                                      ItemsSource="{Binding SubProjectsChart}" 
+                                      AnimationSequence="FirstToLast"
+                                      Background="Black"/>
+                </DVC:Chart.Series>
+            </DVC:Chart>
         </Border>
-        
+
+
+
         <!--Buttons at the end-->
         <Border BorderThickness="1 0 1 1" BorderBrush="Black" Grid.Row="4">
             <Grid>
@@ -67,16 +81,16 @@
                 </Grid.ColumnDefinitions>
 
                 <!--Save as PDF-->
-                <Button ToolTip="Save as PDF" FontSize="15" HorizontalAlignment="Stretch" Background="AliceBlue">
+                <Button ToolTip="Save as PDF" FontSize="15" HorizontalAlignment="Stretch" Background="White">
                     <Image Margin="7" Source="/TTracker;component/Resources/pdf.png"/>
                 </Button>
                 <!--Print Button-->
-                <Button ToolTip="Print" FontSize="15" Grid.Column="1" Background="AliceBlue">
+                <Button x:Name="PrintButton" ToolTip="Print" FontSize="15" Grid.Column="1" Background="White" Click="PrintButton_Click">
                     <Image Margin="7" Source="/TTracker;component/Resources/print.png"/>
                 </Button>
             </Grid>
         </Border>
-        
-        
+
+
     </Grid>
 </Window>

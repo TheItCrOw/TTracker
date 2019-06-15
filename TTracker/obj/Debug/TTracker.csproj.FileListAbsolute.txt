@@ -53,5 +53,9 @@ E:\WPF Projects\TTracker\TTracker\obj\Debug\TTracker.csproj.CoreCompileInputs.ca
 E:\WPF Projects\TTracker\TTracker\obj\Debug\TTracker.csproj.CopyComplete
 E:\WPF Projects\TTracker\TTracker\obj\Debug\TTracker.exe
 E:\WPF Projects\TTracker\TTracker\obj\Debug\TTracker.pdb
-E:\WPF Projects\TTracker\TTracker\obj\Debug\TTracker.csprojAssemblyReference.cache
 E:\WPF Projects\TTracker\TTracker\bin\Debug\TTracker.pdb
+E:\WPF Projects\TTracker\TTracker\bin\Debug\System.Windows.Controls.Input.Toolkit.dll
+E:\WPF Projects\TTracker\TTracker\bin\Debug\System.Windows.Controls.Layout.Toolkit.dll
+E:\WPF Projects\TTracker\TTracker\bin\Debug\WPFToolkit.dll
+E:\WPF Projects\TTracker\TTracker\obj\Debug\TTracker.csprojAssemblyReference.cache
+E:\WPF Projects\TTracker\TTracker\bin\Debug\System.Windows.Controls.DataVisualization.Toolkit.dll
