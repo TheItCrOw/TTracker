@@ -11,10 +11,10 @@ Dss Design muss auch noch entworfen werden.
 
 -&gt; Edit: Füge vorerst eine simple Version hinzu, die es einfahc nur erlaubt, Zeit zu verbuchen. Danach muss ein ausgefeiltes Konzept erbracht werden. (Done)
 -&gt; Hinzufügen eines Tages-Kalenders. Die hinzugefügte Zeit sollte in einer Liste darunter angezeigt werden und nach Tagen sortiert sein. (Done)
--&gt; Button, der den Tag zusammenfasst. (Mit Ausdrucken?)
+-&gt; Button, der den Tag zusammenfasst. Welchen man speichern kann.(Mit Ausdrucken?)
 -&gt; Editable machen (Done)</Text>
   <Created>03.06.2019 14:22:42</Created>
   <ExpectedTime>2</ExpectedTime>
-  <UsedTime>0,95625</UsedTime>
+  <UsedTime>1,20625</UsedTime>
   <Status>Working</Status>
 </Data>

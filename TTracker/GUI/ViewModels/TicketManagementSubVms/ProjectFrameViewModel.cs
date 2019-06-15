@@ -86,7 +86,6 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
         }
 
         void AskForProjectsDeletion()
-
         {
             var askForProjectDeletionView = new AskForProjectDeletionView();
             askForProjectDeletionView.DataContext = new AskForProjectDeletionViewModel((ProjectFrameViewModel)CurrentContent, DeletableList);

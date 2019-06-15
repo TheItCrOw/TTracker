@@ -9,6 +9,8 @@ using System.Windows;
 using TTracker.BaseDataModules;
 using TTracker.GUI.Models;
 using TTracker.GUI.ViewModels.Entities;
+using TTracker.GUI.ViewModels.ManagamentBase;
+using TTracker.GUI.Views.TimeEngineSubViews;
 using TTracker.Utility;
 
 namespace TTracker.GUI.ViewModels
@@ -29,6 +31,7 @@ namespace TTracker.GUI.ViewModels
         public ObservableCollection<TimeEntryViewModel> TimeEntries{ get; set; } = new ObservableCollection<TimeEntryViewModel>();        
         public DelegateCommand SaveTimeCommand => new DelegateCommand(SaveTime);
         public DelegateCommand SaveTimeEntriesCommand => new DelegateCommand(SaveAllTimeEntries);
+        public DelegateCommand CreateDayStatisticCommand => new DelegateCommand(CreateDayStatistic);
 
         #region Properties
         public float TimeFrom
@@ -235,6 +238,14 @@ namespace TTracker.GUI.ViewModels
                 //Save the TimeEntry
                 DataAccess.Instance.DeleteEntity<TimeEntry>(timeEntryVm.Model);
             }
+        }
+
+        void CreateDayStatistic()
+        {
+            var createDayStatisticView = new CreateDayStatisticView();
+            createDayStatisticView.DataContext = new CreateDayStatisticViewModel((TimeEngineViewModel)CurrentContent, TimeEntries.ToList(), SelectedCalendarDate);
+            createDayStatisticView.Show();
+            createDayStatisticView.Topmost = true;
         }
 
     }

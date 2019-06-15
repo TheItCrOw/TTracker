@@ -1,6 +1,7 @@
 ﻿
 FE:\WPF Projects\TTracker\TTracker\App.xaml;;
 FE:\WPF Projects\TTracker\TTracker\GUI\Views\AccountView.xaml;;
+FE:\WPF Projects\TTracker\TTracker\GUI\Views\TicketManagementSubViews\AskForProjectDeletionView.xaml;;
 FE:\WPF Projects\TTracker\TTracker\GUI\Views\TicketManagementSubViews\CreateProjectView.xaml;;
 FE:\WPF Projects\TTracker\TTracker\GUI\Views\TicketManagementSubViews\CreateTicketView.xaml;;
 FE:\WPF Projects\TTracker\TTracker\GUI\Views\HomeView.xaml;;
@@ -8,7 +9,7 @@ FE:\WPF Projects\TTracker\TTracker\GUI\Views\LoginView.xaml;;
 FE:\WPF Projects\TTracker\TTracker\GUI\Views\TicketManagementSubViews\AllTicketsFrameView.xaml;;
 FE:\WPF Projects\TTracker\TTracker\GUI\Views\TicketManagementSubViews\ProjectFrameView.xaml;;
 FE:\WPF Projects\TTracker\TTracker\GUI\Views\TicketManagementView.xaml;;
+FE:\WPF Projects\TTracker\TTracker\GUI\Views\TimeEngineSubViews\CreateDayStatisticView.xaml;;
 FE:\WPF Projects\TTracker\TTracker\GUI\Views\TimeEngineView.xaml;;
 FE:\WPF Projects\TTracker\TTracker\Main.xaml;;
-FE:\WPF Projects\TTracker\TTracker\GUI\Views\TicketManagementSubViews\AskForProjectDeletionView.xaml;;
 

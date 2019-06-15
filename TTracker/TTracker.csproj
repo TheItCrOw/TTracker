@@ -94,6 +94,7 @@
     <Compile Include="GUI\Models\TimeEntry.cs" />
     <Compile Include="GUI\ViewModels\Entities\TimeEntryViewModel.cs" />
     <Compile Include="GUI\ViewModels\ManagamentBase\AccountViewModel.cs" />
+    <Compile Include="GUI\ViewModels\ManagamentBase\TimeEngineSubVms\CreateDayStatisticViewModel.cs" />
     <Compile Include="GUI\ViewModels\TicketManagementSubVms\AskForProjectDeletionViewModel.cs" />
     <Compile Include="GUI\ViewModels\TicketManagementSubVms\CreateProjectViewModel.cs" />
     <Compile Include="GUI\ViewModels\TicketManagementSubVms\CreateTicketViewModel.cs" />
@@ -127,6 +128,9 @@
     </Compile>
     <Compile Include="GUI\Views\TicketManagementView.xaml.cs">
       <DependentUpon>TicketManagementView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Views\TimeEngineSubViews\CreateDayStatisticView.xaml.cs">
+      <DependentUpon>CreateDayStatisticView.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI\Views\TimeEngineView.xaml.cs">
       <DependentUpon>TimeEngineView.xaml</DependentUpon>
@@ -170,6 +174,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GUI\Views\TicketManagementView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Views\TimeEngineSubViews\CreateDayStatisticView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -244,7 +252,7 @@
     <Resource Include="Resources\time.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\statistiks.png" />
+    <Resource Include="Resources\statistics.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\home.png" />
@@ -299,6 +307,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\hide.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\print.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\pdf.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
