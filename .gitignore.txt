@@ -1,4 +1,0 @@
-WpfApp1
-TTracker.sln
-Data
-test.txt
