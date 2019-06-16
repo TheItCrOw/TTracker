@@ -1,4 +1,6 @@
-<Application x:Class="TTracker.App" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:TTracker" StartupUri="Main.xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d1p1:Ignorable="d" xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006"
+<Application x:Class="TTracker.App" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:TTracker" 
+             xmlns:login ="clr-namespace:TTracker.GUI.Views"
+             StartupUri="LoginView.xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d1p1:Ignorable="d" xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:p ="clr-namespace:TTracker.BaseDataModules"
         xmlns:System="clr-namespace:System;assembly=mscorlib"
              

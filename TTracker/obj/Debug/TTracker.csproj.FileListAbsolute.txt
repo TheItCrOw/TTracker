@@ -28,12 +28,9 @@ E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\P
 E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementView.g.cs
 E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TimeEngineSubViews\CreateDayStatisticView.g.cs
 E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TimeEngineView.g.cs
-E:\WPF Projects\TTracker\TTracker\obj\Debug\Main.g.cs
-E:\WPF Projects\TTracker\TTracker\obj\Debug\App.g.cs
 E:\WPF Projects\TTracker\TTracker\obj\Debug\GeneratedInternalTypeHelper.g.cs
 E:\WPF Projects\TTracker\TTracker\obj\Debug\TTracker_MarkupCompile.cache
 E:\WPF Projects\TTracker\TTracker\obj\Debug\TTracker_MarkupCompile.lref
-E:\WPF Projects\TTracker\TTracker\obj\Debug\App.baml
 E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\AccountView.baml
 E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\AskForProjectDeletionView.baml
 E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\CreateProjectView.baml
@@ -45,7 +42,6 @@ E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\P
 E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementView.baml
 E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TimeEngineSubViews\CreateDayStatisticView.baml
 E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TimeEngineView.baml
-E:\WPF Projects\TTracker\TTracker\obj\Debug\Main.baml
 E:\WPF Projects\TTracker\TTracker\obj\Debug\TTracker.g.resources
 E:\WPF Projects\TTracker\TTracker\obj\Debug\TTracker.Properties.Resources.resources
 E:\WPF Projects\TTracker\TTracker\obj\Debug\TTracker.csproj.GenerateResource.cache
@@ -59,3 +55,7 @@ E:\WPF Projects\TTracker\TTracker\bin\Debug\System.Windows.Controls.Layout.Toolk
 E:\WPF Projects\TTracker\TTracker\bin\Debug\WPFToolkit.dll
 E:\WPF Projects\TTracker\TTracker\obj\Debug\TTracker.csprojAssemblyReference.cache
 E:\WPF Projects\TTracker\TTracker\bin\Debug\System.Windows.Controls.DataVisualization.Toolkit.dll
+E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\Main.g.cs
+E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\App.g.cs
+E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\App.baml
+E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\Main.baml

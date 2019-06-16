@@ -19,8 +19,6 @@ namespace TTracker.GUI.ViewModels.ManagamentBase
 
         //This collection holds the data that is shown in the sub projects pie chart
         public ObservableCollection<ChartHelperClass> SubProjectsChart { get; set; } = new ObservableCollection<ChartHelperClass>();
-        public DelegateCommand<Grid> PrintCommand => new DelegateCommand<Grid>(Print);
-
 
 
         public string SelectedCalendarDate
@@ -80,16 +78,5 @@ namespace TTracker.GUI.ViewModels.ManagamentBase
             }
 
         }
-
-        void Print(Grid mainGrid)
-        {
-            PrintDialog printDialog = new PrintDialog();
-            if(printDialog.ShowDialog() == true)
-            {
-                printDialog.PrintVisual(mainGrid, "Test");
-            }
-        }
-
-
     }
 }

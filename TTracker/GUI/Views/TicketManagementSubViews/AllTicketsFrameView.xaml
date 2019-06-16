@@ -12,13 +12,6 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AllTicketsFrameView">
 
-    <Page.Resources>
-        <ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type System:Enum}" x:Key="PriorityLevel">
-            <ObjectDataProvider.MethodParameters>
-                <x:Type Type="p:PriorityLevel"/>
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
-    </Page.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -79,7 +72,6 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate >
                         <Border BorderThickness="0.5" BorderBrush="Black">
-                            <!--Highlight the item when hovered over-->
                             <Border.Style>
                                 <Style TargetType="Border">
                                     <Setter Property="Background" Value="AliceBlue"/>
@@ -97,8 +89,9 @@
                                         <DataTrigger Binding="{Binding Status}" Value="Todo">
                                             <Setter Property="Background" Value="LightBlue"/>
                                         </DataTrigger>
+                                        <!--Highlight the item when hovered over-->
                                         <Trigger Property="IsMouseOver" Value="True" >
-                                            <Setter Property="Background" Value="GhostWhite"/>
+                                            <Setter Property="Background" Value="White"/>
                                         </Trigger>
                                     </Style.Triggers>
                                 </Style>
@@ -121,7 +114,7 @@
                                 </Expander>
                                 <TextBox Text="{Binding Name}" FontSize="17" FontWeight="Bold" Width="300" Margin="50 0 0 0" VerticalAlignment="Center" BorderThickness="0.5"/>
                                 <TextBlock Text="{Binding ProjectName}" FontSize="17" FontWeight="Bold" Width="250" Margin="10 0 0 0" VerticalAlignment="Center"/>
-                                <ComboBox BorderThickness="0.5" ItemsSource="{Binding  Source={StaticResource PriorityLevel}}" FontSize="15" Width="150" Margin="20 0 0 0" VerticalAlignment="Center" MaxHeight="25" SelectedItem="{Binding Priority}"/>
+                                <ComboBox BorderThickness="0.5" ItemsSource="{Binding  Source={StaticResource PriorityLevelSource}}" FontSize="15" Width="150" Margin="20 0 0 0" VerticalAlignment="Center" MaxHeight="25" SelectedItem="{Binding Priority}"/>
                                 <ComboBox BorderThickness="0.5" ItemsSource="{Binding  Source={StaticResource StatusSource}}" FontSize="15" Width="150" Margin="20 0 0 0" VerticalAlignment="Center" MaxHeight="25" SelectedItem="{Binding Status}"/>
                                 <!--Progress Bar plus Text-->
                                 <Grid Width="300" Margin="20 0 0 0" VerticalAlignment="Center">

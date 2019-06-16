@@ -5,6 +5,9 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using TTracker.GUI.ViewModels;
+using TTracker.GUI.Views;
+using TTracker.Utility;
 
 namespace TTracker
 {
@@ -13,5 +16,6 @@ namespace TTracker
     /// </summary>
     public partial class App : Application
     {
+
     }
 }

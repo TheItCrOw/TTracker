@@ -24,14 +24,11 @@ namespace TTracker
     public partial class Main : Window
     {
 
-        LoginView loginWindow = new LoginView();
         public Main()
         {
             InitializeComponent();
             this.DataContext = new MainViewModel();
             NavigationFrame.Content = new HomeView();
-            loginWindow.Show();
-            loginWindow.Topmost = true;
         }
 
         //Navigates to Home

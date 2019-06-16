@@ -74,7 +74,10 @@ namespace TTracker.GUI.ViewModels
             UserPassword = PasswordBoxAssistant.PasswordContent;
             if(DataAccess.Instance.IsValidUser(UserName, UserPassword) == true)
             {
+                //Create New Main Isntance and start application
                 MessageBox.Show("You´ve logged in!");
+                Main mainView = new Main();
+                mainView.Show();
                 Application.Current.MainWindow.Close();
             }
             else
