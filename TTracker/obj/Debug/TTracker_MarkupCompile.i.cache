@@ -12,9 +12,9 @@ DEBUG;TRACE
 E:\WPF Projects\TTracker\TTracker\GUI\Views\App.xaml
 12853494972
 
-521856100244
+54-420797438
 1321610742990
 GUI\Views\AccountView.xaml;GUI\Views\TicketManagementSubViews\AskForProjectDeletionView.xaml;GUI\Views\TicketManagementSubViews\CreateProjectView.xaml;GUI\Views\TicketManagementSubViews\CreateTicketView.xaml;GUI\Views\HomeView.xaml;GUI\Views\LoginView.xaml;GUI\Views\TicketManagementSubViews\AllTicketsFrameView.xaml;GUI\Views\TicketManagementSubViews\ProjectFrameView.xaml;GUI\Views\TicketManagementView.xaml;GUI\Views\TimeEngineSubViews\CreateDayStatisticView.xaml;GUI\Views\TimeEngineView.xaml;GUI\Views\Main.xaml;
 
-True
+False
 

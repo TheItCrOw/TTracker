@@ -149,10 +149,12 @@
     </Compile>
     <Compile Include="Utility\CreateTFromXmlData.cs" />
     <Compile Include="Utility\DataAccess.cs" />
+    <Compile Include="Utility\DateTimeExtensions.cs" />
     <Compile Include="Utility\PasswordBoxAssistant.cs" />
     <Compile Include="SetupViewModels\MainViewModel.cs" />
     <Compile Include="SetupViewModels\ViewModelLocator.cs" />
-    <Compile Include="Utility\ChartHelperClass.cs" />
+    <Compile Include="GUI\Models\ChartHelperModel.cs" />
+    <Compile Include="Utility\StatisticsHelperClass.cs" />
     <Compile Include="Utility\XmlDataCache.cs" />
     <Page Include="GUI\Views\AccountView.xaml">
       <SubType>Designer</SubType>

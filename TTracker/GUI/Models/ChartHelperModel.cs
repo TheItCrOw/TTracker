@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace TTracker.Utility
 {
-    public class ChartHelperClass
+    public class ChartHelperModel
     {
         public string Name { get; set; }
         public float Share { get; set; }
 
-        public ChartHelperClass(string name, float share)
+        public ChartHelperModel(string name, float share)
         {
             Name = name;
             Share = share;

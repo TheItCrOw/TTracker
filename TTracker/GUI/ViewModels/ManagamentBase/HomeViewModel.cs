@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TTracker.BaseDataModules;
 using TTracker.GUI.Models;
+using TTracker.GUI.ViewModels.Entities;
 using TTracker.GUI.Views;
 using TTracker.Utility;
 
@@ -15,13 +16,27 @@ namespace TTracker.GUI.ViewModels
     class HomeViewModel : ViewModelManagementBase
     {
         private string _date;
+        private List<TimeEntry> allTimeEntries = new List<TimeEntry>();
         public ObservableCollection<TaskTicketViewModel> TaskTickets { get; set; } = new ObservableCollection<TaskTicketViewModel>();
+        public ObservableCollection<ChartHelperModel> RootProjectsChart { get; set; } = new ObservableCollection<ChartHelperModel>();
+        public ObservableCollection<ChartHelperModel> SubProjectsChart { get; set; } = new ObservableCollection<ChartHelperModel>();
 
+        public string Date
+        {
+            get { return _date; }
+            set
+            {
+                SetProperty(ref _date, value);
+            }
+        }
 
         public HomeViewModel()
         {
             Date = ($"Your To-Do´s for today, the {DateTime.Now.ToShortDateString()}");
+            allTimeEntries.AddRange(DataAccess.Instance.GetAll<TimeEntry>());
             LoadTickets();
+            CalculateRootProjectsChart();
+            CalcluateSubProjects();
         }
 
         void LoadTickets()
@@ -39,8 +54,9 @@ namespace TTracker.GUI.ViewModels
                 {
                     todoTickets.Add(ticket);
                 }
-                if(ticket.Priority == PriorityLevel.High 
-                    || ticket.Priority == PriorityLevel.VeryHigh
+                if((ticket.Priority == PriorityLevel.High 
+                    || ticket.Priority == PriorityLevel.VeryHigh)
+                    && ticket.Status != Status.Finished
                     && !(todoTickets.Contains(ticket)))
                 {
                     highPrioTickets.Add(ticket);
@@ -51,14 +67,36 @@ namespace TTracker.GUI.ViewModels
             TaskTickets.AddRange(highPrioTickets.Select(t => new TaskTicketViewModel(t, this, false)));
         }
 
-        public string Date
+        void CalculateRootProjectsChart()
         {
-            get { return _date; }
-            set
+            DateTime dateOfLastMonday = DateTime.Now.StartOfWeek(DayOfWeek.Monday);
+            var desiredTimeEntries = new List<TimeEntry>();
+
+            foreach(var tE in allTimeEntries)
             {
-                SetProperty(ref _date, value);
+                if(tE.Created >= dateOfLastMonday)
+                {
+                    desiredTimeEntries.Add(tE);
+                }
             }
+            
+            RootProjectsChart.AddRange(StatisticsHelperClass.CreateChartModelsOfTimeEntriesRootProjects(desiredTimeEntries));
         }
 
+        void CalcluateSubProjects()
+        {
+            DateTime dateOfLastMonday = DateTime.Now.StartOfWeek(DayOfWeek.Monday);
+            var desiredTimeEntriesVm = new List<TimeEntryViewModel>();
+
+            foreach (var tE in allTimeEntries)
+            {
+                if (tE.Created >= dateOfLastMonday)
+                {
+                    desiredTimeEntriesVm.Add(new TimeEntryViewModel(tE, this));
+                }
+            }
+
+            SubProjectsChart.AddRange(StatisticsHelperClass.CreateChartModelsOfTimeEntriesSubProjects(desiredTimeEntriesVm));
+        }
     }
 }

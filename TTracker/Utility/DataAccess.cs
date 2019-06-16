@@ -216,7 +216,9 @@ namespace TTracker.Utility
                 foreach (var element in docElement)
                 {
                     var nodeValue = element.Value;
-                    if (nodeValue.ToString() == Id.ToString())
+                    var nodeName = element.Name.LocalName;
+
+                    if (nodeName == "Id" && nodeValue.ToString() == Id.ToString())
                     {
                         var desiredUserData = _xmlReaderWriter.GetXmlDataByXmlPath(xmlFile);
                         //Bit hacky here. The CreateProjectFromXmlData takes in a list of xDocument, not just one.

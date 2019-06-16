@@ -10,7 +10,7 @@ using TTracker.Utility;
 
 namespace TTracker.GUI.ViewModels.Entities
 {
-    class TimeEntryViewModel : ViewModelBase
+    public class TimeEntryViewModel : ViewModelBase
     {
         private string _text;
         private float _startTime;
