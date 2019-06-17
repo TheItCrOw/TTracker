@@ -11,13 +11,12 @@ namespace TTracker.GUI.Models
     public class TaskTicket : Ticket
     {
         public TaskTicket(string name, Guid id, Guid userId, Guid projectId, string text, DateTime created,
-                          string projectName, float expectedTime, float usedTime, string priority, string status)
+                          float expectedTime, float usedTime, string priority, string status)
         {
             Name = name;
             Id = id;
             UserId = userId;
             ProjectId = projectId;
-            ProjectName = projectName;
             Text = text;
             Created = created;
             ExpectedTime = expectedTime;

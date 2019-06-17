@@ -107,7 +107,8 @@ namespace TTracker.GUI.ViewModels
             Name = taskTicket.Name;
             Id = Guid.NewGuid();
             ModelId = taskTicket.Id;
-            ProjectName = taskTicket.ProjectName;
+            var project = DataAccess.Instance.GetProjectById(taskTicket.ProjectId);
+            ProjectName = project.Name;
             Text = taskTicket.Text;
             Created = DateTime.Now;
             ExpectedTime = taskTicket.ExpectedTime;

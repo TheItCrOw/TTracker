@@ -47,7 +47,6 @@ namespace TTracker.Utility
             XmlWriteableDataList.Add("Name/" + newTaskTicket.Name);
             XmlWriteableDataList.Add("UserId/" + newTaskTicket.UserId);
             XmlWriteableDataList.Add("ProjectId/" + newTaskTicket.ProjectId);
-            XmlWriteableDataList.Add("ProjectName/" + newTaskTicket.ProjectName);
             XmlWriteableDataList.Add("Text/" + newTaskTicket.Text);
             XmlWriteableDataList.Add("Created/" + newTaskTicket.Created);
             XmlWriteableDataList.Add("ExpectedTime/" + newTaskTicket.ExpectedTime);

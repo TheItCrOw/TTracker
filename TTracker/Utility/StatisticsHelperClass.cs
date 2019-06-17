@@ -25,7 +25,8 @@ namespace TTracker.Utility
             foreach (var tE in timeEntries)
             {
                 //Calculate the usedTime of the ticket
-                var timeOfThatTicket = (tE.EndTime - tE.StartTime) / 100;
+                var rawTime = (tE.EndTime - tE.StartTime) / 100;
+                var timeOfThatTicket = rawTime;
 
                 //When its the first time the project came up, add to the allProjectsName List and also allProjectsTime,
                 // but at the same index
@@ -71,7 +72,7 @@ namespace TTracker.Utility
             foreach (var tE in timeEntries)
             {
                 //Calculate the usedTime of the ticket
-                var timeOfThatTicket = (tE.EndTime - tE.StartTime) / 100;
+                var timeOfThatTicket = (tE.EndTime - tE.StartTime) / 366;
                 var subProject = DataAccess.Instance.GetProjectById(tE.ProjectId);
                 var rootProject = DataAccess.Instance.GetProjectById(subProject.ParentId);
 
@@ -102,6 +103,15 @@ namespace TTracker.Utility
                 allChartModels.Add(new ChartHelperModel(name, share));
             }
             return allChartModels;
+        }
+
+        public static float Convert2FloatsToTimeSpan(float start, float end)
+        {
+            float result = 0;
+
+             
+
+            return result;
         }
     }
 }

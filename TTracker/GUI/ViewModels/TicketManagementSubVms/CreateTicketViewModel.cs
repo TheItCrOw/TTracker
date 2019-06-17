@@ -177,7 +177,6 @@ namespace TTracker.GUI.ViewModels
                 SelectedProjectComboBox.ModelId,
                 TicketText,
                 DateTime.Now,
-                SelectedProjectComboBox.Name,
                 ExpectedTicketTime,
                 0,
                 SelectedPriorityComboBox.ToString(),

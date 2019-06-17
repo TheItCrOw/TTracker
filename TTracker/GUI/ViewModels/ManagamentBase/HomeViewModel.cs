@@ -5,6 +5,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Threading;
 using TTracker.BaseDataModules;
 using TTracker.GUI.Models;
 using TTracker.GUI.ViewModels.Entities;
@@ -45,16 +47,16 @@ namespace TTracker.GUI.ViewModels
             var todoTickets = new List<TaskTicket>();
             var highPrioTickets = new List<TaskTicket>();
 
-            foreach(var ticket in allTickets)
+            foreach (var ticket in allTickets)
             {
                 if (DataAccess.CurrentLoggedUser == null || ticket.UserId != DataAccess.CurrentLoggedUser.Id)
                     return;
 
-                if(ticket.Status == Status.Working)
+                if (ticket.Status == Status.Working)
                 {
                     todoTickets.Add(ticket);
                 }
-                if((ticket.Priority == PriorityLevel.High 
+                if ((ticket.Priority == PriorityLevel.High
                     || ticket.Priority == PriorityLevel.VeryHigh)
                     && ticket.Status != Status.Finished
                     && !(todoTickets.Contains(ticket)))
@@ -69,34 +71,43 @@ namespace TTracker.GUI.ViewModels
 
         void CalculateRootProjectsChart()
         {
-            DateTime dateOfLastMonday = DateTime.Now.StartOfWeek(DayOfWeek.Monday);
-            var desiredTimeEntries = new List<TimeEntry>();
-
-            foreach(var tE in allTimeEntries)
+            Task.Run(() =>
             {
-                if(tE.Created >= dateOfLastMonday)
+                DateTime dateOfLastMonday = DateTime.Now.StartOfWeek(DayOfWeek.Monday);
+                var desiredTimeEntries = new List<TimeEntry>();
+
+                foreach (var tE in allTimeEntries)
                 {
-                    desiredTimeEntries.Add(tE);
+                    if (tE.Created >= dateOfLastMonday)
+                    {
+                        desiredTimeEntries.Add(tE);
+                    }
                 }
-            }
-            
-            RootProjectsChart.AddRange(StatisticsHelperClass.CreateChartModelsOfTimeEntriesRootProjects(desiredTimeEntries));
+
+                Application.Current.Dispatcher.Invoke(() => RootProjectsChart.AddRange(StatisticsHelperClass.CreateChartModelsOfTimeEntriesRootProjects(desiredTimeEntries)));
+
+            });
+
         }
 
         void CalcluateSubProjects()
         {
-            DateTime dateOfLastMonday = DateTime.Now.StartOfWeek(DayOfWeek.Monday);
-            var desiredTimeEntriesVm = new List<TimeEntryViewModel>();
-
-            foreach (var tE in allTimeEntries)
+            Task.Run(() =>
             {
-                if (tE.Created >= dateOfLastMonday)
-                {
-                    desiredTimeEntriesVm.Add(new TimeEntryViewModel(tE, this));
-                }
-            }
+                DateTime dateOfLastMonday = DateTime.Now.StartOfWeek(DayOfWeek.Monday);
+                var desiredTimeEntriesVm = new List<TimeEntryViewModel>();
 
-            SubProjectsChart.AddRange(StatisticsHelperClass.CreateChartModelsOfTimeEntriesSubProjects(desiredTimeEntriesVm));
+                foreach (var tE in allTimeEntries)
+                {
+                    if (tE.Created >= dateOfLastMonday)
+                    {
+                        desiredTimeEntriesVm.Add(new TimeEntryViewModel(tE, this));
+                    }
+                }
+               
+                Application.Current.Dispatcher.Invoke(() => SubProjectsChart.AddRange(StatisticsHelperClass.CreateChartModelsOfTimeEntriesSubProjects(desiredTimeEntriesVm)));
+
+            });
         }
     }
 }

@@ -76,7 +76,6 @@ namespace TTracker.Utility
             Guid projectId = Guid.Empty;
             var text = string.Empty;
             DateTime created = DateTime.Now;
-            var projectName = string.Empty;
             float expectedTime = 0;
             float usedTime = 0;
             string priority = string.Empty;
@@ -115,9 +114,6 @@ namespace TTracker.Utility
                         case "Created>":
                             created = DateTime.Parse(element.Value);
                             break;
-                        case "ProjectName>":
-                            projectName = (element.Value);
-                            break;
                         case "ExpectedTime>":
                             expectedTime = float.Parse(element.Value);
                             break;
@@ -133,7 +129,7 @@ namespace TTracker.Utility
                     }
                 }
             }
-            return (new TaskTicket(name, Id, userId, projectId, text, created, projectName, expectedTime, usedTime, priority, status));
+            return (new TaskTicket(name, Id, userId, projectId, text, created, expectedTime, usedTime, priority, status));
         }
         public List<Project> CreateProjectListFromXmlData(List<XDocument> projectData)
         {

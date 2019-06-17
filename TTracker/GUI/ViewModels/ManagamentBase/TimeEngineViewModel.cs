@@ -150,15 +150,8 @@ namespace TTracker.GUI.ViewModels
 
         void SaveTime()
         {
-            if (TimeFrom >= TimeTo )
-            {
-                MessageBox.Show("Your 'worked until time' must always be later than your 'started from time'");
+            if (!IsValidTimeEntry())
                 return;
-            }
-            else if (SelectedProjectComboBoxItem == null || SelectedTaskTicketComboBoxItem == null)
-            {
-                return;
-            }
 
             var currentTicket = SelectedTaskTicketComboBoxItem;
             var currentUsedTime = currentTicket.UsedTime;
@@ -171,6 +164,41 @@ namespace TTracker.GUI.ViewModels
             currentTicket.Save();
             CreateTimeEntry();
 
+        }
+
+        bool IsValidTimeEntry()
+        {
+            var timeFromDecimal = TimeFrom / 100;
+            var timeToDecimal = TimeTo / 100;
+            var x = timeFromDecimal - Math.Truncate(timeFromDecimal);
+            var y = timeToDecimal - Math.Truncate(timeToDecimal);
+
+            if (TimeFrom >= TimeTo)
+            {
+                MessageBox.Show("Your 'worked until time' must always be later than your 'started from time'");
+                return false;
+            }
+            else if (TimeFrom < 100 || TimeTo < 100)
+            {
+                MessageBox.Show("That is not a legit timespan. FYI: 00:00 is 24:00");
+                return false;
+            }
+            else if (TimeTo > 2400 || TimeFrom > 2400)
+            {
+                MessageBox.Show("After 24:00 o'clock, the day is over. Please enter anything after that on the next day.");
+                return false;
+            }
+            else if (x > 0.59 || y > 0.59)
+            {
+                MessageBox.Show("An hour only has 60 minutes. Please check your timespan again");
+                return false;
+            }
+            else if (SelectedProjectComboBoxItem == null || SelectedTaskTicketComboBoxItem == null)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         void CreateTimeEntry()

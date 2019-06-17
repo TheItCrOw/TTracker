@@ -19,7 +19,6 @@ namespace TTracker.GUI.Models
         private float _expectedTime;
         private float _usedTime;
         private Guid _projectId;
-        private string _projectName;
         private PriorityLevel _priority;
         private Status _status;
 
@@ -30,7 +29,6 @@ namespace TTracker.GUI.Models
         public DateTime Created { get { return _created; } set => _created = value; }
         public Guid ProjectId { get { return _projectId; } set => _projectId = value; }
         public string Name { get { return _name; } set => _name = value; }
-        public string ProjectName { get { return _projectName; } set => _projectName = value; }
         public PriorityLevel Priority { get { return _priority; } set => _priority = value; }
         public Status Status{ get { return _status; } set => _status = value; }
 
