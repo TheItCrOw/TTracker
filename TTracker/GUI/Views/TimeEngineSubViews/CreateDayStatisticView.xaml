@@ -81,7 +81,7 @@
                 </Grid.ColumnDefinitions>
 
                 <!--Save as PDF-->
-                <Button ToolTip="Save as PDF" FontSize="15" HorizontalAlignment="Stretch" Background="White">
+                <Button x:Name="PdfButton" ToolTip="Save as PDF" FontSize="15" HorizontalAlignment="Stretch" Background="White" Command="{Binding SaveAsPdfCommand}" CommandParameter="{Binding ElementName=MainGrid}">
                     <Image Margin="7" Source="/TTracker;component/Resources/pdf.png"/>
                 </Button>
                 <!--Print Button-->

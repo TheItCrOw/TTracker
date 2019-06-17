@@ -25,8 +25,7 @@ namespace TTracker.Utility
             foreach (var tE in timeEntries)
             {
                 //Calculate the usedTime of the ticket
-                var rawTime = (tE.EndTime - tE.StartTime) / 100;
-                var timeOfThatTicket = rawTime;
+                var timeOfThatTicket = CalculateTimespanOf2floats(tE.StartTime, tE.EndTime);
 
                 //When its the first time the project came up, add to the allProjectsName List and also allProjectsTime,
                 // but at the same index
@@ -72,7 +71,7 @@ namespace TTracker.Utility
             foreach (var tE in timeEntries)
             {
                 //Calculate the usedTime of the ticket
-                var timeOfThatTicket = (tE.EndTime - tE.StartTime) / 366;
+                var timeOfThatTicket = CalculateTimespanOf2floats(tE.StartTime, tE.EndTime);
                 var subProject = DataAccess.Instance.GetProjectById(tE.ProjectId);
                 var rootProject = DataAccess.Instance.GetProjectById(subProject.ParentId);
 
@@ -105,13 +104,44 @@ namespace TTracker.Utility
             return allChartModels;
         }
 
-        public static float Convert2FloatsToTimeSpan(float start, float end)
+        /// <summary>
+        /// Takes in 2 floats like: 900 for 9:00 o'clock and gives back a float, that has the Timespan in hours
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
+        public static float CalculateTimespanOf2floats(float start, float end)
         {
-            float result = 0;
+            double result = 0;
 
-             
+            //Make a decimal out of the start and end time
+            var startDecimal = start / 100;
+            var endDecimal = end / 100;
+            //Get the value right of the comma e.g. 9,45 => 45
+            var decimalValue_Start = startDecimal - Math.Truncate(startDecimal);
+            var decimalValue_End = endDecimal - Math.Truncate(endDecimal);
+            //Get the value left of the comma e.g 9,45 => 9
+            var numberValue_Start = Math.Truncate(startDecimal);
+            var numberValue_End = Math.Truncate(endDecimal);
 
-            return result;
+            //Make Timespans .FromMinutes and .FromHours of left and right value of comma
+            TimeSpan startInMinutes = TimeSpan.FromMinutes(decimalValue_Start * 100);
+            TimeSpan startInHours = TimeSpan.FromHours(numberValue_Start);
+            TimeSpan endInMinutes = TimeSpan.FromMinutes(decimalValue_End * 100);
+            TimeSpan endInHours = TimeSpan.FromHours(numberValue_End);
+
+            //Calculate them together e.g. 9:45 now, but in Timespan
+            TimeSpan startInTimespan = startInHours + startInMinutes;
+            TimeSpan endInTimespan = endInHours + endInMinutes;
+
+            //Calculate the Difference between the two Timespasn start and end
+            TimeSpan calculatedDiff = endInTimespan - startInTimespan;
+            result = calculatedDiff.TotalHours;
+
+            //Roundn the result to hours -> 10:00-9:30 is 0,5 hours
+            var roundedResult = (float)(Math.Truncate((double)result * 100) / 100);
+
+            return roundedResult;
         }
     }
 }
