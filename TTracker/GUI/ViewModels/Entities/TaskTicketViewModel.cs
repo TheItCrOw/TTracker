@@ -26,6 +26,8 @@ namespace TTracker.GUI.ViewModels
         private Guid _modelId;
         private PriorityLevel _priority;
         private Status _status;
+        private Visibility _visibility;
+
         public DelegateCommand DeleteCommand => new DelegateCommand(Delete);
 
         #region Properties
@@ -95,7 +97,14 @@ namespace TTracker.GUI.ViewModels
             }
         }
 
-
+        public Visibility Visibility
+        {
+            get { return _visibility; }
+            set
+            {
+                SetProperty(ref _visibility, value);
+            }
+        }
         #endregion
 
         public TaskTicketViewModel(TaskTicket taskTicket, ViewModelManagementBase currentBase, bool @new)

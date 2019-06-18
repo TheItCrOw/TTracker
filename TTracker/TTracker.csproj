@@ -354,5 +354,8 @@
   <ItemGroup>
     <Resource Include="PdfSharp.SharpZipLib\ReadMe.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\search.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

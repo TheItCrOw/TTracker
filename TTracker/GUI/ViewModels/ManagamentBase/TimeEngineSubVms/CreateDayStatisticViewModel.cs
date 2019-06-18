@@ -116,8 +116,8 @@ namespace TTracker.GUI.ViewModels.ManagamentBase
 
 
                 PdfPageBase page = pdfDoc.Pages.Add();
-                float width = pdfImg.Width * 0.65f;
-                float height = pdfImg.Height * 0.65f;
+                float width = pdfImg.Width * 0.68f;
+                float height = pdfImg.Height * 0.68f;
                 float x = (page.Canvas.ClientSize.Width - width) / 2;
 
                 page.Canvas.DrawImage(pdfImg, x, 0, width, height);

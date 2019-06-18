@@ -26,6 +26,7 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
         public DelegateCommand CreateNewTicketCommand => new DelegateCommand(CreateNewTicket);
         public DelegateCommand HideShowStaticTicketsCommand => new DelegateCommand(HideShowStaticTickets);
         public DelegateCommand<string> SortTaskTicketsCommand => new DelegateCommand<string>(SortTaskTickets);
+        public DelegateCommand<string> SearchForTicketsCommand => new DelegateCommand<string>(SearchForTickets);
 
         public AllTicketsFrameViewModel()
         {
@@ -102,7 +103,7 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
         private void HideShowStaticTickets()
         {
             //If there are unsaved changes, handle them first...There are prolly better ways, but for now this works
-            if(HasUnsavedChanges)
+            if (HasUnsavedChanges)
             {
                 MessageBox.Show("There are currently unsaved changes. Please save or reload them first");
                 return;
@@ -160,6 +161,33 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
             TaskTickets.Clear();
             TaskTickets.AddRange(sortedTaskTickets);
             HasUnsavedChanges = _saveDirtyStateOfBase;
+        }
+
+        void SearchForTickets(string searchTerm)
+        {
+            searchTerm = searchTerm.ToLower();
+
+            Task.Run(() =>
+            {
+                if (searchTerm == string.Empty)
+                {
+                    foreach (var ticket in TaskTickets)
+                        ticket.Visibility = Visibility.Visible;
+                }
+
+                foreach (var ticket in TaskTickets)
+                {
+                    if (ticket.Name.ToLower().Contains(searchTerm) 
+                    || ticket.ProjectName.ToLower().Contains(searchTerm))
+                    {
+                        ticket.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        ticket.Visibility = Visibility.Collapsed;
+                    }
+                }
+            });
         }
     }
 }

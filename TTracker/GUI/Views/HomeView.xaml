@@ -153,7 +153,13 @@
                 
                 <!--Chart of the Root Projects-->
                 <DockPanel Grid.Row="2" Background="AliceBlue" HorizontalAlignment="Center">
-                    <Border BorderBrush="Black" DockPanel.Dock="Left" HorizontalAlignment="Center">
+                        <TextBlock Text="Statistics of the running week: Root and Sub-Projects" DockPanel.Dock="Top" 
+                                   Margin="0 5 0 0" 
+                                   FontSize="20" 
+                                   TextAlignment="Center" 
+                                   FontWeight="Bold"
+                                   Foreground="DarkBlue"/>
+                        <Border BorderBrush="Black" DockPanel.Dock="Left" HorizontalAlignment="Center">
                         <DVC:Chart Width="700" Height="460" BorderThickness="0" VerticalAlignment="Center">
                             <DVC:Chart.Series>
                                 <DVC:ColumnSeries  Title="Hours"

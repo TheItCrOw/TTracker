@@ -33,30 +33,45 @@
                 </LinearGradientBrush>
             </Border.Background>
             <DockPanel VerticalAlignment="Center" LastChildFill="True">
-                <Button x:Name="SortForName" FontSize="20" FontWeight="Bold" Content="Ticketname" Margin="60 0 0 0" Foreground="DarkBlue" Width="300" HorizontalContentAlignment="Left" BorderThickness="0"
+                <!--Search Button-->
+                <Button x:Name="SearchButton" Width="40" Margin="5 0 0 0" Background="AliceBlue" BorderThickness="0" ToolTip="Search tickets" Click="SearchButton_Click">
+                    <Image  Source="pack://application:,,,/Resources/search.png"/>
+                </Button>
+                <!--Search bar-->
+                <TextBox x:Name="SearchBox" Width="500" Height="25" Margin="15 0 0 0" BorderThickness="1" BorderBrush="Black" Background="White" FontSize="15" Visibility="Collapsed">
+                    <TextBox.InputBindings>
+                        <KeyBinding Command="{Binding SearchForTicketsCommand}" CommandParameter="{Binding ElementName=SearchBox, Path=Text}" Key="Return"/>
+                    </TextBox.InputBindings>
+                </TextBox>
+                <!--Ticket Name-->
+                <Button x:Name="SortForName" FontSize="20" FontWeight="Bold" Content="Ticketname" Margin="15 0 0 0" Foreground="DarkBlue" Width="300" HorizontalContentAlignment="Left" BorderThickness="0"
                         Command="{Binding SortTaskTicketsCommand}" CommandParameter="{Binding ElementName=SortForName, Path=Name}">
                     <Button.Background>
                         <SolidColorBrush Opacity="0"/>
                     </Button.Background>
                 </Button>
+                <!--Project Name-->
                 <Button x:Name="SortForProjects" FontSize="20" FontWeight="Bold" Content="Project" Margin="10 0 0 0" Foreground="DarkBlue" Width="250" HorizontalContentAlignment="Left" BorderThickness="0" 
                         Command="{Binding SortTaskTicketsCommand}" CommandParameter="{Binding ElementName=SortForProjects, Path=Name}">
                     <Button.Background>
                         <SolidColorBrush Opacity="0"/>
                     </Button.Background>
                 </Button>
+                <!--Priority-->
                 <Button x:Name="SortForPriority" FontSize="20" FontWeight="Bold" Content="Priority" Margin="19 0 0 0" Foreground="DarkBlue" Width="160" HorizontalContentAlignment="Left" BorderThickness="0"
                         Command="{Binding SortTaskTicketsCommand}" CommandParameter="{Binding ElementName=SortForPriority, Path=Name}">
                     <Button.Background>
                         <SolidColorBrush Opacity="0"/>
                     </Button.Background>
                 </Button>
+                <!--Status-->
                 <Button x:Name="SortForStatus" FontSize="20" FontWeight="Bold" Content="Status" Margin="10 0 0 0" Foreground="DarkBlue" Width="160" HorizontalContentAlignment="Left" BorderThickness="0"
                         Command="{Binding SortTaskTicketsCommand}" CommandParameter="{Binding ElementName=SortForStatus, Path=Name}">
                     <Button.Background>
                         <SolidColorBrush Opacity="0"/>
                     </Button.Background>
                 </Button>
+                <!--Progress-->
                 <Button x:Name="SortForProgress" FontSize="20" FontWeight="Bold" Content="Progress" Margin="10 0 0 0" Foreground="DarkBlue" HorizontalContentAlignment="Left" BorderThickness="0"
                         Command="{Binding SortTaskTicketsCommand}" CommandParameter="{Binding ElementName=SortForProgress, Path=Name}">
                     <Button.Background>
@@ -71,7 +86,7 @@
             <ItemsControl x:Name="taskTicketControl" Background="White" ItemsSource="{Binding TaskTickets, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" >
                 <ItemsControl.ItemTemplate>
                     <DataTemplate >
-                        <Border BorderThickness="0.5" BorderBrush="Black">
+                        <Border BorderThickness="0.5" BorderBrush="Black" Visibility="{Binding Visibility}">
                             <Border.Style>
                                 <Style TargetType="Border">
                                     <Setter Property="Background" Value="AliceBlue"/>

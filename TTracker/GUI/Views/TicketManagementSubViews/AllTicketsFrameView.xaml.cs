@@ -29,5 +29,17 @@ namespace TTracker.GUI.Views.TicketManagementSubViews
 
         }
 
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(SearchBox.Visibility == Visibility.Collapsed)
+            {
+                SearchBox.Visibility = Visibility.Visible;
+                SearchBox.Focus();
+            }
+            else
+            {
+                SearchBox.Visibility = Visibility.Collapsed;
+            }
+        }
     }
 }
