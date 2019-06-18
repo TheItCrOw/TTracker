@@ -13,7 +13,6 @@ using System.Windows.Documents;
 using TTracker.BaseDataModules;
 using TTracker.GUI.ViewModels.Entities;
 using TTracker.Utility;
-using System.IO;
 using System.IO.Packaging;
 using System.Windows.Media.Imaging;
 using System.Windows.Media;
@@ -108,19 +107,20 @@ namespace TTracker.GUI.ViewModels.ManagamentBase
 
 
 
+            //DAS HIER AUSLAGERN ----------------->
+
 
             using (PdfDocument pdfDoc = new PdfDocument())
             {
                 PdfImage pdfImg = PdfImage.FromFile(path);
 
 
-                    PdfPageBase page = pdfDoc.Pages.Add();
-                    float width = pdfImg.Width * 0.6f;
-                    float height = pdfImg.Height * 0.6f;
-                    float x = (page.Canvas.ClientSize.Width - width) / 2;
+                PdfPageBase page = pdfDoc.Pages.Add();
+                float width = pdfImg.Width * 0.65f;
+                float height = pdfImg.Height * 0.65f;
+                float x = (page.Canvas.ClientSize.Width - width) / 2;
 
-                    page.Canvas.DrawImage(pdfImg, x, 0, width, height);
-
+                page.Canvas.DrawImage(pdfImg, x, 0, width, height);
 
                 string PdfFilename = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "test.pdf";
                 pdfDoc.SaveToFile(PdfFilename);
@@ -129,5 +129,5 @@ namespace TTracker.GUI.ViewModels.ManagamentBase
         }
     }
 
-    
+
 }

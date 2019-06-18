@@ -25141,35 +25141,35 @@
             <param name="timeStampToken">time stamp token, DER encoded signedData</param>
             <returns>TimeStampToken unauthenticatedAttributes</returns>
         </member>
-        <member name="T:Spire.Pdf.Security.PdfPkcs7SignatureGenerator">
+        <member name="T:Spire.Pdf.Security.PdfPKCS7SignatureGenerator">
             <summary>
             Pdf PKCS#7 signature generator.
             </summary>
         </member>
-        <member name="F:Spire.Pdf.Security.PdfPkcs7SignatureGenerator.m_pdfSignature">
+        <member name="F:Spire.Pdf.Security.PdfPKCS7SignatureGenerator.m_pdfSignature">
             <summary>
             Pdf signature.
             </summary>
         </member>
-        <member name="F:Spire.Pdf.Security.PdfPkcs7SignatureGenerator.m_generator">
+        <member name="F:Spire.Pdf.Security.PdfPKCS7SignatureGenerator.m_generator">
             <summary>
             CmsSignedData generator.
             </summary>
         </member>
-        <member name="M:Spire.Pdf.Security.PdfPkcs7SignatureGenerator.#ctor(Spire.Pdf.Security.PdfSignature)">
+        <member name="M:Spire.Pdf.Security.PdfPKCS7SignatureGenerator.#ctor(Spire.Pdf.Security.PdfSignature)">
             <summary>
             Constructor new instance.
             </summary>
             <param name="pdfSignature">Pdf signature.</param>
         </member>
-        <member name="M:Spire.Pdf.Security.PdfPkcs7SignatureGenerator.Generate(System.Byte[][])">
+        <member name="M:Spire.Pdf.Security.PdfPKCS7SignatureGenerator.Generate(System.Byte[][])">
             <summary>
             Generate signature byte array.
             </summary>
             <param name="signedContent">signed content.</param>
             <returns>Pdf PKCS#7 signature byte array.</returns>
         </member>
-        <member name="M:Spire.Pdf.Security.PdfPkcs7SignatureGenerator.BuildCertificateChain(System.Security.Cryptography.X509Certificates.X509Certificate2,System.Security.Cryptography.X509Certificates.X509Certificate2Collection)">
+        <member name="M:Spire.Pdf.Security.PdfPKCS7SignatureGenerator.BuildCertificateChain(System.Security.Cryptography.X509Certificates.X509Certificate2,System.Security.Cryptography.X509Certificates.X509Certificate2Collection)">
             <summary>
             Build signature certificate chain.
             </summary>
@@ -25179,94 +25179,94 @@
             </param>
             <returns>Certificate chain</returns>
         </member>
-        <member name="M:Spire.Pdf.Security.PdfPkcs7SignatureGenerator.BuildCertificateList(System.Security.Cryptography.X509Certificates.X509Chain)">
+        <member name="M:Spire.Pdf.Security.PdfPKCS7SignatureGenerator.BuildCertificateList(System.Security.Cryptography.X509Certificates.X509Chain)">
             <summary>
             Build certificate list.
             </summary>
             <param name="certificateChain">certificate chain.</param>
             <returns>Certificate list.</returns>
         </member>
-        <member name="M:Spire.Pdf.Security.PdfPkcs7SignatureGenerator.BuildCertificateOcspValidation(System.Security.Cryptography.X509Certificates.X509Chain)">
+        <member name="M:Spire.Pdf.Security.PdfPKCS7SignatureGenerator.BuildCertificateOCSPValidation(System.Security.Cryptography.X509Certificates.X509Chain)">
             <summary>
             Build certificate chain OCSP validation.
             </summary>
             <param name="certificateChain">certificate chain.</param>
             <returns>Certificate chain OCSP validation.</returns>
         </member>
-        <member name="T:Spire.Pdf.Security.PdfPkcs7SignatureGenerator.AuthenticatedAttributeTableGenerator">
+        <member name="T:Spire.Pdf.Security.PdfPKCS7SignatureGenerator.AuthenticatedAttributeTableGenerator">
             <summary>
             SignInfo's "AuthenticatedAttribute" generator.
             </summary>
         </member>
-        <member name="F:Spire.Pdf.Security.PdfPkcs7SignatureGenerator.AuthenticatedAttributeTableGenerator.m_pdfSignature">
+        <member name="F:Spire.Pdf.Security.PdfPKCS7SignatureGenerator.AuthenticatedAttributeTableGenerator.m_pdfSignature">
             <summary>
             Pdf signature.
             </summary>
         </member>
-        <member name="F:Spire.Pdf.Security.PdfPkcs7SignatureGenerator.AuthenticatedAttributeTableGenerator.m_ocsps">
+        <member name="F:Spire.Pdf.Security.PdfPKCS7SignatureGenerator.AuthenticatedAttributeTableGenerator.m_ocsps">
             <summary>
             OCSP validation.
             </summary>
         </member>
-        <member name="F:Spire.Pdf.Security.PdfPkcs7SignatureGenerator.AuthenticatedAttributeTableGenerator.m_crls">
+        <member name="F:Spire.Pdf.Security.PdfPKCS7SignatureGenerator.AuthenticatedAttributeTableGenerator.m_crls">
             <summary>
             CRL validation.
             </summary>
         </member>
-        <member name="M:Spire.Pdf.Security.PdfPkcs7SignatureGenerator.AuthenticatedAttributeTableGenerator.#ctor(Spire.Pdf.Security.PdfSignature)">
+        <member name="M:Spire.Pdf.Security.PdfPKCS7SignatureGenerator.AuthenticatedAttributeTableGenerator.#ctor(Spire.Pdf.Security.PdfSignature)">
             <summary>
             Construct a new instance.
             </summary>
             <param name="pdfSignature">Pdf signature.</param>
         </member>
-        <member name="M:Spire.Pdf.Security.PdfPkcs7SignatureGenerator.AuthenticatedAttributeTableGenerator.AddCrls(System.Collections.Generic.IEnumerable{System.Byte[]})">
+        <member name="M:Spire.Pdf.Security.PdfPKCS7SignatureGenerator.AuthenticatedAttributeTableGenerator.AddCrls(System.Collections.Generic.ICollection{System.Byte[]})">
             <summary>
             Add CRL validation.
             </summary>
             <param name="crls">CRL validation.</param>
         </member>
-        <member name="M:Spire.Pdf.Security.PdfPkcs7SignatureGenerator.AuthenticatedAttributeTableGenerator.AddOcsps(System.Collections.Generic.IEnumerable{System.Byte[]})">
+        <member name="M:Spire.Pdf.Security.PdfPKCS7SignatureGenerator.AuthenticatedAttributeTableGenerator.AddOcsps(System.Collections.Generic.ICollection{System.Byte[]})">
             <summary>
             Add OCSP validation.
             </summary>
             <param name="ocsps">OCSP validation.</param>
         </member>
-        <member name="M:Spire.Pdf.Security.PdfPkcs7SignatureGenerator.AuthenticatedAttributeTableGenerator.GetAttributes(System.Collections.IDictionary)">
+        <member name="M:Spire.Pdf.Security.PdfPKCS7SignatureGenerator.AuthenticatedAttributeTableGenerator.GetAttributes(System.Collections.IDictionary)">
             <summary>
             Generate signInfo's "AuthenticatedAttribute".
             </summary>
             <param name="parameters">parameters.</param>
             <returns>signInfo's "AuthenticatedAttribute".</returns>
         </member>
-        <member name="T:Spire.Pdf.Security.PdfPkcs7SignatureGenerator.UnauthenticatedAttributeTableGenerator">
+        <member name="T:Spire.Pdf.Security.PdfPKCS7SignatureGenerator.UnauthenticatedAttributeTableGenerator">
             <summary>
             SignInfo's "UnauthenticatedAttribute" generator.
             </summary>
         </member>
-        <member name="F:Spire.Pdf.Security.PdfPkcs7SignatureGenerator.UnauthenticatedAttributeTableGenerator.m_pdfSignature">
+        <member name="F:Spire.Pdf.Security.PdfPKCS7SignatureGenerator.UnauthenticatedAttributeTableGenerator.m_pdfSignature">
             <summary>
             Pdf signature.
             </summary>
         </member>
-        <member name="M:Spire.Pdf.Security.PdfPkcs7SignatureGenerator.UnauthenticatedAttributeTableGenerator.#ctor(Spire.Pdf.Security.PdfSignature)">
+        <member name="M:Spire.Pdf.Security.PdfPKCS7SignatureGenerator.UnauthenticatedAttributeTableGenerator.#ctor(Spire.Pdf.Security.PdfSignature)">
             <summary>
             Construct a new instance.
             </summary>
             <param name="pdfSignature">Pdf signature.</param>
         </member>
-        <member name="M:Spire.Pdf.Security.PdfPkcs7SignatureGenerator.UnauthenticatedAttributeTableGenerator.GetAttributes(System.Collections.IDictionary)">
+        <member name="M:Spire.Pdf.Security.PdfPKCS7SignatureGenerator.UnauthenticatedAttributeTableGenerator.GetAttributes(System.Collections.IDictionary)">
             <summary>
             Generate signInfo's "UnauthenticatedAttribute".
             </summary>
             <param name="parameters">parameters.</param>
             <returns>signInfo's "UnauthenticatedAttribute".</returns>
         </member>
-        <member name="T:Spire.Pdf.Security.OcspHttpClientBouncyCastle">
+        <member name="T:Spire.Pdf.Security.OCSPHttpClientBouncyCastle">
             <summary>
             Ocsp http client implementation using BouncyCastle.
             </summary>
         </member>
-        <member name="M:Spire.Pdf.Security.OcspHttpClientBouncyCastle.GetEncoded(System.Security.Cryptography.X509Certificates.X509Certificate2,System.Security.Cryptography.X509Certificates.X509Certificate2,System.String)">
+        <member name="M:Spire.Pdf.Security.OCSPHttpClientBouncyCastle.GetEncoded(System.Security.Cryptography.X509Certificates.X509Certificate2,System.Security.Cryptography.X509Certificates.X509Certificate2,System.String)">
             <summary>
             Get an basic ocsp response byte array.
             </summary>
@@ -25278,7 +25278,7 @@
             </param>
             <returns>an basic ocsp response byte array or null if the validation could not be obtained</returns>
         </member>
-        <member name="M:Spire.Pdf.Security.OcspHttpClientBouncyCastle.GetEncoded(Spire.Security.X509.X509Certificate,Spire.Security.X509.X509Certificate,System.String)">
+        <member name="M:Spire.Pdf.Security.OCSPHttpClientBouncyCastle.GetEncoded(Spire.Security.X509.X509Certificate,Spire.Security.X509.X509Certificate,System.String)">
             <summary>
             Get an basic ocsp response byte array.
             </summary>
@@ -25290,7 +25290,7 @@
             </param>
             <returns>an basic ocsp response byte array or null if the validation could not be obtained</returns>
         </member>
-        <member name="M:Spire.Pdf.Security.OcspHttpClientBouncyCastle.GetBasicOcspResponse(Spire.Security.X509.X509Certificate,Spire.Security.X509.X509Certificate,System.String)">
+        <member name="M:Spire.Pdf.Security.OCSPHttpClientBouncyCastle.GetBasicOCSPResponse(Spire.Security.X509.X509Certificate,Spire.Security.X509.X509Certificate,System.String)">
             <summary>
             Get basic ocsp response.
             </summary>
@@ -25302,7 +25302,7 @@
             </param>
             <returns>an basic ocsp response</returns>
         </member>
-        <member name="M:Spire.Pdf.Security.OcspHttpClientBouncyCastle.GetOcspResponse(Spire.Security.X509.X509Certificate,Spire.Security.X509.X509Certificate,System.String)">
+        <member name="M:Spire.Pdf.Security.OCSPHttpClientBouncyCastle.GetOcspResponse(Spire.Security.X509.X509Certificate,Spire.Security.X509.X509Certificate,System.String)">
             <summary>
             Get ocsp response using http method.
             </summary>
@@ -25314,7 +25314,7 @@
             </param>
             <returns>an ocsp response</returns>
         </member>
-        <member name="M:Spire.Pdf.Security.OcspHttpClientBouncyCastle.GenerateOcspRequest(Spire.Security.X509.X509Certificate,Spire.Security.Math.BigInteger)">
+        <member name="M:Spire.Pdf.Security.OCSPHttpClientBouncyCastle.GenerateOCSPRequest(Spire.Security.X509.X509Certificate,Spire.Security.Math.BigInteger)">
             <summary>
             Generates an OCSP request using BouncyCastle.
             </summary>
@@ -25328,21 +25328,21 @@
             allow you to retrieve information from a Certificate.
             </summary>
         </member>
-        <member name="M:Spire.Pdf.Security.CertificateUtil.GetCrlURL(Spire.Security.X509.X509Certificate)">
+        <member name="M:Spire.Pdf.Security.CertificateUtil.GetCRLURL(Spire.Security.X509.X509Certificate)">
             <summary>
             Get the crl url from the given certificate.
             </summary>
             <param name="certificate">the certificate</param>
             <returns>the crl url or null</returns>
         </member>
-        <member name="M:Spire.Pdf.Security.CertificateUtil.GetOcspURL(Spire.Security.X509.X509Certificate)">
+        <member name="M:Spire.Pdf.Security.CertificateUtil.GetOCSPURL(Spire.Security.X509.X509Certificate)">
             <summary>
             Get the ocsp url from the given certificate.
             </summary>
             <param name="certificate">the certificate</param>
             <returns>the ocsp url or null</returns>
         </member>
-        <member name="M:Spire.Pdf.Security.CertificateUtil.GetTsaURL(Spire.Security.X509.X509Certificate)">
+        <member name="M:Spire.Pdf.Security.CertificateUtil.GetTSAURL(Spire.Security.X509.X509Certificate)">
             <summary>
             Get the tsa url from the given certificate.
             </summary>
@@ -32794,6 +32794,21 @@
             Pdf to Html, Set Parameter
             </summary>
         </member>
+        <member name="F:Spire.Pdf.PdfDocument.m_FreeMaxPages">
+            <summary>
+            Free users can only add up to 10 pages
+            </summary>
+        </member>
+        <member name="F:Spire.Pdf.PdfDocument.m_FreeMaxImage">
+            <summary>
+            Free users can save up to three pictures
+            </summary>
+        </member>
+        <member name="F:Spire.Pdf.PdfDocument.m_ExceptionInfo">
+            <summary>
+            converting PDF to Image Throw Exception information
+            </summary>
+        </member>
         <member name="P:Spire.Pdf.PdfDocument.AllowCreateForm">
             <summary>
             Get or Set Allow Create Form.
@@ -33109,6 +33124,16 @@
             by default false, when load Html DOM timeout(PdfHtmlLayoutFormat.LoadHtmlTimeout),convert uncompleted Html DOM to pdf.
             if true,until Html DOM load completed,then convert to pdf. 
             </param>
+        </member>
+        <member name="M:Spire.Pdf.PdfDocument.ThrowFreeInfomation">
+            <summary>
+            add free version infomation
+            </summary>
+        </member>
+        <member name="M:Spire.Pdf.PdfDocument.ApplyFreeVersion">
+            <summary>
+            apply limit for free version
+            </summary>
         </member>
         <member name="M:Spire.Pdf.PdfDocument.LoadFromBytes(System.Byte[])">
             <summary>
@@ -33485,6 +33510,11 @@
             
             </summary>
         </member>
+        <member name="F:Spire.Pdf.PdfDocumentBase.m_FreeMaxPages">
+            <summary>
+            Free users can only add up to 10 pages
+            </summary>
+        </member>
         <member name="F:Spire.Pdf.PdfDocumentBase.m_privateFonts">
             <summary>
             Internal variable to store the private font collection.
@@ -33599,6 +33629,13 @@
             If it's null a new document object will be created.</param>
             <param name="sourceDocuments">The source documents.</param>
             <returns>The document containing merged documents.</returns>
+        </member>
+        <member name="M:Spire.Pdf.PdfDocumentBase.Merge(System.String)">
+            <summary>
+            Merges the PDF documents specified by the paths.
+            </summary>
+            <param name="paths">The array of string paths.</param>
+            <returns>A new PDF document containing all merged documents.</returns>
         </member>
         <member name="M:Spire.Pdf.PdfDocumentBase.Merge(System.String,System.String)">
             <summary>
@@ -33819,6 +33856,11 @@
             <param name="startIndex">The start page index.</param>
             <param name="endIndex">The end page index.</param>
             <returns>The last created page in the target document.</returns>
+        </member>
+        <member name="M:Spire.Pdf.PdfDocumentBase.ImportPageRangeToXpsFree">
+            <summary>
+            Free version Imports 10 pages range from a loaded document.
+            </summary>
         </member>
         <member name="M:Spire.Pdf.PdfDocumentBase.CreateBookmarkDestinationDictionary">
             <summary>
@@ -34248,6 +34290,14 @@
             Adds the document properties.
             </summary>
             <param name="docProperties">The doc properties.</param>
+        </member>
+        <member name="M:Spire.Pdf.Common.PdfToXPSConverter.DrawFreeVersion(System.IO.Stream,Spire.Pdf.PdfPageBase)">
+            <summary>
+            Draw Free informinfo
+            </summary>
+            <param name="stream">MemoryStream obj</param>
+            <param name="pageBase">PdfPageBase pageBase</param>
+            <returns></returns>
         </member>
         <member name="T:Spire.Pdf.Exporting.PdfImageInfo">
             <summary>
@@ -35604,6 +35654,11 @@
         <member name="P:Spire.Pdf.Exporting.XPS.Schema.SpotLocationType.StartY">
             <remarks/>
         </member>
+        <member name="F:Spire.Pdf.Exporting.XPS.XPSToPdfConverter.m_FreeMaxPages">
+            <summary>
+            Free users can only add up to 10 pages
+            </summary>
+        </member>
         <member name="P:Spire.Pdf.FontStructure.FontName">
             <summary>
             Holds the font name associated with the text element
@@ -35937,14 +35992,6 @@
             <param name="paintParams">The paint params.</param>
             <param name="image">The image.</param>
             <param name="format">The format.</param>
-        </member>
-        <member name="M:Spire.Pdf.Fields.FieldPainter.CalculateTextPosition(System.Drawing.RectangleF,Spire.Pdf.Graphics.PdfStringFormat,Spire.Pdf.Graphics.PdfFontBase)">
-            <summary>
-            Calculate the text position
-            </summary>
-            <param name="rectangle">the rectangle</param>
-            <param name="format">the pdfStringFormat</param>
-            <param name="font">the PdfFontBase</param>
         </member>
         <member name="T:Spire.Pdf.Fields.PdfAppearanceField">
             <summary>
@@ -37258,6 +37305,11 @@
             Implements routines for manipulation with loaded pages.
             </summary>
         </member>
+        <member name="F:Spire.Pdf.Widget.PdfPageCollection.m_FreeMaxPages">
+            <summary>
+            Free users can only add up to 10 pages
+            </summary>
+        </member>
         <member name="E:Spire.Pdf.Widget.PdfPageCollection.PageAdded">
             <summary>
             Represents the  method that executes on a PdfNewDocument when a new page is created.
@@ -37390,6 +37442,14 @@
             <param name="rotation">The rotation of the new page.</param>
             <param name="orientation">The orientation of the new page.</param>
             <returns>The created page.</returns>
+        </member>
+        <member name="M:Spire.Pdf.Widget.PdfPageCollection.ShowFreeInfo(Spire.Pdf.PdfSection,Spire.Pdf.PdfNewPage)">
+            <summary>
+            FreeVersion,Allow Create 10 Pdf page
+            </summary>
+            <param name="sec">PdfSection sec</param>
+            <param name="page"> PdfNewPage page</param>
+            <returns></returns>
         </member>
         <member name="M:Spire.Pdf.Widget.PdfPageCollection.IndexOf(Spire.Pdf.PdfPageBase)">
             <summary>
@@ -39419,11 +39479,6 @@
             <param name="value">PdfString value</param>
             <returns>PdfDictionary dic</returns>
         </member>
-        <member name="F:Spire.Pdf.General.Render.Decode.CCITTFaxDecoder.m_bitsPerComponent">
-            <summary>
-            The number of bits used to represent each color component
-            </summary>
-        </member>
         <member name="F:Spire.Pdf.General.Render.Decode.FlateStream.ErrorBehaviorEnum.Fail">
             <summary>
             fail (by default)
@@ -39781,86 +39836,6 @@
             write Warning info
             </summary>
             <param name="graphics"></param>
-        </member>
-        <member name="M:Spire.Pdf.General.Render.Page.GetPageContentMetafile(System.Boolean)">
-            <summary>
-            Get page content metafile.
-            </summary>
-            <param name="eastAsianFont">Whether use east asian font.</param>
-            <returns>Page content metafile.</returns>
-        </member>
-        <member name="M:Spire.Pdf.General.Render.Page.DrawPageContent(System.Drawing.Graphics,System.Boolean)">
-            <summary>
-            Draw page content.
-            </summary>
-            <param name="g">Graphics.</param>
-            <param name="eastAsianFont">Whether use east asian font.</param>
-        </member>
-        <member name="M:Spire.Pdf.General.Render.Page.GetPageAnnotationMetafile(System.Boolean,System.Boolean)">
-            <summary>
-            Get all page annotations metafile.
-            </summary>
-            <param name="highlightFormField">Whether highlight form field.</param>
-            <param name="eastAsianFont">Whether use east asian font.</param>
-            <returns>All page annotations metafile.</returns>
-        </member>
-        <member name="M:Spire.Pdf.General.Render.Page.DrawPageAnnotation(System.Drawing.Graphics,System.Boolean,System.Boolean)">
-            <summary>
-            Draw page annotation.
-            </summary>
-            <param name="g">Graphics.</param>
-            <param name="highlightFormField">Whether highlight form field.</param>
-            <param name="eastAsianFont">Whether use east asian font.</param>
-        </member>
-        <member name="M:Spire.Pdf.General.Render.Page.GetPageAnnotationMetafile(Spire.Pdf.Primitives.PdfDictionary,System.Boolean)">
-            <summary>
-            Get the page annotation metafile.
-            </summary>
-            <param name="annotation">The page annotation dictionary.</param>
-            <param name="eastAsianFont">Whether use east asian font.</param>
-            <returns>The page annotation metafile</returns>
-        </member>
-        <member name="M:Spire.Pdf.General.Render.Page.DrawPageAnnotation(System.Drawing.Graphics,Spire.Pdf.Primitives.PdfDictionary,System.Boolean)">
-            <summary>
-            Draw page annotation.
-            </summary>
-            <param name="g">Graphics.</param>
-            <param name="eastAsianFont">Whether use east asian font.</param>
-            <param name="annotation">The page annotation dictionary.</param>
-        </member>
-        <member name="M:Spire.Pdf.General.Render.Page.GetPageHighLightTextMetafile(System.Boolean,System.String,System.Drawing.Color)">
-            <summary>
-             Get page highlight text metafile.
-            </summary>
-            <param name="ignoreCase">Ignore case.</param>
-            <param name="findText">Find text.</param>
-            <param name="findTextHighLightColor">Find text hightlight color.</param>
-            <returns>Page highlight text metafile.</returns>
-        </member>
-        <member name="M:Spire.Pdf.General.Render.Page.DrawPageHighLightText(System.Drawing.Graphics,System.Boolean,System.String,System.Drawing.Color)">
-            <summary>
-            Draw page highlight text.
-            </summary>
-            <param name="g">Graphics.</param>
-            <param name="ignoreCase">Ignore case.</param>
-            <param name="findText">Find text.</param>
-            <param name="findTextHighLightColor">Find text hightlight color.</param>
-        </member>
-        <member name="M:Spire.Pdf.General.Render.Page.GenerateEmptyMetafile(System.Int32,System.Int32)">
-            <summary>
-            Generate empty metafile.
-            </summary>
-            <param name="width">Width.</param>
-            <param name="height">Height.</param>
-            <returns>A empty metafile.</returns>
-        </member>
-        <member name="M:Spire.Pdf.General.Render.Page.AdjustPageImageBound(System.Drawing.Rectangle,System.Drawing.Rectangle@,System.Single@)">
-            <summary>
-            Adjust page image bound for large page bound.
-            </summary>
-            <param name="originalBound">Original page bound.</param>
-            <param name="adjustedBound">Page image bound.</param>
-            <param name="zoomFactor">Zoom factor(originalBound to adjustedBound)</param>
         </member>
         <member name="T:Spire.Pdf.General.Render.ImageRenderEventHandler">
             <summary>
@@ -40921,13 +40896,6 @@
             just enough to fit the entire width of the page within the window.
             </summary>
         </member>
-        <member name="F:Spire.Pdf.General.PdfDestinationMode.FitR">
-            <summary>
-            Display the page designated by page, with its contents magnified just enough
-            to fit the rectangle specified by the coordinates left,bottom,right,and top
-            entirely within the window both horizontally and vertically.
-            </summary>
-        </member>
         <member name="T:Spire.Pdf.General.FormFieldFTType">
             <summary>
             Pdf version 1-7 ,on page 675
@@ -41092,13 +41060,6 @@
             <param name="page">The page.</param>
             <param name="location">The location.</param>
         </member>
-        <member name="M:Spire.Pdf.General.PdfDestination.#ctor(Spire.Pdf.PdfPageBase,System.Drawing.RectangleF)">
-            <summary>
-            Initializes a new instance of the  class.
-            </summary>
-            <param name="page">The page.</param>
-            <param name="rectangle">The rectangle.</param>
-        </member>
         <member name="M:Spire.Pdf.General.PdfDestination.#ctor(System.Int32,System.Drawing.PointF,System.Single)">
             <summary>
             Initializes a new instance of PdfDestination.
@@ -41125,11 +41086,6 @@
         <member name="P:Spire.Pdf.General.PdfDestination.Location">
             <summary>
             Gets or sets a location of the destination.
-            </summary>
-        </member>
-        <member name="P:Spire.Pdf.General.PdfDestination.Rectangle">
-            <summary>
-            Gets or sets a rectangle of the destination.
             </summary>
         </member>
         <member name="P:Spire.Pdf.General.PdfDestination.IsValid">
@@ -51570,13 +51526,6 @@
             The load state
             </summary>
         </member>
-        <member name="M:Spire.Pdf.IO.CrossTable.ParseCrossStreamOfHybridReference(System.Int32)">
-            <summary>
-            Parse the cross reference stream in hybrid reference
-            </summary>
-            <param name="XRefStmPosition">the position of the XRefstm object</param>
-            <param name="m_objects">the object</param>
-        </member>
         <member name="M:Spire.Pdf.IO.CrossTable.CheckCrossReferenceStreamEntries">
             <summary>
             Check whether the entry of cross reference stream is in correct place  
@@ -51595,11 +51544,6 @@
             in correct place
             </summary>
             <returns>If correct return true ,otherwise false</returns>
-        </member>
-        <member name="M:Spire.Pdf.IO.PdfCrossTable.AddDocumentInfo">
-            <summary>
-            add the document info to the pdfObjects
-            </summary>
         </member>
         <member name="M:Spire.Pdf.IO.PdfLexer.FixedUnicodeString">
             <summary>
@@ -51633,12 +51577,6 @@
             <param name="offset">The indirect object`offset</param>
             <param name="objNum">The object number</param>
             <returns>If correct return true ,otherwise return false</returns>
-        </member>
-        <member name="M:Spire.Pdf.IO.PdfParser.ParseXRefStm">
-            <summary>
-            Get the stream of the XRefStm object
-            </summary>
-            <returns>a stream</returns>
         </member>
         <member name="M:Spire.Pdf.IO.PdfStreamWriter.StringToByte(System.String)">
             <summary>
@@ -52450,13 +52388,6 @@
             <param name="index">index of an image</param>
             <param name="image">The New Replace image</param>
         </member>
-        <member name="M:Spire.Pdf.PdfPageBase.UsedOnCurrentPage(Spire.Pdf.Primitives.PdfName)">
-            <summary>
-            Detemine whether the image in resource dictionary is used on current page
-            </summary>
-            <param name="resourceImgName">the resource image name</param>
-            <returns>if be used return true or false</returns>
-        </member>
         <member name="M:Spire.Pdf.PdfPageBase.CreateTemplate">
             <summary>
             Creates a template from page content and all annotation appearances.
@@ -53054,13 +52985,6 @@
             <summary>
             Value of the element.By Bug735
             </summary>
-        </member>
-        <member name="M:Spire.Pdf.Primitives.PdfName.ProcessNumberSignChar(System.String)">
-            <summary>
-            Process the number sign character to make the string more correct
-            </summary>
-            <param name="name">The string as PDF name</param>
-            <returns>A correct form string</returns>
         </member>
         <member name="P:Spire.Pdf.Primitives.PdfStream.ImageFormat">
             <summary>
@@ -54331,26 +54255,6 @@
             that converted it to PDF.
             </summary>
             <value>The producer of the document.</value>
-        </member>
-        <member name="M:Spire.Pdf.PdfDocumentInformation.GetCustomerDefinend(System.String@,System.String@)">
-            <summary>
-            get the customer definend key value
-            </summary>
-            <param name="key">the key</param>
-            <param name="value">the value</param>
-        </member>
-        <member name="M:Spire.Pdf.PdfDocumentInformation.RehabilitationCharacter(System.String)">
-            <summary>
-            rehabilitation character value
-            </summary>
-            <param name="key">the key</param>
-            <returns>a string</returns>
-        </member>
-        <member name="M:Spire.Pdf.PdfDocumentInformation.ReplaceSpecialCharacter(System.Char)">
-            <summary>
-            replace special character
-            </summary>
-            <param name="c">the character</param>
         </member>
         <member name="P:Spire.Pdf.PdfDocumentInformation.Spire#Pdf#Interfaces#IPdfWrapper#Element">
             <summary>
@@ -55708,6 +55612,11 @@
             Represents a section entity. A section it's a set of the pages with similar page settings.
             </summary>
         </member>
+        <member name="F:Spire.Pdf.PdfSection.m_FreeMaxPages">
+            <summary>
+            Free users can only add up to 10 pages
+            </summary>
+        </member>
         <member name="P:Spire.Pdf.PdfSection.Pages">
             <summary>
             Gets the pages.
@@ -55738,6 +55647,13 @@
             <summary>
             Event rises when the new page has been added
             </summary>
+        </member>
+        <member name="M:Spire.Pdf.PdfSection.ShowFreeInfo(Spire.Pdf.PdfNewPage)">
+            <summary>
+            FreeVersion,Allow Create 10 Pdf page
+            </summary>
+            <param name="page"> PdfNewPage page</param>
+            <returns></returns>
         </member>
         <!-- 对于成员“M:Spire.Pdf.PdfSection.GetEnumerator”忽略有格式错误的 XML 注释 -->
         <member name="P:Spire.Pdf.PdfSection.Spire#Pdf#Interfaces#IPdfWrapper#Element">
