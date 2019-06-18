@@ -4,7 +4,7 @@ Data
 test.txt
 obj
 packages
-./TTracker/Data/
+./TTracker/Data
 TTracker/obj/Debug/
 
 

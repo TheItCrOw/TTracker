@@ -4,5 +4,5 @@ TTracker.sln
 Data
 test2.txt
 packages
-./TTracker/Data/
+./TTracker/Data
 TTracker/obj/Debug/
