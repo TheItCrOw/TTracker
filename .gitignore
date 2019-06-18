@@ -108,6 +108,11 @@ ipch/
 
 TTracker/Data/
 
+TTracker/obj/Debug/TTracker.csprojAssemblyReference.cache
+
+.vs/TTracker/v16/.suo
+
+
 # Visual Studio profiler
 *.psess
 *.vsp
