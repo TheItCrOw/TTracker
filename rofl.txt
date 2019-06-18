@@ -1,0 +1,7 @@
+WpfApp1
+TTracker.sln
+test.txt
+obj
+packages
+TTracker/Data/
+TTracker/obj/Debug/
