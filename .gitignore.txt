@@ -4,3 +4,5 @@ Data
 test.txt
 obj
 packages
+TTracker/obj/Debug/
+TTracker/Data/
