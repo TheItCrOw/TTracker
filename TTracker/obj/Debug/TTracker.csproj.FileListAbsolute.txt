@@ -59,8 +59,6 @@ E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\Main.g.cs
 E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\App.g.cs
 E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\App.baml
 E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\Main.baml
-E:\WPF Projects\TTracker\TTracker\bin\Debug\Spire.License.dll
-E:\WPF Projects\TTracker\TTracker\bin\Debug\Spire.Pdf.dll
 E:\WPF Projects\TTracker\TTracker\bin\Debug\Microsoft.mshtml.dll
 E:\WPF Projects\TTracker\TTracker\bin\Debug\Spire.License.xml
 E:\WPF Projects\TTracker\TTracker\bin\Debug\Spire.Pdf.xml

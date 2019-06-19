@@ -213,6 +213,7 @@ namespace TTracker.Utility
                 var docElement = doc.Root.Elements();
 
                 foreach (var element in docElement)
+
                 {
                     var nodeValue = element.Value;
                     var nodeName = element.Name.LocalName;
