@@ -18,7 +18,6 @@ namespace TTracker.GUI.ViewModels
         private float _usedTime;
         private string _name;
         private string _text;
-        private Guid _modelId;
         private Guid _parentId;
         private bool _isSelected;
 
@@ -30,7 +29,6 @@ namespace TTracker.GUI.ViewModels
 
         public DateTime Created { get { return _created; } set { SetProperty(ref _created, value); } }
         public float UsedTime { get { return _usedTime; } set { SetProperty(ref _usedTime, value); } }
-        public Guid ModelId { get { return _modelId; } set { SetProperty(ref _modelId, value); } }
         public Guid ParentId { get { return _parentId; } set { SetProperty(ref _parentId, value); } }
 
 

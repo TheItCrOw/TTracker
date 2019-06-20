@@ -201,6 +201,10 @@
                 <Button x:Name="NewTicketButton" ToolTip="New Ticket" Background="LightSteelBlue" BorderBrush="Black" Grid.Row="1" BorderThickness="0" Command="{Binding CreateNewTicketCommand}">
                     <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/new-ticket.png"/>
                 </Button>
+
+                <Button x:Name="FinishedTicketsButton" ToolTip="Handle Finished Tickets" Background="LightSteelBlue" BorderBrush="Black" Grid.Row="2" BorderThickness="0" Command="{Binding FinishedTicketsCommand}">
+                    <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/finished-ticket.png"/>
+                </Button>
             </Grid>
         </Border>
 

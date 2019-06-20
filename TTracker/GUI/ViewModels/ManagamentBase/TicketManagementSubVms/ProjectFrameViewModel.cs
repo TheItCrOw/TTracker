@@ -110,8 +110,6 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
             SaveProjects();
 
             MessageBox.Show("Deletion And saving succesfull");
-            Application.Current.MainWindow.Close();
-
         }
 
         private void SaveProjects()

@@ -21,7 +21,7 @@
 
         <!--Topic Text Intro-->
         <Border Grid.Row="0" BorderThickness="1" BorderBrush="Black" Background="AliceBlue">
-            <TextBlock Text="{Binding SelectedCalendarDate}" FontSize="20" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Text="{Binding SelectedCalendarDate, StringFormat='{}{0:MM/dd/yyyy}'}" FontSize="20" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center"/>
         </Border>
         <!--Table Topic-->
         <Border Grid.Row="1" BorderThickness="1 0 1 0" BorderBrush="Black" Background="AliceBlue">

@@ -12,7 +12,9 @@ using System.Windows;
 using System.Windows.Data;
 using TTracker.BaseDataModules;
 using TTracker.GUI.Models;
+using TTracker.GUI.ViewModels.ManagamentBase.TicketManagementSubVms.AllTicketsFrameSubVms;
 using TTracker.GUI.Views;
+using TTracker.GUI.Views.TicketManagementSubViews.AllTicketsFrameSubViews;
 using TTracker.Utility;
 namespace TTracker.GUI.ViewModels.TicketManagementSubVms
 {
@@ -27,6 +29,7 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
         public DelegateCommand HideShowStaticTicketsCommand => new DelegateCommand(HideShowStaticTickets);
         public DelegateCommand<string> SortTaskTicketsCommand => new DelegateCommand<string>(SortTaskTickets);
         public DelegateCommand<string> SearchForTicketsCommand => new DelegateCommand<string>(SearchForTickets);
+        public DelegateCommand FinishedTicketsCommand => new DelegateCommand(FinishedTickets);
 
         public AllTicketsFrameViewModel()
         {
@@ -188,6 +191,14 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
                     }
                 }
             });
+        }
+
+        void FinishedTickets()
+        {
+            var finishedTicketsView = new FinishedTicketsView();
+            finishedTicketsView.DataContext = new FinishedTicketsViewModel((AllTicketsFrameViewModel)CurrentContent, TaskTickets.ToList());
+            finishedTicketsView.Show();
+            finishedTicketsView.Topmost = true;
         }
     }
 }

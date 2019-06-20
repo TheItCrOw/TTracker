@@ -120,21 +120,26 @@
     <Compile Include="GUI\Models\Project.cs" />
     <Compile Include="GUI\Models\TaskTicket.cs" />
     <Compile Include="GUI\Models\TimeEntry.cs" />
+    <Compile Include="GUI\ViewModels\UtilityViewModel.cs" />
     <Compile Include="GUI\ViewModels\Entities\TimeEntryViewModel.cs" />
     <Compile Include="GUI\ViewModels\ManagamentBase\AccountViewModel.cs" />
+    <Compile Include="GUI\ViewModels\ManagamentBase\TicketManagementSubVms\AllTicketsFrameSubVms\FinishedTicketsViewModel.cs" />
     <Compile Include="GUI\ViewModels\ManagamentBase\TimeEngineSubVms\CreateDayStatisticViewModel.cs" />
-    <Compile Include="GUI\ViewModels\TicketManagementSubVms\AskForProjectDeletionViewModel.cs" />
-    <Compile Include="GUI\ViewModels\TicketManagementSubVms\CreateProjectViewModel.cs" />
-    <Compile Include="GUI\ViewModels\TicketManagementSubVms\CreateTicketViewModel.cs" />
+    <Compile Include="GUI\ViewModels\ManagamentBase\TicketManagementSubVms\AskForProjectDeletionViewModel.cs" />
+    <Compile Include="GUI\ViewModels\ManagamentBase\TicketManagementSubVms\CreateProjectViewModel.cs" />
+    <Compile Include="GUI\ViewModels\ManagamentBase\TicketManagementSubVms\CreateTicketViewModel.cs" />
     <Compile Include="GUI\ViewModels\ManagamentBase\HomeViewModel.cs" />
     <Compile Include="GUI\ViewModels\Entities\ProjectViewModel.cs" />
     <Compile Include="GUI\ViewModels\Entities\TaskTicketViewModel.cs" />
-    <Compile Include="GUI\ViewModels\TicketManagementSubVms\AllTicketsFrameViewModel.cs" />
-    <Compile Include="GUI\ViewModels\TicketManagementSubVms\ProjectFrameViewModel.cs" />
+    <Compile Include="GUI\ViewModels\ManagamentBase\TicketManagementSubVms\AllTicketsFrameViewModel.cs" />
+    <Compile Include="GUI\ViewModels\ManagamentBase\TicketManagementSubVms\ProjectFrameViewModel.cs" />
     <Compile Include="GUI\ViewModels\ManagamentBase\TicketManagementViewModel.cs" />
     <Compile Include="GUI\ViewModels\ManagamentBase\TimeEngineViewModel.cs" />
     <Compile Include="GUI\Views\AccountView.xaml.cs">
       <DependentUpon>AccountView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Views\TicketManagementSubViews\AllTicketsFrameSubViews\FinishedTicketsView.xaml.cs">
+      <DependentUpon>FinishedTicketsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI\Views\TicketManagementSubViews\AskForProjectDeletionView.xaml.cs">
       <DependentUpon>AskForProjectDeletionView.xaml</DependentUpon>
@@ -173,6 +178,10 @@
     <Compile Include="Utility\StatisticsHelperClass.cs" />
     <Compile Include="Utility\XmlDataCache.cs" />
     <Page Include="GUI\Views\AccountView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Views\TicketManagementSubViews\AllTicketsFrameSubViews\FinishedTicketsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -356,6 +365,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\finished-ticket.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\trash-bin.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

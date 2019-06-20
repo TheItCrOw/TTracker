@@ -23,10 +23,8 @@ namespace TTracker.GUI.ViewModels
         private float _expectedTime;
         private float _usedTime;
         private string _progress;
-        private Guid _modelId;
         private PriorityLevel _priority;
         private Status _status;
-        private Visibility _visibility;
 
         public DelegateCommand DeleteCommand => new DelegateCommand(Delete);
 
@@ -35,7 +33,6 @@ namespace TTracker.GUI.ViewModels
         public string ProjectName { get { return _projectName; } set { SetProperty(ref _projectName, value); } }
         public DateTime Created { get { return _created; } set { SetProperty(ref _created, value); } }
         public string Progress { get { return _progress; } set { SetProperty(ref _progress, value); }}
-        public Guid ModelId { get { return _modelId; } set { SetProperty(ref _modelId, value); } }
 
         public TaskTicket Model { get; set; }
 
@@ -96,15 +93,6 @@ namespace TTracker.GUI.ViewModels
                 SetIsDirty(nameof(Status));
             }
         }
-
-        public Visibility Visibility
-        {
-            get { return _visibility; }
-            set
-            {
-                SetProperty(ref _visibility, value);
-            }
-        }
         #endregion
 
         public TaskTicketViewModel(TaskTicket taskTicket, ViewModelManagementBase currentBase, bool @new)
@@ -119,7 +107,7 @@ namespace TTracker.GUI.ViewModels
             var project = DataAccess.Instance.GetProjectById(taskTicket.ProjectId);
             ProjectName = project.Name;
             Text = taskTicket.Text;
-            Created = DateTime.Now;
+            Created = Model.Created;
             ExpectedTime = taskTicket.ExpectedTime;
             UsedTime = taskTicket.UsedTime;
             Priority = taskTicket.Priority;

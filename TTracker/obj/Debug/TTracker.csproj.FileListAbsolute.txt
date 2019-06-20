@@ -62,3 +62,5 @@ E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\Main.baml
 E:\WPF Projects\TTracker\TTracker\bin\Debug\Microsoft.mshtml.dll
 E:\WPF Projects\TTracker\TTracker\bin\Debug\Spire.License.xml
 E:\WPF Projects\TTracker\TTracker\bin\Debug\Spire.Pdf.xml
+E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\AllTicketsFrameSubViews\FinishedTicketsView.g.cs
+E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\AllTicketsFrameSubViews\FinishedTicketsView.baml

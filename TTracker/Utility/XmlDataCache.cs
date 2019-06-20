@@ -64,7 +64,6 @@ namespace TTracker.Utility
             }
         }
 
-
         /// <summary>
         /// This takes in a XmlDocument and a list of changedProperties
         /// It overwrites to the current doc the new propertyValues

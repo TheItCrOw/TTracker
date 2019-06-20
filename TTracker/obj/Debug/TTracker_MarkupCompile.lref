@@ -12,4 +12,5 @@ FE:\WPF Projects\TTracker\TTracker\GUI\Views\TicketManagementView.xaml;;
 FE:\WPF Projects\TTracker\TTracker\GUI\Views\TimeEngineSubViews\CreateDayStatisticView.xaml;;
 FE:\WPF Projects\TTracker\TTracker\GUI\Views\TimeEngineView.xaml;;
 FE:\WPF Projects\TTracker\TTracker\GUI\Views\Main.xaml;;
+FE:\WPF Projects\TTracker\TTracker\GUI\Views\TicketManagementSubViews\AllTicketsFrameSubViews\FinishedTicketsView.xaml;;
 

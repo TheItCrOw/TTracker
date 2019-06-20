@@ -101,11 +101,11 @@
             <!--The menu for switching days-->
             <Border Grid.Row="1" BorderThickness="0 1 1 1" BorderBrush="Black" Background="LightSteelBlue">
                 <DockPanel LastChildFill="False" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Button x:Name="OpenCalendarButton" Background="LightSteelBlue" ToolTip="Previous day" Height="30" Width="30" BorderBrush="LightSteelBlue"
+                    <Button x:Name="OpenCalendarButton" Background="LightSteelBlue" ToolTip="Calendar" Height="30" Width="30" BorderBrush="LightSteelBlue"
                                 Click="OpenCalendarButton_Click">
                         <Image Source="pack://application:,,,/Resources/calendar.png" Margin="2"/>
                     </Button>
-                    <TextBlock Text="{Binding SelectedCalendarDate, StringFormat='{}{0:dd.MM.yyyy}'}" FontSize="17" VerticalAlignment="Center" FontWeight="Bold" Margin="10 0 10 0"/>
+                    <TextBlock Text="{Binding SelectedCalendarDate, StringFormat='{}{0:MM/dd/yyyy}'}" FontSize="17" VerticalAlignment="Center" FontWeight="Bold" Margin="10 0 10 0"/>
 
                 </DockPanel>
             </Border>
@@ -144,8 +144,6 @@
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
             </ScrollViewer>
-
-
 
         </Grid>
 

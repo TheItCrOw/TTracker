@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 E:\WPF Projects\TTracker\TTracker\GUI\Views\App.xaml
-12853494972
+13310908179
 
-53-2144404095
+56-1361160553
 137-235259254
-GUI\Views\AccountView.xaml;GUI\Views\TicketManagementSubViews\AskForProjectDeletionView.xaml;GUI\Views\TicketManagementSubViews\CreateProjectView.xaml;GUI\Views\TicketManagementSubViews\CreateTicketView.xaml;GUI\Views\HomeView.xaml;GUI\Views\LoginView.xaml;GUI\Views\TicketManagementSubViews\AllTicketsFrameView.xaml;GUI\Views\TicketManagementSubViews\ProjectFrameView.xaml;GUI\Views\TicketManagementView.xaml;GUI\Views\TimeEngineSubViews\CreateDayStatisticView.xaml;GUI\Views\TimeEngineView.xaml;GUI\Views\Main.xaml;
+GUI\Views\AccountView.xaml;GUI\Views\TicketManagementSubViews\AllTicketsFrameSubViews\FinishedTicketsView.xaml;GUI\Views\TicketManagementSubViews\AskForProjectDeletionView.xaml;GUI\Views\TicketManagementSubViews\CreateProjectView.xaml;GUI\Views\TicketManagementSubViews\CreateTicketView.xaml;GUI\Views\HomeView.xaml;GUI\Views\LoginView.xaml;GUI\Views\TicketManagementSubViews\AllTicketsFrameView.xaml;GUI\Views\TicketManagementSubViews\ProjectFrameView.xaml;GUI\Views\TicketManagementView.xaml;GUI\Views\TimeEngineSubViews\CreateDayStatisticView.xaml;GUI\Views\TimeEngineView.xaml;GUI\Views\Main.xaml;
 
 False
 
