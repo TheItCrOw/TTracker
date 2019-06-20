@@ -39,7 +39,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="175" />
+                <RowDefinition Height="200" />
                 <RowDefinition Height="30" />
                 <RowDefinition Height="40" />
                 <RowDefinition Height="*" />
@@ -47,7 +47,8 @@
 
             <!--Top of Time Engine, where you enter your activity-->
             <Border Grid.Row="0" BorderThickness="0 1 1 1" BorderBrush="Black" Background="AliceBlue">
-                <DockPanel Margin="10" LastChildFill="False">
+                <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled">
+                    <DockPanel Margin="10" LastChildFill="False">
                     <TextBlock DockPanel.Dock="Top" Text="What have you worked on? " FontWeight="Bold" HorizontalAlignment="Center" FontSize="20"/>
                     <TextBlock DockPanel.Dock="Top" Text="Add time to the ticket you have currently worked on:" HorizontalAlignment="Center" FontSize="17" Margin="0 10 0 0 "/>
                     <!--Comboboxes and UI logik for adding time here-->
@@ -93,7 +94,8 @@
                     <!--Enter description here-->
                     <TextBox DockPanel.Dock="Bottom" FontSize="15" Margin="0 5 0 0" Text="{Binding CurrentDescriptionText}"/>
                     <TextBlock DockPanel.Dock="Bottom" Text="Description of your recent activity:" FontSize="17" TextAlignment="Center" FontWeight="SemiBold" Margin="0 0 0 0"/>
-                </DockPanel>
+                    </DockPanel>
+                </ScrollViewer>
             </Border>
 
             <!--The menu for switching days-->

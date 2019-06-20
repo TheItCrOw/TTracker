@@ -53,22 +53,24 @@ namespace TTracker.GUI.ViewModels.ManagamentBase
             SubProjectsChart.AddRange(StatisticsHelperClass.CreateChartModelsOfTimeEntriesSubProjects(timeEntries));
         }
 
+        /// <summary>
+        /// Creates an image of the given FrameworkElement, then converts it into a PDF
+        /// </summary>
+        /// <param name="source"></param>
         void SaveAsPdf(FrameworkElement source)
-        {
+        {            
             var dialog = new SaveFileDialog();
             dialog.AddExtension = true;
             dialog.DefaultExt = "pdf";
             dialog.Filter = "PDF Document (*.pdf)|*.pdf";
-            dialog.FileName = _currentDate.ToShortDateString() + "_Day-summary";
 
             if (dialog.ShowDialog() == false)
                 return;
 
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "img.jpeg";
+            string path = dialog.FileName;
 
             try
             {
-
                 var dir = Path.GetDirectoryName(path);
                 if (dir != null && !Directory.Exists(dir))
                 {
@@ -78,14 +80,11 @@ namespace TTracker.GUI.ViewModels.ManagamentBase
                 RenderTargetBitmap renderTarget = new RenderTargetBitmap((int)source.ActualWidth, (int)source.ActualHeight, 96, 96, PixelFormats.Pbgra32);
                 VisualBrush sourceBrush = new VisualBrush(source);
 
-
                 DrawingVisual drawingVisual = new DrawingVisual();
-
                 DrawingContext drawingContext = drawingVisual.RenderOpen();
 
                 using (drawingContext)
                 {
-
                     drawingContext.DrawRectangle(sourceBrush, null, new Rect(new Point(0, 0), new Point(source.ActualWidth, source.ActualHeight)));
                 }
                 renderTarget.Render(drawingVisual);
@@ -98,18 +97,16 @@ namespace TTracker.GUI.ViewModels.ManagamentBase
                     encoder.Save(stream);
                 }
 
-                //createPdfFromImage(path, @"C:\Temp\myfile.pdf");
+                CreatePdfFromImage(path);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
 
-
-
-            //DAS HIER AUSLAGERN ----------------->
-
-
+        private protected void CreatePdfFromImage(string path)
+        {
             using (PdfDocument pdfDoc = new PdfDocument())
             {
                 PdfImage pdfImg = PdfImage.FromFile(path);
@@ -118,11 +115,11 @@ namespace TTracker.GUI.ViewModels.ManagamentBase
                 PdfPageBase page = pdfDoc.Pages.Add();
                 float width = pdfImg.Width * 0.68f;
                 float height = pdfImg.Height * 0.68f;
-                float x = (page.Canvas.ClientSize.Width - width) / 2;
+                float x = (page.Canvas.ClientSize.Width - width) / 5;
 
                 page.Canvas.DrawImage(pdfImg, x, 0, width, height);
 
-                string PdfFilename = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "test.pdf";
+                string PdfFilename = path;
                 pdfDoc.SaveToFile(PdfFilename);
                 System.Diagnostics.Process.Start(PdfFilename);
             }
