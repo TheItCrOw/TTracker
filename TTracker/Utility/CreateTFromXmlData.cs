@@ -94,7 +94,7 @@ namespace TTracker.Utility
                 {
                     string[] splitedData = data.Split(new char[] { '/' });
 
-                    switch (splitedData[1])
+                    switch (splitedData.Last())
                     {
                         case "Name>":
                             name = element.Value;
@@ -163,7 +163,7 @@ namespace TTracker.Utility
                 {
                     string[] splitedData = data.Split(new char[] { '/' });
 
-                    switch (splitedData[1])
+                    switch (splitedData.Last())
                     {
                         case "Name>":
                             name = element.Value;
@@ -225,7 +225,7 @@ namespace TTracker.Utility
                 {
                     string[] splitedData = data.Split(new char[] { '/' });
 
-                    switch (splitedData[1])
+                    switch (splitedData.Last())
                     {
                         case "Id>":
                             Id = new Guid(element.Value);
@@ -256,9 +256,6 @@ namespace TTracker.Utility
             }
             return (new TimeEntry(Id, userId, projectId, ticketId, text, startTime, endTime, created));
         }
-
-
-
 
 
 

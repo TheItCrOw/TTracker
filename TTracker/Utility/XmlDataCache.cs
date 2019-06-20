@@ -42,7 +42,19 @@ namespace TTracker.Utility
                 {
                     string[] splitedString = s.Split(new char[] { '/' });
                     string dataName = splitedString[0];
-                    string dataValue = splitedString[1];
+                    var splitedStringValueAsOne = string.Empty;
+                    for (int i = 1; i < splitedString.Length; i++)
+                    {
+                        if(i > 1)
+                        {
+                            splitedStringValueAsOne = splitedStringValueAsOne + "/" + splitedString[i];
+                        }
+                        else
+                        {
+                            splitedStringValueAsOne = splitedStringValueAsOne + splitedString[i];
+                        }
+                    }
+                    string dataValue = splitedStringValueAsOne;
 
                     writer.WriteElementString(dataName, dataValue);
                 }
@@ -72,8 +84,20 @@ namespace TTracker.Utility
             foreach (var data in changedProperties)
             {
                 string[] splitedString = data.Split(new char[] { '/' });
+                var splitedValueAsOne = string.Empty;
+                for (int i = 1; i < splitedString.Length; i++)
+                {
+                    if(i > 1)
+                    {
+                        splitedValueAsOne = splitedValueAsOne + "/" + splitedString[i];
+                    }
+                    else
+                    {
+                        splitedValueAsOne = splitedValueAsOne + splitedString[i];
+                    }
+                }
                 changedPropertyName.Add((splitedString[0] + ">"));
-                changedPropertyValue.Add(splitedString[1]);
+                changedPropertyValue.Add(splitedValueAsOne);
             }
 
             //Go through all elements. Search for elementName. When matched with any propertyName, change Value of elemtn
