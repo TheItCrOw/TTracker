@@ -63,6 +63,13 @@ namespace TTracker.GUI.ViewModels.ManagamentBase.TicketManagementSubVms.AllTicke
                     leftOverTickets.Add(utilityVm);
                 }
             }
+
+            if(FinishedTaskTickets.Count == leftOverTickets.Count)
+            {
+                MessageBox.Show("Please select at least one ticket");
+                return;
+            }
+
             FinishedTaskTickets.Clear();
             FinishedTaskTickets.AddRange(leftOverTickets);
 
