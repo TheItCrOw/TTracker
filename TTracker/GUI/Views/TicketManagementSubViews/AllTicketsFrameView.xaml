@@ -215,7 +215,7 @@
                             Command="{Binding ImportTaskTicketsCommand}" CommandParameter="{Binding ElementName=ImportSingleTaskTicketButton, Path=Name}">
                         <Image Margin="7 5 5 5" Source="pack://application:,,,/Resources/import-file.png"/>
                     </Button>
-                    <Button x:Name="ImportFromDirectoryTicketsButton" ToolTip="Import Task Tickets from directory" Background="LightSteelBlue" BorderBrush="Black"  BorderThickness="0"
+                    <Button x:Name="ImportFromDirectoryTicketsButton" ToolTip="Import all Task Tickets in directory" Background="LightSteelBlue" BorderBrush="Black"  BorderThickness="0"
                             Command="{Binding ImportTaskTicketsCommand}" CommandParameter="{Binding ElementName=ImportFromDirectoryTicketsButton, Path=Name}">
                         <Image Margin="0 5 5 5" Source="pack://application:,,,/Resources/import.png"/>
                     </Button>

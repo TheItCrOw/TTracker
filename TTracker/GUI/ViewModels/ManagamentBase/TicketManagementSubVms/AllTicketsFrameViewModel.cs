@@ -217,7 +217,14 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
                 if (folderBrowserDialog.SelectedPath == string.Empty)
                     return;
 
-                var allFiles = Directory.GetFiles(folderBrowserDialog.SelectedPath);
+                var allFiles = Directory.GetFiles(folderBrowserDialog.SelectedPath, "*.tt");
+
+                foreach(var path in allFiles)
+                {
+                    DataAccess.Instance.ImportEntity<TaskTicket>(path);
+                    File.Delete(path);
+                    LoadTaskTickets();
+                }
             }
 
         }
