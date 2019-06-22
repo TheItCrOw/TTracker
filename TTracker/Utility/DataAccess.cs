@@ -20,6 +20,8 @@ namespace TTracker.Utility
         private XmlDataCache _xmlReaderWriter = new XmlDataCache();
 
         private CreateTFromXmlData _createTFromXmlData = new CreateTFromXmlData();
+
+        private CustomBinaryWriter _customBinaryWriter = new CustomBinaryWriter();
         public static User CurrentLoggedUser { get; set; }
 
         private string _saveDataPath = System.AppDomain.CurrentDomain.BaseDirectory + "..\\..\\Data\\";
@@ -154,14 +156,25 @@ namespace TTracker.Utility
             }
         }
 
-        /// <summary>
-        /// When a Model is changed, this function updates the DataBase of the given type.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="updateableObject"></param>
-        public void UpdateXmlCache<T>()
+        public void ExportEntity<T>(Guid Id, string exportPath)
         {
+            var directoryPathFolder = Directory.GetFiles(_saveDataPath + typeof(T).Name + "s");
 
+            foreach(var xmlFile in directoryPathFolder)
+            {
+                var doc = XDocument.Load(xmlFile);
+                var docElement = doc.Root.Elements();
+
+                foreach(var element in docElement)
+                {
+                    var nodeValue = element.Value;
+                    if(nodeValue.ToString() == Id.ToString())
+                    {
+                        var xmlDataList = _xmlReaderWriter.GetXmlDataByXmlPath(xmlFile);
+                        _customBinaryWriter.WriteDataToBinaryFile(exportPath, xmlDataList);
+                    }
+                }
+            }
         }
 
         internal bool IsValidUser(string name, string password)

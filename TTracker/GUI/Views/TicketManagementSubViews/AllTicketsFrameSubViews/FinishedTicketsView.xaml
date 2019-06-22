@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TTracker.GUI.Views.TicketManagementSubViews.AllTicketsFrameSubViews"
+        xmlns:local="clr-namespace:TTracker.GUI.Views.TicketManagementSubViews.AllTicketsFrameSubViews" 
         mc:Ignorable="d"
         Title="FinishedTicketsView" Height="750" Width="1100">
     <Grid Margin="10">
@@ -11,7 +11,7 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="200"/>
+            <RowDefinition Height="125"/>
         </Grid.RowDefinitions>
 
         <!--Topic intro-->
@@ -63,10 +63,10 @@
                     <StackPanel  VerticalAlignment="Top">
                         <TextBlock Text="Delete all selected Tickets ultimately. There will be no backups made."
                                FontSize="15" 
-                               Margin="5 5 0 45"
+                               Margin="5 0 0 0"
                                TextAlignment="Center"
                                TextWrapping="Wrap"/>
-                        <Button Height="100" VerticalAlignment="Stretch" BorderThickness="0 1 0 1" Command="{Binding DeleteSelectedTicketsCommand}">
+                        <Button Height="50" VerticalAlignment="Stretch" BorderThickness="0 1 0 1" Command="{Binding DeleteSelectedTicketsCommand}" Margin="0 55 0 0">
                             <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/trash-bin.png"/>
                         </Button>
                     </StackPanel>
@@ -77,10 +77,10 @@
                     <StackPanel  VerticalAlignment="Stretch">
                         <TextBlock Text="Export the selected Tickets. They will not be shown in the TTracker anymore, but you still store and backup the data if you eventually need them again. You can import them again via the TTracker."
                                FontSize="15" 
-                               Margin="5"
+                               Margin="5 0 0 0"
                                TextAlignment="Center"
                                TextWrapping="Wrap"/>
-                        <Button Height="100" VerticalAlignment="Bottom" BorderThickness="0 1 0 1" Background="LightSteelBlue">
+                        <Button Height="50" VerticalAlignment="Bottom" BorderThickness="0 1 0 1" Background="LightSteelBlue" Margin="0 15 0 0" Command="{Binding ExportSelectedTicketsCommand}">
                             <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/export.png"/>
                         </Button>
                     </StackPanel>

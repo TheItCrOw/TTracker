@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TTracker.GUI.Views.TicketManagementSubViews"
         mc:Ignorable="d"
-        Title="AskForProjectDeletionView" Height="450" Width="800">
+        Title="AskForProjectDeletionView" Height="600" Width="1000">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -38,7 +38,10 @@
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <Border>
-                                        <TextBlock Text="{Binding Name}" FontSize="15" Margin="7 0 0 0"/>
+                                        <DockPanel>
+                                            <Image Margin="5" Source="pack://application:,,,/Resources/project.png" Width="30"/>
+                                            <TextBlock Text="{Binding Name}" FontSize="15" Margin="7 0 0 0" VerticalAlignment="Center"/>
+                                        </DockPanel>
                                     </Border>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
@@ -60,7 +63,10 @@
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <Border>
-                                        <TextBlock Text="{Binding Name}" FontSize="15" Margin="7 0 0 0"/>
+                                        <DockPanel>
+                                            <Image Margin="5" Source="pack://application:,,,/Resources/project.png" Width="30"/>
+                                            <TextBlock Text="{Binding Name}" FontSize="15" Margin="7 0 0 0" VerticalAlignment="Center"/>
+                                        </DockPanel>
                                     </Border>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
@@ -82,7 +88,10 @@
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <Border>
-                                        <TextBlock Text="{Binding Name}" FontSize="15" Margin="7 0 0 0"/>
+                                        <DockPanel>
+                                            <Image Margin="5" Source="pack://application:,,,/Resources/tasks.png" Width="30"/>
+                                            <TextBlock Text="{Binding Name}" FontSize="15" Margin="7 0 0 0" VerticalAlignment="Center"/>
+                                        </DockPanel>
                                     </Border>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>

@@ -17,6 +17,7 @@ namespace TTracker.GUI.ViewModels.ManagamentBase.TicketManagementSubVms.AllTicke
     {
         public ObservableCollection<object> FinishedTaskTickets { get; set; } = new ObservableCollection<object>();
         public DelegateCommand DeleteSelectedTicketsCommand => new DelegateCommand(DeleteSelectedTickets);
+        public DelegateCommand ExportSelectedTicketsCommand => new DelegateCommand(ExportSelectedTickets);
 
         public FinishedTicketsViewModel(AllTicketsFrameViewModel currentBase, List<TaskTicketViewModel> currentTaskTickets)
         {
@@ -46,7 +47,6 @@ namespace TTracker.GUI.ViewModels.ManagamentBase.TicketManagementSubVms.AllTicke
                 Application.Current.MainWindow.Close();
             }
         }
-
         void DeleteSelectedTickets()
         {
             var leftOverTickets = new List<object>();
@@ -74,6 +74,18 @@ namespace TTracker.GUI.ViewModels.ManagamentBase.TicketManagementSubVms.AllTicke
             FinishedTaskTickets.AddRange(leftOverTickets);
 
             MessageBox.Show("Selected Tickets have been deleted.");
+        }
+
+        void ExportSelectedTickets()
+        {
+            foreach(var utilityVm in FinishedTaskTickets)
+            {
+                var ticket = (UtilityViewModel<TaskTicketViewModel>)utilityVm;
+                if(ticket.IsSelected == true)
+                {
+                    DataAccess.Instance.ExportEntity<TaskTicket>(ticket.CurrentViewModel.ModelId, Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "test.tt");
+                }
+            }
         }
     }
 }

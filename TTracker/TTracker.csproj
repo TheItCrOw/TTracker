@@ -168,6 +168,7 @@
     <Compile Include="GUI\Views\TimeEngineView.xaml.cs">
       <DependentUpon>TimeEngineView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utility\CustomBinaryWriter.cs" />
     <Compile Include="Utility\CreateTFromXmlData.cs" />
     <Compile Include="Utility\DataAccess.cs" />
     <Compile Include="Utility\DateTimeExtensions.cs" />

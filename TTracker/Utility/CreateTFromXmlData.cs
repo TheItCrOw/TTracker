@@ -23,7 +23,6 @@ namespace TTracker.Utility
         {
 
         }
-
         public User CreateUserFromXmlData(List<string> userData)
         {
             string name = string.Empty;
