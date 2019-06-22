@@ -192,19 +192,35 @@
                     <RowDefinition Height="50" />
                     <RowDefinition Height="50" />
                     <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
                 </Grid.RowDefinitions>
 
-                <Button x:Name="SaveButton" ToolTip="Save" Background="LightSteelBlue" BorderBrush="Black" Grid.Row="0" BorderThickness="0" IsEnabled="{Binding HasUnsavedChanges}" Command="{Binding SaveAllTicketsCommand}">
+                <Button x:Name="SaveButton" ToolTip="Save" Background="LightSteelBlue" BorderBrush="Black" Grid.Row="0" BorderThickness="0" 
+                        IsEnabled="{Binding HasUnsavedChanges}" Command="{Binding SaveAllTicketsCommand}">
                     <Image Margin="7" Source="pack://application:,,,/Resources/save.png"/>
                 </Button>
 
-                <Button x:Name="NewTicketButton" ToolTip="New Ticket" Background="LightSteelBlue" BorderBrush="Black" Grid.Row="1" BorderThickness="0" Command="{Binding CreateNewTicketCommand}">
-                    <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/new-ticket.png"/>
+                <Button x:Name="NewTicketButton" ToolTip="New Ticket" Background="LightSteelBlue" BorderBrush="Black" Grid.Row="1" BorderThickness="0"
+                        Command="{Binding CreateNewTicketCommand}">
+                    <Image Margin="10 5 5 5" Source="pack://application:,,,/Resources/new-ticket.png"/>
                 </Button>
 
-                <Button x:Name="FinishedTicketsButton" ToolTip="Handle Finished Tickets" Background="LightSteelBlue" BorderBrush="Black" Grid.Row="2" BorderThickness="0" Command="{Binding FinishedTicketsCommand}">
-                    <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/finished-ticket.png"/>
+                <Button x:Name="FinishedTicketsButton" ToolTip="Handle Finished Tickets" Background="LightSteelBlue" BorderBrush="Black" Grid.Row="2" BorderThickness="0"
+                        Command="{Binding FinishedTicketsCommand}">
+                    <Image Margin="10 5 5 5" Source="pack://application:,,,/Resources/finished-ticket.png"/>
                 </Button>
+
+                <DockPanel Grid.Row="3">
+                    <Button x:Name="ImportSingleTaskTicketButton" ToolTip="Import single Task Ticket" Background="LightSteelBlue" BorderBrush="Black"  BorderThickness="0" 
+                            Command="{Binding ImportTaskTicketsCommand}" CommandParameter="{Binding ElementName=ImportSingleTaskTicketButton, Path=Name}">
+                        <Image Margin="7 5 5 5" Source="pack://application:,,,/Resources/import-file.png"/>
+                    </Button>
+                    <Button x:Name="ImportFromDirectoryTicketsButton" ToolTip="Import Task Tickets from directory" Background="LightSteelBlue" BorderBrush="Black"  BorderThickness="0"
+                            Command="{Binding ImportTaskTicketsCommand}" CommandParameter="{Binding ElementName=ImportFromDirectoryTicketsButton, Path=Name}">
+                        <Image Margin="0 5 5 5" Source="pack://application:,,,/Resources/import.png"/>
+                    </Button>
+                </DockPanel>
+
             </Grid>
         </Border>
 

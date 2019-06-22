@@ -19,9 +19,7 @@ namespace TTracker.Utility
 
         private XmlDataCache _xmlReaderWriter = new XmlDataCache();
 
-        private CreateTFromXmlData _createTFromXmlData = new CreateTFromXmlData();
-
-        private CustomBase64Writer _customBinaryWriter = new CustomBase64Writer();
+        private CreateTFromData _createTFromXmlData = new CreateTFromData();
         public static User CurrentLoggedUser { get; set; }
 
         private string _saveDataPath = System.AppDomain.CurrentDomain.BaseDirectory + "..\\..\\Data\\";
@@ -160,20 +158,44 @@ namespace TTracker.Utility
         {
             var directoryPathFolder = Directory.GetFiles(_saveDataPath + typeof(T).Name + "s");
 
-            foreach(var xmlFile in directoryPathFolder)
+            foreach (var xmlFile in directoryPathFolder)
             {
                 var doc = XDocument.Load(xmlFile);
                 var docElement = doc.Root.Elements();
 
-                foreach(var element in docElement)
+                foreach (var element in docElement)
                 {
                     var nodeValue = element.Value;
-                    if(nodeValue.ToString() == Id.ToString())
+                    if (nodeValue.ToString() == Id.ToString())
                     {
                         var xmlDataList = _xmlReaderWriter.GetXmlDataByXmlPath(xmlFile);
-                        _customBinaryWriter.WriteDataAsEncodedBase64(exportPath, xmlDataList);
+                        CustomBase64Writer.WriteDataAsEncodedBase64(exportPath, xmlDataList);
                     }
                 }
+            }
+        }
+
+        public void ImportEntity<T>(string fullPath)
+        {
+            var fileOnlyName = Path.GetFileName(fullPath);
+            var encodedContent = File.ReadAllText(fullPath);
+            var decodedContent = CustomBase64Writer.DecodeDataFromBase64(encodedContent);
+
+            string[] splitedData = decodedContent.Split(new string[] { "~THISISANEXPORTEDFILEOFTTRACKER~" }, StringSplitOptions.None);
+            var dataList = new List<string>();
+            for (int i = 1; i < splitedData.Length; i++)
+            {
+                dataList.Add(splitedData[i]);
+            }
+
+            switch (typeof(T).Name)
+            {
+                case "TaskTicket":
+                    var taskTicket = _createTFromXmlData.CreateTaskTicketFromDecodedData(dataList);
+                    RegisterAndSaveNewTaskTicket(taskTicket);
+                    break;
+                default:
+                    break;
             }
         }
 

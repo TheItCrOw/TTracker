@@ -5,11 +5,13 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
+using System.Windows.Forms;
 using TTracker.BaseDataModules;
 using TTracker.GUI.Models;
 using TTracker.GUI.ViewModels.ManagamentBase.TicketManagementSubVms.AllTicketsFrameSubVms;
@@ -30,6 +32,7 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
         public DelegateCommand<string> SortTaskTicketsCommand => new DelegateCommand<string>(SortTaskTickets);
         public DelegateCommand<string> SearchForTicketsCommand => new DelegateCommand<string>(SearchForTickets);
         public DelegateCommand FinishedTicketsCommand => new DelegateCommand(FinishedTickets);
+        public DelegateCommand<string> ImportTaskTicketsCommand => new DelegateCommand<string>(ImportTaskTickets);
 
         public AllTicketsFrameViewModel()
         {
@@ -42,7 +45,6 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
             LoadTaskTickets();
             HandleCollectionChanges();
         }
-
         void CreateNewTicket()
         {
             var createNewTicketView = new CreateTicketView();
@@ -50,7 +52,6 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
             createNewTicketView.Show();
             createNewTicketView.Topmost = true;
         }
-
         private void SaveAllTickets()
         {
             //Delete first, then save the remaining
@@ -62,7 +63,6 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
             }
             HasUnsavedChanges = false;
         }
-
         private void DeleteTickets()
         {
             foreach (var ticket in DeletableList)
@@ -71,18 +71,15 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
                 DataAccess.Instance.DeleteEntity<TaskTicket>(ticketVm.Model);
             }
         }
-
         private void HandleCollectionChanges()
         {
             TaskTickets.CollectionChanged += this.OnCollectionChanged;
         }
-
         void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             HasUnsavedChanges = true;
             RaisePropertyChanged(nameof(TaskTickets));
         }
-
         private void LoadTaskTickets()
         {
             TaskTickets.Clear();
@@ -102,13 +99,12 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
             HasUnsavedChanges = false;
             _showingAllTickets = true;
         }
-
         private void HideShowStaticTickets()
         {
             //If there are unsaved changes, handle them first...There are prolly better ways, but for now this works
             if (HasUnsavedChanges)
             {
-                MessageBox.Show("There are currently unsaved changes. Please save or reload them first");
+                System.Windows.MessageBox.Show("There are currently unsaved changes. Please save or reload them first");
                 return;
             }
 
@@ -135,7 +131,6 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
             HasUnsavedChanges = _saveDirtyStateOfBase;
             _showingAllTickets = false;
         }
-
         private void SortTaskTickets(string buttonName)
         {
             //This makes the current base dirty, although it shouldnt. So I save the state of it before the method and set it afterwards again
@@ -165,7 +160,6 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
             TaskTickets.AddRange(sortedTaskTickets);
             HasUnsavedChanges = _saveDirtyStateOfBase;
         }
-
         void SearchForTickets(string searchTerm)
         {
             searchTerm = searchTerm.ToLower();
@@ -180,7 +174,7 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
 
                 foreach (var ticket in TaskTickets)
                 {
-                    if (ticket.Name.ToLower().Contains(searchTerm) 
+                    if (ticket.Name.ToLower().Contains(searchTerm)
                     || ticket.ProjectName.ToLower().Contains(searchTerm))
                     {
                         ticket.Visibility = Visibility.Visible;
@@ -192,13 +186,40 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
                 }
             });
         }
-
         void FinishedTickets()
         {
             var finishedTicketsView = new FinishedTicketsView();
             finishedTicketsView.DataContext = new FinishedTicketsViewModel((AllTicketsFrameViewModel)CurrentContent, TaskTickets.ToList());
             finishedTicketsView.Show();
             finishedTicketsView.Topmost = true;
+        }
+        void ImportTaskTickets(string buttonName)
+        {
+            if (buttonName == "ImportSingleTaskTicketButton")
+            {
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.Filter = "tt files (*.tt) | *.tt";
+                openFileDialog.ShowDialog();
+
+                if (openFileDialog.FileName == string.Empty)
+                    return;
+
+                var fullPath = openFileDialog.FileName;
+                DataAccess.Instance.ImportEntity<TaskTicket>(fullPath);
+                File.Delete(fullPath);
+                LoadTaskTickets();
+            }
+            else if (buttonName == "ImportFromDirectoryTicketsButton")
+            {
+                System.Windows.Forms.FolderBrowserDialog folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+                folderBrowserDialog.ShowDialog();
+
+                if (folderBrowserDialog.SelectedPath == string.Empty)
+                    return;
+
+                var allFiles = Directory.GetFiles(folderBrowserDialog.SelectedPath);
+            }
+
         }
     }
 }

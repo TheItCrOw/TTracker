@@ -8,38 +8,64 @@ using System.Windows;
 
 namespace TTracker.Utility
 {
-    public class CustomBase64Writer : BinaryWriter
+    public static class CustomBase64Writer
     {
 
-        public void WriteDataAsEncodedBase64(string namePath, List<string> data)
+        public static void WriteDataAsEncodedBase64(string namePath, List<string> data)
         {
             if (File.Exists(namePath))
             {
-                MessageBox.Show("A file with the given name already exists at the location. ");
+                MessageBox.Show("A file with the given name already exists at the location.");
                 return;
             }
 
-            FileStream fileStream = new FileStream(namePath, FileMode.CreateNew, FileAccess.Write, FileShare.Read, 1024);
-            BinaryWriter binaryWriter = new BinaryWriter(fileStream);
-
+            var combinedDataString = string.Empty;
             foreach (var s in data)
             {
-                byte[] stringAsByte = ASCIIEncoding.ASCII.GetBytes(s);                
-                string value = Convert.ToBase64String(stringAsByte);
-                binaryWriter.Write(value);
-                DecodeDataFromBase64(value);
+                combinedDataString += "~THISISANEXPORTEDFILEOFTTRACKER~" + s;
             }
 
-            binaryWriter.Close();
-            fileStream.Close();
+            var checkedCombinedDataString = ReplaceNoneASCIIChars(combinedDataString);
+
+            byte[] stringAsByte = ASCIIEncoding.ASCII.GetBytes(checkedCombinedDataString);
+            string value = Convert.ToBase64String(stringAsByte);
+            File.WriteAllText(namePath, value);
+            var blub = DecodeDataFromBase64(value);
         }
 
-        public void DecodeDataFromBase64(string namePath)
-        {    
-            byte[] encodedDataAsBytes = Convert.FromBase64String(namePath);
-            var value = ASCIIEncoding.ASCII.GetString(encodedDataAsBytes);
-
+        public static string DecodeDataFromBase64(string encodedValue)
+        {
+            byte[] encodedDataAsBytes = Convert.FromBase64String(encodedValue);
+            var decodedValue = ASCIIEncoding.ASCII.GetString(encodedDataAsBytes);
+            return decodedValue;
         }
 
+        public static string ReplaceNoneASCIIChars(string s)
+        {
+
+            var charsToRemove = new string[] { "ß", "ä", "ü", "ö" };
+
+            foreach(var c in charsToRemove)
+            {
+                switch (c)
+                {
+                    case "ö":
+                        s = s.Replace(c, "oe");
+                        break;
+                    case "ä":
+                        s = s.Replace(c, "ae");
+                        break;
+                    case "ü":
+                        s = s.Replace(c, "ue");
+                        break;
+                    case "ß":
+                        s = s.Replace(c, "ss");
+                        break;
+                    default:
+                        break;
+                }
+            }
+            return s;
+        }
     }
 }

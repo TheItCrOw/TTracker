@@ -164,7 +164,7 @@
       <DependentUpon>TimeEngineView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utility\CustomBase64Writer.cs" />
-    <Compile Include="Utility\CreateTFromXmlData.cs" />
+    <Compile Include="Utility\CreateTFromData.cs" />
     <Compile Include="Utility\DataAccess.cs" />
     <Compile Include="Utility\DateTimeExtensions.cs" />
     <Compile Include="Utility\PasswordBoxAssistant.cs" />
@@ -367,6 +367,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\trash-bin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\import-file.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

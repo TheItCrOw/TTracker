@@ -81,8 +81,12 @@ namespace TTracker.GUI.ViewModels.ManagamentBase.TicketManagementSubVms.AllTicke
 
         void ExportSelectedTickets()
         {
+            var leftOverTickets = new List<object>();
             FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
             folderBrowserDialog.ShowDialog();
+
+            if (folderBrowserDialog.SelectedPath == string.Empty)
+                return;
 
             foreach (var utilityVm in FinishedTaskTickets)
             {
@@ -90,9 +94,18 @@ namespace TTracker.GUI.ViewModels.ManagamentBase.TicketManagementSubVms.AllTicke
                 if(ticket.IsSelected == true)
                 {
                     var Id = ticket.CurrentViewModel.ModelId;
-                    DataAccess.Instance.ExportEntity<TaskTicket>(Id, folderBrowserDialog.SelectedPath + "\\" + Id + ".tt");
+                    var name = ticket.CurrentViewModel.Name;
+                    DataAccess.Instance.ExportEntity<TaskTicket>(Id, folderBrowserDialog.SelectedPath + "\\" + name + Id + ".tt");
+                    DataAccess.Instance.DeleteEntity<TaskTicket>(ticket.CurrentViewModel.Model);                    
+                }
+                else
+                {
+                    leftOverTickets.Add(ticket);
                 }
             }
+
+            FinishedTaskTickets.Clear();
+            FinishedTaskTickets.AddRange(leftOverTickets);
         }
     }
 }

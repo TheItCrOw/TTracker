@@ -9,17 +9,17 @@ using TTracker.GUI.Models;
 
 namespace TTracker.Utility
 {
-    internal class CreateTFromXmlData
+    internal class CreateTFromData
     {
 
         /// <summary>
-        // Uses two methods to return a list of all Entities in XML Cache:
-        //CreateTListFromXmlData takes in all XDocuments and trigger foreach doc the CreateTFromXmlData
-        //Had to be seperated so that the variables will be reseted, if a doc.element.value is empty.
+        /// Uses two methods to return a list of all Entities in XML Cache:
+        ///CreateTListFromXmlData takes in all XDocuments and trigger foreach doc the CreateTFromXmlData
+        ///Had to be seperated so that the variables will be reseted, if a doc.element.value is empty.
         /// </summary>
 
-
-        public CreateTFromXmlData()
+        #region CreateTFromXmlData
+        public CreateTFromData()
         {
 
         }
@@ -256,8 +256,80 @@ namespace TTracker.Utility
             return (new TimeEntry(Id, userId, projectId, ticketId, text, startTime, endTime, created));
         }
 
+        #endregion
 
+        #region CreateTFromDecodedData
+        public TaskTicket CreateTaskTicketFromDecodedData(List<string> decodedData)
+        {
+            var name = string.Empty;
+            Guid Id = Guid.Empty;
+            Guid userId = Guid.Empty;
+            Guid projectId = Guid.Empty;
+            var text = string.Empty;
+            DateTime created = DateTime.Now;
+            float expectedTime = 0;
+            float usedTime = 0;
+            string priority = string.Empty;
+            string status = string.Empty;
 
+            if (decodedData != null)
+            {
+                foreach(var data in decodedData)
+                {
+                    string[] splitedData = data.Split(new char[] { '/' });
+                    var dataName = splitedData[0];
+                    var dataValue = string.Empty;
+                    for (int i = 1; i < splitedData.Length; i++)
+                    {
+                        if(i == 1)
+                        {
+                            dataValue += splitedData[i];
+                        }
+                        else
+                        {
+                            dataValue += "/" + splitedData[i];
+                        }
+                    }
 
+                    switch (dataName)
+                    {
+                        case "Name":
+                            name = "(Imported)" + dataValue;
+                            break;
+                        case "Id":
+                            Id = new Guid(dataValue);
+                            break;
+                        case "UserId":
+                            userId = new Guid(dataValue);
+                            break;
+                        case "ProjectId":
+                            projectId = new Guid(dataValue);
+                            break;
+                        case "Text":
+                            text = dataValue;
+                            break;
+                        case "Created":
+                            created = DateTime.Parse(dataValue);
+                            break;
+                        case "ExpectedTime":
+                            expectedTime = float.Parse(dataValue);
+                            break;
+                        case "UsedTime":
+                            usedTime = float.Parse(dataValue);
+                            break;
+                        case "Priority":
+                            priority = dataValue;
+                            break;
+                        case "Status":
+                            status = dataValue;
+                            break;
+                    }
+                }
+                
+            }
+            return (new TaskTicket(name, Id, userId, projectId, text, created, expectedTime, usedTime, priority, status));
+        }
+
+        #endregion
     }
 }
