@@ -1,4 +1,5 @@
-﻿using Prism.Commands;
+﻿using Microsoft.Win32;
+using Prism.Commands;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -6,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Forms;
+using System.Windows.Interop;
 using TTracker.BaseDataModules;
 using TTracker.GUI.Models;
 using TTracker.GUI.ViewModels.TicketManagementSubVms;
@@ -29,7 +32,7 @@ namespace TTracker.GUI.ViewModels.ManagamentBase.TicketManagementSubVms.AllTicke
         {
             if (currentTaskTickets.Count == 0)
             {
-                MessageBox.Show("There are no tickets currently available. Make sure you are logged in or try to restart the program.");
+                System.Windows.MessageBox.Show("There are no tickets currently available. Make sure you are logged in or try to restart the program.");
             }
 
             foreach (var ticket in currentTaskTickets)
@@ -43,8 +46,8 @@ namespace TTracker.GUI.ViewModels.ManagamentBase.TicketManagementSubVms.AllTicke
 
             if(FinishedTaskTickets.Count == 0)
             {
-                MessageBox.Show("There are no finished Tickets currently.");
-                Application.Current.MainWindow.Close();
+                System.Windows.MessageBox.Show("There are no finished Tickets currently.");
+                System.Windows.Application.Current.MainWindow.Close();
             }
         }
         void DeleteSelectedTickets()
@@ -66,24 +69,28 @@ namespace TTracker.GUI.ViewModels.ManagamentBase.TicketManagementSubVms.AllTicke
 
             if(FinishedTaskTickets.Count == leftOverTickets.Count)
             {
-                MessageBox.Show("Please select at least one ticket");
+                System.Windows.MessageBox.Show("Please select at least one ticket");
                 return;
             }
 
             FinishedTaskTickets.Clear();
             FinishedTaskTickets.AddRange(leftOverTickets);
 
-            MessageBox.Show("Selected Tickets have been deleted.");
+            System.Windows.MessageBox.Show("Selected Tickets have been deleted.");
         }
 
         void ExportSelectedTickets()
         {
-            foreach(var utilityVm in FinishedTaskTickets)
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+            folderBrowserDialog.ShowDialog();
+
+            foreach (var utilityVm in FinishedTaskTickets)
             {
                 var ticket = (UtilityViewModel<TaskTicketViewModel>)utilityVm;
                 if(ticket.IsSelected == true)
                 {
-                    DataAccess.Instance.ExportEntity<TaskTicket>(ticket.CurrentViewModel.ModelId, Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "test.tt");
+                    var Id = ticket.CurrentViewModel.ModelId;
+                    DataAccess.Instance.ExportEntity<TaskTicket>(Id, folderBrowserDialog.SelectedPath + "\\" + Id + ".tt");
                 }
             }
         }

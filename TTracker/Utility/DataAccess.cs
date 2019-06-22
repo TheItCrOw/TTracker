@@ -21,7 +21,7 @@ namespace TTracker.Utility
 
         private CreateTFromXmlData _createTFromXmlData = new CreateTFromXmlData();
 
-        private CustomBinaryWriter _customBinaryWriter = new CustomBinaryWriter();
+        private CustomBase64Writer _customBinaryWriter = new CustomBase64Writer();
         public static User CurrentLoggedUser { get; set; }
 
         private string _saveDataPath = System.AppDomain.CurrentDomain.BaseDirectory + "..\\..\\Data\\";
@@ -171,7 +171,7 @@ namespace TTracker.Utility
                     if(nodeValue.ToString() == Id.ToString())
                     {
                         var xmlDataList = _xmlReaderWriter.GetXmlDataByXmlPath(xmlFile);
-                        _customBinaryWriter.WriteDataToBinaryFile(exportPath, xmlDataList);
+                        _customBinaryWriter.WriteDataAsEncodedBase64(exportPath, xmlDataList);
                     }
                 }
             }
