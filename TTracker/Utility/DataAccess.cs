@@ -27,10 +27,6 @@ namespace TTracker.Utility
         //Writes the given data into an xml file. Saves it that way
         private List<string> XmlWriteableDataList = new List<string>();
 
-        private DataAccess()
-        {
-        }
-
         public void RegisterAndSaveNewUser(User newUser)
         {
             XmlWriteableDataList.Clear();
@@ -153,7 +149,6 @@ namespace TTracker.Utility
 
             }
         }
-
         public void ExportEntity<T>(Guid Id, string exportPath)
         {
             var directoryPathFolder = Directory.GetFiles(_saveDataPath + typeof(T).Name + "s");
@@ -174,7 +169,6 @@ namespace TTracker.Utility
                 }
             }
         }
-
         public void ImportEntity<T>(string fullPath)
         {
             var fileOnlyName = Path.GetFileName(fullPath);
@@ -198,7 +192,6 @@ namespace TTracker.Utility
                     break;
             }
         }
-
         internal bool IsValidUser(string name, string password)
         {
             var desiredUser = GetUserByNameAndPassword(name, password);

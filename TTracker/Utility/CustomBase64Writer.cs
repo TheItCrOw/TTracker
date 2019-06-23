@@ -42,7 +42,6 @@ namespace TTracker.Utility
 
         public static string ReplaceNoneASCIIChars(string s)
         {
-
             var charsToRemove = new string[] { "ß", "ä", "ü", "ö" };
 
             foreach(var c in charsToRemove)

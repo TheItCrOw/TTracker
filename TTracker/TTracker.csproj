@@ -120,9 +120,9 @@
     <Compile Include="GUI\ViewModels\ManagamentBase\AccountViewModel.cs" />
     <Compile Include="GUI\ViewModels\ManagamentBase\TicketManagementSubVms\AllTicketsFrameSubVms\FinishedTicketsViewModel.cs" />
     <Compile Include="GUI\ViewModels\ManagamentBase\TimeEngineSubVms\CreateDayStatisticViewModel.cs" />
-    <Compile Include="GUI\ViewModels\ManagamentBase\TicketManagementSubVms\AskForProjectDeletionViewModel.cs" />
-    <Compile Include="GUI\ViewModels\ManagamentBase\TicketManagementSubVms\CreateProjectViewModel.cs" />
-    <Compile Include="GUI\ViewModels\ManagamentBase\TicketManagementSubVms\CreateTicketViewModel.cs" />
+    <Compile Include="GUI\ViewModels\ManagamentBase\TicketManagementSubVms\ProjectFrameVms\AskForProjectDeletionViewModel.cs" />
+    <Compile Include="GUI\ViewModels\ManagamentBase\TicketManagementSubVms\ProjectFrameVms\CreateProjectViewModel.cs" />
+    <Compile Include="GUI\ViewModels\ManagamentBase\TicketManagementSubVms\AllTicketsFrameSubVms\CreateTicketViewModel.cs" />
     <Compile Include="GUI\ViewModels\ManagamentBase\HomeViewModel.cs" />
     <Compile Include="GUI\ViewModels\Entities\ProjectViewModel.cs" />
     <Compile Include="GUI\ViewModels\Entities\TaskTicketViewModel.cs" />
@@ -136,13 +136,13 @@
     <Compile Include="GUI\Views\TicketManagementSubViews\AllTicketsFrameSubViews\FinishedTicketsView.xaml.cs">
       <DependentUpon>FinishedTicketsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Views\TicketManagementSubViews\AskForProjectDeletionView.xaml.cs">
+    <Compile Include="GUI\Views\TicketManagementSubViews\ProjectFrameSubView\AskForProjectDeletionView.xaml.cs">
       <DependentUpon>AskForProjectDeletionView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Views\TicketManagementSubViews\CreateProjectView.xaml.cs">
+    <Compile Include="GUI\Views\TicketManagementSubViews\ProjectFrameSubView\CreateProjectView.xaml.cs">
       <DependentUpon>CreateProjectView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Views\TicketManagementSubViews\CreateTicketView.xaml.cs">
+    <Compile Include="GUI\Views\TicketManagementSubViews\AllTicketsFrameSubViews\CreateTicketView.xaml.cs">
       <DependentUpon>CreateTicketView.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI\Views\HomeView.xaml.cs">
@@ -181,15 +181,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GUI\Views\TicketManagementSubViews\AskForProjectDeletionView.xaml">
+    <Page Include="GUI\Views\TicketManagementSubViews\ProjectFrameSubView\AskForProjectDeletionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GUI\Views\TicketManagementSubViews\CreateProjectView.xaml">
+    <Page Include="GUI\Views\TicketManagementSubViews\ProjectFrameSubView\CreateProjectView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GUI\Views\TicketManagementSubViews\CreateTicketView.xaml">
+    <Page Include="GUI\Views\TicketManagementSubViews\AllTicketsFrameSubViews\CreateTicketView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -357,9 +357,6 @@
     <Resource Include="Resources\Messages.de.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="PdfSharp.SharpZipLib\ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\search.png" />
   </ItemGroup>
   <ItemGroup>
@@ -370,6 +367,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\import-file.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\add.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

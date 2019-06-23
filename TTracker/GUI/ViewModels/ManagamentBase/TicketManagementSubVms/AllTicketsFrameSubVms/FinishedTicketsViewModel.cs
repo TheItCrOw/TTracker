@@ -95,7 +95,7 @@ namespace TTracker.GUI.ViewModels.ManagamentBase.TicketManagementSubVms.AllTicke
                 {
                     var Id = ticket.CurrentViewModel.ModelId;
                     var name = ticket.CurrentViewModel.Name;
-                    DataAccess.Instance.ExportEntity<TaskTicket>(Id, folderBrowserDialog.SelectedPath + "\\" + name + Id + ".tt");
+                    DataAccess.Instance.ExportEntity<TaskTicket>(Id, folderBrowserDialog.SelectedPath + "\\" + Id + ".tt");
                     DataAccess.Instance.DeleteEntity<TaskTicket>(ticket.CurrentViewModel.Model);                    
                 }
                 else

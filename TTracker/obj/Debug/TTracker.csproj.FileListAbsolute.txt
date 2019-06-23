@@ -18,9 +18,6 @@ E:\WPF Projects\TTracker\TTracker\bin\Debug\Prism.xml
 E:\WPF Projects\TTracker\TTracker\bin\Debug\Prism.Wpf.pdb
 E:\WPF Projects\TTracker\TTracker\bin\Debug\Prism.Wpf.xml
 E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\AccountView.g.cs
-E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\AskForProjectDeletionView.g.cs
-E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\CreateProjectView.g.cs
-E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\CreateTicketView.g.cs
 E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\HomeView.g.cs
 E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\LoginView.g.cs
 E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\AllTicketsFrameView.g.cs
@@ -32,9 +29,6 @@ E:\WPF Projects\TTracker\TTracker\obj\Debug\GeneratedInternalTypeHelper.g.cs
 E:\WPF Projects\TTracker\TTracker\obj\Debug\TTracker_MarkupCompile.cache
 E:\WPF Projects\TTracker\TTracker\obj\Debug\TTracker_MarkupCompile.lref
 E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\AccountView.baml
-E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\AskForProjectDeletionView.baml
-E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\CreateProjectView.baml
-E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\CreateTicketView.baml
 E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\HomeView.baml
 E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\LoginView.baml
 E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\AllTicketsFrameView.baml
@@ -64,3 +58,9 @@ E:\WPF Projects\TTracker\TTracker\bin\Debug\Spire.License.xml
 E:\WPF Projects\TTracker\TTracker\bin\Debug\Spire.Pdf.xml
 E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\AllTicketsFrameSubViews\FinishedTicketsView.g.cs
 E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\AllTicketsFrameSubViews\FinishedTicketsView.baml
+E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\ProjectFrameSubView\AskForProjectDeletionView.g.cs
+E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\ProjectFrameSubView\CreateProjectView.g.cs
+E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\AllTicketsFrameSubViews\CreateTicketView.g.cs
+E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\ProjectFrameSubView\AskForProjectDeletionView.baml
+E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\ProjectFrameSubView\CreateProjectView.baml
+E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\AllTicketsFrameSubViews\CreateTicketView.baml

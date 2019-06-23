@@ -31,7 +31,6 @@ namespace TTracker.GUI.ViewModels
                 SetProperty(ref _date, value);
             }
         }
-
         public HomeViewModel()
         {
             Date = ($"Your To-Do´s for today, the {DateTime.Now.ToShortDateString()}");

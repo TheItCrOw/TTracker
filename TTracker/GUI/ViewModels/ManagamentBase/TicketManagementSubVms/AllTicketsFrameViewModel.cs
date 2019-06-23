@@ -38,7 +38,6 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
         {
             Setup();
         }
-
         void Setup()
         {
             CurrentContent = this;
@@ -193,9 +192,9 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
             finishedTicketsView.Show();
             finishedTicketsView.Topmost = true;
         }
-        void ImportTaskTickets(string buttonName)
+        void ImportTaskTickets(string senderName)
         {
-            if (buttonName == "ImportSingleTaskTicketButton")
+            if (senderName == "ImportSingleTaskTicketButton")
             {
                 OpenFileDialog openFileDialog = new OpenFileDialog();
                 openFileDialog.Filter = "tt files (*.tt) | *.tt";
@@ -209,7 +208,7 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
                 File.Delete(fullPath);
                 LoadTaskTickets();
             }
-            else if (buttonName == "ImportFromDirectoryTicketsButton")
+            else if (senderName == "ImportFromDirectoryTicketsButton")
             {
                 System.Windows.Forms.FolderBrowserDialog folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
                 folderBrowserDialog.ShowDialog();

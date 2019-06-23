@@ -106,7 +106,6 @@
                         <Image Source="pack://application:,,,/Resources/calendar.png" Margin="2"/>
                     </Button>
                     <TextBlock Text="{Binding SelectedCalendarDate, StringFormat='{}{0:MM/dd/yyyy}'}" FontSize="17" VerticalAlignment="Center" FontWeight="Bold" Margin="10 0 10 0"/>
-
                 </DockPanel>
             </Border>
 
@@ -157,10 +156,10 @@
                     <RowDefinition Height="50" />
                 </Grid.RowDefinitions>
 
-                <Button x:Name="SaveButton" ToolTip="Save" Background="LightSteelBlue" BorderBrush="Black" Grid.Row="0" BorderThickness="1 1 1 1" IsEnabled="{Binding HasUnsavedChanges}" Command="{Binding SaveTimeEntriesCommand}">
+                <Button x:Name="SaveButton" ToolTip="Save" Background="LightSteelBlue" BorderBrush="Black" Grid.Row="0" BorderThickness="0" IsEnabled="{Binding HasUnsavedChanges}" Command="{Binding SaveTimeEntriesCommand}">
                     <Image Margin="7" Source="/TTracker;component/Resources/save.png"/>
                 </Button>
-                <Button x:Name="CreateDayStatistic" ToolTip="Create Statistic" Background="LightSteelBlue" BorderBrush="Black" Grid.Row="1" BorderThickness="1 1 1 1" Command="{Binding CreateDayStatisticCommand}">
+                <Button x:Name="CreateDayStatistic" ToolTip="Create Statistic" Background="LightSteelBlue" BorderBrush="Black" Grid.Row="1" BorderThickness="0" Command="{Binding CreateDayStatisticCommand}">
                     <Image Margin="5" Source="/TTracker;component/Resources/statistics.png"/>
                 </Button>
 
