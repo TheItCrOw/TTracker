@@ -88,6 +88,7 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
         void AskForProjectsDeletion()
         {
             var askForProjectDeletionView = new AskForProjectDeletionView();
+            askForProjectDeletionView.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             askForProjectDeletionView.DataContext = new AskForProjectDeletionViewModel((ProjectFrameViewModel)CurrentContent, DeletableList);
             askForProjectDeletionView.Show();
             askForProjectDeletionView.Topmost = true;
@@ -130,6 +131,7 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
         void CreateNewProject()
         {
             var createNewProjectView = new CreateProjectView();
+            createNewProjectView.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             createNewProjectView.DataContext = new CreateProjectViewModel((ProjectFrameViewModel)CurrentContent);
             createNewProjectView.Show();
             createNewProjectView.Topmost = true;

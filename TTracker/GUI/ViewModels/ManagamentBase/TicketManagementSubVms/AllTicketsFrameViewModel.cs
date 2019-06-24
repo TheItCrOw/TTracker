@@ -47,6 +47,7 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
         void CreateNewTicket()
         {
             var createNewTicketView = new CreateTicketView();
+            createNewTicketView.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             createNewTicketView.DataContext = new CreateTicketViewModel((AllTicketsFrameViewModel)CurrentContent);
             createNewTicketView.Show();
             createNewTicketView.Topmost = true;
@@ -95,6 +96,7 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
             }
 ;
             TaskTickets.AddRange(allTaskTicketsVM);
+
             HasUnsavedChanges = false;
             _showingAllTickets = true;
         }
@@ -188,6 +190,7 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
         void FinishedTickets()
         {
             var finishedTicketsView = new FinishedTicketsView();
+            finishedTicketsView.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             finishedTicketsView.DataContext = new FinishedTicketsViewModel((AllTicketsFrameViewModel)CurrentContent, TaskTickets.ToList());
             finishedTicketsView.Show();
             finishedTicketsView.Topmost = true;
@@ -218,7 +221,7 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
 
                 var allFiles = Directory.GetFiles(folderBrowserDialog.SelectedPath, "*.tt");
 
-                foreach(var path in allFiles)
+                foreach (var path in allFiles)
                 {
                     DataAccess.Instance.ImportEntity<TaskTicket>(path);
                     File.Delete(path);

@@ -190,10 +190,14 @@ namespace TTracker.Utility
             string directoryXmlPath = _saveDataPath + directoryName + "s\\";
 
             //Stores all the file Names in an array
+            if(!(Directory.Exists(directoryXmlPath)))
+            {
+                var createDicPath = directoryXmlPath.Remove(directoryXmlPath.Length - 1);
+                Directory.CreateDirectory(createDicPath);
+            }
             string[] files = Directory.GetFiles(directoryXmlPath);
             //Saves all docs in direcotry
             var allDoc = new List<XDocument>();
-
 
             //Foreach file in files Directory
             foreach (var file in files)

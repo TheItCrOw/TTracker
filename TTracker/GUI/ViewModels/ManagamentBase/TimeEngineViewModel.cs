@@ -93,14 +93,12 @@ namespace TTracker.GUI.ViewModels
             }
         }
         #endregion
-
         public TimeEngineViewModel()
         {
             CurrentContent = this;
             Setup();
             SelectedCalendarDate = DateTime.Now;
         }
-
         void Setup()
         {
             if(DataAccess.CurrentLoggedUser == null)
@@ -271,6 +269,7 @@ namespace TTracker.GUI.ViewModels
         void CreateDayStatistic()
         {
             var createDayStatisticView = new CreateDayStatisticView();
+            createDayStatisticView.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             createDayStatisticView.DataContext = new CreateDayStatisticViewModel((TimeEngineViewModel)CurrentContent, TimeEntries.ToList(), SelectedCalendarDate);
             createDayStatisticView.Show();
             createDayStatisticView.Topmost = true;

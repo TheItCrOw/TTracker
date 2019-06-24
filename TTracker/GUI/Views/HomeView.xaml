@@ -5,6 +5,7 @@
       xmlns:DV="clr-namespace:System.Windows.Controls.DataVisualization;assembly=System.Windows.Controls.DataVisualization.Toolkit"  
       xmlns:DVC="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"        
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:focusExtesion="clr-namespace:TTracker.Utility"
       xmlns:local="clr-namespace:TTracker.GUI.Views"
             xmlns:c ="clr-namespace:TTracker.GUI.Converters"
 
@@ -194,16 +195,47 @@
         
         <!--Topic-->
         <Border Grid.Row="0" Grid.Column="2" BorderThickness="1 1 1 1" BorderBrush="Black" Background="LightSteelBlue">
-            <TextBlock Text="Micro-Tasks of the day:" FontSize="20" FontWeight="DemiBold" TextAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Text="Micro-Tasks to do:" FontSize="20" FontWeight="DemiBold" TextAlignment="Center" VerticalAlignment="Center"/>
         </Border>
 
         <Border Grid.Row="1" Grid.Column="2" BorderBrush="Black" BorderThickness="1 0 0 0">
             <StackPanel>
-                <Button Height="30" Background="LightSteelBlue" BorderThickness="1 1 1 1" ToolTip="Add Micro-Task">
+                <Button Height="30" Background="LightSteelBlue" BorderThickness="1 1 1 1" ToolTip="Add Micro-Task" Command="{Binding CreateMicroTaskCommand}">
                     <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/add.png"/>
                 </Button>
+                <ItemsControl x:Name="microTasksControl" Background="AliceBlue" ItemsSource="{Binding MicroTasks, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" >
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <DockPanel LastChildFill="True" Margin="10 10 5 0">
+                                <!--Delete Button-->
+                                <Button Width="20" Height="20" DockPanel.Dock="Right" VerticalAlignment="Center" Command="{Binding DeleteCommand}">
+                                    <Image Margin="2" Source="pack://application:,,,/Resources/delete.png"/>
+                                </Button>
+                                 <!--Save Button-->
+                                <CheckBox Margin="5 0 5 0" DockPanel.Dock="Right" VerticalAlignment="Center" BorderThickness="1" IsChecked="{Binding IsChecked}">
+                                    <CheckBox.LayoutTransform>
+                                        <ScaleTransform ScaleX="1.6" ScaleY="1.6"/>
+                                    </CheckBox.LayoutTransform>
+                                </CheckBox>
+                                <TextBox focusExtesion:FocusExtension.IsFocused="True" Text="{Binding Text}" FontSize="15" AcceptsReturn="True" TextWrapping="Wrap" BorderBrush="Black" BorderThickness="0.5 0.5 0.5 0.5">
+                                    <TextBox.Style>
+                                        <!--Strikethorugh text when IsChecked-->
+                                        <Style TargetType="TextBox">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsChecked}" Value="True">
+                                                    <Setter Property="TextDecorations" Value="Strikethrough "/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBox.Style>
+                                </TextBox>
+                            </DockPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
             </StackPanel>
         </Border>
+
 
 
     </Grid>

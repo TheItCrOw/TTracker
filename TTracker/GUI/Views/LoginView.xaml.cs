@@ -25,6 +25,7 @@ namespace TTracker.GUI.Views
         public LoginView()
         {    
             this.DataContext = new LoginViewModel();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
         }
 

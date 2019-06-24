@@ -67,7 +67,7 @@ namespace TTracker.Utility
 
             return allTaskTickets;
         }
-        internal protected TaskTicket CreateTaskTicketFromXmlData(XDocument doc)
+        private protected TaskTicket CreateTaskTicketFromXmlData(XDocument doc)
         {
             var name = string.Empty;
             Guid Id = Guid.Empty;
@@ -140,7 +140,7 @@ namespace TTracker.Utility
             }
             return allProjects;
         }
-        internal protected Project CreateProjectFromXmlData(XDocument doc)
+        private protected Project CreateProjectFromXmlData(XDocument doc)
         {
             var name = string.Empty;
             Guid Id = Guid.Empty;
@@ -201,7 +201,7 @@ namespace TTracker.Utility
             }
             return allTimeEntries;
         }
-        internal protected TimeEntry CreateTimeEntryFromXmlData(XDocument doc)
+        private protected TimeEntry CreateTimeEntryFromXmlData(XDocument doc)
         {
             Guid Id = Guid.Empty;
             Guid userId = Guid.Empty;
@@ -254,6 +254,59 @@ namespace TTracker.Utility
                 }
             }
             return (new TimeEntry(Id, userId, projectId, ticketId, text, startTime, endTime, created));
+        }
+        public List<MicroTask> CreateMicroTaskListFromXmlData(List<XDocument> microTaskData)
+        {
+            var allMicroTasks = new List<MicroTask>();
+
+            //Foreach XDocument in allTimeEntries
+            foreach (var doc in microTaskData)
+            {
+                allMicroTasks.Add(CreateMicroTaskFromXmlData(doc));
+            }
+            return allMicroTasks;
+        }
+        private protected MicroTask CreateMicroTaskFromXmlData(XDocument doc)
+        {
+            Guid Id = Guid.Empty;
+            Guid userId = Guid.Empty;
+            var text = string.Empty;
+            DateTime created = DateTime.Now;
+            float isChecked = 0;
+
+            var docAllData = doc.Root.Value;
+            var docElement = doc.Root.Elements();
+
+            //Foreach element in XML FIle -> Id/432985094589 etc.
+            foreach (var element in docElement)
+            {
+                var data = element.ToString();
+
+                if (data != null)
+                {
+                    string[] splitedData = data.Split(new char[] { '/' });
+
+                    switch (splitedData.Last())
+                    {
+                        case "Id>":
+                            Id = new Guid(element.Value);
+                            break;
+                        case "UserId>":
+                            userId = new Guid(element.Value);
+                            break;
+                        case "Text>":
+                            text = element.Value;
+                            break;
+                        case "Created>":
+                            created = DateTime.Parse(element.Value);
+                            break;
+                        case "IsChecked>":
+                            isChecked = float.Parse(element.Value);
+                            break;
+                    }
+                }
+            }
+            return (new MicroTask(Id, userId, text, created, isChecked));
         }
 
         #endregion

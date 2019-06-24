@@ -1,4 +1,5 @@
-﻿using Prism.Mvvm;
+﻿using Prism.Commands;
+using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -22,6 +23,8 @@ namespace TTracker.GUI.ViewModels
         public ObservableCollection<TaskTicketViewModel> TaskTickets { get; set; } = new ObservableCollection<TaskTicketViewModel>();
         public ObservableCollection<ChartHelperModel> RootProjectsChart { get; set; } = new ObservableCollection<ChartHelperModel>();
         public ObservableCollection<ChartHelperModel> SubProjectsChart { get; set; } = new ObservableCollection<ChartHelperModel>();
+        public ObservableCollection<MicroTaskViewModel> MicroTasks { get; set; } = new ObservableCollection<MicroTaskViewModel>();
+        public DelegateCommand CreateMicroTaskCommand => new DelegateCommand(CreateMicroTask);
 
         public string Date
         {
@@ -36,6 +39,7 @@ namespace TTracker.GUI.ViewModels
             Date = ($"Your To-Do´s for today, the {DateTime.Now.ToShortDateString()}");
             allTimeEntries.AddRange(DataAccess.Instance.GetAll<TimeEntry>());
             LoadTickets();
+            LoadMicroTasks();
             CalculateRootProjectsChart();
             CalcluateSubProjects();
         }
@@ -67,7 +71,13 @@ namespace TTracker.GUI.ViewModels
             TaskTickets.AddRange(todoTickets.Select(t => new TaskTicketViewModel(t, this, false)));
             TaskTickets.AddRange(highPrioTickets.Select(t => new TaskTicketViewModel(t, this, false)));
         }
+        void LoadMicroTasks()
+        {
+            var allMicroTasks = DataAccess.Instance.GetAll<MicroTask>();
+            var allMicroTasksVm = allMicroTasks.Select(mT => new MicroTaskViewModel(mT, this));
 
+            MicroTasks.AddRange(allMicroTasksVm);
+        }
         void CalculateRootProjectsChart()
         {
             Task.Run(() =>
@@ -84,11 +94,9 @@ namespace TTracker.GUI.ViewModels
                 }
 
                 Application.Current.Dispatcher.Invoke(() => RootProjectsChart.AddRange(StatisticsHelperClass.CreateChartModelsOfTimeEntriesRootProjects(desiredTimeEntries)));
-
             });
 
         }
-
         void CalcluateSubProjects()
         {
             Task.Run(() =>
@@ -107,6 +115,15 @@ namespace TTracker.GUI.ViewModels
                 Application.Current.Dispatcher.Invoke(() => SubProjectsChart.AddRange(StatisticsHelperClass.CreateChartModelsOfTimeEntriesSubProjects(desiredTimeEntriesVm)));
 
             });
+        }
+        void CreateMicroTask()
+        {
+            var microTask = new MicroTask(Guid.NewGuid(), DataAccess.CurrentLoggedUser.Id, "", DateTime.Now, 0);
+            var microTaskVm = new MicroTaskViewModel(microTask, this);
+
+            DataAccess.Instance.RegisterAndSaveNewMicroTask(microTask);
+
+            MicroTasks.Add(microTaskVm);
         }
     }
 }

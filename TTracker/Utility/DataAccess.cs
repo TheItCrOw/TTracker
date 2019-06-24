@@ -26,7 +26,6 @@ namespace TTracker.Utility
 
         //Writes the given data into an xml file. Saves it that way
         private List<string> XmlWriteableDataList = new List<string>();
-
         public void RegisterAndSaveNewUser(User newUser)
         {
             XmlWriteableDataList.Clear();
@@ -76,6 +75,16 @@ namespace TTracker.Utility
             XmlWriteableDataList.Add("EndTime/" + newTimeEntry.EndTime);
             _xmlReaderWriter.SaveNewToXml("TimeEntrys", newTimeEntry.Id, XmlWriteableDataList);
         }
+        public void RegisterAndSaveNewMicroTask(MicroTask newMicroTask)
+        {
+            XmlWriteableDataList.Clear();
+            XmlWriteableDataList.Add("Id/" + newMicroTask.Id);
+            XmlWriteableDataList.Add("UserId/" + newMicroTask.UserId);
+            XmlWriteableDataList.Add("Text/" + newMicroTask.Text);
+            XmlWriteableDataList.Add("Created/" + newMicroTask.Created);
+            XmlWriteableDataList.Add("IsChecked/" + newMicroTask.IsChecked);
+            _xmlReaderWriter.SaveNewToXml("MicroTasks", newMicroTask.Id, XmlWriteableDataList);
+        }
 
         /// <summary>
         /// Takes in a type and returns a List of all found Types that is found in the xmlCache
@@ -96,6 +105,8 @@ namespace TTracker.Utility
                     return (IEnumerable<T>)(_createTFromXmlData.CreateProjectListFromXmlData(allData));
                 case "TimeEntry":
                     return (IEnumerable<T>)(_createTFromXmlData.CreateTimeEntryListFromXmlData(allData));
+                case "MicroTask":
+                    return (IEnumerable<T>)(_createTFromXmlData.CreateMicroTaskListFromXmlData(allData));
             }
 
             return null;
