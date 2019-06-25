@@ -64,3 +64,5 @@ E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\A
 E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\ProjectFrameSubView\AskForProjectDeletionView.baml
 E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\ProjectFrameSubView\CreateProjectView.baml
 E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\AllTicketsFrameSubViews\CreateTicketView.baml
+E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\StatisticsManagementView.g.cs
+E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\StatisticsManagementView.baml

@@ -38,13 +38,6 @@ namespace TTracker
             NavigationFrame.Content = new HomeView();
         }
 
-        //Navigates to UserAccount
-        private void AccountButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            NavigationFrame.Content = null;
-            NavigationFrame.Content = new AccountView();
-        }
-
         //Navigates to TicketManagement
         private void TicketManagement_OnClick(object sender, RoutedEventArgs e)
         {
@@ -57,6 +50,20 @@ namespace TTracker
         {
             NavigationFrame.Content = null;
             NavigationFrame.Content = new TimeEngineView();
+        }
+
+        //Navigates to the statistic
+        private void StatisticsButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationFrame.Content = null;
+            NavigationFrame.Content = new StatisticsManagementView();
+        }
+
+        //Navigates to UserAccount
+        private void AccountButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            NavigationFrame.Content = null;
+            NavigationFrame.Content = new AccountView();
         }
     }
 }

@@ -86,9 +86,9 @@
                         <TextBox x:Name="ToTimeBox" DockPanel.Dock="Left" Text="{Binding TimeTo, StringFormat=00:00}" HorizontalAlignment="Center" Width="100" FontSize="17" MaxHeight="25"
                                  GotKeyboardFocus="ToTimeBox_GotKeyboardFocus"
                                  GotMouseCapture="ToTimeBox_GotMouseCapture"/>
-                        <Button x:Name="SaveTimeButton" Background="LightSteelBlue" BorderBrush="Black" ToolTip="Save Time" Margin="15 0 0 0" Height="30" Width="30"
+                        <Button x:Name="SaveTimeButton" Background="White" BorderBrush="Black" ToolTip="Save Time" Margin="15 0 0 0" Height="30" Width="30"
                                     Command="{Binding SaveTimeCommand}">
-                            <Image Margin="2" Source="pack://application:,,,/Resources/save.png"/>
+                            <Image Margin="5" Source="pack://application:,,,/Resources/add.png"/>
                         </Button>
                     </DockPanel>
                     <!--Enter description here-->

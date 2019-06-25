@@ -138,7 +138,8 @@ namespace TTracker.GUI.ViewModels
 
             foreach (var ticket in allTaskTickets)
             {
-                if(ticket.ProjectId == SelectedProjectComboBoxItem.ModelId)
+                if(ticket.ProjectId == SelectedProjectComboBoxItem.ModelId 
+                    && ticket.Status != Status.Finished)
                 {
                     var taskTicketVm = new TaskTicketViewModel(ticket, this, false);
                     TaskTickets.Add(taskTicketVm);

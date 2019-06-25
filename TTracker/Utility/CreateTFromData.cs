@@ -347,7 +347,7 @@ namespace TTracker.Utility
                     switch (dataName)
                     {
                         case "Name":
-                            name = "(Imported)" + dataValue;
+                            name = "(Imported) " + dataValue;
                             break;
                         case "Id":
                             Id = new Guid(dataValue);

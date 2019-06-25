@@ -36,6 +36,17 @@
                 </ObjectDataProvider.MethodParameters>
             </ObjectDataProvider>
 
+            <!--Rotation Animation Style-->
+            <Storyboard x:Key="Storyboard" BeginTime="00:00:00.000" Duration="00:00:10.000">
+                <DoubleAnimation Storyboard.TargetName="RotateImage" 
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)" 
+                             From="0" To="360" BeginTime="00:00:05.000" Duration="00:00:05.000" />
+                <DoubleAnimation Storyboard.TargetName="OpacityImage" 
+                             Storyboard.TargetProperty="Opacity" 
+                             From="1" To="0" Duration="00:00:10.000" />
+            </Storyboard>
+
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

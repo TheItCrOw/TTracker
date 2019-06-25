@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Xml;
 using System.Xml.Linq;
 using TTracker.Interfaces;
@@ -23,45 +24,53 @@ namespace TTracker.Utility
         /// <param name="data"></param>
         public void SaveNewToXml(string directoryName, Guid Id, List<string> data)
         {
-            Directory.CreateDirectory(_saveDataPath + directoryName);
-            string xmlPath = _saveDataPath + directoryName + "\\";
-            string xmlName = Id.ToString() + ".xml";
-            string fullLocationPath = xmlPath + xmlName;
-
-            //So that the xmlWriter makes breaks between lines
-            XmlWriterSettings xmlWriterSettings = new XmlWriterSettings();
-            xmlWriterSettings.NewLineOnAttributes = true;
-            xmlWriterSettings.Indent = true;
-
-            using (XmlWriter writer = XmlWriter.Create(fullLocationPath, xmlWriterSettings))
+            try
             {
-                writer.WriteStartDocument();
-                writer.WriteStartElement("Data");
+                Directory.CreateDirectory(_saveDataPath + directoryName);
+                string xmlPath = _saveDataPath + directoryName + "\\";
+                string xmlName = Id.ToString() + ".xml";
+                string fullLocationPath = xmlPath + xmlName;
 
-                foreach (var s in data)
+                //So that the xmlWriter makes breaks between lines
+                XmlWriterSettings xmlWriterSettings = new XmlWriterSettings();
+                xmlWriterSettings.NewLineOnAttributes = true;
+                xmlWriterSettings.Indent = true;
+
+                using (XmlWriter writer = XmlWriter.Create(fullLocationPath, xmlWriterSettings))
                 {
-                    string[] splitedString = s.Split(new char[] { '/' });
-                    string dataName = splitedString[0];
-                    var splitedStringValueAsOne = string.Empty;
-                    for (int i = 1; i < splitedString.Length; i++)
+                    writer.WriteStartDocument();
+                    writer.WriteStartElement("Data");
+
+                    foreach (var s in data)
                     {
-                        if(i > 1)
+                        string[] splitedString = s.Split(new char[] { '/' });
+                        string dataName = splitedString[0];
+                        var splitedStringValueAsOne = string.Empty;
+                        for (int i = 1; i < splitedString.Length; i++)
                         {
-                            splitedStringValueAsOne = splitedStringValueAsOne + "/" + splitedString[i];
+                            if (i > 1)
+                            {
+                                splitedStringValueAsOne = splitedStringValueAsOne + "/" + splitedString[i];
+                            }
+                            else
+                            {
+                                splitedStringValueAsOne = splitedStringValueAsOne + splitedString[i];
+                            }
                         }
-                        else
-                        {
-                            splitedStringValueAsOne = splitedStringValueAsOne + splitedString[i];
-                        }
+                        string dataValue = splitedStringValueAsOne;
+
+                        writer.WriteElementString(dataName, dataValue);
                     }
-                    string dataValue = splitedStringValueAsOne;
 
-                    writer.WriteElementString(dataName, dataValue);
+                    writer.WriteEndElement();
+                    writer.WriteEndDocument();
                 }
-
-                writer.WriteEndElement();
-                writer.WriteEndDocument();
             }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"An exception in the XmlDataCache - SaveNewToXml threw an error: {ex.Message}");
+            }
+
         }
 
         /// <summary>
@@ -72,69 +81,77 @@ namespace TTracker.Utility
         /// <param name="changedProperties"></param>
         public void OverwriteSaveToXml<T>(XDocument saveableXmlDoc, List<string> changedProperties)
         {
-            //split the Name/Hans string
-            var changedPropertyName = new List<string>();
-            var changedPropertyValue = new List<string>();
-
-            //Gets the ID/Name of the doc
-            string docId = string.Empty;
-
-            //Split the changed Data
-            foreach (var data in changedProperties)
+            try
             {
-                string[] splitedString = data.Split(new char[] { '/' });
-                var splitedValueAsOne = string.Empty;
-                for (int i = 1; i < splitedString.Length; i++)
+                //split the Name/Hans string
+                var changedPropertyName = new List<string>();
+                var changedPropertyValue = new List<string>();
+
+                //Gets the ID/Name of the doc
+                string docId = string.Empty;
+
+                //Split the changed Data
+                foreach (var data in changedProperties)
                 {
-                    if(i > 1)
+                    string[] splitedString = data.Split(new char[] { '/' });
+                    var splitedValueAsOne = string.Empty;
+                    for (int i = 1; i < splitedString.Length; i++)
                     {
-                        splitedValueAsOne = splitedValueAsOne + "/" + splitedString[i];
+                        if (i > 1)
+                        {
+                            splitedValueAsOne = splitedValueAsOne + "/" + splitedString[i];
+                        }
+                        else
+                        {
+                            splitedValueAsOne = splitedValueAsOne + splitedString[i];
+                        }
                     }
-                    else
+                    changedPropertyName.Add((splitedString[0] + ">"));
+                    changedPropertyValue.Add(splitedValueAsOne);
+                }
+
+                //Go through all elements. Search for elementName. When matched with any propertyName, change Value of elemtn
+                var docElements = saveableXmlDoc.Root.Elements();
+                foreach (var element in docElements)
+                {
+                    string[] splitedString = element.ToString().Split(new char[] { '/' });
+                    var elementName = splitedString[1];
+
+                    if (elementName == "Id>")
                     {
-                        splitedValueAsOne = splitedValueAsOne + splitedString[i];
+                        docId = element.Value;
+                    }
+
+                    if (changedPropertyName.Contains(elementName))
+                    {
+                        var index = changedPropertyName.IndexOf(elementName);
+                        element.Value = changedPropertyValue.ElementAt(index);
+                        changedPropertyName.RemoveAt(index);
+                        changedPropertyValue.RemoveAt(index);
                     }
                 }
-                changedPropertyName.Add((splitedString[0] + ">"));
-                changedPropertyValue.Add(splitedValueAsOne);
-            }
 
-            //Go through all elements. Search for elementName. When matched with any propertyName, change Value of elemtn
-            var docElements = saveableXmlDoc.Root.Elements();
-            foreach (var element in docElements)
+                //When a property hasent been added to the xml yet, then add it.
+                if (changedPropertyName.Count > 0 && changedPropertyValue.Count > 0)
+                {
+                    foreach (var addablePropertyName in changedPropertyName)
+                    {
+                        var index = changedPropertyName.IndexOf(addablePropertyName);
+                        var name = addablePropertyName.Remove(addablePropertyName.Length - 1);
+                        var value = changedPropertyValue.ElementAt(index);
+                        XElement root = saveableXmlDoc.Root;
+                        root.Add(new XElement(name, value));
+                    }
+                }
+
+                var fullSavePath = _saveDataPath + typeof(T).Name + "s\\" + docId + ".xml";
+                saveableXmlDoc.Save(fullSavePath);
+            }
+            catch(Exception ex)
             {
-                string[] splitedString = element.ToString().Split(new char[] { '/' });
-                var elementName = splitedString[1];
-
-                if (elementName == "Id>")
-                {
-                    docId = element.Value;
-                }
-
-                if (changedPropertyName.Contains(elementName))
-                {
-                    var index = changedPropertyName.IndexOf(elementName);
-                    element.Value = changedPropertyValue.ElementAt(index);
-                    changedPropertyName.RemoveAt(index);
-                    changedPropertyValue.RemoveAt(index);
-                }
+                MessageBox.Show($"An exception in the XmlDataCache - OverwriteSaveToXml threw an error: {ex.Message}");
             }
 
-            //When a property hasent been added to the xml yet, then add it.
-            if(changedPropertyName.Count > 0 && changedPropertyValue.Count > 0)
-            {
-                foreach(var addablePropertyName in changedPropertyName)
-                {
-                    var index = changedPropertyName.IndexOf(addablePropertyName);
-                    var name = addablePropertyName.Remove(addablePropertyName.Length - 1);
-                    var value = changedPropertyValue.ElementAt(index);
-                    XElement root = saveableXmlDoc.Root;
-                    root.Add(new XElement(name, value));
-                }
-            }
-
-            var fullSavePath = _saveDataPath + typeof(T).Name + "s\\" + docId + ".xml";
-            saveableXmlDoc.Save(fullSavePath);
         }
 
         /// <summary>
@@ -183,28 +200,36 @@ namespace TTracker.Utility
 
         public List<XDocument> GetAllXmlFilesFromDirectory<T>()
         {
-            //Gets the type of generic T
-            var result = typeof(T);
-            var directoryName = result.Name;
-            //Path of directory all xml files should be loaded from
-            string directoryXmlPath = _saveDataPath + directoryName + "s\\";
-
-            //Stores all the file Names in an array
-            if(!(Directory.Exists(directoryXmlPath)))
-            {
-                var createDicPath = directoryXmlPath.Remove(directoryXmlPath.Length - 1);
-                Directory.CreateDirectory(createDicPath);
-            }
-            string[] files = Directory.GetFiles(directoryXmlPath);
-            //Saves all docs in direcotry
             var allDoc = new List<XDocument>();
 
-            //Foreach file in files Directory
-            foreach (var file in files)
+            try
             {
-                //Read every file. File is the path
-                var doc = XDocument.Load(file);
-                allDoc.Add(doc);
+                //Gets the type of generic T
+                var result = typeof(T);
+                var directoryName = result.Name;
+                //Path of directory all xml files should be loaded from
+                string directoryXmlPath = _saveDataPath + directoryName + "s\\";
+
+                //Stores all the file Names in an array
+                if (!(Directory.Exists(directoryXmlPath)))
+                {
+                    var createDicPath = directoryXmlPath.Remove(directoryXmlPath.Length - 1);
+                    Directory.CreateDirectory(createDicPath);
+                }
+                string[] files = Directory.GetFiles(directoryXmlPath);
+                //Saves all docs in direcotry
+
+                //Foreach file in files Directory
+                foreach (var file in files)
+                {
+                    //Read every file. File is the path
+                    var doc = XDocument.Load(file);
+                    allDoc.Add(doc);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"An exception in the XmlDataCache - GetAllXmlFilesFromDirectory threw an error: {ex.Message}");
             }
 
             return allDoc;

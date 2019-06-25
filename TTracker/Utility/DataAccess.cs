@@ -270,7 +270,7 @@ namespace TTracker.Utility
                     }
                 }
             }
-            return null;
+            return new Project("Deleted Project", Guid.Empty, CurrentLoggedUser.Id, Guid.Empty, "This project has been deleted", DateTime.Now, 0);
         }
         public TaskTicket GetTaskTicketById(Guid Id)
         {
@@ -299,7 +299,8 @@ namespace TTracker.Utility
                 }
             }
 
-            return null;
+            return new TaskTicket("Deleted Ticket", Guid.Empty, CurrentLoggedUser.Id, Guid.Empty, 
+                "This project has been deleted", DateTime.Now, 0, 0, "Low", "Finished");
         }
 
     }

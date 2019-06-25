@@ -31,8 +31,6 @@ namespace TTracker.GUI.ViewModels.ManagamentBase
         public ObservableCollection<ChartHelperModel> SubProjectsChart { get; set; } = new ObservableCollection<ChartHelperModel>();
         public DelegateCommand<FrameworkElement> SaveAsPdfCommand => new DelegateCommand<FrameworkElement>(SaveAsPdf);
 
-
-
         public string SelectedCalendarDate
         {
             get { return _selectedCalendarDate; }
@@ -53,75 +51,10 @@ namespace TTracker.GUI.ViewModels.ManagamentBase
             SubProjectsChart.AddRange(StatisticsHelperClass.CreateChartModelsOfTimeEntriesSubProjects(timeEntries));
         }
 
-        /// <summary>
-        /// Creates an image of the given FrameworkElement, then converts it into a PDF
-        /// </summary>
-        /// <param name="source"></param>
         void SaveAsPdf(FrameworkElement source)
-        {            
-            var dialog = new SaveFileDialog();
-            dialog.AddExtension = true;
-            dialog.DefaultExt = "pdf";
-            dialog.Filter = "PDF Document (*.pdf)|*.pdf";
-
-            if (dialog.ShowDialog() == false)
-                return;
-
-            string path = dialog.FileName;
-
-            try
-            {
-                var dir = Path.GetDirectoryName(path);
-                if (dir != null && !Directory.Exists(dir))
-                {
-                    Directory.CreateDirectory(dir);
-                }
-
-                RenderTargetBitmap renderTarget = new RenderTargetBitmap((int)source.ActualWidth, (int)source.ActualHeight, 96, 96, PixelFormats.Pbgra32);
-                VisualBrush sourceBrush = new VisualBrush(source);
-
-                DrawingVisual drawingVisual = new DrawingVisual();
-                DrawingContext drawingContext = drawingVisual.RenderOpen();
-
-                using (drawingContext)
-                {
-                    drawingContext.DrawRectangle(sourceBrush, null, new Rect(new Point(0, 0), new Point(source.ActualWidth, source.ActualHeight)));
-                }
-                renderTarget.Render(drawingVisual);
-
-                PngBitmapEncoder encoder = new PngBitmapEncoder();
-                encoder.Frames.Add(BitmapFrame.Create(renderTarget));
-
-                using (FileStream stream = new FileStream(path, FileMode.Create, FileAccess.Write, System.IO.FileShare.Write))
-                {
-                    encoder.Save(stream);
-                }
-
-                CreatePdfFromImage(path);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
-
-        private protected void CreatePdfFromImage(string path)
         {
-            using (PdfDocument pdfDoc = new PdfDocument())
-            {
-                PdfImage pdfImg = PdfImage.FromFile(path);
-
-                PdfPageBase page = pdfDoc.Pages.Add();
-                float width = pdfImg.Width * 0.68f;
-                float height = pdfImg.Height * 0.68f;
-                float x = (page.Canvas.ClientSize.Width - width) / 5;
-
-                page.Canvas.DrawImage(pdfImg, x, 0, width, height);
-
-                string PdfFilename = path;
-                pdfDoc.SaveToFile(PdfFilename);
-                System.Diagnostics.Process.Start(PdfFilename);
-            }
+            var pdfWriter = new CustomPdfWriter();
+            pdfWriter.ExportAsPdf(source, 0.68f, 0.68f, PdfPageOrientation.Portrait);
         }
     }
 

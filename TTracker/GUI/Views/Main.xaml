@@ -48,7 +48,7 @@
                             ToolTip="Time Engine">
                         <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/time.png"/>
                     </Button>
-                    <Button x:Name="StatisticsButton" Grid.Column="4" Background="White" Margin="0 0 0 0"
+                    <Button x:Name="StatisticsButton" Grid.Column="4" Background="White" Margin="0 0 0 0" Click="StatisticsButton_Click"
                             ToolTip="Statistiks">
                         <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/statistics.png"/>
                     </Button>

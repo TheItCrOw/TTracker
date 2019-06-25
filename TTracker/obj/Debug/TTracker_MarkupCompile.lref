@@ -1,6 +1,7 @@
 ﻿
 FE:\WPF Projects\TTracker\TTracker\GUI\Views\App.xaml;;
 FE:\WPF Projects\TTracker\TTracker\GUI\Views\AccountView.xaml;;
+FE:\WPF Projects\TTracker\TTracker\GUI\Views\StatisticsManagementView.xaml;;
 FE:\WPF Projects\TTracker\TTracker\GUI\Views\TicketManagementSubViews\AllTicketsFrameSubViews\FinishedTicketsView.xaml;;
 FE:\WPF Projects\TTracker\TTracker\GUI\Views\TicketManagementSubViews\ProjectFrameSubView\AskForProjectDeletionView.xaml;;
 FE:\WPF Projects\TTracker\TTracker\GUI\Views\TicketManagementSubViews\ProjectFrameSubView\CreateProjectView.xaml;;

@@ -168,7 +168,6 @@
                                       ItemsSource="{Binding RootProjectsChart}"                                                   
                                       IndependentValueBinding="{Binding Name}" 
                                       DependentValueBinding="{Binding Share}" 
-                                      AnimationSequence="FirstToLast"
                                       Foreground="Red"/>
                                 </DVC:Chart.Series>
                             </DVC:Chart>
@@ -181,7 +180,6 @@
                                       ItemsSource="{Binding SubProjectsChart}"                                                   
                                       IndependentValueBinding="{Binding Name}" 
                                       DependentValueBinding="{Binding Share}" 
-                                      AnimationSequence="FirstToLast"
                                       Background="LightSteelBlue"/>
                                 </DVC:Chart.Series>
                             </DVC:Chart>
