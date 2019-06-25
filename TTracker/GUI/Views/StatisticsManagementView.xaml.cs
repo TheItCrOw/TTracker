@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Printing;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -13,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TTracker.GUI.ViewModels.ManagamentBase;
+using TTracker.Utility;
 
 namespace TTracker.GUI.Views
 {
@@ -25,6 +27,11 @@ namespace TTracker.GUI.Views
         {
             InitializeComponent();
             this.DataContext = new StatisticsManagementViewModel();
+        }
+
+        private void PrintButton_Click(object sender, RoutedEventArgs e)
+        {
+            CustomPrintHelper.PrintVisual(MainChart);
         }
     }
 }

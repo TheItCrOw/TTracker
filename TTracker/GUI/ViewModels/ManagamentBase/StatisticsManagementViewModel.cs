@@ -53,7 +53,7 @@ namespace TTracker.GUI.ViewModels.ManagamentBase
         }
 
         void Setup()
-        {
+        { 
             IsLoading = true;
             _mainTask = Task.Run(() =>
             {
@@ -64,7 +64,6 @@ namespace TTracker.GUI.ViewModels.ManagamentBase
             });
             while (!_mainTask.IsCompleted)
             {
-                CurrentTopic = "Loading...";
                 IsLoading = true;
                 return;
             }
@@ -84,7 +83,6 @@ namespace TTracker.GUI.ViewModels.ManagamentBase
             });
             while (!_mainTask.IsCompleted)
             {
-                CurrentTopic = "Loading...";
                 IsLoading = true;
                 return;
             }
@@ -106,7 +104,6 @@ namespace TTracker.GUI.ViewModels.ManagamentBase
 
             while (!_mainTask.IsCompleted)
             {
-                CurrentTopic = "Loading...";
                 IsLoading = true;
                 return;
             }
@@ -164,7 +161,6 @@ namespace TTracker.GUI.ViewModels.ManagamentBase
 
             while (!_mainTask.IsCompleted)
             {
-                CurrentTopic = "Loading...";
                 IsLoading = true;
                 return;
             }

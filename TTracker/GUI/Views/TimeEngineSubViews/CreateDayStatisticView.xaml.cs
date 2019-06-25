@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TTracker.Utility;
 
 namespace TTracker.GUI.Views.TimeEngineSubViews
 {
@@ -27,11 +28,7 @@ namespace TTracker.GUI.Views.TimeEngineSubViews
 
         private void PrintButton_Click(object sender, RoutedEventArgs e)
         {
-            PrintDialog printDialog = new PrintDialog();
-            if (printDialog.ShowDialog() == true)
-            {
-                printDialog.PrintVisual(MainGrid, "Day Statistic");
-            }
+            CustomPrintHelper.PrintVisual(MainGrid);
         }
 
         private void PdfButton_Click(object sender, RoutedEventArgs e)
