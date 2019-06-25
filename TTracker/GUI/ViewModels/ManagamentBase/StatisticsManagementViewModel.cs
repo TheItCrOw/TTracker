@@ -22,6 +22,7 @@ namespace TTracker.GUI.ViewModels.ManagamentBase
         private string _currentTopic;
         private Task _mainTask;
         private bool _isLoading;
+        private DateTime _selectedCalendarDate;
 
         public ObservableCollection<ChartHelperModel> AllTimesChart { get; set; } = new ObservableCollection<ChartHelperModel>();
         public DelegateCommand<string> ChangeRootSubProjectsCommand => new DelegateCommand<string>(ChangeRootSubProjects);
@@ -35,6 +36,14 @@ namespace TTracker.GUI.ViewModels.ManagamentBase
             set
             {
                 SetProperty(ref _currentTopic, value);
+            }
+        }
+        public DateTime SelectedCalendarDate
+        {
+            get { return _selectedCalendarDate; }
+            set
+            {
+                SetProperty(ref _selectedCalendarDate, value);
             }
         }
         public bool IsLoading
@@ -153,6 +162,31 @@ namespace TTracker.GUI.ViewModels.ManagamentBase
                         _currentTimeEntriesVm = _currentTimeEntries.Select(tE => new TimeEntryViewModel(tE, this)).ToList();
                         LoadAllTimesChartRoot();
                         CurrentTopic = "Current week statistic";
+                        break;
+                    case "StatisticOfDay":
+                        _currentTimeEntries = _allTimeEntries.Select(tE => tE).Where(tE => tE.Created.ToShortDateString() == SelectedCalendarDate.ToShortDateString()).ToList();
+                        _currentTimeEntriesVm = _currentTimeEntries.Select(tE => new TimeEntryViewModel(tE, this)).ToList();
+                        LoadAllTimesChartRoot();
+                        CurrentTopic = $"Statistic of the: {SelectedCalendarDate.ToShortDateString()}";
+                        break;
+                    case "StatisticOfWeek":
+                        DateTime dateOfWeekBeginning = SelectedCalendarDate.StartOfWeek(DayOfWeek.Monday);
+                        _currentTimeEntries = _allTimeEntries.Select(tE => tE).Where(tE => tE.Created > dateOfWeekBeginning && tE.Created < dateOfWeekBeginning.AddDays(6)).ToList();
+                        _currentTimeEntriesVm = _currentTimeEntries.Select(tE => new TimeEntryViewModel(tE, this)).ToList();
+                        LoadAllTimesChartRoot();
+                        CurrentTopic = $"Week statistic - from {dateOfWeekBeginning.ToShortDateString()} to {dateOfWeekBeginning.AddDays(6).ToShortDateString()}";
+                        break;
+                    case "StatisticOfMonth":
+                        _currentTimeEntries = _allTimeEntries.Select(tE => tE).Where(tE => tE.Created.Month == SelectedCalendarDate.Month).ToList();
+                        _currentTimeEntriesVm = _currentTimeEntries.Select(tE => new TimeEntryViewModel(tE, this)).ToList();
+                        LoadAllTimesChartRoot();
+                        CurrentTopic = $"Month statistic of the: {SelectedCalendarDate.Month}th of {SelectedCalendarDate.Year}";
+                        break;
+                    case "StatisticOfYear":
+                        _currentTimeEntries = _allTimeEntries.Select(tE => tE).Where(tE => tE.Created.Year == SelectedCalendarDate.Year).ToList();
+                        _currentTimeEntriesVm = _currentTimeEntries.Select(tE => new TimeEntryViewModel(tE, this)).ToList();
+                        LoadAllTimesChartRoot();
+                        CurrentTopic = $"Year statistic of: {SelectedCalendarDate.Year}";
                         break;
                     default:
                         break;

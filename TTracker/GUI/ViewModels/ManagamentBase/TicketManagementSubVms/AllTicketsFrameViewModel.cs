@@ -83,6 +83,7 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
         private void LoadTaskTickets()
         {
             TaskTickets.Clear();
+
             var allTaskTickets = DataAccess.Instance.GetAll<TaskTicket>();
             var allTaskTicketsVM = new List<TaskTicketViewModel>();
 
@@ -94,7 +95,7 @@ namespace TTracker.GUI.ViewModels.TicketManagementSubVms
                 if (DataAccess.CurrentLoggedUser != null && ticket.UserId == DataAccess.CurrentLoggedUser.Id)
                     allTaskTicketsVM.Add(new TaskTicketViewModel(ticket, (AllTicketsFrameViewModel)CurrentContent, false));
             }
-;
+
             TaskTickets.AddRange(allTaskTicketsVM);
 
             HasUnsavedChanges = false;

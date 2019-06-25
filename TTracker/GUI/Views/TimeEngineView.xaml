@@ -105,7 +105,7 @@
                                 Click="OpenCalendarButton_Click">
                         <Image Source="pack://application:,,,/Resources/calendar.png" Margin="2"/>
                     </Button>
-                    <TextBlock Text="{Binding SelectedCalendarDate, StringFormat='{}{0:MM/dd/yyyy}'}" FontSize="17" VerticalAlignment="Center" FontWeight="Bold" Margin="10 0 10 0"/>
+                    <TextBlock Text="{Binding SelectedCalendarDate, StringFormat='{}{0:dd.MM.yyyy}'}" FontSize="17" VerticalAlignment="Center" FontWeight="Bold" Margin="10 0 10 0"/>
                 </DockPanel>
             </Border>
 

@@ -31,9 +31,6 @@ namespace TTracker.GUI.Views.TimeEngineSubViews
             CustomPrintHelper.PrintVisual(MainGrid);
         }
 
-        private void PdfButton_Click(object sender, RoutedEventArgs e)
-        {
 
-        }
     }
 }

@@ -31,6 +31,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="50"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
@@ -39,9 +40,13 @@
                         Command="{Binding ChangeTimeSpanCommand}" CommandParameter="{Binding ElementName=AllTimeButton, Path=Name}"/>
                 <Button x:Name="CurrentYearButton" Grid.Column="1" FontSize="15" Content="Current Year" FontWeight="DemiBold" Background="LightSteelBlue"
                         Command="{Binding ChangeTimeSpanCommand}" CommandParameter="{Binding ElementName=CurrentYearButton, Path=Name}"/>
-                <Button x:Name="CurrentMonthButton" Grid.Column="2" FontSize="15" Content="Current Month" FontWeight="DemiBold" Background="LightSteelBlue"
+                <!--selected a Timespan from calendar-->
+                <Button x:Name="CalendarOpenButton" Grid.Column="2" Background="AliceBlue" BorderThickness="0" Click="OpenCalendarButton_Click" ToolTip="Calculate statistics of a chosen timespan">
+                    <Image Margin="6" Source="/TTracker;component/Resources/calendar.png"/>
+                </Button>
+                <Button x:Name="CurrentMonthButton" Grid.Column="3" FontSize="15" Content="Current Month" FontWeight="DemiBold" Background="LightSteelBlue"
                         Command="{Binding ChangeTimeSpanCommand}" CommandParameter="{Binding ElementName=CurrentMonthButton, Path=Name}"/>
-                <Button x:Name="CurrentWeekButton" Grid.Column="3" FontSize="15" Content="Current Week" FontWeight="DemiBold" Background="LightSteelBlue"
+                <Button x:Name="CurrentWeekButton" Grid.Column="4" FontSize="15" Content="Current Week" FontWeight="DemiBold" Background="LightSteelBlue"
                         Command="{Binding ChangeTimeSpanCommand}" CommandParameter="{Binding ElementName=CurrentWeekButton, Path=Name}"/>
             </Grid>
         </Border>
@@ -56,15 +61,15 @@
                     <RowDefinition Height="50"/>
                 </Grid.RowDefinitions>
 
-                <!--Export to Pdf-->
-                <Button Grid.Row="0" Background="LightSteelBlue" BorderThickness="0" Command="{Binding SaveAsPdfCommand}" CommandParameter="{Binding ElementName=MainChart}">
-                    <Image Margin="5" Source="/TTracker;component/Resources/pdf.png"/>
-                </Button>
                 <!--Print--> 
-                <Button x:Name="PrintButton" Grid.Row="1" Background="LightSteelBlue" BorderThickness="0" Click="PrintButton_Click">
+                <Button x:Name="PrintButton" Grid.Row="0" Background="LightSteelBlue" BorderThickness="0" Click="PrintButton_Click" ToolTip="Print">
                     <Image Margin="5" Source="/TTracker;component/Resources/print.png"/>
                 </Button>
-
+                <!--Export to Pdf-->
+                <Button Grid.Row="1" Background="LightSteelBlue" BorderThickness="0" ToolTip="Save as PDF" Command="{Binding SaveAsPdfCommand}" 
+                        CommandParameter="{Binding ElementName=MainChart}">
+                    <Image Margin="5" Source="/TTracker;component/Resources/pdf.png"/>
+                </Button>
             </Grid>
         </Border>
 
@@ -74,9 +79,9 @@
                 <StackPanel x:Name="CurrentChart" VerticalAlignment="Center">
                     <!--Root or sub button-->
                     <DockPanel LastChildFill="False" Height="30" HorizontalAlignment="Center">
-                        <Button x:Name="RootProjectsButton" Width="120" Margin="17 0 0 0" Background="LightSteelBlue" Content="Root-Projects" FontSize="15" FontWeight="DemiBold" BorderThickness="1 0 1 1"
+                        <Button x:Name="RootProjectsButton" Width="120" Margin="17 0 0 0" Background="AliceBlue" Content="Root-Projects" FontSize="15" FontWeight="DemiBold" BorderThickness="1 0 1 1"
                                 Command="{Binding ChangeRootSubProjectsCommand}" CommandParameter="{Binding ElementName=RootProjectsButton, Path=Name}"/>
-                        <Button x:Name="SubProjectsButton" Width="120" Background="LightSteelBlue" Content="Sub-Projects" FontSize="15" FontWeight="DemiBold" BorderThickness="1 0 1 1" 
+                        <Button x:Name="SubProjectsButton" Width="120" Background="AliceBlue" Content="Sub-Projects" FontSize="15" FontWeight="DemiBold" BorderThickness="0 0 1 1" 
                                 Command="{Binding ChangeRootSubProjectsCommand}" CommandParameter="{Binding ElementName=SubProjectsButton, Path=Name}"/>
                     </DockPanel>
                     <!--topic-->
@@ -134,7 +139,25 @@
             </Image.Style>
         </Image>
 
-
-
+        <!--Calendar for picking timespan-->
+        <Viewbox x:Name="CalendarViewBox" Grid.Row="1" Grid.Column="1" Height="500" Width="500" VerticalAlignment="Top" Margin="0 10 0 0" Visibility="Collapsed" Panel.ZIndex="1" >
+            <StackPanel>
+                <Button x:Name="CalendarCloseButton" Height="25" Background="LightSteelBlue"
+                                Click="CalendarCloseButton_Click">
+                    <Image Source="pack://application:,,,/Resources/arrow-up.png" />
+                </Button>
+                <!--Calendar-->
+                <Calendar x:Name="Calendar" Visibility="Visible" DisplayMode="Month" SelectedDate="{Binding SelectedCalendarDate}"/>
+                <!--buttons for choosing which statistic should be caclulated-->
+                <Button x:Name="StatisticOfDay" Height="25" Background="AliceBlue" Content="Statistics of selected day" Margin="0 3 0 0"
+                        Command="{Binding ChangeTimeSpanCommand}" CommandParameter="{Binding ElementName=StatisticOfDay, Path=Name}"/>
+                <Button x:Name="StatisticOfWeek" Height="25" Background="AliceBlue" Content="...selected week" Margin="0 3 0 0"
+                        Command="{Binding ChangeTimeSpanCommand}" CommandParameter="{Binding ElementName=StatisticOfWeek, Path=Name}"/>
+                <Button x:Name="StatisticOfMonth" Height="25" Background="AliceBlue" Content="...selected month" Margin="0 3 0 0"
+                        Command="{Binding ChangeTimeSpanCommand}" CommandParameter="{Binding ElementName=StatisticOfMonth, Path=Name}"/>
+                <Button x:Name="StatisticOfYear" Height="25" Background="AliceBlue" Content="...selected Year" Margin="0 3 0 0"
+                        Command="{Binding ChangeTimeSpanCommand}" CommandParameter="{Binding ElementName=StatisticOfYear, Path=Name}"/>
+            </StackPanel>
+        </Viewbox>
     </Grid>
 </Page>
