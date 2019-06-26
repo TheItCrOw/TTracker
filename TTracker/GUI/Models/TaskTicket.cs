@@ -8,8 +8,21 @@ using TTracker.BaseDataModules;
 
 namespace TTracker.GUI.Models
 {
-    public class TaskTicket : Ticket
+
+    public class TaskTicket : Ticket, IPrioritable, IStatusable
     {
+
+        private float _expectedTime;
+        private float _usedTime;
+        private PriorityLevel _priority;
+        private Status _status;
+
+        public float ExpectedTime { get { return _expectedTime; } set => _expectedTime = value; }
+        public float UsedTime { get { return _usedTime; } set => _usedTime = value; }
+        public PriorityLevel Priority { get { return _priority; } set => _priority = value; }
+        public Status Status { get { return _status; } set => _status = value; }
+
+
         public TaskTicket(string name, Guid id, Guid userId, Guid projectId, string text, DateTime created,
                           float expectedTime, float usedTime, string priority, string status)
         {

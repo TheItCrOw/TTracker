@@ -14,8 +14,13 @@ namespace TTracker.BaseDataModules
 
         private bool _hasUnsavedChanges;
         private object _currentContent;
+        private object _selectedVm;
 
         public List<ViewModelBase> DeletableList = new List<ViewModelBase>();
+
+        public virtual void OnVmGotSelected()
+        {
+        }
 
         public bool HasUnsavedChanges
         {
@@ -39,6 +44,20 @@ namespace TTracker.BaseDataModules
             set
             {
                 SetProperty(ref _currentContent, value);
+            }
+        }
+
+        //This holds the item that is selected in the itemscontrol when used
+        public object SelectedVm
+        {
+            get
+            {
+                return _selectedVm;
+            }
+            set
+            {
+                SetProperty(ref _selectedVm, value);
+                OnVmGotSelected();
             }
         }
     }

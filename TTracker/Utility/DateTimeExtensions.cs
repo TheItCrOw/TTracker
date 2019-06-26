@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,5 +21,17 @@ namespace TTracker.Utility
             return dt.AddDays(-1 * diff).Date;
         }
 
+    }
+
+    public enum CustomCalendarMode
+    {
+        [Description("Day")]
+        Day,
+        [Description("Week")]
+        Week,
+        [Description("Month")]
+        Month,
+        [Description("Year")]
+        Year
     }
 }

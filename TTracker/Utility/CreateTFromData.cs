@@ -130,6 +130,73 @@ namespace TTracker.Utility
             }
             return (new TaskTicket(name, Id, userId, projectId, text, created, expectedTime, usedTime, priority, status));
         }
+        public List<DateTicket> CreateDateTicketListFromXmlData(List<XDocument> ticketData)
+        {
+            var allDateTickets = new List<DateTicket>();
+
+            //Foreach XDocument in ticketData
+            foreach (var doc in ticketData)
+            {
+                allDateTickets.Add(CreateDateTicketFromXmlData(doc));
+            }
+
+            return allDateTickets;
+        }
+        private protected DateTicket CreateDateTicketFromXmlData(XDocument doc)
+        {
+            var name = string.Empty;
+            Guid Id = Guid.Empty;
+            Guid userId = Guid.Empty;
+            Guid projectId = Guid.Empty;
+            var text = string.Empty;
+            DateTime created = DateTime.Now;
+            DateTime dateStart = DateTime.Now;
+            DateTime dateEnd = DateTime.Now;
+
+            var docAllData = doc.Root.Value;
+            var docElement = doc.Root.Elements();
+
+            //Foreach element in XML FIle -> Id/432985094589 etc.
+            foreach (var element in docElement)
+            {
+                var data = element.ToString();
+
+                if (data != null)
+                {
+                    string[] splitedData = data.Split(new char[] { '/' });
+
+                    switch (splitedData.Last())
+                    {
+                        case "Name>":
+                            name = element.Value;
+                            break;
+                        case "Id>":
+                            Id = new Guid(element.Value);
+                            break;
+                        case "UserId>":
+                            userId = new Guid(element.Value);
+                            break;
+                        case "ProjectId>":
+                            projectId = new Guid(element.Value);
+                            break;
+                        case "Text>":
+                            text = element.Value;
+                            break;
+                        case "Created>":
+                            created = DateTime.Parse(element.Value);
+                            break;
+                        case "DateStart>":
+                            dateStart = DateTime.Parse(element.Value);
+                            break;
+                        case "DateEnd>":
+                            dateEnd = DateTime.Parse(element.Value);
+                            break;
+
+                    }
+                }
+            }
+            return (new DateTicket(Id, name, userId, projectId, text, created, dateStart, dateEnd));
+        }
         public List<Project> CreateProjectListFromXmlData(List<XDocument> projectData)
         {
             var allProjects = new List<Project>();

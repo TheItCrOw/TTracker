@@ -36,6 +36,9 @@ namespace TTracker.GUI.ViewModels
         }
         public HomeViewModel()
         {
+            if (DataAccess.CurrentLoggedUser == null)
+                return;
+
             Date = ($"Your To-Do´s for today, the {DateTime.Now.ToShortDateString()}");
             allTimeEntries.AddRange(DataAccess.Instance.GetAll<TimeEntry>());
             LoadTickets();
@@ -74,7 +77,9 @@ namespace TTracker.GUI.ViewModels
         void LoadMicroTasks()
         {
             var allMicroTasks = DataAccess.Instance.GetAll<MicroTask>();
-            var allMicroTasksVm = allMicroTasks.Select(mT => new MicroTaskViewModel(mT, this));
+            var allMicroTasksVm = allMicroTasks
+                .Where(mT => mT.UserId == DataAccess.CurrentLoggedUser.Id)
+                .Select(mT => new MicroTaskViewModel(mT, this));
 
             MicroTasks.AddRange(allMicroTasksVm);
         }

@@ -66,3 +66,11 @@ E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\P
 E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\TicketManagementSubViews\AllTicketsFrameSubViews\CreateTicketView.baml
 E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\StatisticsManagementView.g.cs
 E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\StatisticsManagementView.baml
+E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\CalendarView.g.cs
+E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\CalendarView.baml
+E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\CalendarSubViews\WeeklyView.g.cs
+E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\CalendarSubViews\WeeklyView.baml
+E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\CalendarSubViews\DailyView.g.cs
+E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\CalendarSubViews\DailyView.baml
+E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\CalendarSubViews\CreateDateTicketView.g.cs
+E:\WPF Projects\TTracker\TTracker\obj\Debug\GUI\Views\CalendarSubViews\CreateDateTicketView.baml

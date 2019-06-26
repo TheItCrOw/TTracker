@@ -1,4 +1,5 @@
-﻿using Prism.Mvvm;
+﻿using Prism.Commands;
+using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,12 @@ namespace TTracker.GUI.Models
         /// </summary>
 
         private T _currentViewModel;
+        private ViewModelManagementBase _currentBase;
         private bool _isSelected;
+
+        //Selected Command when you work with buttons in an itemscontrol
+        public DelegateCommand SelectedCommand => new DelegateCommand(Selected);
+
         public T CurrentViewModel
         {
             get { return _currentViewModel; }
@@ -33,13 +39,19 @@ namespace TTracker.GUI.Models
             set
             {
                 SetProperty(ref _isSelected, value);
+                _currentBase.SelectedVm = CurrentViewModel;
             }
         }
 
-        public UtilityViewModel(object viewModel)
+        public UtilityViewModel(object viewModel, ViewModelManagementBase currentBase)
         {
             CurrentViewModel = (T)viewModel;
+            _currentBase = currentBase;
         }
 
+        void Selected()
+        {
+            IsSelected = true;
+        }
     }
 }

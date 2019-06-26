@@ -39,7 +39,7 @@ namespace TTracker.GUI.ViewModels.ManagamentBase.TicketManagementSubVms.AllTicke
             {
                 if (ticket.Status == Status.Finished)
                 {
-                    var utilModel = new UtilityViewModel<TaskTicketViewModel>(ticket);
+                    var utilModel = new UtilityViewModel<TaskTicketViewModel>(ticket, this);
                     FinishedTaskTickets.Add(utilModel);
                 }
             }

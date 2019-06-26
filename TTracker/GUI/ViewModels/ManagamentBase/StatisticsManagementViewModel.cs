@@ -23,13 +23,10 @@ namespace TTracker.GUI.ViewModels.ManagamentBase
         private Task _mainTask;
         private bool _isLoading;
         private DateTime _selectedCalendarDate;
-
         public ObservableCollection<ChartHelperModel> AllTimesChart { get; set; } = new ObservableCollection<ChartHelperModel>();
         public DelegateCommand<string> ChangeRootSubProjectsCommand => new DelegateCommand<string>(ChangeRootSubProjects);
         public DelegateCommand<string> ChangeTimeSpanCommand => new DelegateCommand<string>(ChangeTimeSpan);
         public DelegateCommand<FrameworkElement> SaveAsPdfCommand => new DelegateCommand<FrameworkElement>(SaveAsPdf);
-
-
         public string CurrentTopic
         {
             get { return _currentTopic; }

@@ -25,8 +25,8 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
+                    <!--<ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />-->
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
@@ -37,12 +37,12 @@
                 <Button x:Name="AllTicketsButton" ToolTip="All Tickets" Background="LightSteelBlue" BorderBrush="Black" Grid.Column="1" BorderThickness="0.5" Click="AllTicketsButton_Click">
                     <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/tasks.png"/>
                 </Button>
-                <Button ToolTip="Task Tickets" Background="LightSteelBlue" BorderBrush="Black" Grid.Column="2" BorderThickness="0.5">
+                <!--<Button ToolTip="Task Tickets" Background="LightSteelBlue" BorderBrush="Black" Grid.Column="2" BorderThickness="0.5">
                     <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/task-ticket.png"/>
                 </Button>
                 <Button ToolTip="Date Tickets" Background="LightSteelBlue" BorderBrush="Black" Grid.Column="3" BorderThickness="0.5">
                     <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/date-ticket.png"/>
-                </Button>
+                </Button>-->
                 <Button ToolTip="Projects" Background="LightSteelBlue" BorderBrush="Black" Grid.Column="4" BorderThickness="0.5" Click="ProjectButton_Click" >
                     <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/project.png"/>
                 </Button>

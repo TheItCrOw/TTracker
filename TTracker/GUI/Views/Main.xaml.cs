@@ -45,6 +45,13 @@ namespace TTracker
             NavigationFrame.Content = new TicketManagementView();
         }
 
+        //Naviates to the Calendar
+        private void CalendarButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationFrame.Content = null;
+            NavigationFrame.Content = new CalendarView();
+        }
+
         //Navigates to TimeEngine
         private void TimeEngine_OnClick(object sender, RoutedEventArgs e)
         {
@@ -65,5 +72,7 @@ namespace TTracker
             NavigationFrame.Content = null;
             NavigationFrame.Content = new AccountView();
         }
+
+
     }
 }

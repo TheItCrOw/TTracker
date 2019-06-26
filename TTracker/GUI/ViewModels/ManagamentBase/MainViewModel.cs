@@ -11,7 +11,7 @@ using TTracker.GUI.Views;
 
 namespace TTracker
 {
-    class MainViewModel : BindableBase
+    public class MainViewModel : BindableBase
     {
         public MainViewModel()
         {

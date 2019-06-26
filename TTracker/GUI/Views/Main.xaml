@@ -31,6 +31,7 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
                     <Border BorderThickness="1" BorderBrush="Black">
@@ -44,15 +45,19 @@
                             ToolTip="Ticket Management">
                         <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/tasks.png"/>
                     </Button>
-                    <Button x:Name="TimeButton" Grid.Column="3" Background="White" Margin="0 0 0 0" Click="TimeEngine_OnClick"
+                    <Button x:Name="CalendarButton" Grid.Column="3" Background="White" Margin="0 0 0 0"  Click="CalendarButton_Click"
+                            ToolTip="Calendar">
+                        <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/calendar-v2.png"/>
+                    </Button>
+                    <Button x:Name="TimeButton" Grid.Column="4" Background="White" Margin="0 0 0 0" Click="TimeEngine_OnClick"
                             ToolTip="Time Engine">
                         <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/time.png"/>
                     </Button>
-                    <Button x:Name="StatisticsButton" Grid.Column="4" Background="White" Margin="0 0 0 0" Click="StatisticsButton_Click"
+                    <Button x:Name="StatisticsButton" Grid.Column="5" Background="White" Margin="0 0 0 0" Click="StatisticsButton_Click"
                             ToolTip="Statistiks">
                         <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/statistics.png"/>
                     </Button>
-                    <Button x:Name="AccountButton" Grid.Column="5" Background="White" Margin="0 0 0 0" Click="AccountButton_OnClick"
+                    <Button x:Name="AccountButton" Grid.Column="6" Background="White" Margin="0 0 0 0" Click="AccountButton_OnClick"
                             ToolTip="Account">
                         <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/user.png"/>
                     </Button>

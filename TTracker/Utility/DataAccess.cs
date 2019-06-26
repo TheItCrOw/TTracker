@@ -50,6 +50,19 @@ namespace TTracker.Utility
             XmlWriteableDataList.Add("Status/" + newTaskTicket.Status);
             _xmlReaderWriter.SaveNewToXml("TaskTickets", newTaskTicket.Id, XmlWriteableDataList);
         }
+        public void RegisterAndSaveNewDateTicket(DateTicket newDateTicket)
+        {
+            XmlWriteableDataList.Clear();
+            XmlWriteableDataList.Add("Id/" + newDateTicket.Id);
+            XmlWriteableDataList.Add("Name/" + newDateTicket.Name);
+            XmlWriteableDataList.Add("UserId/" + newDateTicket.UserId);
+            XmlWriteableDataList.Add("ProjectId/" + newDateTicket.ProjectId);
+            XmlWriteableDataList.Add("Text/" + newDateTicket.Text);
+            XmlWriteableDataList.Add("Created/" + newDateTicket.Created);
+            XmlWriteableDataList.Add("DateStart/" + newDateTicket.DateStart);
+            XmlWriteableDataList.Add("DateEnd/" + newDateTicket.DateEnd);
+            _xmlReaderWriter.SaveNewToXml("DateTickets", newDateTicket.Id, XmlWriteableDataList);
+        }
         public void RegisterAndSaveNewProject(Project newProject)
         {
             XmlWriteableDataList.Clear();
@@ -101,6 +114,8 @@ namespace TTracker.Utility
             {
                 case "TaskTicket":
                     return (IEnumerable<T>)(_createTFromXmlData.CreateTaskTicketListFromXmlData(allData));
+                case "DateTicket":
+                    return (IEnumerable<T>)(_createTFromXmlData.CreateDateTicketListFromXmlData(allData));
                 case "Project":
                     return (IEnumerable<T>)(_createTFromXmlData.CreateProjectListFromXmlData(allData));
                 case "TimeEntry":
@@ -270,7 +285,7 @@ namespace TTracker.Utility
                     }
                 }
             }
-            return new Project("Deleted Project", Guid.Empty, CurrentLoggedUser.Id, Guid.Empty, "This project has been deleted", DateTime.Now, 0);
+            return new Project("No Project", Guid.Empty, CurrentLoggedUser.Id, Guid.Empty, "Project doesnt exist", DateTime.Now, 0);
         }
         public TaskTicket GetTaskTicketById(Guid Id)
         {
@@ -299,8 +314,8 @@ namespace TTracker.Utility
                 }
             }
 
-            return new TaskTicket("Deleted Ticket", Guid.Empty, CurrentLoggedUser.Id, Guid.Empty, 
-                "This project has been deleted", DateTime.Now, 0, 0, "Low", "Finished");
+            return new TaskTicket("No Ticket", Guid.Empty, CurrentLoggedUser.Id, Guid.Empty, 
+                "Ticket doesnt exist", DateTime.Now, 0, 0, "Low", "Finished");
         }
 
     }

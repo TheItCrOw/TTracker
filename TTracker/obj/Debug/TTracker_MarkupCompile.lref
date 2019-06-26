@@ -1,6 +1,10 @@
 ﻿
 FE:\WPF Projects\TTracker\TTracker\GUI\Views\App.xaml;;
 FE:\WPF Projects\TTracker\TTracker\GUI\Views\AccountView.xaml;;
+FE:\WPF Projects\TTracker\TTracker\GUI\Views\CalendarSubViews\CreateDateTicketView.xaml;;
+FE:\WPF Projects\TTracker\TTracker\GUI\Views\CalendarSubViews\DailyView.xaml;;
+FE:\WPF Projects\TTracker\TTracker\GUI\Views\CalendarSubViews\WeeklyView.xaml;;
+FE:\WPF Projects\TTracker\TTracker\GUI\Views\CalendarView.xaml;;
 FE:\WPF Projects\TTracker\TTracker\GUI\Views\StatisticsManagementView.xaml;;
 FE:\WPF Projects\TTracker\TTracker\GUI\Views\TicketManagementSubViews\AllTicketsFrameSubViews\FinishedTicketsView.xaml;;
 FE:\WPF Projects\TTracker\TTracker\GUI\Views\TicketManagementSubViews\ProjectFrameSubView\AskForProjectDeletionView.xaml;;
