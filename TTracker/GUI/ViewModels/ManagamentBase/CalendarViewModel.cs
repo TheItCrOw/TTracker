@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using TTracker.BaseDataModules;
+using TTracker.GUI.Models;
+using TTracker.GUI.ViewModels.Entities;
 using TTracker.GUI.ViewModels.ManagamentBase.CalendarSubVms;
 using TTracker.GUI.Views.CalendarSubViews;
 using TTracker.Utility;
@@ -15,11 +17,13 @@ namespace TTracker.GUI.ViewModels.ManagamentBase
 {
     public class CalendarViewModel : ViewModelManagementBase
     {
+        private List<DateTicketViewModel> _allDateTicketsVm = new List<DateTicketViewModel>();
         private DateTime _selectedCalendarDate;
         private Frame _mainContentFrame;
         private List<DateTime> _currentlyShownDates = new List<DateTime>();
         private int _currentlyAddedAmountOfDays;
         private CustomCalendarMode _currentCalendarMode;
+        private List<DateTicketViewModel> _currentlyNeededDateTickets = new List<DateTicketViewModel>();
 
         public DelegateCommand<string> GoNextOrPreviousCommand => new DelegateCommand<string>(GoNextOrPrevious);
         public DelegateCommand<string> ChangeCustomCalendarModeCommand => new DelegateCommand<string>(ChangeCustomCalendarMode);
@@ -54,6 +58,15 @@ namespace TTracker.GUI.ViewModels.ManagamentBase
 
         void Setup()
         {
+            var allDateTickets = DataAccess.Instance.GetAll<DateTicket>();
+            _allDateTicketsVm = allDateTickets.Select(t => new DateTicketViewModel(t, this, false)).ToList();
+            UpdateCalendar(SelectedCalendarDate, _currentCalendarMode);
+        }
+        public void Reload()
+        {
+            _currentlyNeededDateTickets.Clear();
+            var allDateTickets = DataAccess.Instance.GetAll<DateTicket>();
+            _allDateTicketsVm = allDateTickets.Select(t => new DateTicketViewModel(t, this, false)).ToList();
             UpdateCalendar(SelectedCalendarDate, _currentCalendarMode);
         }
         void CreateNewDateTicket()
@@ -136,13 +149,23 @@ namespace TTracker.GUI.ViewModels.ManagamentBase
                     break;
             }
         }
+        protected void LoadCurrentlyNeededDateTickets()
+        {
+            _currentlyNeededDateTickets.Clear();
+            _currentlyNeededDateTickets = _allDateTicketsVm
+                .Where(t => t.DateStart.ToShortDateString() == SelectedCalendarDate.ToShortDateString())
+                .Select(t => t)
+                .ToList();
+        }
         protected void ChangeMainContentFrame(CustomCalendarMode mode)
         {
+            LoadCurrentlyNeededDateTickets();
+
             switch (mode)
             {
                 case CustomCalendarMode.Day:
                     var newDailyView = new DailyView();
-                    newDailyView.DataContext = new DailyViewModel(this, SelectedCalendarDate);
+                    newDailyView.DataContext = new DailyViewModel(this, SelectedCalendarDate, _currentlyNeededDateTickets);
                     MainContentFrame.Content = null;
                     MainContentFrame.Content = newDailyView;
                     _currentCalendarMode = CustomCalendarMode.Day;

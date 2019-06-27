@@ -18,8 +18,6 @@ namespace TTracker.GUI.ViewModels
     class CreateTicketViewModel : ViewModelManagementBase
     {
         private string _ticketName;
-        private bool _isTaskTicket;
-        private bool _isDateTicket;
         private string _ticketText;
         private float _expectedTicketTime;
         private ProjectViewModel _selectedProjectComboBox;
@@ -27,7 +25,7 @@ namespace TTracker.GUI.ViewModels
         private PriorityLevel _selectedPriorityComboBox;
         private Status _selectedStatusComboBox;
 
-        public DelegateCommand CreateNewTicketCommand => new DelegateCommand(CreateNewTicket);
+        public DelegateCommand CreateNewTicketCommand => new DelegateCommand(CreateNewTaskTicket);
         public ObservableCollection<ProjectViewModel> Projects { get; set; } = new ObservableCollection<ProjectViewModel>();
         public ObservableCollection<PriorityLevel> Priorities { get; set; } = new ObservableCollection<PriorityLevel>();
 
@@ -38,22 +36,6 @@ namespace TTracker.GUI.ViewModels
         }
 
         #region Properties
-        public bool isTaskTicket
-        {
-            get { return _isTaskTicket; }
-            set
-            {
-                SetProperty(ref _isTaskTicket, value);
-            }
-        }
-        public bool isDateTicket
-        {
-            get { return _isDateTicket; }
-            set
-            {
-                SetProperty(ref _isDateTicket, value);
-            }
-        }
         public string TicketName
         {
             get { return _ticketName; }
@@ -107,7 +89,6 @@ namespace TTracker.GUI.ViewModels
         void Setup()
         {
             LoadProjects();
-            isTaskTicket = true;
         }
 
         private void LoadProjects()
@@ -132,7 +113,7 @@ namespace TTracker.GUI.ViewModels
             Projects.AddRange(allProjectsVM);
         }
 
-        private void CreateNewTicket()
+        private void CreateNewTaskTicket()
         {
             if (DataAccess.CurrentLoggedUser == null)
             {
@@ -144,32 +125,12 @@ namespace TTracker.GUI.ViewModels
                 MessageBox.Show("Please name your ticket.");
                 return;
             }
-            else if(SelectedProjectComboBox == null)
+            else if (SelectedProjectComboBox == null)
             {
                 MessageBox.Show("Please choose a project.");
                 return;
             }
 
-            if (isTaskTicket && !isDateTicket)
-            {
-                CreateNewTaskTicket();
-            }
-            else if (isDateTicket && !isTaskTicket)
-            {
-                CreateNewDateTicket();
-            }
-            else if (isDateTicket && isTaskTicket)
-            {
-                MessageBox.Show("Only one checkboxes at the top may be checked.");
-            }
-            else
-            {
-                MessageBox.Show("Please make sure, that one and only one of the top Check Boxes is checked.");
-            }
-        }
-
-        private void CreateNewTaskTicket()
-        {
             var taskTicket = new TaskTicket(
                 TicketName,
                 Guid.NewGuid(),
@@ -185,11 +146,6 @@ namespace TTracker.GUI.ViewModels
 
             _allTicketsVm.TaskTickets.Add(new TaskTicketViewModel(taskTicket, _allTicketsVm, true));
             MessageBox.Show("The Ticket has been succesfully created!");
-        }
-
-        private void CreateNewDateTicket()
-        {
-
         }
     }
 }

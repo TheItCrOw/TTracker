@@ -119,6 +119,7 @@
     <Compile Include="GUI\Models\Project.cs" />
     <Compile Include="GUI\Models\TaskTicket.cs" />
     <Compile Include="GUI\Models\TimeEntry.cs" />
+    <Compile Include="GUI\ViewModels\Entities\DateTicketViewModel.cs" />
     <Compile Include="GUI\ViewModels\Entities\MicroTaskViewModel.cs" />
     <Compile Include="GUI\ViewModels\ManagamentBase\CalendarSubVms\CreateDateTicketViewModel.cs" />
     <Compile Include="GUI\ViewModels\ManagamentBase\CalendarSubVms\DailyViewModel.cs" />
@@ -424,6 +425,9 @@
   <ItemGroup>
     <Resource Include="Resources\arrow-left-v2.png" />
     <Resource Include="Resources\arrow-right-v2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\arrow-down.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

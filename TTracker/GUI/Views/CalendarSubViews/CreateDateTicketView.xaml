@@ -86,8 +86,20 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="From: " FontSize="15" Margin="10 0 0 0" />
                     <!--StartDate-->
+                    <Button Grid.Column="1" Background="AliceBlue" Click="FromOpenCalendarButton_Click" Height="25" HorizontalContentAlignment="Stretch">
+                        <DockPanel LastChildFill="False" Margin="10 0 10 0">
+                            <TextBlock Text="{Binding StartDate, StringFormat='{}{0:g}'}" FontSize="15" DockPanel.Dock="Left" FontWeight="DemiBold"/>
+                            <Image Source="pack://application:,,,/Resources/arrow-down.png" DockPanel.Dock="Right"/>
+                        </DockPanel>
+                    </Button>
                     <TextBlock Text="To: " FontSize="15" Grid.Column="2" Margin="10 0 0 0"/>
                     <!--EndDate-->
+                    <Button Grid.Column="3" Background="AliceBlue" Click="ToOpenCalendarButton_Click" Height="25" Margin="0 0 10 0" HorizontalContentAlignment="Stretch">
+                        <DockPanel LastChildFill="False" Margin="10 0 10 0">
+                            <TextBlock Text="{Binding EndDate, StringFormat='{}{0:g}'}" FontSize="15" DockPanel.Dock="Left" FontWeight="DemiBold"/>
+                            <Image Source="pack://application:,,,/Resources/arrow-down.png" DockPanel.Dock="Right"/>
+                        </DockPanel>
+                    </Button>
                 </Grid>
             </Border>
 
@@ -105,9 +117,41 @@
             </Border>
 
             <!--Create new Ticket Button-->
-            <StackPanel x:Name="CreateNewTicketButton" Grid.Row="7" VerticalAlignment="Center">
+            <StackPanel x:Name="CreateNewTicketButton" Grid.Row="5" VerticalAlignment="Center">
                 <Button Content="Create new Ticket" Height="40" Width="350" Command="{Binding CreateNewTicketCommand}"/>
             </StackPanel>
+
+            <!--Calendar for picking From Time-->
+            <Viewbox x:Name="FromCalendarViewBox" Grid.Row="4" Height="350" Width="350" VerticalAlignment="Top" Margin="0 0 290 0" Visibility="Collapsed" Panel.ZIndex="1" >
+                <StackPanel>
+                    <Button Height="25" Background="LightSteelBlue" Click="FromCalendarCloseButton">
+                        <Image Source="pack://application:,,,/Resources/arrow-up.png" />
+                    </Button>
+                    <!--Calendar-->
+                    <Calendar x:Name="FromCalendar" Visibility="Visible" DisplayMode="Month" SelectedDate="{Binding FromSelectedCalendarDate}"/>
+                    <!--enter time-->
+                    <DockPanel >
+                        <TextBlock Text="Enter time: " VerticalAlignment="Center"/>
+                        <TextBox x:Name="FromEnterTimeBox" Height="20" Background="AliceBlue" Margin="0 3 0 0" TextAlignment="Right" Text="{Binding FromSelectedCalendarTime, StringFormat=00:00}"/>
+                    </DockPanel>
+                </StackPanel>
+            </Viewbox>
+
+            <!--Calendar for picking To Time-->
+            <Viewbox x:Name="ToCalendarViewBox" Grid.Row="4" Height="350" Width="350" VerticalAlignment="Top" Margin="0 0 -490 0" Visibility="Collapsed" Panel.ZIndex="1" >
+                <StackPanel>
+                    <Button Height="25" Background="LightSteelBlue" Click="ToCalendarCloseButton">
+                        <Image Source="pack://application:,,,/Resources/arrow-up.png" />
+                    </Button>
+                    <!--Calendar-->
+                    <Calendar x:Name="ToCalendar" Visibility="Visible" DisplayMode="Month" SelectedDate="{Binding ToSelectedCalendarDate}"/>
+                    <!--enter time-->
+                    <DockPanel >
+                        <TextBlock Text="Enter time: " VerticalAlignment="Center"/>
+                        <TextBox x:Name="ToEnterTimeBox" Height="20" Background="AliceBlue" Margin="0 3 0 0" TextAlignment="Right" Text="{Binding ToSelectedCalendarTime, StringFormat=00:00}"/>
+                    </DockPanel>
+                </StackPanel>
+            </Viewbox>
 
         </Grid>
     </Border>

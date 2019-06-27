@@ -17,7 +17,6 @@ namespace TTracker.GUI.ViewModels.ManagamentBase.CalendarSubVms
         private string _selectedDate;
 
         public ObservableCollection<object> Days { get; set; } = new ObservableCollection<object>();
-        public DelegateCommand SelectDayCommand => new DelegateCommand(SelectDay);
 
 
         public string SelectedDate
@@ -48,11 +47,6 @@ namespace TTracker.GUI.ViewModels.ManagamentBase.CalendarSubVms
                 var utilityVm = new UtilityViewModel<DateTime>(date, this);
                 Days.Add(utilityVm);
             }
-        }
-
-        void SelectDay()
-        {
-
         }
 
     }

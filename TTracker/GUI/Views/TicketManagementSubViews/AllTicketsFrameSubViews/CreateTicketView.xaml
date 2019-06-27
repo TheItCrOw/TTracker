@@ -20,7 +20,6 @@
                 <RowDefinition Height="50" />
                 <RowDefinition Height="50" />
                 <RowDefinition Height="50" />
-                <RowDefinition Height="50" />
                 <RowDefinition Height="30" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="50" />
@@ -36,36 +35,9 @@
                            VerticalAlignment="Center"/>
             </Border>
 
-            <!--Decides, whether you want to create a task Ticket or date Ticket-->
-            <CheckBox x:Name="DateTicketCheckbox" Grid.Row="1" Width="100" Height="20" HorizontalAlignment="Right" Margin="0 0 300 0" Content="Date Ticket" FontSize="15"
-                      IsChecked="{Binding isDateTicket}">
-                <CheckBox.Style>
-                    <Style TargetType="CheckBox">
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding isTaskTicket}" Value="True">
-                                <Setter Property="IsChecked" Value="False" />
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </CheckBox.Style>
-            </CheckBox>
-            <CheckBox x:Name="TaskTicketCheckbox" Grid.Row="1" Width="100" Height="20" HorizontalAlignment="Left" Margin="300 0 0 0" Content="Task Ticket" FontSize="15"
-                      IsChecked="{Binding isTaskTicket}">
-                <CheckBox.Style>
-                    <Style TargetType="CheckBox">
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding isDateTicket}" Value="True">
-                                <Setter Property="IsChecked" Value="False" />
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </CheckBox.Style>
-            </CheckBox>
-
-
             <!--Here the information has to be filled in-->
             <!--Things to be filled out for a ticket: type, Name, Id, UserId, ProjectId, ProjectName, Text, Created, ExpectedTime, UsedTime-->
-            <Grid Grid.Row="2">
+            <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
@@ -110,7 +82,7 @@
             </Grid>
             
             <!--Enter Priority and Status-->
-            <Border Grid.Row="3" BorderThickness="0 0 0 1" BorderBrush="Black">
+            <Border Grid.Row="2" BorderThickness="0 0 0 1" BorderBrush="Black">
                 <Grid Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="100" />
@@ -140,12 +112,12 @@
             </Border>
             
             <!--Enter Ticket Description-->
-            <Border Grid.Row="4" Grid.Column="0" BorderThickness="0 0.5 0 0.5" BorderBrush="Black">
+            <Border Grid.Row="3" Grid.Column="0" BorderThickness="0 0.5 0 0.5" BorderBrush="Black">
                 <StackPanel VerticalAlignment="Center">
                     <TextBlock Text="Ticket Description" FontSize="15" Margin="10 0 0 0" TextAlignment="Center" FontWeight="DemiBold"/>
                 </StackPanel>
             </Border>
-            <Border Grid.Row="5" Grid.Column="0">
+            <Border Grid.Row="4" Grid.Column="0">
                 <ScrollViewer>
                     <TextBox Width="Auto" Height="Auto" FontSize="15"  Margin="10" TextWrapping="Wrap" AcceptsReturn="True"
                              Text="{Binding TicketText}"/>
@@ -153,13 +125,13 @@
             </Border>
 
             <!--Enter Expected Time-->
-            <DockPanel Grid.Row="6" HorizontalAlignment="Center" LastChildFill="False">
+            <DockPanel Grid.Row="5" HorizontalAlignment="Center" LastChildFill="False">
                 <TextBlock Text="Expected Time (In Work days)" FontSize="15" TextAlignment="Center" VerticalAlignment="Center" DockPanel.Dock="Left" Margin="10" FontWeight="DemiBold"/>
                 <TextBox Text="{Binding ExpectedTicketTime, StringFormat=N2}" FontSize="15" TextAlignment="Center" VerticalAlignment="Center" DockPanel.Dock="Left" Width="50"/>
             </DockPanel>
 
             <!--Create new Ticket Button-->
-            <StackPanel x:Name="CreateNewTicketButton" Grid.Row="7" VerticalAlignment="Center">
+            <StackPanel x:Name="CreateNewTicketButton" Grid.Row="6" VerticalAlignment="Center">
                 <Button Content="Create new Ticket" Height="40" Width="350" Command="{Binding CreateNewTicketCommand}"/>
             </StackPanel>
                                     

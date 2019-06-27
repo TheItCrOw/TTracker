@@ -27,6 +27,16 @@
                     <TextBlock Text="00:00 01:00 02:00 03:00 04:00 05:00 06:00 07:00 08:00 09:00 10:00
                                11:00 12:00 13:00 14:00 15:00 16:00 17:00 18:00 19:00 20:00 21:00 22:00 23:00 24:00" 
                                TextWrapping="Wrap" Width="60" FontSize="24" Margin="10 10 10 0"/>
+                    <ItemsControl x:Name="dateTicketsControl" Background="AliceBlue" ItemsSource="{Binding DateTickets}" >
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <DockPanel>
+                                    <TextBlock Text="{Binding Name}"/>
+                                    <TextBlock Text="{Binding ProjectName}"/>
+                                </DockPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
                 </DockPanel>
             </ScrollViewer>
         </Border>

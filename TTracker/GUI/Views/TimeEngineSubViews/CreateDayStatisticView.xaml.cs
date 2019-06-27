@@ -31,6 +31,5 @@ namespace TTracker.GUI.Views.TimeEngineSubViews
             CustomPrintHelper.PrintVisual(MainGrid);
         }
 
-
     }
 }
