@@ -47,9 +47,9 @@
                                         </Grid.RowDefinitions>
                                         
                                         <TextBlock Text="{Binding TimeStart}" FontSize="15" Grid.Row="0" Grid.Column="0" FontWeight="DemiBold" Margin="10 0 0 0"/>
-                                        <TextBlock Text="{Binding Name}" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" FontSize="15" Width="300" FontWeight="DemiBold" Foreground="Black" Margin="25 0 0 0"/>
-                                        <TextBlock Text="{Binding ProjectName}" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" FontSize="15" Width="300" FontWeight="DemiBold"/>
-                                        <TextBlock Text="{Binding Text}" FontSize="15" Grid.Column="3" VerticalAlignment="Center" Grid.Row="1" Width="300"/>
+                                        <TextBlock Text="{Binding Name}" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" FontSize="15" Width="300" FontWeight="DemiBold" Foreground="Black" Margin="25 0 0 0"/>
+                                        <TextBlock Text="{Binding ProjectName}" Grid.Column="2" Grid.Row="1" VerticalAlignment="Top" FontSize="15" Width="300" FontWeight="DemiBold"/>
+                                        <TextBlock Text="{Binding Text}" FontSize="15" Grid.Column="3" VerticalAlignment="Top" Grid.Row="1" Width="300"/>
                                         <TextBlock Text="{Binding TimeEnd}" FontSize="15" Grid.Row="2" Grid.Column="0" Margin="10 0 0 0" FontWeight="DemiBold"/>
                                     </Grid>
                                 </Border>

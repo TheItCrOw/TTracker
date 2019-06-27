@@ -71,6 +71,9 @@ namespace TTracker.GUI.ViewModels.ManagamentBase.CalendarSubVms
                 allDateTicketsVm.Add(ticket);
             }
             CalculateHeightOfTickets(allDateTicketsVm);
+
+            allDateTicketsVm = allDateTicketsVm.OrderBy(t => t.DateStart.ToShortTimeString()).ToList();
+            DateTickets.AddRange(allDateTicketsVm);
         }
 
         void CalculateHeightOfTickets(List<DateTicketViewModel> allDateTicketsVm)
@@ -83,7 +86,9 @@ namespace TTracker.GUI.ViewModels.ManagamentBase.CalendarSubVms
             {
                 if (ticket.DateStart.ToShortDateString() != ticket.DateEnd.ToShortDateString())
                 {
-                    ticket.Height = (float)HeightOfCalendar;
+                    ticket.Height = 800;
+                    ticket.BackgroundColor = _dateTicketsColors[i];
+                    i++;
                     return;
                 }
 
@@ -95,9 +100,6 @@ namespace TTracker.GUI.ViewModels.ManagamentBase.CalendarSubVms
                 ticket.BackgroundColor = _dateTicketsColors[i];
                 i++;
             }
-
-            allDateTicketsVm = allDateTicketsVm.OrderBy(t => t.DateStart.ToShortTimeString()).ToList();
-            DateTickets.AddRange(allDateTicketsVm);
         }
 
 
