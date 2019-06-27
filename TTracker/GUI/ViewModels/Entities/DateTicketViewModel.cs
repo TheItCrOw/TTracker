@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 using TTracker.BaseDataModules;
 using TTracker.GUI.Models;
 using TTracker.Utility;
@@ -17,6 +18,10 @@ namespace TTracker.GUI.ViewModels.Entities
         private string _text;
         private DateTime _dateStart;
         private DateTime _dateEnd;
+        private string _timeStart;
+        private string _timeEnd;
+        private float _height;
+        private SolidColorBrush _backgroundColor;
 
         public DateTicket Model { get; set; }
 
@@ -33,7 +38,6 @@ namespace TTracker.GUI.ViewModels.Entities
                 SetProperty(ref _name, value);
             }
         }
-
         public string Text
         {
             get { return _text; }
@@ -42,7 +46,6 @@ namespace TTracker.GUI.ViewModels.Entities
                 SetProperty(ref _text, value);
             }
         }
-
         public DateTime DateStart
         {
             get { return _dateStart; }
@@ -57,6 +60,38 @@ namespace TTracker.GUI.ViewModels.Entities
             set
             {
                 SetProperty(ref _dateEnd, value);
+            }
+        }
+        public string TimeStart
+        {
+            get { return _timeStart; }
+            set
+            {
+                SetProperty(ref _timeStart, value);
+            }
+        }
+        public string TimeEnd
+        {
+            get { return _timeEnd; }
+            set
+            {
+                SetProperty(ref _timeEnd, value);
+            }
+        }
+        public float Height
+        {
+            get { return _height; }
+            set
+            {
+                SetProperty(ref _height, value);
+            }
+        }
+        public SolidColorBrush BackgroundColor
+        {
+            get { return _backgroundColor; }
+            set
+            {
+                SetProperty(ref _backgroundColor, value);
             }
         }
 
@@ -77,7 +112,9 @@ namespace TTracker.GUI.ViewModels.Entities
             Created = model.Created;
             DateStart = model.DateStart;
             DateEnd = model.DateEnd;
-
+            TimeStart = DateStart.ToShortTimeString();
+            TimeEnd = DateEnd.ToShortTimeString();
+     
             if (!IsNew)
                 AfterSave();
         }

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TTracker.GUI.ViewModels.ManagamentBase.CalendarSubVms;
 
 namespace TTracker.GUI.Views.CalendarSubViews
 {
@@ -23,6 +24,7 @@ namespace TTracker.GUI.Views.CalendarSubViews
         public DailyView()
         {
             InitializeComponent();
+            
         }
     }
 }

@@ -35,7 +35,6 @@ namespace TTracker.Utility
             //Get the value left of the comma e.g 9,45 => 9
             var numberValue = Math.Truncate(timeDecimal);
 
-
             //Make Timespans .FromMinutes and .FromHours of left and right value of comma
             TimeSpan timeInMinutes = TimeSpan.FromMinutes(decimalValue * 100);
             TimeSpan timeInHours = TimeSpan.FromHours(numberValue);

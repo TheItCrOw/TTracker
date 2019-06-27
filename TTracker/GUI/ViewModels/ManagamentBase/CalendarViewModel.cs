@@ -165,7 +165,8 @@ namespace TTracker.GUI.ViewModels.ManagamentBase
             {
                 case CustomCalendarMode.Day:
                     var newDailyView = new DailyView();
-                    newDailyView.DataContext = new DailyViewModel(this, SelectedCalendarDate, _currentlyNeededDateTickets);
+                    var dataContext = new DailyViewModel(this, SelectedCalendarDate, _currentlyNeededDateTickets);
+                    newDailyView.DataContext = dataContext;
                     MainContentFrame.Content = null;
                     MainContentFrame.Content = newDailyView;
                     _currentCalendarMode = CustomCalendarMode.Day;

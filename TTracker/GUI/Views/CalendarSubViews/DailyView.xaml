@@ -20,24 +20,45 @@
         </Border>
         
         <!--Main Content-->
-        <Border Margin="0 10 0 10" Grid.Row="1" BorderThickness="2" BorderBrush="Black" Background="AliceBlue">
-            <ScrollViewer>
-                <DockPanel HorizontalAlignment="Left" Background="LightSteelBlue">
-                    <!--Scala on the left-->
-                    <TextBlock Text="00:00 01:00 02:00 03:00 04:00 05:00 06:00 07:00 08:00 09:00 10:00
-                               11:00 12:00 13:00 14:00 15:00 16:00 17:00 18:00 19:00 20:00 21:00 22:00 23:00 24:00" 
-                               TextWrapping="Wrap" Width="60" FontSize="24" Margin="10 10 10 0"/>
-                    <ItemsControl x:Name="dateTicketsControl" Background="AliceBlue" ItemsSource="{Binding DateTickets}" >
+        <Border x:Name="MainContentBorder" Margin="0 10 0 10" Grid.Row="1" BorderThickness="2" BorderBrush="Black" Background="AliceBlue">
+            <ScrollViewer HorizontalScrollBarVisibility="Visible">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <ItemsControl x:Name="dateTicketsControl" Grid.Column="1" Background="AliceBlue" ItemsSource="{Binding DateTickets}" HorizontalAlignment="Stretch"
+                                  >
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <DockPanel>
-                                    <TextBlock Text="{Binding Name}"/>
-                                    <TextBlock Text="{Binding ProjectName}"/>
-                                </DockPanel>
+                                <Border Background="{Binding BackgroundColor}" Height="{Binding Height}" BorderBrush="Black" BorderThickness="0.5 1 1 1">
+                                    
+                                    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="110"/>
+                                            <ColumnDefinition Width="300"/>
+                                            <ColumnDefinition Width="300"/>
+                                            <ColumnDefinition Width="300"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="20"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="20"/>
+                                        </Grid.RowDefinitions>
+                                        
+                                        <TextBlock Text="{Binding TimeStart}" FontSize="15" Grid.Row="0" Grid.Column="0" FontWeight="DemiBold" Margin="10 0 0 0"/>
+                                        <TextBlock Text="{Binding Name}" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" FontSize="15" Width="300" FontWeight="DemiBold" Foreground="Black" Margin="25 0 0 0"/>
+                                        <TextBlock Text="{Binding ProjectName}" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" FontSize="15" Width="300" FontWeight="DemiBold"/>
+                                        <TextBlock Text="{Binding Text}" FontSize="15" Grid.Column="3" VerticalAlignment="Center" Grid.Row="1" Width="300"/>
+                                        <TextBlock Text="{Binding TimeEnd}" FontSize="15" Grid.Row="2" Grid.Column="0" Margin="10 0 0 0" FontWeight="DemiBold"/>
+                                    </Grid>
+                                </Border>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
-                </DockPanel>
+
+                </Grid>
+
             </ScrollViewer>
         </Border>
         
