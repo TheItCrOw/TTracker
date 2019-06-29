@@ -2,10 +2,12 @@
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TTracker.BaseDataModules;
+using TTracker.GUI.ViewModels.Entities;
 
 namespace TTracker.GUI.Models
 {
@@ -23,6 +25,7 @@ namespace TTracker.GUI.Models
 
         //Selected Command when you work with buttons in an itemscontrol
         public DelegateCommand SelectedCommand => new DelegateCommand(Selected);
+        public ObservableCollection<object> Children { get; set; } = new ObservableCollection<object>();
 
         public T CurrentViewModel
         {

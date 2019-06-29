@@ -116,6 +116,7 @@ namespace TTracker.GUI.ViewModels.ManagamentBase
         }
         public void UpdateCalendar(DateTime currentDay, CustomCalendarMode mode)
         {
+            _currentCalendarMode = mode;
             CalculateCurrentlyNeededDates(currentDay);
             ChangeMainContentFrame(mode);
         }
@@ -149,13 +150,27 @@ namespace TTracker.GUI.ViewModels.ManagamentBase
                     break;
             }
         }
-        protected void LoadCurrentlyNeededDateTickets()
+        protected void LoadCurrentlyNeededDailyTickets()
         {
             _currentlyNeededDateTickets.Clear();
             foreach(var ticket in _allDateTicketsVm)
             {
                 if(ticket.DateStart.ToShortDateString() == SelectedCalendarDate.ToShortDateString()
+                    || ticket.DateEnd.ToShortDateString() == SelectedCalendarDate.ToShortDateString()
                     || (ticket.DateStart <= SelectedCalendarDate && ticket.DateEnd >= SelectedCalendarDate))
+                {
+                    _currentlyNeededDateTickets.Add(ticket);
+                }
+            }
+        }
+        protected void LoadCurrentlyNeededWeeklyTickets()
+        {
+            _currentlyNeededDateTickets.Clear();
+            foreach (var ticket in _allDateTicketsVm)
+            {
+                if (_currentlyShownDates.Contains(ticket.DateStart.Date)
+                    || _currentlyShownDates.Contains(ticket.DateEnd.Date)
+                    && !(_currentlyNeededDateTickets.Contains(ticket)))
                 {
                     _currentlyNeededDateTickets.Add(ticket);
                 }
@@ -163,11 +178,10 @@ namespace TTracker.GUI.ViewModels.ManagamentBase
         }
         protected void ChangeMainContentFrame(CustomCalendarMode mode)
         {
-            LoadCurrentlyNeededDateTickets();
-
             switch (mode)
             {
                 case CustomCalendarMode.Day:
+                    LoadCurrentlyNeededDailyTickets();
                     var newDailyView = new DailyView();
                     var dataContext = new DailyViewModel(this, SelectedCalendarDate, _currentlyNeededDateTickets);
                     newDailyView.DataContext = dataContext;
@@ -176,8 +190,9 @@ namespace TTracker.GUI.ViewModels.ManagamentBase
                     _currentCalendarMode = CustomCalendarMode.Day;
                     break;
                 case CustomCalendarMode.Week:
+                    LoadCurrentlyNeededWeeklyTickets();
                     var newWeeklyView = new WeeklyView();
-                    newWeeklyView.DataContext = new WeeklyViewModel(this, _currentlyShownDates);
+                    newWeeklyView.DataContext = new WeeklyViewModel(this, _currentlyShownDates, _currentlyNeededDateTickets);
                     MainContentFrame.Content = null;
                     MainContentFrame.Content = newWeeklyView;
                     _currentCalendarMode = CustomCalendarMode.Week;
