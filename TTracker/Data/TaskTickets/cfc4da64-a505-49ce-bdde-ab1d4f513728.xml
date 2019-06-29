@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data>
+  <Id>cfc4da64-a505-49ce-bdde-ab1d4f513728</Id>
+  <Name>Tages Templates</Name>
+  <UserId>d601adbc-eee3-436f-b657-c9f4969a449a</UserId>
+  <ProjectId>58f1500a-c8e2-4f52-a066-8ab5372e5c55</ProjectId>
+  <Text>Templates dafür bauen, um seinen Tag schon im vorhinein Planen zu können.
+
+Hier muss noch Konzept und komplette Implementierung gemacht werden-</Text>
+  <Created>20.06.2019 13:24:15</Created>
+  <ExpectedTime>2,5</ExpectedTime>
+  <UsedTime>0</UsedTime>
+  <Priority>High</Priority>
+  <Status>Todo</Status>
+</Data>

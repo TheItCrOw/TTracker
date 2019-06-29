@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data>
+  <Id>ae33e58e-55ac-4183-9052-2d23d74c053f</Id>
+  <Name>CalndarView</Name>
+  <UserId>d601adbc-eee3-436f-b657-c9f4969a449a</UserId>
+  <ProjectId>58f1500a-c8e2-4f52-a066-8ab5372e5c55</ProjectId>
+  <ProjectName>TTracker</ProjectName>
+  <Text>Will irgendwie ein "Plan-Komponente" hier reinbringen...Sodass ich Tickets oder Termine eintragen kann.
+
+-&gt; DateTime Eingabe kontrollieren
+-&gt; Laden der Einträge nach Datum
+-&gt; DateTime deutsch/englisch?
+</Text>
+  <Created>17.06.2019 09:58:30</Created>
+  <ExpectedTime>2,5</ExpectedTime>
+  <UsedTime>1,75</UsedTime>
+  <Priority>High</Priority>
+  <Status>Working</Status>
+  <Text>Will irgendwie ein "Plan-Komponente" hier reinbringen...Sodass ich Tickets oder Termine eintragen kann.
+
+-&gt; DateTime Eingabe kontrollieren (DONE)
+-&gt; Laden der Einträge nach Datum (DONE)
+-&gt; DateTime deutsch/englisch?
+-&gt; Min Height für dateTickets
+-&gt; DateTicketsUI besser</Text>
+  <Text>Will irgendwie ein "Plan-Komponente" hier reinbringen...Sodass ich Tickets oder Termine eintragen kann.
+
+-&gt; DateTime Eingabe kontrollieren (DONE)
+-&gt; Laden der Einträge nach Datum (DONE)
+-&gt; DateTime deutsch/englisch?
+-&gt; Min Height für dateTickets
+-&gt; DateTicketsUI besser
+-&gt; Tickets die über mehrere Tage gehen handlen</Text>
+  <Text>Will irgendwie ein "Plan-Komponente" hier reinbringen...Sodass ich Tickets oder Termine eintragen kann.
+
+-&gt; DateTime Eingabe kontrollieren (DONE)
+-&gt; Laden der Einträge nach Datum (DONE)
+-&gt; DateTime deutsch/englisch?
+-&gt; Min Height für dateTickets (DONE)
+-&gt; DateTicketsUI besser 
+-&gt; Tickets die über mehrere Tage gehen handlen (Daily View DONE)</Text>
+  <Text>Will irgendwie ein "Plan-Komponente" hier reinbringen...Sodass ich Tickets oder Termine eintragen kann.
+
+-&gt; DateTime Eingabe kontrollieren (DONE)
+-&gt; Laden der Einträge nach Datum (DONE)
+-&gt; DateTime deutsch/englisch?
+-&gt; Min Height für dateTickets (DONE)
+-&gt; DateTicketsUI besser 
+-&gt; Tickets die über mehrere Tage gehen handlen (DONE)
+-&gt; Monthly View
+-&gt; Yearly View
+-&gt; DateTickets löschen</Text>
+</Data>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data>
+  <Id>6d0bf37b-7456-4f6a-a58b-a1d2ecb4e010</Id>
+  <Name>Such funktion</Name>
+  <UserId>d601adbc-eee3-436f-b657-c9f4969a449a</UserId>
+  <ProjectId>58f1500a-c8e2-4f52-a066-8ab5372e5c55</ProjectId>
+  <ProjectName>TTracker</ProjectName>
+  <Text>Eine Such-Funktion für TimeEngine, Projekt und TicketView
+
+-&gt; TicketView (DONE)
+-&gt; Projects
+-&gt; TimeEngine..?
+
+(BLOCKED WEIL ICH NICHT WEIß WIE SEHR ICH DAS BRAUCHE)</Text>
+  <Created>14.06.2019 12:36:00</Created>
+  <ExpectedTime>0,5</ExpectedTime>
+  <UsedTime>0,10625</UsedTime>
+  <Priority>Normal</Priority>
+  <Status>Blocked</Status>
+</Data>

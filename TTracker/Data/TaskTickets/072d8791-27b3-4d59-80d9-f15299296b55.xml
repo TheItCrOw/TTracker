@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data>
+  <Id>072d8791-27b3-4d59-80d9-f15299296b55</Id>
+  <Name>Cleanup Method</Name>
+  <UserId>d601adbc-eee3-436f-b657-c9f4969a449a</UserId>
+  <ProjectId>58f1500a-c8e2-4f52-a066-8ab5372e5c55</ProjectId>
+  <Text>Ein Cleanup Button, der alte Daten wie wochenalte TimeEntries löscht, oder Entitäten, dessen Projekte bereits gelöscht wurden..
+
+-&gt; Alte TimeEntries
+-&gt; Entitäten mit gelöschtem Projekt löschen</Text>
+  <Created>25.06.2019 10:45:38</Created>
+  <ExpectedTime>0,5</ExpectedTime>
+  <UsedTime>0</UsedTime>
+  <Priority>High</Priority>
+  <Status>Todo</Status>
+</Data>

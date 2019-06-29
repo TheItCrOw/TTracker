@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data>
+  <Id>58f1500a-c8e2-4f52-a066-8ab5372e5c55</Id>
+  <Name>TTracker</Name>
+  <UserId>d601adbc-eee3-436f-b657-c9f4969a449a</UserId>
+  <ParentId>1216c359-c21d-42e4-9cce-a1c1a7a41653</ParentId>
+  <Text>TTracker ist ein Programm was meine Aufgaben, Termine, Zeit etc. pp. übersichtlich organisieren soll.
+
+Es sollen Tickets angelegt werden können, Zeit "verbucht" werden und einfach alles nachvollziehen, wie viel Zeit ich in was stecke.
+
+Am Ende soll es mir eine schöne graphische Darstellung meiner verbuchten Zeit erstellen, in welchen Bereichen ich mehr, in welchen weniger investieren sollte.
+
+Außerdem soll es mein Kalender ersetzen und später vielleicht eine Mobile App Anbindung haben. Sollte machbar sein.
+
+-&gt; Git repository:  https:</Text>
+  <Created>03.06.2019 13:56:16</Created>
+  <UsedTime>0</UsedTime>
+</Data>

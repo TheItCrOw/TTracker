@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data>
+  <Id>ee2e18c4-9762-4f82-8921-4a9091019a06</Id>
+  <Name>Know-How Ubuntu</Name>
+  <UserId>d601adbc-eee3-436f-b657-c9f4969a449a</UserId>
+  <ProjectId>3712b62c-02f7-41d3-826f-02a3b1ca6663</ProjectId>
+  <Text>Allgemeines über Ubuntu lernen</Text>
+  <Created>18.06.2019 17:45:32</Created>
+  <ExpectedTime>0,3</ExpectedTime>
+  <UsedTime>0</UsedTime>
+  <Priority>Normal</Priority>
+  <Status>Todo</Status>
+</Data>

@@ -106,7 +106,6 @@ ipch/
 *.VC.db
 *.VC.VC.opendb
 
-TTracker/Data/
 
 TTracker/obj/Debug/TTracker.csprojAssemblyReference.cache
 

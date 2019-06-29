@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data>
+  <Id>88ae8722-805b-4cdb-b0cf-59e0b31acd29</Id>
+  <Name>Lebenslauf redesign</Name>
+  <UserId>d601adbc-eee3-436f-b657-c9f4969a449a</UserId>
+  <ProjectId>a472d14f-7793-4db1-bdad-e2277a93a0b6</ProjectId>
+  <Text>Mein Lebenslauf und Anschreiben sind ziemlich out of date...Muss mir mal ein neues Formular machen.</Text>
+  <Created>21.06.2019 20:48:28</Created>
+  <ExpectedTime>1,5</ExpectedTime>
+  <UsedTime>0</UsedTime>
+  <Priority>High</Priority>
+  <Status>Todo</Status>
+</Data>

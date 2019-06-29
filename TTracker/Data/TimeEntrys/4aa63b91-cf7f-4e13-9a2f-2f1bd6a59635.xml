@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data>
+  <Id>4aa63b91-cf7f-4e13-9a2f-2f1bd6a59635</Id>
+  <UserId>d601adbc-eee3-436f-b657-c9f4969a449a</UserId>
+  <TicketId>311b5200-e0e4-44ee-ac2a-6c8ccfbc8767</TicketId>
+  <Text>StatisticsHelperClass und ChartHelperModel hinzugefügt, Außerdem DateExtension, welche den anfang der Woche holt und HomeView weiter gemacht</Text>
+  <Created>16.06.2019 14:44:01</Created>
+  <ProjectId>58f1500a-c8e2-4f52-a066-8ab5372e5c55</ProjectId>
+  <StartTime>1345</StartTime>
+  <EndTime>1445</EndTime>
+</Data>

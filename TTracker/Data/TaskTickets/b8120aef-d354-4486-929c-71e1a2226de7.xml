@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data>
+  <Id>b8120aef-d354-4486-929c-71e1a2226de7</Id>
+  <Name>Statistic View Implementierung</Name>
+  <UserId>d601adbc-eee3-436f-b657-c9f4969a449a</UserId>
+  <ProjectId>58f1500a-c8e2-4f52-a066-8ab5372e5c55</ProjectId>
+  <ProjectName>TTracker</ProjectName>
+  <Text>Konzept, umsetzung und Aufbau der Struktur des Statistic Views.
+
+-&gt; Laufender Monat Chart (DONE)
+-&gt; Laufende Woche (DONE)
+-&gt; monatliche Auswahl (DONE)
+-&gt; Bereich Auswahl und Statistik berechnen lassen (DONE)</Text>
+  <Created>16.06.2019 11:23:29</Created>
+  <ExpectedTime>2</ExpectedTime>
+  <UsedTime>0,8375</UsedTime>
+  <Priority>High</Priority>
+  <Status>Working</Status>
+</Data>

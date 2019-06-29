@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data>
+  <Id>0138da1a-0dfd-4f4b-8e65-39661e8d9be9</Id>
+  <UserId>d601adbc-eee3-436f-b657-c9f4969a449a</UserId>
+  <TicketId>22d64960-9549-495c-90a9-d36d52984131</TicketId>
+  <Text>Status nun vollständig implementiert. Die Skripte, die den xml Cache ergänzen fehlen noch</Text>
+  <Created>12.06.2019 20:07:50</Created>
+  <ProjectId>58f1500a-c8e2-4f52-a066-8ab5372e5c55</ProjectId>
+  <StartTime>1930</StartTime>
+  <EndTime>2000</EndTime>
+</Data>

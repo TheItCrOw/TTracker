@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data>
+  <Id>869c5cc6-cd47-48e3-9c3c-9d66d979a2bf</Id>
+  <Name>Salzburg</Name>
+  <UserId>d601adbc-eee3-436f-b657-c9f4969a449a</UserId>
+  <ProjectId>3cbe8336-c383-4df4-ab0b-503062cfcee0</ProjectId>
+  <ProjectName>Urlaub</ProjectName>
+  <Text>Urlaubs-Ticket für Salzburg: 16-19.07.2019</Text>
+  <Created>10.06.2019 14:20:06</Created>
+  <ExpectedTime>0,8</ExpectedTime>
+  <UsedTime>0,26875</UsedTime>
+  <Priority>High</Priority>
+  <Status>Blocked</Status>
+</Data>

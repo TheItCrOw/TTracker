@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data>
+  <Id>e7f3e112-76b4-45d2-addf-f93bd9238997</Id>
+  <UserId>d601adbc-eee3-436f-b657-c9f4969a449a</UserId>
+  <TicketId>deff6e93-072b-478a-b477-77e267bd4d16</TicketId>
+  <Text>In der Methode overwriteToXml wird jetzt, falls der Datensatz noch nich vorahdnen ist, dieser generisch angelegt</Text>
+  <Created>13.06.2019 22:11:58</Created>
+  <ProjectId>58f1500a-c8e2-4f52-a066-8ab5372e5c55</ProjectId>
+  <StartTime>2130</StartTime>
+  <EndTime>2215</EndTime>
+</Data>

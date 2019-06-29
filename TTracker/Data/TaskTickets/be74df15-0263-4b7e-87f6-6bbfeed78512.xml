@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data>
+  <Id>be74df15-0263-4b7e-87f6-6bbfeed78512</Id>
+  <Name>UtilityViewModel einfügen</Name>
+  <UserId>d601adbc-eee3-436f-b657-c9f4969a449a</UserId>
+  <ProjectId>58f1500a-c8e2-4f52-a066-8ab5372e5c55</ProjectId>
+  <Text>Da ich jetzt schon ne generisches ViewModel habe, sollte ich das auch bei den anderen Sachen einsetzen.
+
+-&gt; Project deletion?
+-&gt; Chart anzeige oder helperModel da lassen?</Text>
+  <Created>20.06.2019 16:59:21</Created>
+  <ExpectedTime>0,2</ExpectedTime>
+  <UsedTime>0</UsedTime>
+  <Priority>High</Priority>
+  <Status>Todo</Status>
+</Data>

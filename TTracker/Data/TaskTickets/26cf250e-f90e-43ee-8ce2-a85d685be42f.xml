@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data>
+  <Id>26cf250e-f90e-43ee-8ce2-a85d685be42f</Id>
+  <Name>Projekt-Struktur ändern</Name>
+  <UserId>d601adbc-eee3-436f-b657-c9f4969a449a</UserId>
+  <ProjectId>58f1500a-c8e2-4f52-a066-8ab5372e5c55</ProjectId>
+  <Text>Ich muss meine Projekt Struktur ändern:
+
+ -&gt; Keine "losen" dll's mehr einfügen
+-&gt; Neue Projekte in die Solution packen, z.B. DataAdapters, Utils, sowas..
+-&gt; Wenn projekt auf Projekt verweist, gibt es keinen clusterfucfk der verweise
+</Text>
+  <Created>18.06.2019 17:44:11</Created>
+  <ExpectedTime>0,2</ExpectedTime>
+  <UsedTime>0</UsedTime>
+  <Priority>High</Priority>
+  <Status>Todo</Status>
+</Data>

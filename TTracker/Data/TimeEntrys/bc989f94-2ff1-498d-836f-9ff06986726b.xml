@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data>
+  <Id>bc989f94-2ff1-498d-836f-9ff06986726b</Id>
+  <UserId>d601adbc-eee3-436f-b657-c9f4969a449a</UserId>
+  <TicketId>5e766281-7858-46e9-90bf-2663f2464634</TicketId>
+  <Text>Export funzt jetzt. Import fehlt noch und kleine Sachen beim export (DeleteEntity und von der Liste)</Text>
+  <Created>22.06.2019 12:28:22</Created>
+  <ProjectId>58f1500a-c8e2-4f52-a066-8ab5372e5c55</ProjectId>
+  <StartTime>1130</StartTime>
+  <EndTime>1230</EndTime>
+</Data>
