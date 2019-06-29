@@ -17,6 +17,7 @@ namespace TTracker.GUI.ViewModels.ManagamentBase.CalendarSubVms
 {
     public class DailyViewModel : ViewModelManagementBase
     {
+        private DateTime _currentDate;
         private List<DateTicketViewModel> _dateTicketsVm = new List<DateTicketViewModel>();
         private List<SolidColorBrush> _dateTicketsColors = new List<SolidColorBrush>();
         private CalendarViewModel _currentBase;
@@ -48,6 +49,7 @@ namespace TTracker.GUI.ViewModels.ManagamentBase.CalendarSubVms
             _currentBase = currentBase;
             SelectedDate = selectedDate.DayOfWeek + ", the " + selectedDate.ToShortDateString();
             _dateTicketsVm = currentDateTickets;
+            _currentDate = selectedDate;
             FillColors();
             LoadDateTickets();
         }
@@ -72,7 +74,7 @@ namespace TTracker.GUI.ViewModels.ManagamentBase.CalendarSubVms
             }
             CalculateHeightOfTickets(allDateTicketsVm);
 
-            allDateTicketsVm = allDateTicketsVm.OrderBy(t => t.DateStart.ToShortTimeString()).ToList();
+            allDateTicketsVm = allDateTicketsVm.OrderBy(t => t.DateEnd.ToShortTimeString()).ToList();
             DateTickets.AddRange(allDateTicketsVm);
         }
 
@@ -80,20 +82,43 @@ namespace TTracker.GUI.ViewModels.ManagamentBase.CalendarSubVms
         {
             //Get height of the itemscontrol with the currentContent property
             HeightOfCalendar = 1500;
-            int i = 0;
+            int i = 0;         
 
             foreach (var ticket in allDateTicketsVm)
             {
+                //Reset the ticket time, otherwise I corrupt the times in the ticket which I dont want.
+                //I want them to be indiviudlally changed for the UI
+                ticket.TimeStart = ticket.DateStart.ToShortTimeString();
+                ticket.TimeEnd = ticket.DateEnd.ToShortTimeString();
+
                 if (ticket.DateStart.ToShortDateString() != ticket.DateEnd.ToShortDateString())
                 {
-                    ticket.Height = 800;
+                    //When the Ticket starts Today:
+                    if(ticket.DateStart.ToShortDateString() == _currentDate.ToShortDateString())
+                    {
+                        ticket.TimeEnd = "24:00";
+                        ticket.Height = (float)(HeightOfCalendar / 24) * (24 - (ticket.DateStart.Hour));
+                    }
+                    //When the ticket ends today
+                    else if(ticket.DateEnd.ToShortDateString() == _currentDate.ToShortDateString())
+                    {
+                        ticket.TimeStart = "00:00";
+                        ticket.Height = (float)(HeightOfCalendar / 24) * ((ticket.DateEnd.Hour) - 0);
+                    }
+                    //When the ticket goes from 24-28.6 and curretnDate is the 26.06, then the ticket goes from 0-24
+                    else
+                    {
+                        ticket.TimeStart = "00:00";
+                        ticket.TimeEnd= "24:00";
+                        ticket.Height = 800;
+                    }
                     ticket.BackgroundColor = _dateTicketsColors[i];
                     i++;
                     return;
                 }
-
-                var start = ticket.DateStart.Hour + ticket.DateStart.Minute;
-                var end = ticket.DateEnd.Hour + ticket.DateEnd.Minute;
+                
+                var start = ticket.DateStart.Hour;
+                var end = ticket.DateEnd.Hour;
 
                 var height = (HeightOfCalendar / 24) * (end - start);
                 ticket.Height = (float)height;
@@ -102,19 +127,5 @@ namespace TTracker.GUI.ViewModels.ManagamentBase.CalendarSubVms
             }
         }
 
-
-
-
-
-        //                if (start != timeOfLastDate)
-        //        {
-        //            DateTime dateStart = new DateTime();
-        //DateTime dateEnd = new DateTime();
-        //dateStart += DateTimeExtensions.ConvertFloatToTimespan(timeOfLastDate);
-        //            dateEnd += DateTimeExtensions.ConvertFloatToTimespan(start);
-        //            var placeHolder = new DateTicket(Guid.Empty, "", Guid.NewGuid(), Guid.Empty, "", DateTime.Now, dateStart, dateEnd);
-        //placeholderList.Add(new DateTicketViewModel(placeHolder, this, false));
-        //            timeOfLastDate = dateEnd.Hour + dateEnd.Minute;
-        //        }
     }
 }

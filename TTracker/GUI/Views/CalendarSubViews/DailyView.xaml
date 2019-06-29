@@ -31,26 +31,26 @@
                                   >
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Border Background="{Binding BackgroundColor}" Height="{Binding Height}" BorderBrush="Black" BorderThickness="0.5 1 1 1">
+                                <Border Background="{Binding BackgroundColor}" Height="{Binding Height}" MinHeight="80" BorderBrush="Black" BorderThickness="0.5 1 1 1">
                                     
                                     <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="110"/>
                                             <ColumnDefinition Width="300"/>
                                             <ColumnDefinition Width="300"/>
-                                            <ColumnDefinition Width="300"/>
+                                            <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <Grid.RowDefinitions>
-                                            <RowDefinition Height="20"/>
+                                            <RowDefinition Height="25"/>
                                             <RowDefinition Height="*"/>
-                                            <RowDefinition Height="20"/>
+                                            <RowDefinition Height="25"/>
                                         </Grid.RowDefinitions>
                                         
-                                        <TextBlock Text="{Binding TimeStart}" FontSize="15" Grid.Row="0" Grid.Column="0" FontWeight="DemiBold" Margin="10 0 0 0"/>
-                                        <TextBlock Text="{Binding Name}" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" FontSize="15" Width="300" FontWeight="DemiBold" Foreground="Black" Margin="25 0 0 0"/>
-                                        <TextBlock Text="{Binding ProjectName}" Grid.Column="2" Grid.Row="1" VerticalAlignment="Top" FontSize="15" Width="300" FontWeight="DemiBold"/>
-                                        <TextBlock Text="{Binding Text}" FontSize="15" Grid.Column="3" VerticalAlignment="Top" Grid.Row="1" Width="300"/>
-                                        <TextBlock Text="{Binding TimeEnd}" FontSize="15" Grid.Row="2" Grid.Column="0" Margin="10 0 0 0" FontWeight="DemiBold"/>
+                                        <TextBlock Text="{Binding TimeStart}" FontSize="20" Grid.Row="0" Grid.Column="0" FontWeight="DemiBold" Margin="10 0 0 0"/>
+                                        <TextBlock Text="{Binding Name}" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" FontSize="20" FontWeight="DemiBold" Foreground="Black" Margin="25 0 0 0"/>
+                                        <TextBlock Text="{Binding ProjectName}" Grid.Column="2" Grid.Row="1" VerticalAlignment="Top" FontSize="20" FontWeight="DemiBold"/>
+                                        <TextBlock Text="{Binding Text}" FontSize="20" Grid.Column="3" VerticalAlignment="Top" Grid.Row="1" TextWrapping="Wrap"/>
+                                        <TextBlock Text="{Binding TimeEnd}" FontSize="20" Grid.Row="2" Grid.Column="0" Margin="10 0 0 0" FontWeight="DemiBold"/>
                                     </Grid>
                                 </Border>
                             </DataTemplate>

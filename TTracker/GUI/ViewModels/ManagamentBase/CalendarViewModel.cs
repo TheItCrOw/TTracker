@@ -152,10 +152,14 @@ namespace TTracker.GUI.ViewModels.ManagamentBase
         protected void LoadCurrentlyNeededDateTickets()
         {
             _currentlyNeededDateTickets.Clear();
-            _currentlyNeededDateTickets = _allDateTicketsVm
-                .Where(t => t.DateStart.ToShortDateString() == SelectedCalendarDate.ToShortDateString())
-                .Select(t => t)
-                .ToList();
+            foreach(var ticket in _allDateTicketsVm)
+            {
+                if(ticket.DateStart.ToShortDateString() == SelectedCalendarDate.ToShortDateString()
+                    || (ticket.DateStart <= SelectedCalendarDate && ticket.DateEnd >= SelectedCalendarDate))
+                {
+                    _currentlyNeededDateTickets.Add(ticket);
+                }
+            }
         }
         protected void ChangeMainContentFrame(CustomCalendarMode mode)
         {
