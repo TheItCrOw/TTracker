@@ -51,21 +51,21 @@
                     </Button.Background>
                 </Button>
                 <!--Project Name-->
-                <Button x:Name="SortForProjects" FontSize="20" FontWeight="Bold" Content="Project" Margin="10 0 0 0" Foreground="DarkBlue" Width="250" HorizontalContentAlignment="Left" BorderThickness="0" 
+                <Button x:Name="SortForProjects" FontSize="20" FontWeight="Bold" Content="Project" Margin="10 0 0 0" Foreground="DarkBlue" Width="175" HorizontalContentAlignment="Left" BorderThickness="0" 
                         Command="{Binding SortTaskTicketsCommand}" CommandParameter="{Binding ElementName=SortForProjects, Path=Name}">
                     <Button.Background>
                         <SolidColorBrush Opacity="0"/>
                     </Button.Background>
                 </Button>
                 <!--Priority-->
-                <Button x:Name="SortForPriority" FontSize="20" FontWeight="Bold" Content="Priority" Margin="19 0 0 0" Foreground="DarkBlue" Width="160" HorizontalContentAlignment="Left" BorderThickness="0"
+                <Button x:Name="SortForPriority" FontSize="20" FontWeight="Bold" Content="Priority" Margin="19 0 0 0" Foreground="DarkBlue" Width="135" HorizontalContentAlignment="Left" BorderThickness="0"
                         Command="{Binding SortTaskTicketsCommand}" CommandParameter="{Binding ElementName=SortForPriority, Path=Name}">
                     <Button.Background>
                         <SolidColorBrush Opacity="0"/>
                     </Button.Background>
                 </Button>
                 <!--Status-->
-                <Button x:Name="SortForStatus" FontSize="20" FontWeight="Bold" Content="Status" Margin="10 0 0 0" Foreground="DarkBlue" Width="160" HorizontalContentAlignment="Left" BorderThickness="0"
+                <Button x:Name="SortForStatus" FontSize="20" FontWeight="Bold" Content="Status" Margin="10 0 0 0" Foreground="DarkBlue" Width="135" HorizontalContentAlignment="Left" BorderThickness="0"
                         Command="{Binding SortTaskTicketsCommand}" CommandParameter="{Binding ElementName=SortForStatus, Path=Name}">
                     <Button.Background>
                         <SolidColorBrush Opacity="0"/>
@@ -128,9 +128,9 @@
                                     </DockPanel>
                                 </Expander>
                                 <TextBox Text="{Binding Name}" FontSize="17" FontWeight="Bold" Width="300" Margin="50 0 0 0" VerticalAlignment="Center" BorderThickness="0.5"/>
-                                <TextBlock Text="{Binding ProjectName}" FontSize="17" FontWeight="Bold" Width="250" Margin="10 0 0 0" VerticalAlignment="Center"/>
-                                <ComboBox BorderThickness="0.5" ItemsSource="{Binding  Source={StaticResource PriorityLevelSource}}" FontSize="15" Width="150" Margin="20 0 0 0" VerticalAlignment="Center" MaxHeight="25" SelectedItem="{Binding Priority}"/>
-                                <ComboBox BorderThickness="0.5" ItemsSource="{Binding  Source={StaticResource StatusSource}}" FontSize="15" Width="150" Margin="20 0 0 0" VerticalAlignment="Center" MaxHeight="25" SelectedItem="{Binding Status}"/>
+                                <TextBlock Text="{Binding ProjectName}" FontSize="17" FontWeight="Bold" Width="175" Margin="10 0 0 0" VerticalAlignment="Center"/>
+                                <ComboBox BorderThickness="0.5" ItemsSource="{Binding  Source={StaticResource PriorityLevelSource}}" FontSize="15" Width="125" Margin="20 0 0 0" VerticalAlignment="Center" MaxHeight="25" SelectedItem="{Binding Priority}"/>
+                                <ComboBox BorderThickness="0.5" ItemsSource="{Binding  Source={StaticResource StatusSource}}" FontSize="15" Width="125" Margin="20 0 0 0" VerticalAlignment="Center" MaxHeight="25" SelectedItem="{Binding Status}"/>
                                 <!--Progress Bar plus Text-->
                                 <Grid Width="300" Margin="20 0 0 0" VerticalAlignment="Center">
                                     <Border BorderThickness="1" BorderBrush="Black" >
