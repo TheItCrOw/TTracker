@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-E:\WPF Projects\TTracker\TTracker\obj\Debug\
+C:\WPF Projects\TTracker\TTracker\obj\Debug\
 TTracker
 none
 false
 DEBUG;TRACE
-E:\WPF Projects\TTracker\TTracker\GUI\Views\App.xaml
+C:\WPF Projects\TTracker\TTracker\GUI\Views\App.xaml
 181542991587
 
 73406412660
-138-1602580927
+138243129181
 GUI\Views\AccountView.xaml;GUI\Views\CalendarSubViews\CreateDateTicketView.xaml;GUI\Views\CalendarSubViews\DailyView.xaml;GUI\Views\CalendarSubViews\WeeklyView.xaml;GUI\Views\CalendarView.xaml;GUI\Views\StatisticsManagementView.xaml;GUI\Views\TicketManagementSubViews\AllTicketsFrameSubViews\FinishedTicketsView.xaml;GUI\Views\TicketManagementSubViews\ProjectFrameSubView\AskForProjectDeletionView.xaml;GUI\Views\TicketManagementSubViews\ProjectFrameSubView\CreateProjectView.xaml;GUI\Views\TicketManagementSubViews\AllTicketsFrameSubViews\CreateTicketView.xaml;GUI\Views\HomeView.xaml;GUI\Views\LoginView.xaml;GUI\Views\TicketManagementSubViews\AllTicketsFrameView.xaml;GUI\Views\TicketManagementSubViews\ProjectFrameView.xaml;GUI\Views\TicketManagementView.xaml;GUI\Views\TimeEngineSubViews\CreateDayStatisticView.xaml;GUI\Views\TimeEngineView.xaml;GUI\Views\Main.xaml;
 
 False
