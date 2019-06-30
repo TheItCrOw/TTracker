@@ -39,7 +39,7 @@
                     </Border>
                     <Button x:Name="HomeButton" Grid.Column="1" Background="White" Margin="0 0 0 0" Click="HomeButton_OnClick"
                             ToolTip="Home">
-                        <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/home.png"/>
+                        <Image Source="pack://application:,,,/Resources/home-miri.png"/>
                     </Button>
                     <Button x:Name="TicketManagement" Grid.Column="2" Background="White" Margin="0 0 0 0"  Click="TicketManagement_OnClick"
                             ToolTip="Ticket Management">
