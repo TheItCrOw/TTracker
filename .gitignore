@@ -109,7 +109,14 @@ ipch/
 
 TTracker/obj/Debug/TTracker.csprojAssemblyReference.cache
 
+
 .vs/TTracker/v16/.suo
+
+.vs/TTracker/v16/Server/sqlite3/storage.ide
+
+# Visual Studio 2015/2017 cache/options directory
+.vs/
+
 TTracker/obj/Debug/
 TTracker/bin/
 
