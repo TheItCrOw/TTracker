@@ -153,6 +153,7 @@ namespace TTracker.GUI.ViewModels.ManagamentBase
         protected void LoadCurrentlyNeededDailyTickets()
         {
             _currentlyNeededDateTickets.Clear();
+
             foreach(var ticket in _allDateTicketsVm)
             {
                 if(ticket.DateStart.ToShortDateString() == SelectedCalendarDate.ToShortDateString()
