@@ -74,38 +74,38 @@
         </Border>
 
         <!--Main Content-->
-        <Border Grid.Row="1" Grid.Column="1" Background="AliceBlue" >
+        <Border Grid.Row="1" Grid.Column="1" Background="AliceBlue">
             <ScrollViewer>
-                <StackPanel x:Name="CurrentChart" VerticalAlignment="Center">
+                <DockPanel x:Name="CurrentChart">
                     <!--Root or sub button-->
-                    <DockPanel LastChildFill="False" Height="30" HorizontalAlignment="Center">
+                    <DockPanel LastChildFill="False" Height="30" HorizontalAlignment="Center" DockPanel.Dock="Top">
                         <Button x:Name="RootProjectsButton" Width="120" Margin="17 0 0 0" Background="AliceBlue" Content="Root-Projects" FontSize="15" FontWeight="DemiBold" BorderThickness="1 0 1 1"
                                 Command="{Binding ChangeRootSubProjectsCommand}" CommandParameter="{Binding ElementName=RootProjectsButton, Path=Name}"/>
                         <Button x:Name="SubProjectsButton" Width="120" Background="AliceBlue" Content="Sub-Projects" FontSize="15" FontWeight="DemiBold" BorderThickness="0 0 1 1" 
                                 Command="{Binding ChangeRootSubProjectsCommand}" CommandParameter="{Binding ElementName=SubProjectsButton, Path=Name}"/>
                     </DockPanel>
                     <!--topic-->
-                    <TextBlock Text="{Binding CurrentTopic}" FontSize="20" FontWeight="DemiBold" TextAlignment="Center"/>
+                    <TextBlock Text="{Binding CurrentTopic}" FontSize="20" FontWeight="DemiBold" TextAlignment="Center" DockPanel.Dock="Top"/>
                     <!--chart-->
-                    <DVC:Chart x:Name="MainChart" Canvas.Top="30" Canvas.Left="10" Width="Auto" Height="860" BorderThickness="0" VerticalAlignment="Bottom" Margin="0 -10 0 0">
-                        <DVC:Chart.Style>
-                            <Style TargetType="DVC:Chart">
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding IsLoading}" Value="True">
-                                        <Setter Property="Visibility" Value="Hidden" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </DVC:Chart.Style>
-                        <DVC:Chart.Series>
-                            <DVC:ColumnSeries Title="Hours" 
+                        <DVC:Chart x:Name="MainChart" Margin="0 -10 0 0" DockPanel.Dock="Top" BorderThickness="0">
+                            <DVC:Chart.Style>
+                                <Style TargetType="DVC:Chart">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsLoading}" Value="True">
+                                            <Setter Property="Visibility" Value="Hidden" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DVC:Chart.Style>
+                            <DVC:Chart.Series>
+                                <DVC:ColumnSeries Title="Hours" 
                                       IndependentValueBinding="{Binding Name}" 
                                       DependentValueBinding="{Binding Share}" 
                                       ItemsSource="{Binding AllTimesChart}" 
                                       Background="Black"/>
-                        </DVC:Chart.Series>
-                    </DVC:Chart>
-                </StackPanel>
+                            </DVC:Chart.Series>
+                        </DVC:Chart>
+                </DockPanel>
             </ScrollViewer>
         </Border>
 
