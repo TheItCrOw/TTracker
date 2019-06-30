@@ -168,10 +168,10 @@ namespace TTracker.GUI.ViewModels.ManagamentBase
                         break;
                     case "StatisticOfWeek":
                         DateTime dateOfWeekBeginning = SelectedCalendarDate.StartOfWeek(DayOfWeek.Monday);
-                        _currentTimeEntries = _allTimeEntries.Select(tE => tE).Where(tE => tE.Created > dateOfWeekBeginning && tE.Created < dateOfWeekBeginning.AddDays(6)).ToList();
+                        _currentTimeEntries = _allTimeEntries.Select(tE => tE).Where(tE => tE.Created > dateOfWeekBeginning && tE.Created < dateOfWeekBeginning.AddDays(7)).ToList();
                         _currentTimeEntriesVm = _currentTimeEntries.Select(tE => new TimeEntryViewModel(tE, this)).ToList();
                         LoadAllTimesChartRoot();
-                        CurrentTopic = $"Week statistic - from {dateOfWeekBeginning.ToShortDateString()} to {dateOfWeekBeginning.AddDays(6).ToShortDateString()}";
+                        CurrentTopic = $"Week statistic - from {dateOfWeekBeginning.ToShortDateString()} to {dateOfWeekBeginning.AddDays(7).ToShortDateString()}";
                         break;
                     case "StatisticOfMonth":
                         _currentTimeEntries = _allTimeEntries.Select(tE => tE).Where(tE => tE.Created.Month == SelectedCalendarDate.Month).ToList();

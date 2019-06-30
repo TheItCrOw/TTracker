@@ -43,7 +43,7 @@
                     </Button>
                     <Button x:Name="TicketManagement" Grid.Column="2" Background="White" Margin="0 0 0 0"  Click="TicketManagement_OnClick"
                             ToolTip="Ticket Management">
-                        <Image Margin="5 5 5 5" Source="pack://application:,,,/Resources/tasks.png"/>
+                        <Image Margin="5" Source="pack://application:,,,/Resources/tasks.png"/>
                     </Button>
                     <Button x:Name="CalendarButton" Grid.Column="3" Background="White" Margin="0 0 0 0"  Click="CalendarButton_Click"
                             ToolTip="Calendar">

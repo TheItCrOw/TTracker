@@ -431,5 +431,8 @@
   <ItemGroup>
     <Resource Include="Resources\home-miri.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\alltickets-miri.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
