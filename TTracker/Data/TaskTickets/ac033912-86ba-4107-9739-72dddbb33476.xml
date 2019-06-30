@@ -4,9 +4,12 @@
   <Name>TTracker Pad freundlich</Name>
   <UserId>d601adbc-eee3-436f-b657-c9f4969a449a</UserId>
   <ProjectId>58f1500a-c8e2-4f52-a066-8ab5372e5c55</ProjectId>
-  <Text>Einige Dinge runtersklalieren und Anwenderfreundlicher für kleinere Bildschirme machen</Text>
+  <Text>Einige Dinge runtersklalieren und Anwenderfreundlicher für kleinere Bildschirme machen
+
+- &gt; Ticket) Wenn ausgeklappt
+</Text>
   <Created>29.06.2019 18:30:59</Created>
-  <ExpectedTime>3</ExpectedTime>
+  <ExpectedTime>0,5</ExpectedTime>
   <UsedTime>0,3</UsedTime>
   <Priority>High</Priority>
   <Status>Working</Status>
