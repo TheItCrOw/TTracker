@@ -111,23 +111,23 @@
                                     </Style.Triggers>
                                 </Style>
                             </Border.Style>
-                            <DockPanel Margin="10 10 10 10" Height="Auto" VerticalAlignment="Center" LastChildFill="True">
+                            <DockPanel Margin="10 10 10 10" VerticalAlignment="Stretch" LastChildFill="True">
                                 <!--Expander with full info here-->
-                                <Expander  Margin="0 -20 0 0" HorizontalAlignment="Left" ExpandDirection="Down" DockPanel.Dock="Bottom" VerticalAlignment="Top">
+                                <Expander  Margin="0 -20 0 0" HorizontalAlignment="Stretch" ExpandDirection="Down" DockPanel.Dock="Bottom" VerticalAlignment="Top">
                                     <DockPanel Margin="50 20 0 0" LastChildFill="False">
-                                        <TextBox Text="{Binding Text}" TextWrapping="Wrap" FontSize="17" DockPanel.Dock="Bottom" Margin="10 0 0 0" BorderThickness="0.5" Width="1570" HorizontalAlignment="Left" AcceptsReturn="True"/>
-                                        <TextBlock Text="Full Description:" FontSize="17" FontWeight="DemiBold" DockPanel.Dock="Bottom" Margin="10 10 0 0"/>
+                                        <TextBox Text="{Binding Text}" TextWrapping="Wrap" FontSize="17" DockPanel.Dock="Bottom" Margin="10 0 0 0" MaxWidth="1000" BorderThickness="0.5" HorizontalAlignment="Stretch" AcceptsReturn="True" Background="Transparent"/>
+                                        <TextBlock Text="Description:" FontSize="17" FontWeight="DemiBold" DockPanel.Dock="Bottom" HorizontalAlignment="Center" Margin="10 10 0 0"/>
                                         <TextBlock Text="Ticket Id:" FontSize="17" DockPanel.Dock="Left" Margin="10" FontWeight="DemiBold"/>
                                         <TextBlock Text="{Binding ModelId}" FontSize="17"  DockPanel.Dock="Left" Margin="10"/>
-                                        <TextBlock Text="Date of Ticket-Creation:" FontSize="17" DockPanel.Dock="Left" Margin="10" FontWeight="DemiBold"/>
-                                        <TextBlock Text="{Binding Created}" FontSize="17" DockPanel.Dock="Left" Margin="10"/>
-                                        <TextBlock Text="Used Time in days:" FontSize="17" DockPanel.Dock="Left" Margin="10" FontWeight="DemiBold"/>
-                                        <TextBlock Text="{Binding UsedTime}" FontSize="17" DockPanel.Dock="Left" Margin="10"/>
-                                        <TextBlock Text="Expected Time in days:" FontSize="17" DockPanel.Dock="Left" Margin="10" FontWeight="DemiBold"/>
-                                        <TextBox Text="{Binding ExpectedTime}" FontSize="17" DockPanel.Dock="Left" Margin="10" Width="60" TextAlignment="Center"/>
+                                        <TextBlock Text="Ticket-Creation:" FontSize="17" DockPanel.Dock="Left" Margin="10" FontWeight="DemiBold"/>
+                                        <TextBlock Text="{Binding Created}" FontSize="17" DockPanel.Dock="Left" Margin="5 10 5 10"/>
+                                        <TextBlock Text="Used Time:" FontSize="17" DockPanel.Dock="Left" Margin="5 10 5 10" FontWeight="DemiBold"/>
+                                        <TextBlock Text="{Binding UsedTime}" FontSize="17" DockPanel.Dock="Left" Margin="5 10 5 10"/>
+                                        <TextBlock Text="Expected Time:" FontSize="17" DockPanel.Dock="Left" Margin="5 10 5 10" FontWeight="DemiBold"/>
+                                        <TextBox Text="{Binding ExpectedTime}" FontSize="17" DockPanel.Dock="Left" Margin="5 10 5 10" Width="60" TextAlignment="Center" Background="Transparent"/>
                                     </DockPanel>
                                 </Expander>
-                                <TextBox Text="{Binding Name}" FontSize="17" FontWeight="Bold" Width="300" Margin="50 0 0 0" VerticalAlignment="Center" BorderThickness="0.5"/>
+                                <TextBox Text="{Binding Name}" FontSize="17" FontWeight="Bold" Width="300" Margin="50 0 0 0" VerticalAlignment="Center" BorderThickness="0.5" Background="Transparent"/>
                                 <TextBlock Text="{Binding ProjectName}" FontSize="17" FontWeight="Bold" Width="175" Margin="10 0 0 0" VerticalAlignment="Center"/>
                                 <ComboBox BorderThickness="0.5" ItemsSource="{Binding  Source={StaticResource PriorityLevelSource}}" FontSize="15" Width="125" Margin="20 0 0 0" VerticalAlignment="Center" MaxHeight="25" SelectedItem="{Binding Priority}"/>
                                 <ComboBox BorderThickness="0.5" ItemsSource="{Binding  Source={StaticResource StatusSource}}" FontSize="15" Width="125" Margin="20 0 0 0" VerticalAlignment="Center" MaxHeight="25" SelectedItem="{Binding Status}"/>
