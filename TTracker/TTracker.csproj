@@ -428,5 +428,8 @@
   <ItemGroup>
     <Resource Include="Resources\arrow-down.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Home_Icon2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
