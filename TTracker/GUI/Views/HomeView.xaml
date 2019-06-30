@@ -57,7 +57,7 @@
 
                     <!--ItemsControl of the tickets-->
                 <Border Grid.Row="0" Background="AliceBlue" BorderThickness="0 0 0 1" BorderBrush="Black" MaxHeight="350" VerticalAlignment="Top" >
-                    <ScrollViewer VerticalScrollBarVisibility="Visible">
+                    <ScrollViewer VerticalScrollBarVisibility="Visible" >
                         <ItemsControl x:Name="taskTicketControl" Background="AliceBlue" ItemsSource="{Binding TaskTickets, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" >
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate >
