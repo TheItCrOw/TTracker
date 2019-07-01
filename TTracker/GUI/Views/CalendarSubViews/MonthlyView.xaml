@@ -43,7 +43,7 @@
                                             <ItemsControl.ItemTemplate>
                                                 <DataTemplate>
                                                     <Border>
-                                                        <DockPanel LastChildFill="False" Margin="15 0 0 0">
+                                                        <DockPanel LastChildFill="False" Margin="10 0 5 0">
                                                             <TextBlock Text="{Binding Name}" FontSize="13" Foreground="Gray" Width="100"/>
                                                         </DockPanel>
                                                     </Border>
@@ -69,7 +69,7 @@
                                             <ItemsControl.ItemTemplate>
                                                 <DataTemplate>
                                                     <Border>
-                                                        <DockPanel LastChildFill="False" Margin="15 0 0 0">
+                                                        <DockPanel LastChildFill="False" Margin="10 0 5 0">
                                                             <TextBlock Text="{Binding Name}" FontSize="13" Foreground="Gray" Width="100"/>
                                                         </DockPanel>
                                                     </Border>
@@ -95,7 +95,7 @@
                                             <ItemsControl.ItemTemplate>
                                                 <DataTemplate>
                                                     <Border>
-                                                        <DockPanel LastChildFill="False" Margin="15 0 0 0">
+                                                        <DockPanel LastChildFill="False" Margin="10 0 5 0">
                                                             <TextBlock Text="{Binding Name}" FontSize="13" Foreground="Gray" Width="100"/>
                                                         </DockPanel>
                                                     </Border>
@@ -121,7 +121,7 @@
                                             <ItemsControl.ItemTemplate>
                                                 <DataTemplate>
                                                     <Border>
-                                                        <DockPanel LastChildFill="False" Margin="15 0 0 0">
+                                                        <DockPanel LastChildFill="False" Margin="10 0 5 0">
                                                             <TextBlock Text="{Binding Name}" FontSize="13" Foreground="Gray" Width="100"/>
                                                         </DockPanel>
                                                     </Border>
