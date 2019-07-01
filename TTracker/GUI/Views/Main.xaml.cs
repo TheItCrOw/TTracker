@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TTracker.GUI.Views;
+using TTracker.Utility;
 
 namespace TTracker
 {
@@ -30,49 +31,44 @@ namespace TTracker
             InitializeComponent();
             this.DataContext = new MainViewModel();
             NavigationFrame.Content = new HomeView();
+            NavigateTo.MainFrame = this.NavigationFrame;
             LanguageProperty.OverrideMetadata(typeof(FrameworkElement), new FrameworkPropertyMetadata(XmlLanguage.GetLanguage("de-DE")));
         }
 
         //Navigates to Home
         private void HomeButton_OnClick(object sender, RoutedEventArgs e)
         {
-            NavigationFrame.Content = null;
-            NavigationFrame.Content = new HomeView();
+            NavigateTo.Home();
         }
 
         //Navigates to TicketManagement
         private void TicketManagement_OnClick(object sender, RoutedEventArgs e)
         {
-            NavigationFrame.Content = null;
-            NavigationFrame.Content = new TicketManagementView();
+            NavigateTo.TicketManagement();
         }
 
         //Naviates to the Calendar
         private void CalendarButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationFrame.Content = null;
-            NavigationFrame.Content = new CalendarView();
+            NavigateTo.Calendar();
         }
 
         //Navigates to TimeEngine
         private void TimeEngine_OnClick(object sender, RoutedEventArgs e)
         {
-            NavigationFrame.Content = null;
-            NavigationFrame.Content = new TimeEngineView();
+            NavigateTo.TimeEngine();
         }
 
         //Navigates to the statistic
         private void StatisticsButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationFrame.Content = null;
-            NavigationFrame.Content = new StatisticsManagementView();
+            NavigateTo.Statistics();
         }
 
         //Navigates to UserAccount
         private void AccountButton_OnClick(object sender, RoutedEventArgs e)
         {
-            NavigationFrame.Content = null;
-            NavigationFrame.Content = new AccountView();
+            NavigateTo.Account();
         }
 
 

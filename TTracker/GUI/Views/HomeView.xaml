@@ -208,13 +208,14 @@
                             <ItemsControl x:Name="dateTicketsControl" Background="AliceBlue" ItemsSource="{Binding DateTickets}">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
-                                        <Button BorderThickness="1" BorderBrush="Gray" Background="{Binding BackgroundColor}" HorizontalContentAlignment="Left">
+                                    <Button BorderThickness="1" BorderBrush="Gray" Background="{Binding CurrentViewModel.BackgroundColor}" HorizontalContentAlignment="Left"
+                                            Command="{Binding SelectedCommand}">
                                             <DockPanel Height="45">
-                                                <TextBlock Text="{Binding Name}" FontSize="15" FontWeight="Bold" Margin="10 0 0 0" Width="150" VerticalAlignment="Center"/>
-                                                <TextBlock Text="{Binding ProjectName}" FontSize="15" FontWeight="Bold" Margin="10 0 0 0" Width="150" VerticalAlignment="Center"/>
-                                                <TextBlock Text="{Binding TimeStart}" FontSize="15" FontWeight="Bold" Margin="10 0 5 0" VerticalAlignment="Center"/>
+                                            <TextBlock Text="{Binding CurrentViewModel.Name}" FontSize="15" FontWeight="Bold" Margin="10 0 0 0" Width="150" VerticalAlignment="Center"/>
+                                            <TextBlock Text="{Binding CurrentViewModel.ProjectName}" FontSize="15" FontWeight="Bold" Margin="10 0 0 0" Width="150" VerticalAlignment="Center"/>
+                                            <TextBlock Text="{Binding CurrentViewModel.TimeStart}" FontSize="15" FontWeight="Bold" Margin="10 0 5 0" VerticalAlignment="Center"/>
                                                 <TextBlock Text="-" FontSize="15" FontWeight="Bold" VerticalAlignment="Center"/>
-                                                <TextBlock Text="{Binding TimeEnd}" FontSize="15" FontWeight="Bold" Margin="5 0 0 0" VerticalAlignment="Center"/>
+                                            <TextBlock Text="{Binding CurrentViewModel.TimeEnd}" FontSize="15" FontWeight="Bold" Margin="5 0 0 0" VerticalAlignment="Center"/>
                                             </DockPanel>
                                         </Button>
                                     </DataTemplate>

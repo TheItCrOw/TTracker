@@ -21,7 +21,7 @@ namespace TTracker.GUI.ViewModels
         private string _date;
         private List<TimeEntry> allTimeEntries = new List<TimeEntry>();
         public ObservableCollection<TaskTicketViewModel> TaskTickets { get; set; } = new ObservableCollection<TaskTicketViewModel>();
-        public ObservableCollection<DateTicketViewModel> DateTickets { get; set; } = new ObservableCollection<DateTicketViewModel>();
+        public ObservableCollection<UtilityViewModel<DateTicketViewModel>> DateTickets { get; set; } = new ObservableCollection<UtilityViewModel<DateTicketViewModel>>();
         public ObservableCollection<ChartHelperModel> RootProjectsChart { get; set; } = new ObservableCollection<ChartHelperModel>();
 
         //public ObservableCollection<ChartHelperModel> SubProjectsChart { get; set; } = new ObservableCollection<ChartHelperModel>();
@@ -54,7 +54,7 @@ namespace TTracker.GUI.ViewModels
         {
             var allTickets = DataAccess.Instance.GetAll<TaskTicket>();
             var todoTickets = new List<TaskTicket>();
-            var highPrioTickets = new List<TaskTicket>();
+            var highPrioTickets = new List<TaskTicket>(); 
 
             foreach (var ticket in allTickets)
             {
@@ -82,6 +82,7 @@ namespace TTracker.GUI.ViewModels
         {
             var allDateTickets = DataAccess.Instance.GetAll<DateTicket>();
             var neededDateTicektsVm = new List<DateTicketViewModel>();
+            var allUtilityVms = new List<UtilityViewModel<DateTicketViewModel>>();
 
             foreach (var ticket in allDateTickets)
             {
@@ -111,11 +112,14 @@ namespace TTracker.GUI.ViewModels
                 var background = CustomSolidColorBrushes.GetColorByIndex(i);
                 ticket.BackgroundColor = background;
                 i++;
+
+                allUtilityVms.Add(new UtilityViewModel<DateTicketViewModel>(ticket, this));
             }
 
             DateTickets.Clear();
-            DateTickets.AddRange(neededDateTicektsVm);
+            DateTickets.AddRange(allUtilityVms);
         }
+
         void LoadMicroTasks()
         {
             var allMicroTasks = DataAccess.Instance.GetAll<MicroTask>();
@@ -171,6 +175,13 @@ namespace TTracker.GUI.ViewModels
             DataAccess.Instance.RegisterAndSaveNewMicroTask(microTask);
 
             MicroTasks.Add(microTaskVm);
+        }
+        public override void OnVmGotSelected()
+        {
+            if (SelectedVm is DateTicketViewModel)
+            {
+                NavigateTo.Calendar();
+            }
         }
     }
 }

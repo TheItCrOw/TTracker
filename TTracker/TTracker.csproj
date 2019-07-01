@@ -196,6 +196,7 @@
     <Compile Include="Utility\DataAccess.cs" />
     <Compile Include="Utility\DateTimeExtensions.cs" />
     <Compile Include="Utility\FocusExtension.cs" />
+    <Compile Include="Utility\NavigateTo.cs" />
     <Compile Include="Utility\PasswordBoxAssistant.cs" />
     <Compile Include="SetupViewModels\ViewModelLocator.cs" />
     <Compile Include="GUI\Models\ChartHelperModel.cs" />
