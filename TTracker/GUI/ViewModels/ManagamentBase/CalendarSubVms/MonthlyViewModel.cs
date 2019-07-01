@@ -38,6 +38,11 @@ namespace TTracker.GUI.ViewModels.ManagamentBase.CalendarSubVms
             LoadDays(dates);
         }
 
+        public override void OnVmGotSelected()
+        {
+            _currentBase.UpdateCalendar((DateTime)SelectedVm, Utility.CustomCalendarMode.Day);
+        }
+
         void LoadDays(List<DateTime> dates)
         {
             dates = dates.OrderBy(d => d.Date).ToList();

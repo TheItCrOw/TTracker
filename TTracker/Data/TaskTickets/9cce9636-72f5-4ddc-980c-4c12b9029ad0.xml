@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data>
+  <Id>9cce9636-72f5-4ddc-980c-4c12b9029ad0</Id>
+  <Name>Plan erstellen</Name>
+  <UserId>d601adbc-eee3-436f-b657-c9f4969a449a</UserId>
+  <ProjectId>d721e53a-30c5-4223-916b-fad0c349918f</ProjectId>
+  <Text>Die Themen mal durch gehen und Zeitplan erstellen</Text>
+  <Created>01.07.2019 21:15:54</Created>
+  <ExpectedTime>0,4</ExpectedTime>
+  <UsedTime>0</UsedTime>
+  <Priority>VeryHigh</Priority>
+  <Status>Todo</Status>
+</Data>
