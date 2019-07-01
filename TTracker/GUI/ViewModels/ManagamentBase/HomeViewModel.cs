@@ -65,17 +65,17 @@ namespace TTracker.GUI.ViewModels
                 {
                     todoTickets.Add(ticket);
                 }
-                if ((ticket.Priority == PriorityLevel.High
-                    || ticket.Priority == PriorityLevel.VeryHigh)
-                    && ticket.Status != Status.Finished
-                    && !(todoTickets.Contains(ticket)))
-                {
-                    highPrioTickets.Add(ticket);
-                }
+                //if ((ticket.Priority == PriorityLevel.High
+                //    || ticket.Priority == PriorityLevel.VeryHigh)
+                //    && ticket.Status != Status.Finished
+                //    && !(todoTickets.Contains(ticket)))
+                //{
+                //    highPrioTickets.Add(ticket);
+                //}
             }
 
             TaskTickets.AddRange(todoTickets.Select(t => new TaskTicketViewModel(t, this, false)));
-            TaskTickets.AddRange(highPrioTickets.Select(t => new TaskTicketViewModel(t, this, false)));
+            //TaskTickets.AddRange(highPrioTickets.Select(t => new TaskTicketViewModel(t, this, false)));
         }
 
         void LoadDateTickets()
