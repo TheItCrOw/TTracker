@@ -62,4 +62,16 @@
 -&gt; Yearly View
 -&gt; DateTickets löschen
 -&gt; komischer bug mit manchen DateTickets die über mehrere tage gehn..</Text>
+  <Text>Will irgendwie ein "Plan-Komponente" hier reinbringen...Sodass ich Tickets oder Termine eintragen kann.
+
+-&gt; DateTime Eingabe kontrollieren (DONE)
+-&gt; Laden der Einträge nach Datum (DONE)
+-&gt; DateTime deutsch/englisch?
+-&gt; Min Height für dateTickets (DONE)
+-&gt; DateTicketsUI besser 
+-&gt; Tickets die über mehrere Tage gehen handlen (DONE)
+-&gt; Monthly View -&gt; SelectedLogik
+-&gt; Yearly View
+-&gt; DateTickets löschen
+-&gt; komischer bug mit manchen DateTickets die über mehrere tage gehn..</Text>
 </Data>

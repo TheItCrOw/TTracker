@@ -19,6 +19,7 @@ namespace TTracker.GUI.ViewModels.ManagamentBase.CalendarSubVms
         public ObservableCollection<object> FirstDays { get; set; } = new ObservableCollection<object>();
         public ObservableCollection<object> SecondDays { get; set; } = new ObservableCollection<object>();
         public ObservableCollection<object> ThirdDays { get; set; } = new ObservableCollection<object>();
+        public ObservableCollection<object> ForthDays { get; set; } = new ObservableCollection<object>();
 
         public string SelectedDate
         {
@@ -45,17 +46,21 @@ namespace TTracker.GUI.ViewModels.ManagamentBase.CalendarSubVms
             {
                 var utilityVm = new UtilityViewModel<DateTime>(date, this);
                 LoadChildrenOfDay(utilityVm, dates);
-                if(date.Day < 11)
+                if(date.Day < 8)
                 {
                     FirstDays.Add(utilityVm);
                 }
-                else if (date.Day < 21)
+                else if (date.Day < 15)
                 {
                     SecondDays.Add(utilityVm);
                 }
-                else if(date.Day < 32)
+                else if(date.Day < 22)
                 {
                     ThirdDays.Add(utilityVm);
+                }
+                else if (date.Day < 32)
+                {
+                    ForthDays.Add(utilityVm);
                 }
             }
         }

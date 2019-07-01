@@ -27,6 +27,7 @@
                         <ColumnDefinition Width ="*"/>
                         <ColumnDefinition Width ="*"/>
                         <ColumnDefinition Width ="*"/>
+                        <ColumnDefinition Width ="*"/>
                     </Grid.ColumnDefinitions>
 
                     <!--first half of dates-->
@@ -37,14 +38,13 @@
                                         HorizontalContentAlignment="Left" VerticalContentAlignment="Top" Command="{Binding SelectedCommand}">
                                     <DockPanel Margin="20 10 0 0" HorizontalAlignment="Left" VerticalAlignment="Top">
                                         <TextBlock Text="{Binding CurrentViewModel.Day}" FontSize="20" TextAlignment="Center" FontWeight="ExtraBlack" Foreground="DarkBlue" Width="50"/>
-                                        <TextBlock Text="{Binding CurrentViewModel.DayOfWeek}" FontSize="20" TextAlignment="Center" Width="100"/>
+                                        <TextBlock Text="{Binding CurrentViewModel.DayOfWeek}" FontSize="20" TextAlignment="Center" Width="110"/>
                                         <ItemsControl x:Name="childnreControl" Background="Transparent" ItemsSource="{Binding Children}" VerticalAlignment="Bottom">
                                             <ItemsControl.ItemTemplate>
                                                 <DataTemplate>
                                                     <Border>
                                                         <DockPanel LastChildFill="False" Margin="15 0 0 0">
                                                             <TextBlock Text="{Binding Name}" FontSize="13" Foreground="Gray" Width="100"/>
-                                                            <TextBlock Text="{Binding ProjectName}" FontSize="13" Foreground="Gray" Width="200" />
                                                         </DockPanel>
                                                     </Border>
                                                 </DataTemplate>
@@ -64,14 +64,13 @@
                                         HorizontalContentAlignment="Left" VerticalContentAlignment="Top" Command="{Binding SelectedCommand}">
                                     <DockPanel Margin="20 10 0 0" HorizontalAlignment="Left" VerticalAlignment="Top">
                                         <TextBlock Text="{Binding CurrentViewModel.Day}" FontSize="20" TextAlignment="Center" FontWeight="ExtraBlack" Foreground="DarkBlue" Width="50"/>
-                                        <TextBlock Text="{Binding CurrentViewModel.DayOfWeek}" FontSize="20" TextAlignment="Center" Width="100"/>
+                                        <TextBlock Text="{Binding CurrentViewModel.DayOfWeek}" FontSize="20" TextAlignment="Center" Width="110"/>
                                         <ItemsControl x:Name="childnreControl" Background="Transparent" ItemsSource="{Binding Children}" VerticalAlignment="Bottom">
                                             <ItemsControl.ItemTemplate>
                                                 <DataTemplate>
                                                     <Border>
                                                         <DockPanel LastChildFill="False" Margin="15 0 0 0">
                                                             <TextBlock Text="{Binding Name}" FontSize="13" Foreground="Gray" Width="100"/>
-                                                            <TextBlock Text="{Binding ProjectName}" FontSize="13" Foreground="Gray" Width="200" />
                                                         </DockPanel>
                                                     </Border>
                                                 </DataTemplate>
@@ -91,14 +90,39 @@
                                         HorizontalContentAlignment="Left" VerticalContentAlignment="Top" Command="{Binding SelectedCommand}">
                                     <DockPanel Margin="20 10 0 0" HorizontalAlignment="Left" VerticalAlignment="Top">
                                         <TextBlock Text="{Binding CurrentViewModel.Day}" FontSize="20" TextAlignment="Center" FontWeight="ExtraBlack" Foreground="DarkBlue" Width="50"/>
-                                        <TextBlock Text="{Binding CurrentViewModel.DayOfWeek}" FontSize="20" TextAlignment="Center" Width="100"/>
+                                        <TextBlock Text="{Binding CurrentViewModel.DayOfWeek}" FontSize="20" TextAlignment="Center" Width="110"/>
                                         <ItemsControl x:Name="childnreControl" Background="Transparent" ItemsSource="{Binding Children}" VerticalAlignment="Bottom">
                                             <ItemsControl.ItemTemplate>
                                                 <DataTemplate>
                                                     <Border>
                                                         <DockPanel LastChildFill="False" Margin="15 0 0 0">
                                                             <TextBlock Text="{Binding Name}" FontSize="13" Foreground="Gray" Width="100"/>
-                                                            <TextBlock Text="{Binding ProjectName}" FontSize="13" Foreground="Gray" Width="200" />
+                                                        </DockPanel>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </DockPanel>
+                                </Button>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                    <!--forth halfe of dates-->
+                    <ItemsControl x:Name="daysItemControl4" ItemsSource="{Binding ForthDays}" Grid.Column="3">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Button x:Name="SelectButton" BorderThickness="1" BorderBrush="Black" Height="120" HorizontalAlignment="Stretch" Background="AliceBlue"
+                                        HorizontalContentAlignment="Left" VerticalContentAlignment="Top" Command="{Binding SelectedCommand}">
+                                    <DockPanel Margin="20 10 0 0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                                        <TextBlock Text="{Binding CurrentViewModel.Day}" FontSize="20" TextAlignment="Center" FontWeight="ExtraBlack" Foreground="DarkBlue" Width="50"/>
+                                        <TextBlock Text="{Binding CurrentViewModel.DayOfWeek}" FontSize="20" TextAlignment="Center" Width="110"/>
+                                        <ItemsControl x:Name="childnreControl" Background="Transparent" ItemsSource="{Binding Children}" VerticalAlignment="Bottom">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Border>
+                                                        <DockPanel LastChildFill="False" Margin="15 0 0 0">
+                                                            <TextBlock Text="{Binding Name}" FontSize="13" Foreground="Gray" Width="100"/>
                                                         </DockPanel>
                                                     </Border>
                                                 </DataTemplate>
