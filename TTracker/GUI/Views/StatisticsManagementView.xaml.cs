@@ -31,7 +31,7 @@ namespace TTracker.GUI.Views
 
         private void PrintButton_Click(object sender, RoutedEventArgs e)
         {
-            CustomPrintHelper.PrintVisual(MainChart);
+            CustomPrintHelper.PrintVisual(MainChart, PageOrientation.Landscape);
         }
 
         private void OpenCalendarButton_Click(object sender, RoutedEventArgs e)

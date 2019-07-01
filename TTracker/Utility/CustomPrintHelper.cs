@@ -8,7 +8,7 @@ namespace TTracker.Utility
     public static class CustomPrintHelper
     {
 
-        public static void PrintVisual(Visual printableVisual)
+        public static void PrintVisual(Visual printableVisual, PageOrientation pageOrientation)
         {
             PrintDialog printDialog = new PrintDialog();
 
@@ -43,7 +43,7 @@ namespace TTracker.Utility
 
                 //apply the original transform.
                 printingElement.LayoutTransform = originalScale;
-                printDialog.PrintTicket.PageOrientation = PageOrientation.Landscape;
+                printDialog.PrintTicket.PageOrientation = pageOrientation;
 
             }
         }

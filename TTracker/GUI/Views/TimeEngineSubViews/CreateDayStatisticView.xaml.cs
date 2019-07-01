@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Printing;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -28,7 +29,7 @@ namespace TTracker.GUI.Views.TimeEngineSubViews
 
         private void PrintButton_Click(object sender, RoutedEventArgs e)
         {
-            CustomPrintHelper.PrintVisual(MainGrid);
+            CustomPrintHelper.PrintVisual(MainGrid, PageOrientation.Landscape);
         }
 
     }
