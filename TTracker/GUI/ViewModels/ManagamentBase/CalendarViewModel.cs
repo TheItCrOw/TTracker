@@ -137,12 +137,22 @@ namespace TTracker.GUI.ViewModels.ManagamentBase
                     for (int i = 1; i < 7; i++)
                     {
                         var date = startOfWeek.AddDays(i);
-                        _currentlyShownDates.Add(date);
+                        _currentlyShownDates.Add(date.Date);
                     }
                     _currentlyAddedAmountOfDays = 7;
                     break;
 
                 case CustomCalendarMode.Month:
+                    _currentlyShownDates.Clear();
+                    SelectedCalendarDate = currentDay;
+                    var startOfMonth = DateTimeExtensions.StartOfMonth(currentDay);
+                    _currentlyAddedAmountOfDays = DateTimeExtensions.AmountOfDaysOfMonth(SelectedCalendarDate.Month);
+                    for (int i = 0; i < _currentlyAddedAmountOfDays + 1; i++)
+                    {
+                        var date = startOfMonth.AddDays(i);
+                        if (date.Month == SelectedCalendarDate.Month)
+                            _currentlyShownDates.Add(date.Date);
+                    }
                     break;
                 case CustomCalendarMode.Year:
                     break;
@@ -154,9 +164,9 @@ namespace TTracker.GUI.ViewModels.ManagamentBase
         {
             _currentlyNeededDateTickets.Clear();
 
-            foreach(var ticket in _allDateTicketsVm)
+            foreach (var ticket in _allDateTicketsVm)
             {
-                if(ticket.DateStart.ToShortDateString() == SelectedCalendarDate.ToShortDateString()
+                if (ticket.DateStart.ToShortDateString() == SelectedCalendarDate.ToShortDateString()
                     || ticket.DateEnd.ToShortDateString() == SelectedCalendarDate.ToShortDateString()
                     || (ticket.DateStart <= SelectedCalendarDate && ticket.DateEnd >= SelectedCalendarDate))
                 {
@@ -172,6 +182,19 @@ namespace TTracker.GUI.ViewModels.ManagamentBase
                 if (_currentlyShownDates.Contains(ticket.DateStart.Date)
                     || _currentlyShownDates.Contains(ticket.DateEnd.Date)
                     && !(_currentlyNeededDateTickets.Contains(ticket)))
+                {
+                    _currentlyNeededDateTickets.Add(ticket);
+                }
+            }
+        }
+        protected void LoadCurrentlyNeededMonthlyTickets()
+        {
+            _currentlyNeededDateTickets.Clear();
+            foreach (var ticket in _allDateTicketsVm)
+            {
+                if (_currentlyShownDates.Contains(ticket.DateStart.Date)
+                     || _currentlyShownDates.Contains(ticket.DateEnd.Date)
+                      && !(_currentlyNeededDateTickets.Contains(ticket)))
                 {
                     _currentlyNeededDateTickets.Add(ticket);
                 }
@@ -199,6 +222,12 @@ namespace TTracker.GUI.ViewModels.ManagamentBase
                     _currentCalendarMode = CustomCalendarMode.Week;
                     break;
                 case CustomCalendarMode.Month:
+                    LoadCurrentlyNeededMonthlyTickets();
+                    var newMonthlyView = new MonthlyView();
+                    newMonthlyView.DataContext = new MonthlyViewModel(this, _currentlyShownDates, _currentlyNeededDateTickets);
+                    MainContentFrame.Content = null;
+                    MainContentFrame.Content = newMonthlyView;
+                    _currentCalendarMode = CustomCalendarMode.Month;
                     break;
                 case CustomCalendarMode.Year:
                     break;

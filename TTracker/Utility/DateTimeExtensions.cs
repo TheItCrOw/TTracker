@@ -22,6 +22,60 @@ namespace TTracker.Utility
         }
 
         /// <summary>
+        /// Returns the date of the start of the running month
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <returns></returns>
+        public static DateTime StartOfMonth(DateTime dt)
+        {
+            var startOfMonth = dt;
+            for (int i = 0; i < 32; i++)
+            {
+                if (startOfMonth.Month == dt.Month)
+                    startOfMonth = startOfMonth.AddDays(-1);
+            }
+            return startOfMonth;
+        }
+
+        /// <summary>
+        /// Returns the amount of days the month has as an int
+        /// </summary>
+        /// <param name="month"></param>
+        /// <returns></returns>
+        public static int AmountOfDaysOfMonth(int month)
+        {
+            switch (month)
+            {
+                case 1:
+                    return 31;
+                case 2:
+                    return 28;
+                case 3:
+                    return 31;
+                case 4:
+                    return 30;
+                case 5:
+                    return 31;
+                case 6:
+                    return 30;
+                case 7:
+                    return 31;
+                case 8:
+                    return 31;
+                case 9:
+                    return 30;
+                case 10:
+                    return 31;
+                case 11:
+                    return 30;
+                case 12:
+                    return 31;
+
+            }
+            return 0;
+        }
+
+        /// <summary>
         /// Takes in a float and returns a Timespan, that you can then add upon a Date
         /// </summary>
         /// <param name="time"></param>

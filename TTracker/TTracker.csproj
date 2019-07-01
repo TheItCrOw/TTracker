@@ -122,6 +122,7 @@
     <Compile Include="GUI\ViewModels\Entities\MicroTaskViewModel.cs" />
     <Compile Include="GUI\ViewModels\ManagamentBase\CalendarSubVms\CreateDateTicketViewModel.cs" />
     <Compile Include="GUI\ViewModels\ManagamentBase\CalendarSubVms\DailyViewModel.cs" />
+    <Compile Include="GUI\ViewModels\ManagamentBase\CalendarSubVms\MonthlyViewModel.cs" />
     <Compile Include="GUI\ViewModels\ManagamentBase\CalendarSubVms\WeeklyViewModel.cs" />
     <Compile Include="GUI\ViewModels\ManagamentBase\CalendarViewModel.cs" />
     <Compile Include="GUI\ViewModels\ManagamentBase\StatisticsManagementViewModel.cs" />
@@ -148,6 +149,9 @@
     </Compile>
     <Compile Include="GUI\Views\CalendarSubViews\DailyView.xaml.cs">
       <DependentUpon>DailyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Views\CalendarSubViews\MonthlyView.xaml.cs">
+      <DependentUpon>MonthlyView.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI\Views\CalendarSubViews\WeeklyView.xaml.cs">
       <DependentUpon>WeeklyView.xaml</DependentUpon>
@@ -211,6 +215,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GUI\Views\CalendarSubViews\DailyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Views\CalendarSubViews\MonthlyView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
