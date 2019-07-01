@@ -192,6 +192,7 @@
     <Compile Include="Utility\CreateTFromData.cs" />
     <Compile Include="Utility\CustomPdfWriter.cs" />
     <Compile Include="Utility\CustomPrintHelper.cs" />
+    <Compile Include="Utility\CustomSolidColorBrushes.cs" />
     <Compile Include="Utility\DataAccess.cs" />
     <Compile Include="Utility\DateTimeExtensions.cs" />
     <Compile Include="Utility\FocusExtension.cs" />

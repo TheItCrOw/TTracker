@@ -50,19 +50,7 @@ namespace TTracker.GUI.ViewModels.ManagamentBase.CalendarSubVms
             SelectedDate = selectedDate.DayOfWeek + ", the " + selectedDate.ToShortDateString();
             _dateTicketsVm = currentDateTickets;
             _currentDate = selectedDate;
-            FillColors();
             LoadDateTickets();
-        }
-
-        void FillColors()
-        {
-            _dateTicketsColors.Add(Brushes.LightBlue);
-            _dateTicketsColors.Add(Brushes.LightGreen);
-            _dateTicketsColors.Add(Brushes.LightYellow);
-            _dateTicketsColors.Add(Brushes.LightGray);
-            _dateTicketsColors.Add(Brushes.LightPink);
-            _dateTicketsColors.Add(Brushes.LightGoldenrodYellow);
-            _dateTicketsColors.Add(Brushes.LightSteelBlue);
         }
 
         public void LoadDateTickets()
@@ -82,7 +70,7 @@ namespace TTracker.GUI.ViewModels.ManagamentBase.CalendarSubVms
         {
             //Get height of the itemscontrol with the currentContent property
             HeightOfCalendar = 1500;
-            int i = 0;         
+            int i = 0;
 
             foreach (var ticket in allDateTicketsVm)
             {
@@ -94,25 +82,25 @@ namespace TTracker.GUI.ViewModels.ManagamentBase.CalendarSubVms
                 if (ticket.DateStart.ToShortDateString() != ticket.DateEnd.ToShortDateString())
                 {
                     //When the Ticket starts Today:
-                    if(ticket.DateStart.ToShortDateString() == _currentDate.ToShortDateString())
+                    if(ticket.DateStart.Date == _currentDate.Date)
                     {
                         ticket.TimeEnd = "24:00";
                         ticket.Height = (float)(HeightOfCalendar / 24) * (24 - (ticket.DateStart.Hour));
                     }
                     //When the ticket ends today
-                    else if(ticket.DateEnd.ToShortDateString() == _currentDate.ToShortDateString())
+                    else if(ticket.DateEnd.Date == _currentDate.Date)
                     {
                         ticket.TimeStart = "00:00";
                         ticket.Height = (float)(HeightOfCalendar / 24) * ((ticket.DateEnd.Hour) - 0);
                     }
                     //When the ticket goes from 24-28.6 and curretnDate is the 26.06, then the ticket goes from 0-24
-                    else
+                    else if(ticket.DateStart.Date < _currentDate.Date && ticket.DateEnd.Date > _currentDate.Date)
                     {
                         ticket.TimeStart = "00:00";
                         ticket.TimeEnd= "24:00";
                         ticket.Height = 800;
                     }
-                    ticket.BackgroundColor = _dateTicketsColors[i];
+                    ticket.BackgroundColor = CustomSolidColorBrushes.GetColorByIndex(i);
                     i++;
                     return;
                 }
@@ -122,7 +110,7 @@ namespace TTracker.GUI.ViewModels.ManagamentBase.CalendarSubVms
 
                 var height = (HeightOfCalendar / 24) * (end - start);
                 ticket.Height = (float)height;
-                ticket.BackgroundColor = _dateTicketsColors[i];
+                ticket.BackgroundColor = CustomSolidColorBrushes.GetColorByIndex(i);
                 i++;
             }
         }

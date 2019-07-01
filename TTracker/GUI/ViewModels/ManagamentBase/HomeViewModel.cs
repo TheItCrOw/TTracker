@@ -21,8 +21,10 @@ namespace TTracker.GUI.ViewModels
         private string _date;
         private List<TimeEntry> allTimeEntries = new List<TimeEntry>();
         public ObservableCollection<TaskTicketViewModel> TaskTickets { get; set; } = new ObservableCollection<TaskTicketViewModel>();
+        public ObservableCollection<DateTicketViewModel> DateTickets { get; set; } = new ObservableCollection<DateTicketViewModel>();
         public ObservableCollection<ChartHelperModel> RootProjectsChart { get; set; } = new ObservableCollection<ChartHelperModel>();
-        public ObservableCollection<ChartHelperModel> SubProjectsChart { get; set; } = new ObservableCollection<ChartHelperModel>();
+
+        //public ObservableCollection<ChartHelperModel> SubProjectsChart { get; set; } = new ObservableCollection<ChartHelperModel>();
         public ObservableCollection<MicroTaskViewModel> MicroTasks { get; set; } = new ObservableCollection<MicroTaskViewModel>();
         public DelegateCommand CreateMicroTaskCommand => new DelegateCommand(CreateMicroTask);
 
@@ -41,13 +43,14 @@ namespace TTracker.GUI.ViewModels
 
             Date = ($"Your To-Do´s for today, the {DateTime.Now.ToShortDateString()}");
             allTimeEntries.AddRange(DataAccess.Instance.GetAll<TimeEntry>());
-            LoadTickets();
+            LoadTaskTickets();
+            LoadDateTickets();
             LoadMicroTasks();
             CalculateRootProjectsChart();
-            CalcluateSubProjects();
+            //CalcluateSubProjects();
         }
 
-        void LoadTickets()
+        void LoadTaskTickets()
         {
             var allTickets = DataAccess.Instance.GetAll<TaskTicket>();
             var todoTickets = new List<TaskTicket>();
@@ -73,6 +76,45 @@ namespace TTracker.GUI.ViewModels
 
             TaskTickets.AddRange(todoTickets.Select(t => new TaskTicketViewModel(t, this, false)));
             TaskTickets.AddRange(highPrioTickets.Select(t => new TaskTicketViewModel(t, this, false)));
+        }
+
+        void LoadDateTickets()
+        {
+            var allDateTickets = DataAccess.Instance.GetAll<DateTicket>();
+            var neededDateTicektsVm = new List<DateTicketViewModel>();
+
+            foreach (var ticket in allDateTickets)
+            {
+                if(ticket.DateStart.Date == DateTime.Now.Date || ticket.DateEnd.Date == DateTime.Now.Date
+                    || (ticket.DateStart.Date < DateTime.Now.Date && ticket.DateEnd.Date > DateTime.Now.Date))
+                {
+                    neededDateTicektsVm.Add(new DateTicketViewModel(ticket, this, false));
+                }
+            }
+
+            int i = 0;
+            foreach(var ticket in neededDateTicektsVm)
+            {
+                //Reset the ticket time, otherwise I corrupt the times in the ticket which I dont want.
+                //I want them to be indiviudlally changed for the UI
+                ticket.TimeStart = ticket.DateStart.ToShortTimeString();
+                ticket.TimeEnd = ticket.DateEnd.ToShortTimeString();
+
+                if (ticket.DateEnd.Date != DateTime.Now.Date)
+                {
+                    ticket.TimeEnd = "24:00";
+                }
+                if(ticket.DateStart.Date != DateTime.Now.Date)
+                {
+                    ticket.TimeStart = "00:00";
+                }
+                var background = CustomSolidColorBrushes.GetColorByIndex(i);
+                ticket.BackgroundColor = background;
+                i++;
+            }
+
+            DateTickets.Clear();
+            DateTickets.AddRange(neededDateTicektsVm);
         }
         void LoadMicroTasks()
         {
@@ -100,27 +142,27 @@ namespace TTracker.GUI.ViewModels
 
                 Application.Current.Dispatcher.Invoke(() => RootProjectsChart.AddRange(StatisticsHelperClass.CreateChartModelsOfTimeEntriesRootProjects(desiredTimeEntries)));
             });
-
         }
-        void CalcluateSubProjects()
-        {
-            Task.Run(() =>
-            {
-                DateTime dateOfLastMonday = DateTime.Now.StartOfWeek(DayOfWeek.Monday);
-                var desiredTimeEntriesVm = new List<TimeEntryViewModel>();
 
-                foreach (var tE in allTimeEntries)
-                {
-                    if (tE.Created >= dateOfLastMonday)
-                    {
-                        desiredTimeEntriesVm.Add(new TimeEntryViewModel(tE, this));
-                    }
-                }
+        //void CalcluateSubProjects()
+        //{
+        //    Task.Run(() =>
+        //    {
+        //        DateTime dateOfLastMonday = DateTime.Now.StartOfWeek(DayOfWeek.Monday);
+        //        var desiredTimeEntriesVm = new List<TimeEntryViewModel>();
+
+        //        foreach (var tE in allTimeEntries)
+        //        {
+        //            if (tE.Created >= dateOfLastMonday)
+        //            {
+        //                desiredTimeEntriesVm.Add(new TimeEntryViewModel(tE, this));
+        //            }
+        //        }
                
-                Application.Current.Dispatcher.Invoke(() => SubProjectsChart.AddRange(StatisticsHelperClass.CreateChartModelsOfTimeEntriesSubProjects(desiredTimeEntriesVm)));
+        //        Application.Current.Dispatcher.Invoke(() => SubProjectsChart.AddRange(StatisticsHelperClass.CreateChartModelsOfTimeEntriesSubProjects(desiredTimeEntriesVm)));
 
-            });
-        }
+        //    });
+        //}
         void CreateMicroTask()
         {
             var microTask = new MicroTask(Guid.NewGuid(), DataAccess.CurrentLoggedUser.Id, "", DateTime.Now, 0);

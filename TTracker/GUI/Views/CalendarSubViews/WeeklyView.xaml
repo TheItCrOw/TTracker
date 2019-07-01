@@ -35,13 +35,13 @@
                                     <DockPanel Margin="20 10 0 0" HorizontalAlignment="Left" VerticalAlignment="Top">
                                         <TextBlock Text="{Binding CurrentViewModel.Day}" FontSize="20" TextAlignment="Center" FontWeight="ExtraBlack" Foreground="DarkBlue" Width="50"/>
                                         <TextBlock Text="{Binding CurrentViewModel.DayOfWeek}" FontSize="20" TextAlignment="Center" Width="300"/>
-                                        <ItemsControl x:Name="childnreControl" Background="AliceBlue" ItemsSource="{Binding Children}" VerticalAlignment="Bottom">
+                                        <ItemsControl x:Name="childnreControl" Background="Transparent" ItemsSource="{Binding Children}" VerticalAlignment="Bottom">
                                             <ItemsControl.ItemTemplate>
                                                 <DataTemplate>
                                                     <Border>
                                                         <DockPanel>
                                                             <TextBlock Text="{Binding Name}" FontSize="13" Foreground="Gray" Width="250"/>
-                                                            <TextBlock Text="{Binding ProjectName}" FontSize="13" Foreground="Gray" Width="250"/>
+                                                            <TextBlock Text="{Binding ProjectName}" FontSize="13" Foreground="Gray" Width="250" />
                                                         </DockPanel>
                                                     </Border>
                                                 </DataTemplate>

@@ -149,36 +149,50 @@
                         </ItemsControl>
                     </ScrollViewer>
 
-                    <!--Charts-->
+                    <!--Charts and dateTickets-->
                     <!--Topic-->
                 <Border Grid.Row="1" BorderThickness="0 1 0 0" BorderBrush="Black">
-                    <TextBlock Text="Statistics of the running week: Root and Sub-Projects"
-                                   FontSize="20" 
-                                   TextAlignment="Center" 
-                                   FontWeight="Bold"
-                                   Foreground="DarkBlue"/>
-                </Border>
-
-                    
-                    <Grid Grid.Column="1" Grid.Row="2" Margin="0 -30 0 0">
+                    <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
+                        <!--Chart topic-->
+                        <TextBlock Text="Root-Statistic of the running week:"
+                                   FontSize="20" 
+                                   TextAlignment="Center" 
+                                   FontWeight="Bold"
+                                   Foreground="DarkBlue"/>
+                        <!--dateTicket topic-->
+                        <TextBlock Text="Your dates for today: "
+                                   FontSize="20"
+                                   Grid.Column="1"
+                                   TextAlignment="Center" 
+                                   FontWeight="Bold"
+                                   Foreground="DarkBlue"/>
+                    </Grid>
+                </Border>
 
-                        <!--Chart of the Root Projects-->
-                            <DVC:Chart BorderThickness="0" >
-                                <DVC:Chart.Series>
-                                    <DVC:ColumnSeries
+
+                <Grid Grid.Column="1" Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Chart of the Root Projects-->
+                    <DVC:Chart BorderThickness="0" Margin="0 -30 0 0">
+                        <DVC:Chart.Series>
+                            <DVC:ColumnSeries
                                       Title=""
                                       ItemsSource="{Binding RootProjectsChart}"                                                   
                                       IndependentValueBinding="{Binding Name}" 
                                       DependentValueBinding="{Binding Share}" 
                                       Foreground="Red"/>
-                                </DVC:Chart.Series>
-                            </DVC:Chart>
-                        <!--Sub Projects Chart-->
-                        <DVC:Chart BorderThickness="0" Grid.Row="1" Grid.Column="1">
+                        </DVC:Chart.Series>
+                    </DVC:Chart>
+                    <!--Sub Projects Chart-->
+                    <!--<DVC:Chart BorderThickness="0" Grid.Row="1" Grid.Column="1">
                             <DVC:Chart.Series>
                                 <DVC:BarSeries
                                           Title=""
@@ -187,11 +201,29 @@
                                           DependentValueBinding="{Binding Share}" 
                                           Background="LightSteelBlue"/>
                             </DVC:Chart.Series>
-                        </DVC:Chart>
-                    </Grid>
-
-
+                        </DVC:Chart>-->
+                    
+                    <!--Date Tickets-->
+                        <ScrollViewer VerticalScrollBarVisibility="Visible" Grid.Column="1" Margin="0 15 0 0" >
+                            <ItemsControl x:Name="dateTicketsControl" Background="AliceBlue" ItemsSource="{Binding DateTickets}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Button BorderThickness="1" BorderBrush="Gray" Background="{Binding BackgroundColor}" HorizontalContentAlignment="Left">
+                                            <DockPanel Height="45">
+                                                <TextBlock Text="{Binding Name}" FontSize="15" FontWeight="Bold" Margin="10 0 0 0" Width="150" VerticalAlignment="Center"/>
+                                                <TextBlock Text="{Binding ProjectName}" FontSize="15" FontWeight="Bold" Margin="10 0 0 0" Width="150" VerticalAlignment="Center"/>
+                                                <TextBlock Text="{Binding TimeStart}" FontSize="15" FontWeight="Bold" Margin="10 0 5 0" VerticalAlignment="Center"/>
+                                                <TextBlock Text="-" FontSize="15" FontWeight="Bold" VerticalAlignment="Center"/>
+                                                <TextBlock Text="{Binding TimeEnd}" FontSize="15" FontWeight="Bold" Margin="5 0 0 0" VerticalAlignment="Center"/>
+                                            </DockPanel>
+                                        </Button>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
                 </Grid>
+                    
+            </Grid>
         </Border>
 
         <!--MicroTasks on the right-->
