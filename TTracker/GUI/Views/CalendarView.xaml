@@ -71,6 +71,7 @@
                         Command="{Binding CreateNewDateTicketCommand}">
                     <Image Margin="7" Source="/TTracker;component/Resources/new-ticket.png"/>
                 </Button>
+                
 
             </Grid>
         </Border>

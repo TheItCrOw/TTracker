@@ -1,11 +1,14 @@
-﻿using System;
+﻿using Prism.Commands;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media;
 using TTracker.BaseDataModules;
 using TTracker.GUI.Models;
+using TTracker.GUI.ViewModels.ManagamentBase;
 using TTracker.Utility;
 
 namespace TTracker.GUI.ViewModels.Entities
@@ -24,6 +27,8 @@ namespace TTracker.GUI.ViewModels.Entities
         private SolidColorBrush _backgroundColor;
 
         public DateTicket Model { get; set; }
+        public DelegateCommand DeleteCommand => new DelegateCommand(Delete);
+
 
         #region Properties
 
@@ -119,5 +124,18 @@ namespace TTracker.GUI.ViewModels.Entities
                 AfterSave();
         }
 
+        void Delete()
+        {
+            if (MessageBox.Show("Do you really want to delete this ticket for good?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+            {
+                return;
+            }
+            else
+            {
+                DataAccess.Instance.DeleteEntity<DateTicket>(this.Model);
+                ((CalendarViewModel)CurrentBase).Reload();
+            }
+
+        }
     }
 }

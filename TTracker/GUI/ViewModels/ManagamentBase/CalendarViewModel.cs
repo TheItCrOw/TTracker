@@ -155,6 +155,16 @@ namespace TTracker.GUI.ViewModels.ManagamentBase
                     }
                     break;
                 case CustomCalendarMode.Year:
+                    _currentlyShownDates.Clear();
+                    SelectedCalendarDate = currentDay;
+                    var startOfYear = DateTimeExtensions.StartOfYear(currentDay);
+                    _currentlyAddedAmountOfDays = DateTimeExtensions.AmountOfDaysInYear(SelectedCalendarDate.Month);
+                    for (int i = 0; i < _currentlyAddedAmountOfDays + 1; i++)
+                    {
+                        var date = startOfYear.AddDays(i);
+                        if (date.Year == SelectedCalendarDate.Year)
+                            _currentlyShownDates.Add(date.Date);
+                    }
                     break;
                 default:
                     break;
@@ -200,6 +210,19 @@ namespace TTracker.GUI.ViewModels.ManagamentBase
                 }
             }
         }
+        protected void LoadCurrentlyNeededYearlyTickets()
+        {
+            _currentlyNeededDateTickets.Clear();
+            foreach (var ticket in _allDateTicketsVm)
+            {
+                if (_currentlyShownDates.Contains(ticket.DateStart.Date)
+                     || _currentlyShownDates.Contains(ticket.DateEnd.Date)
+                     && !(_currentlyNeededDateTickets.Contains(ticket)))
+                {
+
+                }
+            }
+        }
         protected void ChangeMainContentFrame(CustomCalendarMode mode)
         {
             switch (mode)
@@ -230,6 +253,12 @@ namespace TTracker.GUI.ViewModels.ManagamentBase
                     _currentCalendarMode = CustomCalendarMode.Month;
                     break;
                 case CustomCalendarMode.Year:
+                    LoadCurrentlyNeededYearlyTickets();
+                    var newYearlyView = new YearlyView();
+                    newYearlyView.DataContext = new YearlyViewModel(this, _currentlyShownDates, _currentlyNeededDateTickets);
+                    MainContentFrame.Content = null;
+                    MainContentFrame.Content = newYearlyView;
+                    _currentCalendarMode = CustomCalendarMode.Year;
                     break;
                 default:
                     break;

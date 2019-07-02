@@ -1,0 +1,50 @@
+﻿<Page x:Class="TTracker.GUI.Views.CalendarSubViews.YearlyView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TTracker.GUI.Views.CalendarSubViews"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="YearlyView">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--Topic with date-->
+        <Border Grid.Row="0" BorderThickness="1 0 1 1" BorderBrush="Black" Background="AliceBlue">
+            <TextBlock Text="{Binding SelectedDate}" FontSize="20" TextAlignment="Center" VerticalAlignment="Center" FontWeight="DemiBold"/>
+        </Border>
+
+        <!--Main Content-->
+        <Grid Grid.Row="1" HorizontalAlignment="Stretch">
+            <Border Margin="0 10 0 10" Grid.Row="1" BorderThickness="2" BorderBrush="Black" Background="AliceBlue">
+                <ScrollViewer>
+                    <!--first half of dates-->
+                    <ItemsControl x:Name="daysItemControl" ItemsSource="{Binding Months}" HorizontalAlignment="Stretch">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Button x:Name="SelectButton" BorderThickness="1" BorderBrush="Black" Height="40" HorizontalAlignment="Stretch" Background="AliceBlue"
+                                        HorizontalContentAlignment="Left" VerticalContentAlignment="Top" Command="{Binding SelectedCommand}">
+                                    <DockPanel HorizontalAlignment="Left" VerticalAlignment="Top">
+                                        <TextBlock Text="{Binding CurrentViewModel}" FontSize="20" TextAlignment="Center" FontWeight="ExtraBlack" Foreground="DarkBlue"/>
+                                    </DockPanel>
+                                </Button>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        
+                    </ItemsControl>
+                </ScrollViewer>
+            </Border>
+        </Grid>
+
+    </Grid>
+</Page>

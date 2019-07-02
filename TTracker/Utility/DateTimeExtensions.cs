@@ -38,6 +38,22 @@ namespace TTracker.Utility
         }
 
         /// <summary>
+        /// Returns the date of the start of the running year
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <returns></returns>
+        public static DateTime StartOfYear(DateTime dt)
+        {
+            var startOfYear = dt;
+            for (int i = 0; i < 357; i++)
+            {
+                if (startOfYear.Year == dt.Year)
+                    startOfYear = startOfYear.AddDays(-1);
+            }
+            return startOfYear;
+        }
+
+        /// <summary>
         /// Returns the amount of days the month has as an int
         /// </summary>
         /// <param name="month"></param>
@@ -73,6 +89,58 @@ namespace TTracker.Utility
 
             }
             return 0;
+        }
+
+        /// <summary>
+        /// Returns the name of the month as a string
+        /// </summary>
+        /// <param name="month"></param>
+        /// <returns></returns>
+        public static string ConvertMonthToString(int month)
+        {
+            switch (month)
+            {
+                case 1:
+                    return "January";
+                case 2:
+                    return "February";
+                case 3:
+                    return "March";
+                case 4:
+                    return "April";
+                case 5:
+                    return "May";
+                case 6:
+                    return "June";
+                case 7:
+                    return "July";
+                case 8:
+                    return "August";
+                case 9:
+                    return "September";
+                case 10:
+                    return "October";
+                case 11:
+                    return "November";
+                case 12:
+                    return "December";
+
+            }
+            return "Not a month!";
+        }
+
+        /// <summary>
+        /// Returns the amount of days the year has as an int
+        /// </summary>
+        /// <param name="month"></param>
+        /// <returns></returns>
+        public static int AmountOfDaysInYear(int year)
+        {
+            if(DateTime.IsLeapYear(year))
+            {
+                return 366;
+            }
+            return 365;
         }
 
         /// <summary>

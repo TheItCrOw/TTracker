@@ -124,6 +124,7 @@
     <Compile Include="GUI\ViewModels\ManagamentBase\CalendarSubVms\DailyViewModel.cs" />
     <Compile Include="GUI\ViewModels\ManagamentBase\CalendarSubVms\MonthlyViewModel.cs" />
     <Compile Include="GUI\ViewModels\ManagamentBase\CalendarSubVms\WeeklyViewModel.cs" />
+    <Compile Include="GUI\ViewModels\ManagamentBase\CalendarSubVms\YearlyViewModel.cs" />
     <Compile Include="GUI\ViewModels\ManagamentBase\CalendarViewModel.cs" />
     <Compile Include="GUI\ViewModels\ManagamentBase\StatisticsManagementViewModel.cs" />
     <Compile Include="GUI\ViewModels\UtilityViewModel.cs" />
@@ -155,6 +156,9 @@
     </Compile>
     <Compile Include="GUI\Views\CalendarSubViews\WeeklyView.xaml.cs">
       <DependentUpon>WeeklyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Views\CalendarSubViews\YearlyView.xaml.cs">
+      <DependentUpon>YearlyView.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI\Views\CalendarView.xaml.cs">
       <DependentUpon>CalendarView.xaml</DependentUpon>
@@ -223,6 +227,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GUI\Views\CalendarSubViews\WeeklyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Views\CalendarSubViews\YearlyView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
