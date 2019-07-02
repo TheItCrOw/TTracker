@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data>
+  <Id>aa2cae94-fd5a-4e19-b79f-b580c9d09b9c</Id>
+  <Name>CH4: Implement data access </Name>
+  <UserId>d601adbc-eee3-436f-b657-c9f4969a449a</UserId>
+  <ProjectId>d721e53a-30c5-4223-916b-fad0c349918f</ProjectId>
+  <Text>4.1. Perform I/O Operations
+4.2. Consume data
+4.3. Query and manipulate data and objects by using LINQ
+4.4. Serialize and deserialize data
+4.5. Store data in and retrieve data from collections
+4.6. Practice
+
+</Text>
+  <Created>02.07.2019 12:07:47</Created>
+  <ExpectedTime>1</ExpectedTime>
+  <UsedTime>0</UsedTime>
+  <Priority>Normal</Priority>
+  <Status>Todo</Status>
+</Data>

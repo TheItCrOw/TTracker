@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data>
+  <Id>52ff57a8-6d77-4ee5-9ca7-d3a556dd2b39</Id>
+  <Name>CH3: Debug applications and implement security</Name>
+  <UserId>d601adbc-eee3-436f-b657-c9f4969a449a</UserId>
+  <ProjectId>d721e53a-30c5-4223-916b-fad0c349918f</ProjectId>
+  <Text>3.1. Validate application input
+3.2. Perform symmetric and asymmetric encryption
+3.3. Manage assemblies
+3.4. Debug an application
+3.5. Implement diagnostics in an application
+3.6. Practice
+
+</Text>
+  <Created>02.07.2019 12:07:12</Created>
+  <ExpectedTime>1</ExpectedTime>
+  <UsedTime>0</UsedTime>
+  <Priority>Normal</Priority>
+  <Status>Todo</Status>
+</Data>
