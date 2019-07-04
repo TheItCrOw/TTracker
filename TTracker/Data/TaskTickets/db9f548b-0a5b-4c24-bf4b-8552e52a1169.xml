@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data>
+  <Id>db9f548b-0a5b-4c24-bf4b-8552e52a1169</Id>
+  <Name>Welt Karte redesign</Name>
+  <UserId>d601adbc-eee3-436f-b657-c9f4969a449a</UserId>
+  <ProjectId>5df26a18-8a51-41a1-a05f-1c71b4716ed2</ProjectId>
+  <Text>Weltkarte mit neuen assets machen</Text>
+  <Created>04.07.2019 17:13:48</Created>
+  <ExpectedTime>0,6</ExpectedTime>
+  <UsedTime>0,3375</UsedTime>
+  <Priority>Normal</Priority>
+  <Status>Working</Status>
+</Data>
