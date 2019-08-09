@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data>
+  <Id>efd88b79-ccde-4be3-afbe-5a18de20db8c</Id>
+  <Name>VPN Server bauen</Name>
+  <UserId>d601adbc-eee3-436f-b657-c9f4969a449a</UserId>
+  <ProjectId>cf228c12-004c-4cdf-95c3-d3bbff375fde</ProjectId>
+  <Text>Einen VPN Server aus Raspberry Pie machen (siehe Online Tut)</Text>
+  <Created>01.08.2019 19:46:08</Created>
+  <ExpectedTime>1,5</ExpectedTime>
+  <UsedTime>0</UsedTime>
+  <Priority>VeryHigh</Priority>
+  <Status>Todo</Status>
+</Data>

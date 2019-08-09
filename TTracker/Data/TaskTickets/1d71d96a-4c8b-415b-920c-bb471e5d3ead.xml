@@ -6,8 +6,8 @@
   <ProjectId>5df26a18-8a51-41a1-a05f-1c71b4716ed2</ProjectId>
   <Text>Alle relevanten Lebewesen auf einem Blick</Text>
   <Created>03.07.2019 11:04:44</Created>
-  <ExpectedTime>1</ExpectedTime>
-  <UsedTime>0,48125</UsedTime>
+  <ExpectedTime>2</ExpectedTime>
+  <UsedTime>1,0875</UsedTime>
   <Priority>Normal</Priority>
   <Status>Working</Status>
 </Data>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data>
+  <Id>ea95432c-5773-436c-a6d9-00d619597896</Id>
+  <Name>CEWE Fotobuch Salzburg</Name>
+  <UserId>d601adbc-eee3-436f-b657-c9f4969a449a</UserId>
+  <ProjectId>3cbe8336-c383-4df4-ab0b-503062cfcee0</ProjectId>
+  <Text>Eine schöne Collage von den Bildern aus Salzburg machen</Text>
+  <Created>20.07.2019 19:33:11</Created>
+  <ExpectedTime>0,5</ExpectedTime>
+  <UsedTime>0</UsedTime>
+  <Priority>Normal</Priority>
+  <Status>Todo</Status>
+</Data>
