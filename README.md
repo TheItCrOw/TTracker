@@ -50,4 +50,4 @@ To wrap up your duties for the day, the Home View shows everything you need to k
 # Recap the project
 
 I have learned a lot about WPF, C#, Visual Studio & Git in the proccess of making this software. I decided to go for an XML-Database, since I wanted the software to run offline as well and also wanted to learn more about XML. I plan on making an Online-Version of this as well, integrated into the program, that allows you to manage projects tasks and tickets across several people much like Jira.
-Since this was one of my first projects with WPF technology, my former Code does have some sections I would definitly change looking back at it now and there are still some things that aren't implemented yet.
+Since this was one of my first projects with WPF technology, my former Code does have some sections I would definitly change looking back at it now and there are still some things that aren't implemented yet. But in generel I am satisfied with the current state of the program and I do use it every day regurarly.
