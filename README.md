@@ -7,7 +7,7 @@ This is the repository for my TTracker - a tool that structures and organizes yo
 
 TTracker has a buildin local Ticket Management section. There you can create Tickets/Tasks choosing individual Properties for each of them to suit the content of the Ticket. (Ticket-Description, Expected worktime of the ticket, Priority, Status and more).
 
-You may not only create new tickets, but delete them as well. Personally, I do not want to delete every "finished" ticket. But keeping them in the programm may eventually cause long loading times. As a consequence, I built in an Import/Export logic, that exports tickets that are "finished" and also imports them from the disc. Currently exported tickets are Base64 encoded, but I'd like to change that in the future and rather zip them.
+You may not only create new tickets, but delete them as well. Personally, I do not want to delete every "finished" ticket. But keeping them in the programm may eventually cause long loading times. As a consequence, I built in an Import/Export logic that exports tickets that are "finished" and also imports them from the disc. Currently exported tickets are Base64 encoded, but I'd like to change that in the future and rather zip them.
 
 The "Progress" bar on the right shows you how much time you have already spent on a ticket and what time you expected it to cost.
 
