@@ -29,6 +29,16 @@ In the Time Engine you track your time of the day. It is up to you, to what exte
 
 For everyone that wants to track all of his/her time, I implemented the "Static" tickets. These tickets do not have a time limit, all they do is represent an activity that is ongoing. E.g. my "Go to the gym" ticket. I do NOT create a new ticket each time I go to the gym. Usually, there are no specific tasks while I'm doing sports - I just go work out. For that, I created a static ticket. So now I can go into the Time Engine and book the time of my workout on that ticket, so I can track all of my time and make statistics out of it, without creating dozens of tickets for the same activity I do regulary.
 
-![CalendarView](https://user-images.githubusercontent.com/49918134/64677432-d4ecdb80-d477-11e9-9706-b9dd2670c686.png)
-![HomeView](https://user-images.githubusercontent.com/49918134/64677433-d4ecdb80-d477-11e9-96d7-217f8d0bb6dd.png)
+# Statistics View
+
 ![StatisticsView](https://user-images.githubusercontent.com/49918134/64677435-d5857200-d477-11e9-8377-59c5a8636778.png)
+
+One of the most interesting features of the TTracker are the statistics. The whole concept of the program bundles in this very section. All you do is create Projects, Tickets, book your time, organize your workflow and all of this results in statistics. Here you can undoublty see, how much time you spend on what activity. Are you happy with that? Do you work too much, do you study too less...these are all questions that you have probably asked yourself many times, but never answered undoubtly. Let the TTracker caluclate any timerange statistic you want - a day, week, month, year, all time. It is a greate way of visualising your efforts and seeing, in what sections you need to do more and in which you need to do less. 
+
+# Calendar
+
+![CalendarView](https://user-images.githubusercontent.com/49918134/64677432-d4ecdb80-d477-11e9-9706-b9dd2670c686.png)
+
+
+
+![HomeView](https://user-images.githubusercontent.com/49918134/64677433-d4ecdb80-d477-11e9-96d7-217f8d0bb6dd.png)
