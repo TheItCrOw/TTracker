@@ -25,6 +25,9 @@ After a root & sub project is created, you can now create your first ticket in t
 
 ![TimeEngine](https://user-images.githubusercontent.com/49918134/64677438-d5857200-d477-11e9-8329-5d7826b6f894.png)
 
+In the Time Engine you track your time of the day. It is up to you, to what extense you do that. I use it to track all of my time - the time I work, the time I study, the time I play, the time I do sports and so forth. You essecntially "book" your time on the tickets that you have created. At the end of the day you then have a clear list of what you did with your time today and you can also generate a "Day Summary" as seen in the screenshot, which lists all your doings, generates a statistic out of it and saves it as a PDF file if you want to.
+
+For everyone that wants to track all of his/her time, I implemented the "Static" tickets. These tickets do not have a time limit, all they do is represent an activity that is ongoing. E.g. my "Go to the gym" ticket. I do NOT create a new ticket each time I go to the gym. Usually, there are no specific tasks while I'm doing sports - I just go work out. For that, I created a static ticket. So now I can go into the Time Engine and book the time of my workout on that ticket, so I can track all of my time and make statistics out of it, without creating dozens of tickets for the same activity I do regulary.
 
 ![CalendarView](https://user-images.githubusercontent.com/49918134/64677432-d4ecdb80-d477-11e9-9706-b9dd2670c686.png)
 ![HomeView](https://user-images.githubusercontent.com/49918134/64677433-d4ecdb80-d477-11e9-96d7-217f8d0bb6dd.png)
