@@ -1,4 +1,4 @@
-# TTrackerGit
+# TTracker
 This is the repository for my TTracker - a tool that structures and organizes your personal workflow with different functions.
 
 # Ticket Management
