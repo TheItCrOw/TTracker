@@ -21,7 +21,7 @@ Here you can create new projects which you then subordinate new tickets to. The 
 
 After a root & sub project is created, you can now create your first ticket in the afore described Ticket Management section, choosing which project the created ticket should belong to.
 
-#Time Engine
+# Time Engine
 
 ![TimeEngine](https://user-images.githubusercontent.com/49918134/64677438-d5857200-d477-11e9-8329-5d7826b6f894.png)
 
