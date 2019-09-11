@@ -39,6 +39,15 @@ One of the most interesting features of the TTracker are the statistics. The who
 
 ![CalendarView](https://user-images.githubusercontent.com/49918134/64677432-d4ecdb80-d477-11e9-9706-b9dd2670c686.png)
 
+The most recent feature implemented is a custom-made Calendar. It works just like every other Calendar: You create Date-Tickets and they are shown in the Calendar. You can switch between Daily-, Weekly-, Monthly- & Yearly View (Yearly not yet implemented). The height of each ticket depends on the time that ticket has been appointed with. So a doctors appointment from 1pm - 3pm is smaller in Height than "Going out with friends" ticket from 7pm to 11pm.
 
+# Home
 
 ![HomeView](https://user-images.githubusercontent.com/49918134/64677433-d4ecdb80-d477-11e9-96d7-217f8d0bb6dd.png)
+
+To wrap up your duties for the day, the Home View shows everything you need to know. It shows all tickets that are set on "Working", every Appointment you have created in the Calendar for today, shows a little statstic of the running week and lets you create Micro Tasks, which are essentially tasks that are not worthy of making a ticket for, but still musn't be forgotten.
+
+# Recap the project
+
+I have learned a lot about WPF, C#, Visual Studio & Git in the proccess of making this software. I decided to go for an XML-Database, since I wanted the software to run offline as well and also wanted to learn more about XML. I plan on making an Online-Version of this as well, integrated into the program, that allows you to manage projects tasks and tickets across several people much like Jira.
+Since this was one of my first projects with WPF technology, my former Code does have some sections I would definitly change looking back at it now and there are still some things that aren't implemented yet.
