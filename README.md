@@ -52,10 +52,10 @@ To wrap up your duties for the day, the home view shows everything you need to k
 I have learned a lot about WPF, C#, Visual Studio & Git in the process of making this software. I decided to go for an XML-Database, as I wanted the software to run offline as well and learn more about XML. I plan on adding an online-version integrated into the program that allows you to manage projects, tasks and tickets between several people much like Jira.
 As this was one of my first projects with WPF technology, my former code does have some sections I would definitely change looking back at it now and there are still some things that aren't implemented yet. However, I am generally satisfied with the current state of the program and I do use it every day.
 
-Things I would change today:
+# Things I would change today:
 - Logging.
 - XMLDataCache base works really fine, but it could be more generic and stable. (Try, Catch)
 - UI is very primitive - I am not a designer, but I can do better.
 - Data is currently stored plain, not encoded - but that is how I wanted it to be for better debugging. For a release, I would definitly change that.
-- Passwords aren't hashed, due to the fact that I am not sure, whether I should keep the User logic. I do know, that you never store serious passwords without protection.
+- Passwords aren't hashed, due to the fact that I am not sure, whether I should keep the User logic. I do know that you never store serious passwords without protection.
 - ...
