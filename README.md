@@ -53,9 +53,9 @@ I have learned a lot about WPF, C#, Visual Studio & Git in the process of making
 As this was one of my first projects with WPF technology, my former code does have some sections I would definitely change looking back at it now and there are still some things that aren't implemented yet. However, I am generally satisfied with the current state of the program and I do use it every day.
 
 Things I would change today:
--> Logging.
--> XMLDataCache base works really fine, but it could be more generic and stable. (Try, Catch)
--> UI is very primitive - I am not a designer, but I can do better.
--> Data is currently stored plain, not encoded - but that is how I wanted it to be for better debugging. For a release, I would definitly change that.
--> Passwords aren't hashed, due to the fact that I am not sure, whether I should keep the User logic. I do know, that you never store serious passwords without protection.
--> ...
+- Logging.
+- XMLDataCache base works really fine, but it could be more generic and stable. (Try, Catch)
+- UI is very primitive - I am not a designer, but I can do better.
+- Data is currently stored plain, not encoded - but that is how I wanted it to be for better debugging. For a release, I would definitly change that.
+- Passwords aren't hashed, due to the fact that I am not sure, whether I should keep the User logic. I do know, that you never store serious passwords without protection.
+- ...
