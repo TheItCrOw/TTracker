@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data>
+  <Id>191b6cca-b0f5-4982-99a5-6f17fa0dc6ab</Id>
+  <Name>Sen's Fortress</Name>
+  <UserId>d601adbc-eee3-436f-b657-c9f4969a449a</UserId>
+  <ParentId>1216c359-c21d-42e4-9cce-a1c1a7a41653</ParentId>
+  <Text>"An unbreakable fortress that keeps your passwords save."
+
+-&gt; WPF
+-&gt; C# .NET Core 3.0
+-&gt; VS 2019
+-&gt; Git (GitKraken)</Text>
+  <Created>06.10.2019 10:21:55</Created>
+  <UsedTime>0</UsedTime>
+</Data>

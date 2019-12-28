@@ -365,7 +365,7 @@ MigrationBackup/
 </Text>
   <Created>18.06.2019 18:20:30</Created>
   <ExpectedTime>0</ExpectedTime>
-  <UsedTime>0,2</UsedTime>
+  <UsedTime>0,30625</UsedTime>
   <Priority>Normal</Priority>
   <Status>Static</Status>
 </Data>

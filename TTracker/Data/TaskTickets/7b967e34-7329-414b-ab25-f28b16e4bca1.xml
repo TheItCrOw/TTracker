@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data>
+  <Id>7b967e34-7329-414b-ab25-f28b16e4bca1</Id>
+  <Name>Haupt-UI der Anwendung</Name>
+  <UserId>d601adbc-eee3-436f-b657-c9f4969a449a</UserId>
+  <ProjectId>191b6cca-b0f5-4982-99a5-6f17fa0dc6ab</ProjectId>
+  <Text>-&gt; Wie sieht die Anwendung aus?
+-&gt; Design des Passwort-Speicherns ist gefragt.</Text>
+  <Created>07.10.2019 16:56:07</Created>
+  <ExpectedTime>4</ExpectedTime>
+  <UsedTime>2,55625</UsedTime>
+  <Priority>Normal</Priority>
+  <Status>Working</Status>
+</Data>

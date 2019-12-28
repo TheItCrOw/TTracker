@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data>
+  <Id>d835aa3c-a1d8-403f-891b-6433388bfadb</Id>
+  <Name>Pi-Hole Webungsfilter</Name>
+  <UserId>d601adbc-eee3-436f-b657-c9f4969a449a</UserId>
+  <ProjectId>cf228c12-004c-4cdf-95c3-d3bbff375fde</ProjectId>
+  <Text>-&gt; Pi-Hole filtert alle Werbungen und Malware. Nachbauen?</Text>
+  <Created>25.11.2019 11:54:47</Created>
+  <ExpectedTime>2</ExpectedTime>
+  <UsedTime>0</UsedTime>
+  <Priority>Normal</Priority>
+  <Status>Todo</Status>
+</Data>

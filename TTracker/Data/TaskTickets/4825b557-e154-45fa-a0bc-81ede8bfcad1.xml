@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data>
+  <Id>4825b557-e154-45fa-a0bc-81ede8bfcad1</Id>
+  <Name>StartView UI</Name>
+  <UserId>d601adbc-eee3-436f-b657-c9f4969a449a</UserId>
+  <ProjectId>191b6cca-b0f5-4982-99a5-6f17fa0dc6ab</ProjectId>
+  <Text>-&gt; Start Dialog plus Login und Registrierung (DONE)
+-&gt; NUR UI (DONE)
+-&gt; Kann später nochmal aufgegriffen werden, da Feinheiten noch fehlen</Text>
+  <Created>06.10.2019 21:42:27</Created>
+  <ExpectedTime>1</ExpectedTime>
+  <UsedTime>1,075</UsedTime>
+  <Priority>Normal</Priority>
+  <Status>Todo</Status>
+</Data>

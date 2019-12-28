@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data>
+  <Id>df1dae50-5a44-4a1e-8722-fdb04fe3cc9c</Id>
+  <Name>XMLCache implementieren</Name>
+  <UserId>d601adbc-eee3-436f-b657-c9f4969a449a</UserId>
+  <ProjectId>191b6cca-b0f5-4982-99a5-6f17fa0dc6ab</ProjectId>
+  <Text>-&gt; Um Daten zu speichern einen allgemeinen DataCache 
+-&gt; Evaliuierung der Daten: Wie werden Passwörter gespeichert? (DONE)
+-&gt; Login User Daten? E-Mail etc? (DONE)
+-&gt; WICHTIG: Path.Combine anstatt die ganzen interpolierungen
+-&gt; Wie speichere ich die Passwörter save im Memory?
+-&gt; WICHTIG: XSD file zu xml generieren um die xml zu verifizieren.
+-&gt; Nach Berechtingung mit CAS fragen?</Text>
+  <Created>07.10.2019 16:54:26</Created>
+  <ExpectedTime>5</ExpectedTime>
+  <UsedTime>3,2375</UsedTime>
+  <Priority>Normal</Priority>
+  <Status>Working</Status>
+</Data>

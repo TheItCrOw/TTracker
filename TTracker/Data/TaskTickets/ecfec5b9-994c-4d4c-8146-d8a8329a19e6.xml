@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data>
+  <Id>ecfec5b9-994c-4d4c-8146-d8a8329a19e6</Id>
+  <Name>Virtual Keyboard UI</Name>
+  <UserId>d601adbc-eee3-436f-b657-c9f4969a449a</UserId>
+  <ProjectId>191b6cca-b0f5-4982-99a5-6f17fa0dc6ab</ProjectId>
+  <Text>-&gt; Gegen KeyLogger eine virtuelle Tastatur für die UI einbauen..</Text>
+  <Created>09.10.2019 13:49:11</Created>
+  <ExpectedTime>1</ExpectedTime>
+  <UsedTime>0</UsedTime>
+  <Priority>Low</Priority>
+  <Status>Todo</Status>
+</Data>

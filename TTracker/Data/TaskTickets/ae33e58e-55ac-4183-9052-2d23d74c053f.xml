@@ -14,8 +14,8 @@
   <Created>17.06.2019 09:58:30</Created>
   <ExpectedTime>2,5</ExpectedTime>
   <UsedTime>2,2875</UsedTime>
-  <Priority>High</Priority>
-  <Status>Working</Status>
+  <Priority>Normal</Priority>
+  <Status>Todo</Status>
   <Text>Will irgendwie ein "Plan-Komponente" hier reinbringen...Sodass ich Tickets oder Termine eintragen kann.
 
 -&gt; DateTime Eingabe kontrollieren (DONE)
